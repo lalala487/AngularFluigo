@@ -2,13 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>FrontendWebApplication</title>
+  <title>Flugio</title>
   <base href="/">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Flugio">
+  <meta name="apple-mobile-web-app-title" content="Flugio">
+  <meta name="theme-color" content="#0e354b">
+  <meta name="msapplication-navbutton-color" content="#0e354b">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="msapplication-starturl" content="https://www.flugio.ch">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="manifest" href="assets/manifest.json">
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/icon/homescreen512.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="512x512" href="assets/icon/homescreen512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/icon/homescreen192.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="192x192" href="assets/icon/homescreen192.png">
+  <link rel="icon" type="image/x-icon" sizes="32x32" href="assets/icon/favicon.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
-<body>
-  <app-root></app-root>
+<body style="background: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%), rgba(77, 131, 132, 1); font-size: 100%; font-weight: 400; color: rgba(235, 235, 235, 1); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
+  <div class="container backend-container">
+    <app-root></app-root>
+  </div>
+  <script>
+  if('serviceWorker' in navigator) {
+    navigator.serviceWorker
+      .register('/sw.js')
+      .then(function() { console.log("Service Worker Registered"); });
+  }
+  </script>
 </body>
 </html>

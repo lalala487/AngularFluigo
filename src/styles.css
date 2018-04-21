@@ -9,9 +9,6 @@ body {
 .backend-container {
 }
 
-.container {
-}
-
 /**********************************************************************/
 /**************   Paddings, Margins, Heights & Widths   ***************/
 /**********************************************************************/
@@ -36,6 +33,10 @@ body {
 /*****************************   Logo   *******************************/
 /**********************************************************************/
 
+.logo-container {
+  height: auto;
+}
+
 .logo {
   padding: 1.5rem 1.5rem;
 }
@@ -49,13 +50,21 @@ body {
 /****************************   Header   ******************************/
 /**********************************************************************/
 
-.header {
-  height: 65vh;
+.header-row {
+  height: 70vh;
 }
 
 /**********************************************************************/
 /***************************   Deal Card   ****************************/
 /**********************************************************************/
+
+.deal-row {
+}
+
+.deal-col {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
 
 .deal-card {
   position: relative;
@@ -71,21 +80,33 @@ body {
 	bottom: 0;
 	left: 0;
 	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .5) 0%, rgba(77, 131, 132, .5) 100%);
-  z-index: 1;
 }
 
 .deal-card-title {
   font-size: 1.7rem;
   letter-spacing: .07rem;
   font-weight: 400;
-  z-index: 2;
+  z-index: 3;
+  float: left;
 }
 
 .deal-card .first-row {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   padding-top: 1.5rem;
   color: rgba(235, 235, 235, 1);
+  z-index: 2;
+}
+
+.discount-number {
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  padding-top: 1.25rem;
+  background: rgba(19, 78, 94, 1);
+  color: rgba(235, 235, 235, 1);
+  text-align: center;
+  float: right;
 }
 
 /**********************************************************************/

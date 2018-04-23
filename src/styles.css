@@ -13,6 +13,12 @@ body {
 /**************   Paddings, Margins, Heights & Widths   ***************/
 /**********************************************************************/
 
+h2 {
+  font-size: 1.4rem;
+  letter-spacing: .1rem;
+  font-weight: 400;
+}
+
 h4 {
   font-size: 1.4rem;
   letter-spacing: .1rem;
@@ -67,7 +73,7 @@ h4 {
   height: 100%;
 }
 
-@media only screen and (min-width : 1200px) {
+@media only screen and (min-width : 768px) {
   .footer-ul-container {
     height: 11rem !important;
   }
@@ -112,7 +118,7 @@ h4 {
   opacity: .5;
 }
 
-@media only screen and (min-width: 1200px)  {
+@media only screen and (min-width: 768px)  {
   .footer-column-four {
     padding-top: 9.2rem;
   }
@@ -196,15 +202,28 @@ h4 {
 
 .discount-number {
   border-radius: 50%;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 5rem;
+  height: 5rem;
   padding-top: 1.2rem;
   background: rgba(19, 78, 94, 1);
   color: rgba(235, 235, 235, 1);
   text-align: center;
   float: right;
   letter-spacing: .05rem;
-  font-size: .8rem;
+}
+
+.discount-number p{
+}
+
+.percentage-label {
+    font-size: .7rem;
+    margin-bottom: 0rem;
+    opacity: .5;
+}
+
+.percentage-number {
+    font-size: 1.2rem;
+    margin-bottom: -0.2rem;
 }
 
 /**********************************************************************/

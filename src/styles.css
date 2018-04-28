@@ -47,8 +47,14 @@ a:hover {
 /**********************************************************************/
 
 .logo-container {
+  margin-top: 1.5rem;
   height: auto;
-  margin-top: 2rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-row-sidebar .logo-container{
+    margin-top: 3.3rem;
+  }
 }
 
 .logo-row {
@@ -168,6 +174,54 @@ a:hover {
 }
 
 /**********************************************************************/
+/**************************   Product Page   **************************/
+/**********************************************************************/
+.pdp-row-sidebar {
+  height: 100vh;
+}
+
+.pdp-column-left-bar {
+  height: 100%;
+  background-color: rgba(77, 131, 132, 1);
+}
+
+@media only screen and (max-width: 1199.98px)  {
+  .pdp-column-left-bar {
+    height: 5rem;
+  }
+}
+
+.pdp-column-right-bar {
+  height: 100%;
+  background-color: rgba(77, 131, 132, 1);
+  height: 100vh;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-column-right-bar {
+    overflow-y: scroll;
+  }
+}
+
+.pdp-row-right-bar-container {
+  background-color: black;
+  margin-top: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-row-right-bar-container {
+    margin-left: 10rem;
+    margin-right: 10rem;
+    margin-top: 5rem;
+  }
+}
+
+.pdp-block-one {
+  height: 20rem;
+  background-color: rgba(77, 131, 132, 1);
+}
+
+/**********************************************************************/
 /***************************   Deal Card   ****************************/
 /**********************************************************************/
 
@@ -210,7 +264,7 @@ a:hover {
   font-size: 1.1rem;
   letter-spacing: .07rem;
   font-weight: 300;
-  padding-left: .5rem;
+  margin-left: .5rem;
   opacity: .5;
 }
 

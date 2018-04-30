@@ -42,6 +42,10 @@ a:hover {
   background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
 }
 
+.gradient-20 {
+  background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .5) 0%, rgba(77, 131, 132, .5) 100%);
+}
+
 /**********************************************************************/
 /*****************************   Logo   *******************************/
 /**********************************************************************/
@@ -52,7 +56,7 @@ a:hover {
 }
 
 @media only screen and (min-width: 1200px)  {
-  .pdp-row-sidebar .logo-container{
+  .pdp-column-left-bar .logo-container{
     margin-top: 5rem;
   }
 }
@@ -176,13 +180,25 @@ a:hover {
 /**********************************************************************/
 /**************************   Product Page   **************************/
 /**********************************************************************/
-.pdp-row-sidebar {
+.pdp-container {
   height: 100vh;
+  background-size: cover;
+}
+
+.pdp-container::before {
+  content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.9) 0%, rgba(77,131,132,.9) 100%);
 }
 
 .pdp-column-left-bar {
   height: 100%;
-  background-color: rgba(77, 131, 132, 1);
+  /* background-color: rgba(77, 131, 132, 1); */
 }
 
 @media only screen and (max-width: 1199.98px)  {
@@ -193,7 +209,7 @@ a:hover {
 
 .pdp-column-right-bar {
   height: 100%;
-  background-color: rgba(77, 131, 132, 1);
+  /* background-color: rgba(77, 131, 132, 1); */
   height: 100vh;
 }
 
@@ -237,15 +253,56 @@ a:hover {
 	right: 0;
 	bottom: 0;
 	left: 0;
+  display: flex;
+  align-items: center;
 	background-image:
     linear-gradient(to bottom right, rgba(19,78,94,.5) 0%, rgba(77,131,132,.5) 100%),
-    linear-gradient(to bottom, rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,.5) 100%);
+    linear-gradient(to bottom, rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.4) 100%);
 }
 
 .pdp-city-block-gradient .text-block {
+  margin: 0 auto;
+  text-align: center;
 }
 
 .pdp-city-block-gradient .text-block h2 {
+  font-size: 1.8rem;
+  letter-spacing: .07rem;
+  margin-bottom: .8rem;
+}
+
+.pdp-city-block-gradient .text-block p {
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  margin-bottom: 0rem;
+}
+
+hr {
+  display: block;
+  height: .1rem;
+  border: 0;
+  border-top: .1rem solid rgba(235,235,235,.5);
+  padding: 0;
+}
+
+.pdp-city-block-gradient .text-block hr {
+  width: 2.5rem;
+  margin: 0 auto;
+  margin-bottom: .55rem;
+}
+
+.btn-back-container {
+  position: fixed;
+  bottom: 5vh;
+  left: 1.5rem;
+  z-index: 1;
+}
+
+.btn-next-container {
+  position: sticky;
+  bottom: 5vh;
+  right: 1.5rem;
+  z-index: 1;
 }
 
 /**********************************************************************/
@@ -272,7 +329,7 @@ a:hover {
 	left: 0;
 	background-image:
     linear-gradient(to bottom right, rgba(19,78,94,.5) 0%, rgba(77,131,132,.5) 100%),
-    linear-gradient(to bottom, rgba(0,0,0,.5) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 75%,rgba(0,0,0,.5) 100%);
+    linear-gradient(to bottom, rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.4) 100%);
 }
 
 .deal-card-title {
@@ -392,6 +449,15 @@ a:hover {
   color: rgba(235, 235, 235, 1);
   border: none;
   background-color: rgba(85, 144, 151, 1);
+}
+
+.btn-round-pdp {
+  border: none;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(19, 78, 94, 1);
+  color: rgba(235, 235, 235, 1);
 }
 
 .btn-primary:hover {

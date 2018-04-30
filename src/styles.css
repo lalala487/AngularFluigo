@@ -280,6 +280,8 @@ a:hover {
   font-size: 1rem;
   letter-spacing: .07rem;
   margin-bottom: 0rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 hr {
@@ -334,6 +336,40 @@ hr {
   bottom: 5vh;
   right: 1.5rem;
   z-index: 1;
+}
+
+.pdp-review-block {
+  background-color: rgba(77, 131, 132, 1);
+  align-items: center;
+  display: flex;
+  align-items: center;
+  height: 20rem;
+}
+
+.pdp-review-block .text-block {
+  text-align: center;
+  margin: 0 auto;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.pdp-review-block .text-block p {
+  margin-bottom: 0rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.pdp-review-block .avatar-block img {
+  border-radius: 50%;
+  opacity: .5;
+  margin-top: 2rem;
+}
+
+.pdp-review-block .avatar-block .avatar-name {
+  font-size: .8rem;
+  margin-top: .5rem;
+  font-style: normal;
 }
 
 /**********************************************************************/

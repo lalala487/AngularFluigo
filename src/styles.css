@@ -57,7 +57,7 @@ a:hover {
 
 @media only screen and (min-width: 1200px)  {
   .pdp-column-left-bar .logo-container{
-    margin-top: 5rem;
+    margin-top: 2.5rem;
   }
 }
 
@@ -75,6 +75,10 @@ a:hover {
 
 .header-row {
   height: 50vh;
+}
+
+.header-row .logo-container {
+  margin-top: 2.5rem;
 }
 
 .header-row .header-title{
@@ -228,7 +232,8 @@ a:hover {
   .pdp-row-right-bar-container {
     margin-left: 5rem;
     margin-right: 5rem;
-    margin-top: 5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
   }
 }
 
@@ -285,10 +290,36 @@ hr {
   padding: 0;
 }
 
-.pdp-city-block-gradient .text-block hr {
+.pdp-city-block-title .text-block hr {
   width: 2.5rem;
   margin: 0 auto;
   margin-bottom: .55rem;
+}
+
+.pdp-icons-block {
+  background-color: rgba(77, 131, 132, 1);
+  align-items: center;
+  display: flex;
+  align-items: center;
+  height: 20rem;
+}
+
+.pdp-icons-block .text-block {
+  text-align: center;
+  margin: 0 auto;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+.pdp-icons-block .icon-block-one span,
+.pdp-icons-block .icon-block-two span {
+  width: 1rem;
+  display: inline-block;
+}
+
+.pdp-icons-block .icon-block-one {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 .btn-back-container {

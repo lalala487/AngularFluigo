@@ -53,13 +53,12 @@ a:hover {
 /**********************************************************************/
 
 .logo-container {
-  margin-top: 1.5rem;
-  height: auto;
+  margin-top: 0rem;
 }
 
 @media only screen and (min-width: 1200px)  {
   .pdp-column-left-bar .logo-container{
-    margin-top: 2.5rem;
+    margin-top: 2.2rem;
   }
 }
 
@@ -184,6 +183,94 @@ a:hover {
 }
 
 /**********************************************************************/
+/************************   Left Bar Container   **********************/
+/**********************************************************************/
+
+.pdp-column-left-bar .center-container {
+  display: flex;
+  align-items: center;
+  height: 90vh;
+}
+
+.pdp-column-left-bar .logo {
+  display: flex;
+  align-items: center;
+  height: 10vh;
+}
+
+/**********************************************************************/
+/******************************   Steps   *****************************/
+/**********************************************************************/
+
+.pdp-column-left-bar .steps {
+  margin: 0 auto;
+  width: 8.7rem;
+}
+
+.pdp-column-left-bar .steps .step-line {
+  height: 1.5rem;
+  border-left-width: .12rem;
+  border-left-style: solid;
+  border-left-color: rgba(235,235,235,.5);
+  margin-left: .93rem;
+  float: left;
+  clear: both;
+}
+
+.pdp-column-left-bar .steps .active {
+  border-color: rgba(235,235,235,1) !important;
+  color: rgba(235,235,235,1) !important;
+}
+
+.pdp-column-left-bar .steps .step-one,
+.pdp-column-left-bar .steps .step-two,
+.pdp-column-left-bar .steps .step-three,
+.pdp-column-left-bar .steps .step-four,
+.pdp-column-left-bar .steps .step-five {
+  float: left;
+  clear: both;
+}
+
+.pdp-column-left-bar .steps .step-one p,
+.pdp-column-left-bar .steps .step-two p,
+.pdp-column-left-bar .steps .step-three p,
+.pdp-column-left-bar .steps .step-four p,
+.pdp-column-left-bar .steps .step-five p {
+  float: left;
+  height: 2rem;
+  padding-top: .3rem;
+  margin-left: 1rem;
+  margin-bottom: 0rem;
+  color: rgba(235,235,235,.5);
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+.pdp-column-left-bar .steps .step-one span,
+.pdp-column-left-bar .steps .step-two span,
+.pdp-column-left-bar .steps .step-three span,
+.pdp-column-left-bar .steps .step-four span,
+.pdp-column-left-bar .steps .step-five span {
+  float: left;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  padding-top: .2rem;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: .1rem;
+  color: rgba(235,235,235,.5);
+  border-color: rgba(235,235,235,.5);
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 1199.98px)  {
+  .pdp-column-left-bar .steps {
+    display: none;
+  }
+}
+
+/**********************************************************************/
 /**************************   Product Page   **************************/
 /**********************************************************************/
 .pdp-container {
@@ -240,7 +327,7 @@ a:hover {
 }
 
 /**********************************************************************/
-/***********************   Accommocation Page   ***********************/
+/****************************   City Page   ***************************/
 /**********************************************************************/
 
 .pdp-block-one {

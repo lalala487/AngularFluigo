@@ -11,6 +11,19 @@ body {
 .container-fluid {
 }
 
+.nav-container {
+  padding-bottom: 2.5rem;
+  position: fixed; /* Set the navbar to fixed position */
+  bottom: 0; /* Position the navbar at the top of the page */
+  z-index: 3;
+  width: 100%;
+}
+
+.nav-col {
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
 /**********************************************************************/
 /**************   Paddings, Margins, Heights & Widths   ***************/
 /**********************************************************************/
@@ -53,7 +66,7 @@ a:hover {
 /**********************************************************************/
 
 .logo-container {
-  margin-top: 0rem;
+  margin-top: 1.5rem;
 }
 
 @media only screen and (min-width: 1200px)  {
@@ -186,16 +199,20 @@ a:hover {
 /************************   Left Bar Container   **********************/
 /**********************************************************************/
 
-.pdp-column-left-bar .center-container {
-  display: flex;
-  align-items: center;
-  height: 90vh;
+@media only screen and (min-width: 1200px)  {
+  .pdp-column-left-bar .logo {
+    display: flex;
+    align-items: center;
+    height: 10vh;
+  }
 }
 
-.pdp-column-left-bar .logo {
-  display: flex;
-  align-items: center;
-  height: 10vh;
+@media only screen and (min-width: 1200px)  {
+  .pdp-column-left-bar .center-container {
+    display: flex;
+    align-items: center;
+    height: 90vh;
+  }
 }
 
 /**********************************************************************/
@@ -415,16 +432,12 @@ hr {
 }
 
 .btn-back-container {
-  position: fixed;
-  bottom: 5vh;
-  left: 1.5rem;
   z-index: 1;
+  float: left;
 }
 
 .btn-next-container {
-  position: sticky;
-  bottom: 5vh;
-  right: 1.5rem;
+  float: right;
   z-index: 1;
 }
 
@@ -528,7 +541,7 @@ hr {
 }
 
 .deal-card-price p span{
-  font-size: .9rem;
+  font-size: .7rem;
   font-weight: 400;
   margin-right: .25rem;
 }
@@ -611,11 +624,16 @@ hr {
 
 .btn-round-pdp {
   border: none;
-  width: 4rem;
-  height: 4rem;
+  width: 5rem;
+  height: 5rem;
+  font-size: .9rem;
   border-radius: 50%;
-  background: rgba(19, 78, 94, 1);
+  letter-spacing: .07rem;
+  background: rgba(77,131,132,1);
   color: rgba(235, 235, 235, 1);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 .btn-primary:hover {

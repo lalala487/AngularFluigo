@@ -24,6 +24,13 @@ body {
   padding-right: 4rem;
 }
 
+@media only screen and (min-width: 1200px)  {
+  .nav-col {
+    padding-left: 4.4rem;
+    padding-right: 4.4rem;
+  }
+}
+
 /**********************************************************************/
 /**************   Paddings, Margins, Heights & Widths   ***************/
 /**********************************************************************/

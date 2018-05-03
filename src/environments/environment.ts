@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBrBbp9EtGpiESwEKoEujAhnzkD86pMtlc',
+    authDomain: 'flugio-frontend.firebaseapp.com',
+    databaseURL: 'https://project-flugio.firebaseio.com',
+    projectId: 'flugio-frontend',
+    storageBucket: 'flugio-frontend.appspot.com',
+    messagingSenderId: '82113536445'
+  }
 };

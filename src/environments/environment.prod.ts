@@ -1,11 +1,9 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyBrBbp9EtGpiESwEKoEujAhnzkD86pMtlc',
-    authDomain: 'flugio-frontend.firebaseapp.com',
+    apiKey: 'AIzaSyDjmMKdE4O85AasneIe3GJWUKBuNsBoxOU',
     databaseURL: 'https://project-flugio.firebaseio.com',
-    projectId: 'flugio-frontend',
-    storageBucket: 'flugio-frontend.appspot.com',
+    projectId: 'project-flugio',
     messagingSenderId: '82113536445'
   }
 };

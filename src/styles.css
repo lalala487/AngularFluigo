@@ -73,9 +73,6 @@ a:hover {
 /**********************************************************************/
 
 @media only screen and (min-width: 1200px)  {
-  .pdp-column-left-bar .logo-container{
-  }
-
   .pdp-column-left-bar .logo img {
     display: block;
     margin: 0 auto;
@@ -231,27 +228,80 @@ a:hover {
 /**********************************************************************/
 
 @media only screen and (min-width: 1200px)  {
-  .pdp-column-left-bar .logo {
+
+  .pdp-column-left-bar .logo-container {
+    height: 10vh;
+    padding-top: 2.5rem;
+  }
+
+  .pdp-column-left-bar .center-container {
+    height: 90vh;
     display: flex;
     align-items: center;
-    height: 10vh;
-    padding-top: 2rem;
   }
 }
 
-@media only screen and (min-width: 1200px)  {
-  .pdp-column-left-bar .center-container {
-    display: flex;
-    align-items: center;
-    height: 90vh;
-  }
+/**********************************************************************/
+/**************************   Steps Small   ***************************/
+/**********************************************************************/
+
+.pdp-column-left-bar .steps {
+  width: auto;
+  float: right;
+  margin-top: 1.75rem;
+}
+
+.pdp-column-left-bar .steps p{
+  display: none;
+}
+
+.pdp-column-left-bar .steps .step-line {
+  width: 1.2rem;
+  border-top-width: .12rem;
+  border-top-style: solid;
+  border-top-color: rgba(235,235,235,.5);
+  margin-top: .7rem;
+  float: left;
+}
+
+.pdp-column-left-bar .steps .active {
+  border-color: rgba(235,235,235,1) !important;
+  color: rgba(235,235,235,1) !important;
+}
+
+.pdp-column-left-bar .steps .step-one,
+.pdp-column-left-bar .steps .step-two,
+.pdp-column-left-bar .steps .step-three,
+.pdp-column-left-bar .steps .step-four,
+.pdp-column-left-bar .steps .step-five {
+  float: left;
+}
+
+.pdp-column-left-bar .steps .step-one span,
+.pdp-column-left-bar .steps .step-two span,
+.pdp-column-left-bar .steps .step-three span,
+.pdp-column-left-bar .steps .step-four span,
+.pdp-column-left-bar .steps .step-five span {
+  float: left;
+  width: 1.5rem;
+  height: 1.5rem;
+  text-align: center;
+  padding-top: .2rem;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: .1rem;
+  color: rgba(235,235,235,.5);
+  border-color: rgba(235,235,235,.5);
+  font-size: .7rem;
 }
 
 /**********************************************************************/
 /****************************   Steps Big   ***************************/
 /**********************************************************************/
 
-.pdp-column-left-bar .steps {
+@media only screen and (min-width: 1200px)  {
+
+  .pdp-column-left-bar .steps {
   margin: 0 auto;
   width: 8.7rem;
 }
@@ -264,6 +314,8 @@ a:hover {
   margin-left: .93rem;
   float: left;
   clear: both;
+  border-top: none;
+  margin-top: 0rem;
 }
 
 .pdp-column-left-bar .steps .active {
@@ -286,6 +338,7 @@ a:hover {
 .pdp-column-left-bar .steps .step-four p,
 .pdp-column-left-bar .steps .step-five p {
   float: left;
+  display: inline-block;
   height: 2rem;
   padding-top: .3rem;
   margin-left: 1rem;
@@ -313,69 +366,6 @@ a:hover {
   font-size: 1rem;
 }
 
-@media only screen and (max-width: 1199.98px)  {
-  .pdp-column-left-bar .steps {
-    display: none;
-  }
-}
-
-/**********************************************************************/
-/**************************   Steps Small   ***************************/
-/**********************************************************************/
-
-.pdp-column-left-bar .steps-small {
-  width: auto;
-  float: right;
-  margin-top: 1.75rem;
-}
-
-.pdp-column-left-bar .steps-small .step-line {
-  width: 1.2rem;
-  border-top-width: .12rem;
-  border-top-style: solid;
-  border-top-color: rgba(235,235,235,.5);
-  margin-top: .7rem;
-  float: left;
-}
-
-.pdp-column-left-bar .steps-small .active {
-  border-color: rgba(235,235,235,1) !important;
-  color: rgba(235,235,235,1) !important;
-}
-
-.pdp-column-left-bar .steps-small .step-one,
-.pdp-column-left-bar .steps-small .step-two,
-.pdp-column-left-bar .steps-small .step-three,
-.pdp-column-left-bar .steps-small .step-four,
-.pdp-column-left-bar .steps-small .step-five {
-  float: left;
-}
-
-.pdp-column-left-bar .steps-small .step-one span,
-.pdp-column-left-bar .steps-small .step-two span,
-.pdp-column-left-bar .steps-small .step-three span,
-.pdp-column-left-bar .steps-small .step-four span,
-.pdp-column-left-bar .steps-small .step-five span {
-  float: left;
-  width: 1.5rem;
-  height: 1.5rem;
-  text-align: center;
-  padding-top: .2rem;
-  border-radius: 100%;
-  border-style: solid;
-  border-width: .1rem;
-  color: rgba(235,235,235,.5);
-  border-color: rgba(235,235,235,.5);
-  font-size: .7rem;
-}
-
-@media only screen and (max-width: 1199.98px)  {
-}
-
-@media only screen and (min-width: 1200px)  {
-  .pdp-column-left-bar .steps-small {
-    display: none;
-  }
 }
 
 /**********************************************************************/
@@ -384,6 +374,12 @@ a:hover {
 .pdp-container {
   height: 100vh;
   background-size: cover;
+}
+
+@media only screen and (max-width: 575.99px)  {
+  .pdp-container {
+    background-image: none !important;
+  }
 }
 
 .pdp-container::before {

@@ -95,6 +95,42 @@ a:hover {
   margin: 0 auto;
 }
 
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .pdp-column-left-bar .logo{
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .pdp-column-left-bar .logo .col-xl-12{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .pdp-column-left-bar .logo{
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .pdp-column-left-bar .logo .col-xl-12{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .pdp-column-left-bar .logo{
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .pdp-column-left-bar .logo .col-xl-12{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+}
+
 /**********************************************************************/
 /****************************   Header   ******************************/
 /**********************************************************************/
@@ -286,7 +322,7 @@ a:hover {
   width: 1.5rem;
   height: 1.5rem;
   text-align: center;
-  padding-top: .2rem;
+  padding-top: .18rem;
   border-radius: 100%;
   border-style: solid;
   border-width: .1rem;

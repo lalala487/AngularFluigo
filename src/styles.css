@@ -29,12 +29,14 @@ body {
   font-size: .7rem;
   margin-top: 1.5rem;
   margin-bottom: 0rem;
+  letter-spacing: .07rem;
 }
 
 .nav-container p:last-of-type{
   text-align: center;
   font-size: 1rem;
   margin-bottom: 0rem;
+  letter-spacing: .07rem;
 }
 
 .nav-col {
@@ -44,12 +46,16 @@ body {
 
 @media only screen and (min-width: 1200px)  {
   .nav-col {
-    padding-left: 5.5rem;
-    padding-right: 5.5rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 
   .nav-container {
     padding-bottom: 2.5rem;
+  }
+
+  .nav-container .price{
+    display: none;
   }
 }
 
@@ -372,6 +378,13 @@ a:hover {
   .pdp-column-left-bar .steps {
   margin: 0 auto;
   width: 8.7rem;
+  float: left;
+  clear: both;
+}
+
+.pdp-column-left-bar .price-container {
+  float: left;
+  clear: both;
 }
 
 .pdp-column-left-bar .steps .step-line {
@@ -380,7 +393,6 @@ a:hover {
   border-left-style: solid;
   border-left-color: rgba(235,235,235,.5);
   margin-left: .93rem;
-  float: left;
   clear: both;
   border-top: none;
   margin-top: 0rem;
@@ -414,6 +426,31 @@ a:hover {
   color: rgba(235,235,235,.5);
   letter-spacing: .07rem;
   font-size: 1rem;
+}
+
+.pdp-column-left-bar .steps .price-container {
+  margin-bottom: 3rem;
+}
+
+.pdp-column-left-bar .steps .price-container .old-price {
+  color: rgba(235,235,235,.5);
+}
+
+.pdp-column-left-bar .steps .price-container .new-price {
+  color: rgba(235,235,235,1);
+  margin-left:1.3rem;
+}
+
+.pdp-column-left-bar .steps .price-container p {
+  display: inline-block;
+  letter-spacing: .07rem;
+  font-size: 1.4rem;
+  margin-bottom: 0rem;
+  line-height: 1.5rem;
+}
+
+.pdp-column-left-bar .steps .price-container p span {
+  font-size: .7rem;
 }
 
 .pdp-column-left-bar .steps .step-one span,

@@ -12,23 +12,55 @@ body {
 }
 
 .nav-container {
-  padding-bottom: 2.5rem;
-  position: fixed; /* Set the navbar to fixed position */
-  bottom: 0; /* Position the navbar at the top of the page */
+  padding-bottom: .95rem;
+  padding-top: 5rem;
+  position: fixed;
+  bottom: 0;
   z-index: 3;
   width: 100%;
+  /* background-image: url(assets/img/nav-gradient.png); */
+  background-size: contain;
+  background-repeat: repeat-x;
+  background-image: linear-gradient(to top, rgba(0,0,0,.4) 0%,rgba(0,0,0,.3) 25%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.1) 75%,rgba(0,0,0,0) 100%);
+}
+
+.nav-container p:first-of-type{
+  text-align: center;
+  font-size: .7rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0rem;
+}
+
+.nav-container p:last-of-type{
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 0rem;
 }
 
 .nav-col {
-  padding-left: 4rem;
-  padding-right: 4rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 @media only screen and (min-width: 1200px)  {
   .nav-col {
-    padding-left: 4.4rem;
-    padding-right: 4.4rem;
+    padding-left: 5.5rem;
+    padding-right: 5.5rem;
   }
+
+  .nav-container {
+    padding-bottom: 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .nav-container {
+    background-image: none;
+  }
+}
+
+.nav-container .col-xs-4 {
+  width: 33.333333%;
 }
 
 /**********************************************************************/
@@ -559,11 +591,23 @@ hr {
 .btn-back-container {
   z-index: 1;
   float: left;
+  margin-left: .3rem;
 }
 
 .btn-next-container {
-  float: right;
   z-index: 1;
+  float: right;
+  margin-right: .3rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .btn-back-container {
+    left: 4.5rem;
+  }
+
+  .btn-next-container {
+    right: 4.5rem;
+  }
 }
 
 .pdp-review-block {

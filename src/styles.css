@@ -123,6 +123,10 @@ a:hover {
     margin-top: 1.75rem;
   }
 
+  .pdp-column-left-bar .price-container {
+    display: none;
+  }
+
   .pdp-column-left-bar .logo img {
     width: 80px;
   }
@@ -377,7 +381,7 @@ a:hover {
 
   .pdp-column-left-bar .steps {
   margin: 0 auto;
-  width: 8.7rem;
+  width: 9.7rem;
   float: left;
   clear: both;
 }
@@ -421,7 +425,7 @@ a:hover {
   display: inline-block;
   height: 2rem;
   padding-top: .3rem;
-  margin-left: 1rem;
+  margin-left: 2rem;
   margin-bottom: 0rem;
   color: rgba(235,235,235,.5);
   letter-spacing: .07rem;
@@ -430,6 +434,7 @@ a:hover {
 
 .pdp-column-left-bar .steps .price-container {
   margin-bottom: 3rem;
+  width: 100%;
 }
 
 .pdp-column-left-bar .steps .price-container .old-price {
@@ -438,19 +443,30 @@ a:hover {
 
 .pdp-column-left-bar .steps .price-container .new-price {
   color: rgba(235,235,235,1);
-  margin-left:1.3rem;
+}
+
+.pdp-column-left-bar .steps .price-container .amount {
+  float: right;
+  clear: right;
+  font-size: 1.2rem;
+  height: 3rem;
+  line-height: 3.4rem;
+}
+
+.pdp-column-left-bar .steps .price-container .currency {
+  font-size: .8rem
+}
+
+.pdp-column-left-bar .steps .price-container .prefix {
+  color: rgba(235,235,235,.5);
+  font-size: .8rem;
+  height: 3rem;
 }
 
 .pdp-column-left-bar .steps .price-container p {
   display: inline-block;
   letter-spacing: .07rem;
-  font-size: 1.4rem;
   margin-bottom: 0rem;
-  line-height: 1.5rem;
-}
-
-.pdp-column-left-bar .steps .price-container p span {
-  font-size: .7rem;
 }
 
 .pdp-column-left-bar .steps .step-one span,

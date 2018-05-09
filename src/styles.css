@@ -117,14 +117,14 @@ a:hover {
   }
 }
 
-@media only screen and (max-width: 1199.99px)  {
+@media only screen and (max-width: 1199.98px)  {
   .pdp-column-left-bar .logo-container{
     float: left;
     margin-top: 1.75rem;
   }
 
   .pdp-column-left-bar .price-container {
-    display: none;
+    display: none ;
   }
 
   .pdp-column-left-bar .logo img {
@@ -213,7 +213,7 @@ a:hover {
   opacity: .75 !important;
 }
 
-@media only screen and (max-width : 991.99px) {
+@media only screen and (max-width : 991.98px) {
   .header-row {
     height: auto;
   }
@@ -343,6 +343,17 @@ a:hover {
 }
 
 .pdp-column-left-bar .steps .active {
+  border-color: rgba(235,235,235,1) !important;
+  color: rgba(235,235,235,1) !important;
+}
+
+.pdp-column-left-bar .steps span.current {
+  border-color: rgba(235,235,235,1) !important;
+  color: rgba(235,235,235,1) !important;
+  background-color: rgba(235,235,235,.15) !important;
+}
+
+.pdp-column-left-bar .steps p.current {
   border-color: rgba(235,235,235,1) !important;
   color: rgba(235,235,235,1) !important;
 }
@@ -497,6 +508,18 @@ a:hover {
   background-size: cover;
 }
 
+@media only screen and (max-width: 575.98px)  {
+  .pdp-container {
+    height: auto;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom right, rgba(19,78,94,1) 0%, rgba(77,131,132,1) 100%) !important;
+  }
+
+  .pdp-container::before {
+  	background-image: none !important;
+  }
+}
+
 .pdp-container::before {
   content: '';
 	position: absolute;
@@ -520,36 +543,18 @@ a:hover {
 }
 
 .pdp-column-right-bar {
-  height: 100%;
-  /* background-color: rgba(77, 131, 132, 1); */
-  height: 100vh;
-}
-
-.pdp-row-right-bar-container {
-  background-color: black;
-  margin-top: 1rem;
+  /* height: 100%;
+  height: 100vh; */
 }
 
 @media only screen and (min-width: 1200px)  {
   .pdp-row-right-bar-container {
     margin-left: 5rem;
     margin-right: 5rem;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
   }
 
   .pdp-column-right-bar {
     overflow-y: scroll;
-  }
-}
-
-@media only screen and (max-width: 575.99px)  {
-  .pdp-container {
-    background-image: none !important;
-  }
-
-  .pdp-column-right-bar {
-    background-color: rgba(77, 131, 132, 1);
   }
 }
 
@@ -564,6 +569,7 @@ a:hover {
 
 .pdp-city-block-title {
   height: 20rem;
+  margin-top: 2.5rem;
   background-size: cover;
   background-position: center;
 }
@@ -819,6 +825,164 @@ hr {
 }
 
 /**********************************************************************/
+/*************************   Users Quantity   *************************/
+/**********************************************************************/
+
+.pdp-user-quantity-block {
+  width: 100%;
+}
+
+.pdp-user-quantity-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-user-quantity-block .label-user-quantity {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-user-quantity-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .pdp-user-quantity-block .btn-press{
+    margin-bottom: 2rem;
+  }
+
+  .pdp-user-quantity-block {
+    margin-top: 3rem;
+  }
+}
+
+/**********************************************************************/
+/***************************   Users Age   ****************************/
+/**********************************************************************/
+
+.pdp-user-age-block {
+  width: 100%;
+}
+
+.pdp-user-age-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-user-age-block .label-user-age {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-user-age-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .pdp-user-age-block .btn-press{
+    margin-bottom: 2rem;
+  }
+
+  .pdp-user-age-block {
+    margin-top: -4rem;
+  }
+}
+
+/**********************************************************************/
+/***************************   Users Data   ***************************/
+/**********************************************************************/
+
+.pdp-user-data-block {
+  width: 100%;
+}
+
+.pdp-user-data-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-user-data-block .label-user-age {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-user-data-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 1199.98px)  {
+  .pdp-user-data-block {
+    margin-top: -6.2rem;
+  }
+}
+
+.user-data-form .form-group {
+  margin-bottom: 1.86rem;
+}
+
+.user-data-form .row:last-child .form-group:last-child {
+  margin-bottom: 0rem;
+}
+
+.form-control::-webkit-input-placeholder {
+  color: rgba(235,235,235,0.5);
+}
+.form-control:-moz-placeholder { /* Firefox 18- */
+  color: rgba(235,235,235,0.5);
+}
+
+.form-control::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(235,235,235,0.5);
+}
+
+.form-control:-ms-input-placeholder {
+  color: rgba(235,235,235,0.5);
+}
+
+.form-control:focus {
+  background-color: inherit;
+  border-color: rgba(235,235,235,1);
+  color: rgba(235,235,235,1);
+}
+
+.form-control {
+  background-color: inherit;
+  border-radius: 0;
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  color: rgba(235,235,235,1);
+  border-top: 0rem;
+  border-right: 0rem;
+  border-left: 0rem;
+  border-style: solid;
+  border-color: rgba(235,235,235,0.5);
+  border-bottom-width: .12rem;
+}
+
+.form-control:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/**********************************************************************/
 /****************************   Buttons   *****************************/
 /**********************************************************************/
 
@@ -980,6 +1144,12 @@ hr {
   border-radius: 0;
 }
 
+.pdp-user-age-block .active {
+  color: rgba(235, 235, 235, 1);
+  border-color: rgba(235, 235, 235, 1);
+  background-color: rgba(235, 235, 235, .15);
+}
+
 .btn-press:hover {
   color: rgba(235, 235, 235, 1);
   border-color: rgba(235, 235, 235, 1);
@@ -989,4 +1159,8 @@ hr {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+}
+
+.btn-press:focus {
+    outline: none;
 }

@@ -1004,7 +1004,6 @@ hr {
 }
 
 .activity-card {
-  height: 30vh;
 }
 
 .activity-card::before {
@@ -1027,7 +1026,7 @@ hr {
 }
 
 .activity-card .icon {
-  opacity: .5;
+  opacity: 1;
 }
 
 .activity-card-description {
@@ -1035,47 +1034,91 @@ hr {
   letter-spacing: .07rem;
   font-weight: 400;
   z-index: 3;
-  position: absolute;
-  bottom: .55rem;
-  left: 2rem;
 }
 
 .activity-card-button {
-  position: absolute;
-  bottom: 2rem;
-  right: 2rem;
 }
 
 .activity-card .first-row {
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.75rem;
   color: rgba(235, 235, 235, 1);
   z-index: 2;
   position: relative;
-  height: 50%;
+  margin-bottom: 10rem;
 }
 
 .activity-card .second-row {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
   color: rgba(235, 235, 235, 1);
   z-index: 2;
   position: relative;
-  height: 50%;
+}
+
+@media only screen and (min-width: 768px)  {
+  .activity-card-description {
+    position: absolute;
+    bottom: 0rem;
+    left: 1rem;
+  }
+
+  .activity-card-description p {
+    margin-bottom: -.425rem;
+  }
+
+  .activity-card-button {
+    position: absolute;
+    bottom: 0rem;
+    right: 1rem;
+  }
+
+  .activity-card {
+    height: 40vh;
+  }
+
+  .activity-card .service {
+    float: right;
+  }
+
+  .activity-card .service p {
+    float: right;
+  }
+
+  .activity-card .first-row {
+    height: 50%;
+    margin-bottom: 0rem;
+  }
+
+  .activity-card .second-row {
+    height: 50%;
+    padding-bottom: 2rem;
+  }
+
+  .pdp-activity-block  {
+    margin-top: 2.5rem !important;
+  }
+
+  .pdp-activity-block .activity-row  {
+    margin-bottom: 2.5rem !important;
+  }
 }
 
 .activity-card .service {
   color: rgba(235, 235, 235, 1);
-  float: right;
   letter-spacing: .07rem;
 }
 
 .activity-card .service img {
   margin-right: .75rem;
+  float: left;
 }
 
 .activity-card .service p {
-  float: right;
-  line-height: 1.6rem;
+  line-height: 1.75rem;
+  float: left;
 }
 
 .activity-card .btn-primary {
@@ -1084,11 +1127,11 @@ hr {
 }
 
 .pdp-activity-block  {
-  margin-top: 2.5rem;
+  margin-top: 1rem;
 }
 
 .pdp-activity-block .activity-row  {
-  margin-bottom: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 /**********************************************************************/

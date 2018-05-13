@@ -1088,6 +1088,19 @@ select:focus {
   outline: none;
 }
 
+.pdp-payment-block .label-trust {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: .8rem;
+  margin-top: 3rem;
+}
+
+.pdp-payment-block .icon-lock {
+  margin-top: -.3rem;
+  margin-right: .5rem;
+}
+
 /**********************************************************************/
 /****************************   Activity   ****************************/
 /**********************************************************************/

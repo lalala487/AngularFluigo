@@ -1019,6 +1019,10 @@ hr {
   .payment-form .year {
     margin-bottom: 0rem !important;
   }
+
+  .pdp-payment-block .label-trust {
+    margin-bottom: 0rem !important;
+  }
 }
 
 @media only screen and (max-width: 1199.98px)  {
@@ -1093,12 +1097,55 @@ select:focus {
   margin-bottom: 3rem;
   letter-spacing: .07rem;
   font-size: .8rem;
-  margin-top: 3rem;
+  margin-top: 3.3rem;
 }
 
 .pdp-payment-block .icon-lock {
   margin-top: -.3rem;
   margin-right: .5rem;
+}
+
+/**********************************************************************/
+/***************************   Users Age   ****************************/
+/**********************************************************************/
+
+.pdp-insurance-block {
+  width: 100%;
+}
+
+.pdp-insurance-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-insurance-block .label-insurance {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-insurance-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .pdp-insurance-block .btn-icon-press{
+    margin-bottom: 2rem;
+  }
+
+  .pdp-insurance-block {
+    margin-top: -4rem;
+  }
+}
+
+.pdp-insurance-block .btn-icon-press p {
+  margin-bottom: 0rem;
+  margin-top: 1rem;
 }
 
 /**********************************************************************/
@@ -1405,7 +1452,7 @@ select:focus {
   width: 100%;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  font-size: .95em;
+  font-size: 1rem;
   letter-spacing: .07rem;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -1415,15 +1462,35 @@ select:focus {
   border-radius: 0;
 }
 
-.pdp-user-age-block .active {
+.btn-icon-press {
   color: rgba(235, 235, 235, 1);
+  background-color: inherit;
+  border-width: 0.1rem;
   border-color: rgba(235, 235, 235, 1);
+  border-style: solid;
+  width: 100%;
+  padding-top: 2.2rem;
+  padding-bottom: 2rem;
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border-radius: 0;
+  opacity: .5;
+}
+
+.pdp-user-age-block .active,
+.pdp-insurance-block .active {
+  opacity: 1;
   background-color: rgba(235, 235, 235, .15);
 }
 
-.btn-press:hover {
-  color: rgba(235, 235, 235, 1);
-  border-color: rgba(235, 235, 235, 1);
+.btn-press:hover,
+.btn-icon-press:hover {
+  opacity: 1;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
@@ -1432,6 +1499,7 @@ select:focus {
   cursor: pointer;
 }
 
-.btn-press:focus {
+.btn-press:focus,
+.btn-icon-press:focus {
     outline: none;
 }

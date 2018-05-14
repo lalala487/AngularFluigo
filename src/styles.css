@@ -8,6 +8,27 @@ body {
   font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
+.bs-tooltip-top .arrow::before, .bs-tooltip-auto[x-placement^="top"] .arrow::before {
+    border-top-color: rgba(235,235,235,1);
+}
+
+.bs-tooltip-top {
+    margin-bottom: .5rem;
+}
+
+.tooltip-inner {
+    padding: 0.45rem 0.6rem;
+    color: rgba(19, 78, 94, 1);
+    background-color: rgba(235,235,235,1);
+    font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    letter-spacing: .05rem;
+    border-radius: 0.5rem;
+}
+
+.tooltip.show {
+    opacity: 1;
+}
+
 .container-fluid {
 }
 
@@ -1106,7 +1127,7 @@ select:focus {
 }
 
 /**********************************************************************/
-/***************************   Users Age   ****************************/
+/***************************   Insurance   ****************************/
 /**********************************************************************/
 
 .pdp-insurance-block {
@@ -1144,6 +1165,49 @@ select:focus {
 }
 
 .pdp-insurance-block .btn-icon-press p {
+  margin-bottom: 0rem;
+  margin-top: 1rem;
+}
+
+/**********************************************************************/
+/****************************   Onboard   *****************************/
+/**********************************************************************/
+
+.pdp-onboard-block {
+  width: 100%;
+}
+
+.pdp-onboard-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-onboard-block .label-onboard {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-onboard-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .pdp-onboard-block .btn-icon-press{
+    margin-bottom: 2rem;
+  }
+
+  .pdp-onboard-block {
+    margin-top: -1rem;
+  }
+}
+
+.pdp-onboard-block .btn-icon-press p {
   margin-bottom: 0rem;
   margin-top: 1rem;
 }

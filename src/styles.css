@@ -1145,6 +1145,11 @@ select:focus {
   font-size: 1rem;
 }
 
+.pdp-insurance-block .label-insurance img {
+    margin-left: .5rem;
+    margin-top: -.15rem;
+}
+
 @media only screen and (min-width: 1200px)  {
   .pdp-insurance-block {
     width: 100%;

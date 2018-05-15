@@ -1170,6 +1170,68 @@ select:focus {
 }
 
 /**********************************************************************/
+/****************************   Success   *****************************/
+/**********************************************************************/
+
+.pdp-success-block {
+  width: 100%;
+}
+
+.pdp-success-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-success-block .label-success {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-success-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .pdp-success-block {
+    margin-top: -1rem;
+  }
+}
+
+.pdp-success-block .success-icon {
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  background: rgba(19, 78, 94, 1);
+  color: rgba(235, 235, 235, 1);
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: .05rem;
+}
+
+.pdp-success-block .success-icon img {
+    margin-top: 3.4rem;
+}
+
+.pdp-success-block .first-row {
+    margin-bottom: 5rem;
+}
+
+.pdp-success-block .label-success {
+    line-height: 1.8rem;
+}
+
+.pdp-success-block .label-success img {
+    margin-left: .5rem;
+    margin-top: -.15rem;
+}
+
+/**********************************************************************/
 /****************************   Onboard   *****************************/
 /**********************************************************************/
 

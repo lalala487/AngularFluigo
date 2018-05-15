@@ -1204,7 +1204,11 @@ select:focus {
 
 @media only screen and (max-width: 767.98px)  {
   .pdp-success-block {
-    margin-top: -1rem;
+    margin-top: -2.5rem;
+  }
+
+  .pdp-success-block .first-row {
+      margin-bottom: 2.5rem !important;
   }
 }
 

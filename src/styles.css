@@ -45,21 +45,6 @@ body {
   background-image: linear-gradient(to top, rgba(0,0,0,.4) 0%,rgba(0,0,0,.3) 25%,rgba(0,0,0,.2) 50%,rgba(0,0,0,.1) 75%,rgba(0,0,0,0) 100%);
 }
 
-.nav-container p:first-of-type{
-  text-align: center;
-  font-size: .7rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0rem;
-  letter-spacing: .07rem;
-}
-
-.nav-container p:last-of-type{
-  text-align: center;
-  font-size: 1rem;
-  margin-bottom: 0rem;
-  letter-spacing: .07rem;
-}
-
 .nav-col {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
@@ -73,10 +58,6 @@ body {
 
   .nav-container {
     padding-bottom: 2.5rem;
-  }
-
-  .nav-container .price{
-    display: none;
   }
 }
 
@@ -356,6 +337,27 @@ a:hover {
   margin-top: 1.75rem;
 }
 
+.nav-container .price-container-small {
+  text-align: center;
+}
+
+.nav-container .price-label {
+  margin-bottom: 0rem;
+  font-size: .8rem;
+  letter-spacing: .07rem;
+}
+
+.nav-container .price-amount {
+  margin-bottom: .2rem;
+  font-size: 1rem;
+  letter-spacing: .07rem;
+}
+
+.nav-container .price-info button {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
 .pdp-column-left-bar .steps p{
   display: none;
 }
@@ -434,11 +436,6 @@ width: 9.7rem;
   clear: both;
 }
 
-.pdp-column-left-bar .price-container {
-  float: left;
-  clear: both;
-}
-
 .pdp-column-left-bar .steps .step-line {
   height: 1rem;
   border-left-width: .12rem;
@@ -485,21 +482,94 @@ width: 9.7rem;
   width: 100%;
 }
 
-.pdp-column-left-bar .steps .price-container {
-  margin-bottom: 3rem;
-  width: 100%;
-}
-
 .pdp-column-left-bar .steps .timeline-container p {
   display: inline-block;
   letter-spacing: .07rem;
   margin-bottom: 0rem;
 }
 
-.pdp-column-left-bar .steps .price-container p {
+.pdp-column-left-bar .price-container {
+  margin-bottom: 3rem;
+  width: 100%;
+  float: left;
+  clear: both;
+}
+
+.timeline-container .from-date,
+.timeline-container .to-date {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+}
+
+.timeline-container .day {
+  width:100%;
+  font-size:1.4rem;
+}
+
+.timeline-container .weekday,
+.timeline-container .month {
+  width: 100%;
+  font-size: .8rem;
+}
+
+.timeline-container .arrow-wrapper {
+  float:left; width:33.33%;
+  padding-left:1rem;
+  padding-right:1rem;
+}
+
+.timeline-container .arrow-wrapper img {
+  display:inline-block;
+  margin-top:-.3rem;
+}
+
+.timeline-container .arrow-nights {
+  text-align:center;
+  margin-top: 1rem;
+}
+
+.timeline-container .nights {
+  padding-bottom: .4rem;
+  border-bottom-width: .12rem;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(235,235,235,.5);
+  width:100%;
+  font-size:.8rem;
+}
+
+.timeline-container .persons {
+  margin-top: .55rem;
+  width:100%;
+  font-size:.8rem;
+}
+
+.nav-container .price-container-small {
+  display: none;
+}
+
+.pdp-column-left-bar .price-container p {
   display: inline-block;
   letter-spacing: .07rem;
   margin-bottom: 0rem;
+}
+
+.pdp-column-left-bar .price-container .price-info {
+  float:left;
+  width:100%;
+  text-align:center;
+}
+
+.pdp-column-left-bar .price-container .price-label {
+  width:100%;
+  font-size:.8rem;
+  margin-bottom:.25rem;
+}
+
+.pdp-column-left-bar .price-container .price-amount {
+   width:100%;
+   font-size:1.4rem;
+   margin-bottom:.5rem;
 }
 
 .pdp-column-left-bar .steps .step-one span,
@@ -672,13 +742,11 @@ hr {
 .btn-back-container {
   z-index: 1;
   float: left;
-  margin-left: .3rem;
 }
 
 .btn-next-container {
   z-index: 1;
   float: right;
-  margin-right: .3rem;
 }
 
 @media only screen and (min-width: 1200px)  {
@@ -1442,7 +1510,7 @@ select:focus {
 
 .btn {
   height: 2.5rem;
-  border-radius: 3rem;
+  border-radius: 100%;
   -webkit-border-radius: 3rem;
   -moz-border-radius: 3rem;
   line-height: 1.1;
@@ -1462,18 +1530,36 @@ select:focus {
   background-color: rgba(85, 144, 151, 1);
 }
 
+.btn-small {
+  font-size: .8rem;
+  height: 2rem;
+  line-height: 1;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
 .btn-round-pdp {
   border: none;
   width: 5rem;
   height: 5rem;
   font-size: .9rem;
-  border-radius: 50%;
+  border-radius: 100%;
   letter-spacing: .07rem;
-  background: rgba(77,131,132,1);
+  background: rgba(85, 144, 151, 1);
   color: rgba(235, 235, 235, 1);
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 1199.98px)  {
+  .nav-container .btn-round-pdp{
+    width: 5rem;
+    height: 5rem;
+  }
 }
 
 .btn-primary:hover {

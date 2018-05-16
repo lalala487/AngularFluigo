@@ -31,6 +31,13 @@
         <div class="center-container">
           <div class="steps">
             <div class="price-container">
+              <div class="price-info" style="float:left; width:100%; text-align:center;">
+                <p class="price-label" style="width:100%; font-size:.8rem; margin-bottom:.25rem;">Gesamtbetrag</p>
+                <p class="price-amount" style="width:100%; font-size:1.4rem;">CHF 425,46</p>
+                <p class="price-details" style="width:100%; font-size:.8rem;">Details</p>
+              </div>
+            </div>
+            <div class="timeline-container">
               <div class="from-to-date">
                 <div class="from-date" style="float:left; width:33.33%; text-align:center;">
                   <p class="day" style="width:100%; font-size:1.4rem;">14</p>
@@ -38,9 +45,11 @@
                   <p class="weekday" style="width:100%; font-size:.8rem;">Do. 08:15</p>
                 </div>
                 <div class="arrow-wrapper" style="float:left; width:33.33%; padding-left:1rem; padding-right:1rem;">
-                  <div class="arrow-nights" style="text-align:center; border-bottom-width: .12rem; border-bottom-style: solid; border-bottom-color: rgba(235,235,235,.5); margin-top: 1.3rem;">
-                    <ng-template #tipContent>3 Nächte - 2 Personen<br />Hotel Bulgari<br />Check-in: Jun. 14 2018<br />Check-out: Jun. 17 2018</ng-template>
-                    <p class="nights" style="width:100%; font-size:.8rem;">3 <img src="assets/icon/icon-moon.svg" height="15" style="display:inline-block; margin-top:-.3rem;" alt="Icon Moon" placement="top" [ngbTooltip]="tipContent"></p>
+                  <div class="arrow-nights" style="text-align:center; margin-top: 1rem;">
+                    <ng-template #tipAccommodation>3 Nächte<br />Hotel Bulgari<br />Check-in: Jun. 14 2018<br />Check-out: Jun. 17 2018</ng-template>
+                    <ng-template #tipPeople>1 Erwachsene<br />1 Kind</ng-template>
+                    <p class="nights" style="padding-bottom: .4rem; border-bottom-width: .12rem; border-bottom-style: solid; border-bottom-color: rgba(235,235,235,.5); width:100%; font-size:.8rem;">3 <img src="assets/icon/icon-moon.svg" height="15" style="display:inline-block; margin-top:-.3rem;" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
+                    <p class="nights" style="margin-top: .55rem; width:100%; font-size:.8rem;">2 <img src="assets/icon/icon-person.svg" height="15" style="display:inline-block; margin-top:-.3rem;" alt="Icon Person" placement="top" [ngbTooltip]="tipPeople"></p>
                   </div>
                 </div>
                 <div class="to-date" style="float:left; width:33.33%; text-align:center;">

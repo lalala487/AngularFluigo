@@ -144,6 +144,10 @@ a:hover {
     margin-top: 1.75rem;
   }
 
+  .pdp-column-left-bar .timeline-container {
+    display: none ;
+  }
+
   .pdp-column-left-bar .price-container {
     display: none ;
   }
@@ -425,6 +429,11 @@ margin: 0 auto;
 width: 9.7rem;
 }
 
+.pdp-column-left-bar .timeline-container {
+  float: left;
+  clear: both;
+}
+
 .pdp-column-left-bar .price-container {
   float: left;
   clear: both;
@@ -471,35 +480,20 @@ width: 9.7rem;
   font-size: 1rem;
 }
 
+.pdp-column-left-bar .steps .timeline-container {
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
 .pdp-column-left-bar .steps .price-container {
   margin-bottom: 3rem;
   width: 100%;
 }
 
-.pdp-column-left-bar .steps .price-container .old-price {
-  color: rgba(235,235,235,.5);
-}
-
-.pdp-column-left-bar .steps .price-container .new-price {
-  color: rgba(235,235,235,1);
-}
-
-.pdp-column-left-bar .steps .price-container .amount {
-  float: right;
-  clear: right;
-  font-size: 1.2rem;
-  height: 3rem;
-  line-height: 3.4rem;
-}
-
-.pdp-column-left-bar .steps .price-container .currency {
-  font-size: .8rem
-}
-
-.pdp-column-left-bar .steps .price-container .prefix {
-  color: rgba(235,235,235,.5);
-  font-size: .8rem;
-  height: 3rem;
+.pdp-column-left-bar .steps .timeline-container p {
+  display: inline-block;
+  letter-spacing: .07rem;
+  margin-bottom: 0rem;
 }
 
 .pdp-column-left-bar .steps .price-container p {

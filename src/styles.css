@@ -940,16 +940,57 @@ hr {
     align-items: center;
     height: 100vh;
   }
+
 }
 
 @media only screen and (max-width: 767.98px)  {
   .pdp-user-quantity-block .btn-press{
-    margin-bottom: 2rem;
   }
 
   .pdp-user-quantity-block {
     margin-top: 3rem;
   }
+}
+
+@media only screen and (min-width: 768px)  {
+  .user-quantity-button-wrapper .button-quantity{
+    margin-bottom: 2rem;
+    float:left;
+    height: 4rem !important;
+    width: auto !important;
+    margin-bottom: 0rem !important;
+  }
+
+  .user-quantity-button-wrapper {
+    width: auto !important;
+    margin: 0 auto;
+  }
+
+  .user-quantity-button-wrapper .button-quantity{
+    margin-right: 1rem;
+  }
+
+  .user-quantity-button-wrapper .button-quantity:last-child{
+    margin-right: 0rem;
+  }
+
+  .user-quantity-button-wrapper .button-quantity .btn-press{
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    height: 4rem !important;
+    width: 4rem !important;
+  }
+
+}
+
+.user-quantity-button-wrapper .button-quantity{
+  height: 5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.user-quantity-button-wrapper{
+  width: 100%;
 }
 
 /**********************************************************************/
@@ -1666,10 +1707,10 @@ select:focus {
 }
 
 .btn-press {
-  color: rgba(235, 235, 235, 0.5);
+  color: rgba(235, 235, 235, 1);
   background-color: inherit;
   border-width: 0.1rem;
-  border-color: rgba(235, 235, 235, 0.5);
+  border-color: rgba(235, 235, 235, 1);
   border-style: solid;
   width: 100%;
   padding-top: 2rem;
@@ -1682,6 +1723,7 @@ select:focus {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   border-radius: 0;
+  opacity: .5;
 }
 
 .btn-icon-press {
@@ -1705,7 +1747,8 @@ select:focus {
 }
 
 .pdp-user-age-block .active,
-.pdp-insurance-block .active {
+.pdp-insurance-block .active,
+.pdp-user-quantity-block .active {
   opacity: 1;
   background-color: rgba(235, 235, 235, .15);
 }

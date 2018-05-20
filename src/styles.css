@@ -78,6 +78,8 @@ body {
 [sidebarjs].sidebarjs--left[_ngcontent-c2] [sidebarjs-container][_ngcontent-c2] {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
+    font-size: 1rem;
+    letter-spacing: .07rem;
 }
 
 [sidebarjs-container][_ngcontent-c2] {
@@ -96,21 +98,48 @@ body {
 
 .sidebarjs-center-container .price-label {
     float:left;
-    margin-left: 2rem;
+    display: inline-block;
+    padding-left: 2rem;
+    width: 60%;
+    text-align: left;
+    color: rgba(235,235,235,1);
 }
 
 .sidebarjs-center-container .price-amount {
     float:right;
-    margin-right: 2rem;
+    display: inline-block;
+    padding-right: 2rem;
+    width: 40%;
+    text-align: right;
+}
+
+.sidebarjs-center-container .content-block {
+    width: 100%;
+    float: left;
+    clear: both;
+}
+
+.sidebarjs-center-container .content-block button {
+    margin: 0 auto;
+    display: block;
+}
+
+@media only screen and (max-width: 575.98px)  {
+  .sidebarjs-center-container .content-block button {
+  }
+
+  .sidebarjs-center-container .sidebarjs-close-button {
+      position: absolute;
+      bottom: 0;
+      padding-bottom: 1.2rem;
+  }
 }
 
 @media only screen and (min-width: 1200px)  {
   .sidebarjs-center-container .price-label {
-      margin-left: 3.5rem;
   }
 
   .sidebarjs-center-container .price-amount {
-      margin-right: 3.5rem;
   }
 }
 
@@ -704,7 +733,7 @@ width: 9.7rem;
 
 .pdp-city-block-title {
   height: 20rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
   background-size: cover;
   background-position: center;
 }
@@ -799,6 +828,10 @@ hr {
 
   .btn-next-container {
     right: 4.5rem;
+  }
+
+  .pdp-city-block-title {
+    margin-top: 2.5rem;
   }
 }
 

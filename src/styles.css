@@ -72,6 +72,49 @@ body {
 }
 
 /**********************************************************************/
+/****************************   Sidebar   *****************************/
+/**********************************************************************/
+
+[sidebarjs].sidebarjs--left[_ngcontent-c2] [sidebarjs-container][_ngcontent-c2] {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+[sidebarjs-container][_ngcontent-c2] {
+    width: 100% !important;
+    max-width: 100vw !important;
+    background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .93) 0%, rgba(77, 131, 132, .93) 100%) !important;
+    background-color: inherit !important;
+}
+
+@media only screen and (min-width: 1200px)  {
+  [sidebarjs-container][_ngcontent-c2] {
+      width: 100% !important;
+      max-width: calc((100% / 12)*3) !important;
+  }
+}
+
+.sidebarjs-center-container .price-label {
+    float:left;
+    margin-left: 2rem;
+}
+
+.sidebarjs-center-container .price-amount {
+    float:right;
+    margin-right: 2rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .sidebarjs-center-container .price-label {
+      margin-left: 3.5rem;
+  }
+
+  .sidebarjs-center-container .price-amount {
+      margin-right: 3.5rem;
+  }
+}
+
+/**********************************************************************/
 /**************   Paddings, Margins, Heights & Widths   ***************/
 /**********************************************************************/
 
@@ -1577,9 +1620,9 @@ select:focus {
   line-height: 1;
   padding-left: 1rem;
   padding-right: 1rem;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
 }
 
 .btn-round-pdp {
@@ -1591,9 +1634,9 @@ select:focus {
   letter-spacing: .07rem;
   background: rgba(85, 144, 151, 1);
   color: rgba(235, 235, 235, 1);
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
 }
 
 @media only screen and (max-width: 1199.98px)  {
@@ -1610,6 +1653,11 @@ select:focus {
 }
 
 .btn-primary:focus {
+  -webkit-box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
+  box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-primary.dropdown-toggle:focus {
   -webkit-box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
   box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
 }

@@ -1,3 +1,20 @@
+<sidebar-js [sidebarjsConfig]="{position: 'left', backdropOpacity: 0}">
+  <div class="sidebarjs-center-container" style="display: flex; align-items: center; flex-wrap: wrap; height: 100%;">
+    <div class="sidebarjs-center-container-content" style="text-align:center; width:100%; float: left; clear: both;">
+      <div  class="content-block" style="width:100%; float: left; clear: both;">
+        <p class="price-label">Blaat</p>
+        <p class="price-amount">Blaat</p>
+      </div>
+      <div style="width:100%; float: left; clear: both;">
+        <p class="price-label">Blaat</p>
+        <p class="price-amount">Blaat</p>
+      </div>
+      <div style="width:100%; float: left; clear: both;">
+        <button sidebarjsClose class="btn btn-small btn-primary" type="next">Schliessen</button>
+      </div>
+    </div>
+  </div>
+</sidebar-js>
 <div class="row nav-container">
   <div class="col-xl-3"></div>
   <div class="col-xl-9 nav-col">
@@ -12,7 +29,7 @@
           <div class="price-info">
             <p class="price-label">Gesamtbetrag</p>
             <p class="price-amount">CHF 425,46</p>
-            <button class="btn btn-small btn-primary" type="button">Details</button>
+            <button sidebarjsOpen class="btn btn-small btn-primary" type="next">Details</button>
           </div>
         </div>
       </div>
@@ -38,7 +55,6 @@
                 <p class="price-label">Gesamtbetrag</p>
                 <p class="price-amount">CHF 425,46</p>
                 <button sidebarjsOpen class="btn btn-small btn-primary" type="next">Details</button>
-                <sidebar-js style="color: black;"><p style="margin-top:5rem;">Finally Carlos!</p></sidebar-js>
               </div>
             </div>
             <div class="timeline-container">
@@ -97,7 +113,7 @@
   <section class="col-xl-9 pdp-column-right-bar">
     <div class="container">
       <div class="row pdp-row-right-bar-container">
-        <!-- <div class="pdp-city-block col-xl-12">
+        <div class="pdp-city-block col-xl-12">
           <div class="col-xl-12 pdp-city-block-title" style="background-image: url(assets/img/sample.jpg);">
             <div class="pdp-city-block-gradient">
               <div class="text-block">
@@ -143,13 +159,13 @@
             <div class="col-xl-6 pdp-block-one gradient">
             </div>
           </div>
-        </div> -->
+        </div>
         <div class="pdp-user-quantity-block">
           <div class="center-wrap">
             <div class="col-xl-12">
               <div class="row">
                 <div class="col-xl-12">
-                  <p class="label-user-quantity">Für wieviele Personen ist die Reise?</p>
+                  <p class="label-user-quantity">Anzahl der Personen</p>
                 </div>
               </div>
               <div class="row">
@@ -216,12 +232,12 @@
             </div>
           </div>
         </div> -->
-        <!-- <div class="pdp-user-data-block">
+        <div class="pdp-user-data-block">
           <div class="center-wrap">
             <div class="col-xl-12">
               <div class="row">
                 <div class="col-xl-12">
-                  <p class="label-user-age">Wie können wir mit dir Kontakt aufnehmen?</p>
+                  <p class="label-user-age">Persönliche Angaben</p>
                 </div>
               </div>
               <div class="row user-data-form">
@@ -266,8 +282,8 @@
               </div>
             </div>
           </div>
-        </div> -->
-        <!-- <div class="pdp-activity-block col-xl-12">
+        </div>
+        <div class="pdp-activity-block col-xl-12">
           <div class="row activity-row">
             <div class="col-xl-12 activity-col" style="background-image: url(assets/img/sample.jpg);">
               <div class="activity-card">
@@ -361,7 +377,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
         <!-- <div class="pdp-payment-block">
           <div class="center-wrap">
             <div class="col-xl-12">

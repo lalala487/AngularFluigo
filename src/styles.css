@@ -99,29 +99,65 @@ body {
 .sidebarjs-center-container .price-label {
     float:left;
     display: inline-block;
-    padding-left: 2rem;
     width: 60%;
     text-align: left;
+    color: rgba(235,235,235,1);
+    font-size: .8rem;
+}
+
+.sidebarjs-center-container .price-title {
+    float:left;
+    display: inline-block;
+    font-size: 1.4rem;
+    width: 100%;
+    text-align: center;
+    color: rgba(235,235,235,1);
+}
+
+.sidebarjs-center-container .price-total {
+    float:left;
+    display: inline-block;
+    font-size: 1.8rem;
+    width: 100%;
+    text-align: center;
     color: rgba(235,235,235,1);
 }
 
 .sidebarjs-center-container .price-amount {
     float:right;
     display: inline-block;
-    padding-right: 2rem;
     width: 40%;
     text-align: right;
+    font-size: .8rem;
 }
 
 .sidebarjs-center-container .content-block {
     width: 100%;
     float: left;
     clear: both;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
 .sidebarjs-center-container .content-block button {
     margin: 0 auto;
     display: block;
+}
+
+.sidebarjs-center-container .sidebarjs-close-button {
+    margin-top: 2rem;
+}
+
+.sidebarjs-center-container .content-block .price-hr {
+  width: 2.5rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  width: 2.5rem;
+}
+
+.sidebarjs-center-container .content-block .total-hr {
+  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 575.98px)  {
@@ -195,6 +231,7 @@ a:hover {
   .pdp-column-left-bar .logo-container{
     float: left;
     margin-top: 1.75rem;
+    margin-left: 1rem;
   }
 
   .pdp-column-left-bar .timeline-container {
@@ -407,6 +444,7 @@ a:hover {
   width: auto;
   float: right;
   margin-top: 1.75rem;
+  margin-right: 1rem;
 }
 
 .nav-container .price-container-small {

@@ -1535,15 +1535,12 @@ select:focus {
     linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,.3) 60%,rgba(0,0,0,0) 100%);
 }
 
-.activity-col {
+.pdp-activity-block .activity-col {
   background-size: cover;
   background-position: center;
 }
 
-.activity-card {
-}
-
-.activity-card::before {
+.pdp-activity-block .activity-card::before {
   content: '';
 	position: absolute;
 	top: 0;
@@ -1555,28 +1552,25 @@ select:focus {
     linear-gradient(to bottom, rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.4) 100%);
 }
 
-.activity-card-title {
+.pdp-activity-block .activity-card-title {
   font-size: 1.4rem;
   letter-spacing: .07rem;
   z-index: 3;
   float: left;
 }
 
-.activity-card .icon {
+.pdp-activity-block .activity-card .icon {
   opacity: 1;
 }
 
-.activity-card-description {
+.pdp-activity-block .activity-card-description {
   font-size: 1rem;
   letter-spacing: .07rem;
   font-weight: 400;
   z-index: 3;
 }
 
-.activity-card-button {
-}
-
-.activity-card .first-row {
+.pdp-activity-block .activity-card .first-row {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 1.75rem;
@@ -1586,7 +1580,7 @@ select:focus {
   margin-bottom: 10rem;
 }
 
-.activity-card .second-row {
+.pdp-activity-block .activity-card .second-row {
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 2rem;
@@ -1596,40 +1590,40 @@ select:focus {
 }
 
 @media only screen and (min-width: 768px)  {
-  .activity-card-description {
+  .pdp-activity-block .activity-card-description {
     position: absolute;
     bottom: 0rem;
     left: 1rem;
   }
 
-  .activity-card-description p {
+  .pdp-activity-block .activity-card-description p {
     margin-bottom: -.425rem;
   }
 
-  .activity-card-button {
+  .pdp-activity-block .activity-card-button {
     position: absolute;
     bottom: 0rem;
     right: 1rem;
   }
 
-  .activity-card {
+  .pdp-activity-block .activity-card {
     height: 40vh;
   }
 
-  .activity-card .service {
+  .pdp-activity-block .activity-card .service {
     float: right;
   }
 
-  .activity-card .service p {
+  .pdp-activity-block .activity-card .service p {
     float: right;
   }
 
-  .activity-card .first-row {
+  .pdp-activity-block .activity-card .first-row {
     height: 50%;
     margin-bottom: 0rem;
   }
 
-  .activity-card .second-row {
+  .pdp-activity-block .activity-card .second-row {
     height: 50%;
     padding-bottom: 2rem;
   }
@@ -1643,22 +1637,22 @@ select:focus {
   }
 }
 
-.activity-card .service {
+.pdp-activity-block .activity-card .service {
   color: rgba(235, 235, 235, 1);
   letter-spacing: .07rem;
 }
 
-.activity-card .service img {
+.pdp-activity-block .activity-card .service img {
   margin-right: .75rem;
   float: left;
 }
 
-.activity-card .service p {
+.pdp-activity-block .activity-card .service p {
   line-height: 1.75rem;
   float: left;
 }
 
-.activity-card .btn-primary {
+.pdp-activity-block .activity-card .btn-primary {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
@@ -1669,6 +1663,102 @@ select:focus {
 
 .pdp-activity-block .activity-row  {
   margin-bottom: 1rem;
+}
+
+/**********************************************************************/
+/************************   Activity Option   *************************/
+/**********************************************************************/
+
+.pdp-activity-option-block  {
+  margin-top: 2.5rem;
+}
+
+.pdp-activity-option-block .title-row  {
+  margin-bottom: 2rem;
+}
+
+.pdp-activity-option-block .selection-row  {
+  margin-bottom: 2rem;
+}
+
+.pdp-activity-option-block h2  {
+  margin-bottom: 0rem;
+}
+
+/* .pdp-activity-option-block h2::before  {
+  content: "";
+  height: 100%;
+  border-left: .12rem solid white;
+  border-top: .12rem solid inherit;
+  border-bottom: .12rem solid inherit;
+  top: 0;
+  width: 2px;
+  padding-right: .8rem;
+  padding-top: .2rem;
+  padding-bottom: .2rem;
+} */
+
+.pdp-activity-option-block .activity-option-row  {
+  margin-bottom: 2.5rem;
+}
+
+.pdp-activity-option-block .activity-col {
+  background-color: rgba(235, 235, 235, .15);
+}
+
+.pdp-activity-option-block .activity-detail-card {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.pdp-activity-option-block .activity-detail-card p {
+  letter-spacing: .07rem;
+  margin-bottom: 0rem;
+}
+
+.pdp-activity-option-block .activity-detail-card .first-row {
+  margin-bottom: 2rem;
+}
+
+.pdp-activity-option-block .activity-detail-card .third-row {
+  margin-bottom: 2rem;
+}
+
+.pdp-activity-option-block .activity-detail-card .right-align {
+  text-align: right;
+}
+
+.pdp-activity-option-block .date::after {
+  position: absolute;
+  content: "";
+  top: 17px;
+  right: 30px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+.pdp-activity-option-block select {
+  background-color: inherit;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+  background-color: inherit;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  width: 100%;
+  border-top: 0rem;
+  border-right: 0rem;
+  border-left: 0rem;
+  border-style: solid;
+  border-color: rgba(235,235,235,0.5);
+  border-bottom-width: .12rem;
+  padding: 0.5rem 1rem;
+  color: rgba(235,235,235,1);
 }
 
 /**********************************************************************/

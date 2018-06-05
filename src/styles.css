@@ -761,6 +761,88 @@ width: 9.7rem;
 }
 
 /**********************************************************************/
+/***********************   Accommodation Page   ***********************/
+/**********************************************************************/
+
+
+
+@media only screen and (min-width: 1200px)  {
+}
+
+.pdp-accommodation-review-block {
+  background-color: rgba(77, 131, 132, 1);
+  align-items: center;
+  display: flex;
+  align-items: center;
+  height: 20rem;
+}
+
+.pdp-accommodation-review-block .text-block {
+  text-align: center;
+  margin: 0 auto;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+.pdp-accommodation-review-block .icon-block-one span {
+  width: .5rem;
+  display: inline-block;
+}
+
+.pdp-accommodation-review-block .icon-block-one {
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.pdp-accommodation-review-block .rating-number {
+  margin-top: 2rem;
+}
+
+.pdp-accommodation-description-block {
+  height: 25rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.pdp-accommodation-description-block p {
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-bottom: 0rem;
+}
+
+.pdp-accommodation-description-block-gradient {
+  content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+  display: flex;
+  align-items: center;
+	background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,.3) 60%,rgba(0,0,0,0) 100%);
+}
+
+.pdp-accommodation-description-block-gradient .text-block {
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-accommodation-description-block p {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .pdp-accommodation-description-block {
+    height: 20rem;
+  }
+}
+
+/**********************************************************************/
 /****************************   City Page   ***************************/
 /**********************************************************************/
 
@@ -810,7 +892,6 @@ width: 9.7rem;
 }
 
 .pdp-city-block-gradient .text-block p,
-.pdp-accommodation-block-gradient .text-block p,
 .pdp-activity-detail-block-gradient .text-block p {
   font-size: 1rem;
   letter-spacing: .07rem;

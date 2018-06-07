@@ -1,4 +1,5 @@
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
 
 /**********************************************************************/
 /*************************   Container Page   *************************/
@@ -796,6 +797,7 @@ width: 9.7rem;
 
 .pdp-accommodation-review-block .rating-number {
   margin-top: 2rem;
+  margin-bottom: 0rem;
 }
 
 .pdp-accommodation-description-block {
@@ -1198,6 +1200,109 @@ hr {
 
 .user-quantity-button-wrapper{
   width: 100%;
+}
+
+/**********************************************************************/
+/****************************   Calendar   ****************************/
+/**********************************************************************/
+
+.pdp-calendar-block {
+  width: 100%;
+}
+
+.pdp-calendar-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-calendar-block .label-calendar {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-calendar-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+
+}
+
+.calendar-wrapper{
+  margin: 0 auto;
+}
+
+.owl-dt-control-button-arrow {
+  display: none !important;
+}
+
+.owl-dt-container {
+    font-size: 1rem;
+    /* background: rgba(0,0,0,1); */
+    background: inherit;
+    letter-spacing: .07rem !important;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .owl-dt-inline-container, .owl-dt-popup-container {
+    width: 27.5em !important;
+    height: 27.5em;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  .owl-dt-control-button {
+    margin-left: .75rem;
+    margin-right: .75rem;
+  }
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell {
+  color: rgba(235,235,235,1);
+}
+
+.owl-dt-calendar-table {
+  margin-top: 1.5rem;
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-active:focus>.owl-dt-calendar-cell-content:not(.owl-dt-calendar-cell-selected), .owl-dt-calendar-table :not(.owl-dt-calendar-cell-disabled):hover>.owl-dt-calendar-cell-content:not(.owl-dt-calendar-cell-selected) {
+  background-color: rgba(85, 144, 151, .5);
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-selected {
+  color: rgba(235,235,235,1);
+  background-color: rgba(85, 144, 151, 1);
+}
+
+.owl-dt-calendar-control {
+  color: rgba(235,235,235,1);
+}
+
+.owl-dt-control-period-button .owl-dt-control-button-content {
+    letter-spacing: .07rem;
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-header {
+  color: rgba(235,235,235,.5);
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-today:not(.owl-dt-calendar-cell-selected) {
+  border-color: rgba(0,0,0,0);
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-header .owl-dt-calendar-table-divider {
+  display: none;
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-content {
+  font-size: 1rem;
+}
+
+.owl-dt-calendar-table .owl-dt-calendar-cell-out {
+  opacity: .5;
 }
 
 /**********************************************************************/

@@ -17,8 +17,11 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true,
     defaultTimeoutInterval: 30000,
-    print: function() {}
+    print: function () { }
   },
+  plugins: [{
+    package: 'protractor-testability-plugin'
+  }],
   onPrepare() {
     require('ts-node').register({
       project: 'e2e/tsconfig.e2e.json'

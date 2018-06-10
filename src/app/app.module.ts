@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarJSModule } from 'ng-sidebarjs';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -16,6 +16,10 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { environment } from '../environments/environment';
+import { DocPipe } from './doc.pipe';
+import { FirestoreService } from './services/firestore.service';
+import { MomentModule } from 'ngx-moment';
+
 
 
 @NgModule({
@@ -25,7 +29,8 @@ import { environment } from '../environments/environment';
     DealCardComponent,
     DetailComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    DocPipe
   ],
   imports: [
     BrowserModule,
@@ -36,9 +41,10 @@ import { environment } from '../environments/environment';
     OwlNativeDateTimeModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MomentModule
   ],
-  providers: [],
+  providers: [FirestoreService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

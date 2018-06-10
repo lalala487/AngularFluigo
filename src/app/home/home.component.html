@@ -7,12 +7,60 @@
     </div>
     <div class="row title-row">
       <div class="col-xl-12">
-        <p class="header-title"><span>Zur Zeit </span>14 Exklusive<span> Städtereisen bis zu </span>69%<span> günstiger</span></p>
-        <p class="header-subtitle"><span>Immer </span>Flug<span>, </span>Hotel<span> und Optional Tickets für lokale</span> Aktivitäten</p>
+        <p class="header-title">
+          <span>Zur Zeit </span>14 Exklusive
+          <span> Städtereisen bis zu </span>69%
+          <span> günstiger</span>
+        </p>
+        <p class="header-subtitle">
+          <span>Immer </span>Flug
+          <span>, </span>Hotel
+          <span> und Optional Tickets für lokale</span> Aktivitäten</p>
       </div>
     </div>
   </div>
 </header>
+
+<div *ngFor="let deal of deals | async" class="col-lg-6 deal-col" style="background-image: url(assets/img/100001_1.jpg);">
+  <div class="deal-card">
+    <div class="row first-row">
+      <div style="width:50%">
+        <div class="deal-card-title">
+          <h2>{{ deal.name.de_CH }}</h2>
+          <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight">
+          <span>+</span>
+          <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation">
+          <span>+</span>
+          <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity">
+          <span>+</span>
+          <img src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon" class="icon-transportation">
+        </div>
+      </div>
+      <div style="width:50%">
+        <div class="discount-number">
+          <p class="percentage-number">23%</p>
+          <p class="percentage-label">Rabatt</p>
+        </div>
+      </div>
+    </div>
+    <div class="row second-row">
+      <div style="width:50%">
+        <div class="deal-card-price">
+          <p>
+            <span>ab CHF</span>{{ deal.marketingPrice }}</p>
+        </div>
+      </div>
+      <div style="width:50%">
+        <div class="deal-card-timer">
+          <p>
+            {{deal.endDate | amDifference: deal.startDate :'days' : true | number:'1.0-0'}} days
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
 
 <div class="row deal-row">
   <div class="col-lg-6 deal-col" style="background-image: url(assets/img/100001_1.jpg);">
@@ -21,9 +69,12 @@
         <div style="width:50%">
           <div class="deal-card-title">
             <h2>London</h2>
-            <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight"><span>+</span>
-            <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation"><span>+</span>
-            <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity"><span>+</span>
+            <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight">
+            <span>+</span>
+            <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation">
+            <span>+</span>
+            <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity">
+            <span>+</span>
             <img src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon" class="icon-transportation">
           </div>
         </div>
@@ -37,7 +88,8 @@
       <div class="row second-row">
         <div style="width:50%">
           <div class="deal-card-price">
-            <p><span>ab CHF</span>349.-</p>
+            <p>
+              <span>ab CHF</span>349.-</p>
           </div>
         </div>
         <div style="width:50%">
@@ -54,9 +106,12 @@
         <div style="width:50%">
           <div class="deal-card-title">
             <h2>London</h2>
-            <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight"><span>+</span>
-            <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation"><span>+</span>
-            <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity"><span>+</span>
+            <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight">
+            <span>+</span>
+            <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation">
+            <span>+</span>
+            <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity">
+            <span>+</span>
             <img src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon" class="icon-transportation">
           </div>
         </div>
@@ -70,7 +125,8 @@
       <div class="row second-row">
         <div style="width:50%">
           <div class="deal-card-price">
-            <p><span>ab CHF</span>349.-</p>
+            <p>
+              <span>ab CHF</span>349.-</p>
           </div>
         </div>
         <div style="width:50%">
@@ -90,9 +146,12 @@
         <div style="width:50%">
           <div class="deal-card-title">
             <h2>London</h2>
-            <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight"><span>+</span>
-            <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation"><span>+</span>
-            <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity"><span>+</span>
+            <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight">
+            <span>+</span>
+            <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation">
+            <span>+</span>
+            <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity">
+            <span>+</span>
             <img src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon" class="icon-transportation">
           </div>
         </div>
@@ -106,7 +165,8 @@
       <div class="row second-row">
         <div style="width:50%">
           <div class="deal-card-price">
-            <p><span>ab CHF</span>349.-</p>
+            <p>
+              <span>ab CHF</span>349.-</p>
           </div>
         </div>
         <div style="width:50%">
@@ -123,9 +183,12 @@
         <div style="width:50%">
           <div class="deal-card-title">
             <h2>London</h2>
-            <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight"><span>+</span>
-            <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation"><span>+</span>
-            <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity"><span>+</span>
+            <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight">
+            <span>+</span>
+            <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation">
+            <span>+</span>
+            <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity">
+            <span>+</span>
             <img src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon" class="icon-transportation">
           </div>
         </div>
@@ -139,7 +202,8 @@
       <div class="row second-row">
         <div style="width:50%">
           <div class="deal-card-price">
-            <p><span>ab CHF</span>349.-</p>
+            <p>
+              <span>ab CHF</span>349.-</p>
           </div>
         </div>
         <div style="width:50%">
@@ -158,10 +222,18 @@
       <div class="footer-ul-container">
         <ul>
           <h4>Flugio</h4>
-          <li><p>Datenschutz</p></li>
-          <li><p>Geschäftsbedingungen</p></li>
-          <li><p>Kundendienst</p></li>
-          <li><p>Reisetipps</p></li>
+          <li>
+            <p>Datenschutz</p>
+          </li>
+          <li>
+            <p>Geschäftsbedingungen</p>
+          </li>
+          <li>
+            <p>Kundendienst</p>
+          </li>
+          <li>
+            <p>Reisetipps</p>
+          </li>
         </ul>
       </div>
     </div>
@@ -172,8 +244,12 @@
         <ul>
           <h4>Social</h4>
           <li>
-            <a href="https://www.instagram.com/flugio_ch/"><img src="assets/icon/icon-instagram.svg" width="45" height="45" alt="Instagram Icon" class="instagram-icon"></a>
-            <a href="https://www.facebook.com/flugio/"><img src="assets/icon/icon-facebook.svg" width="45" height="45" alt="Facebook Icon" class="facebook-icon"></a>
+            <a href="https://www.instagram.com/flugio_ch/">
+              <img src="assets/icon/icon-instagram.svg" width="45" height="45" alt="Instagram Icon" class="instagram-icon">
+            </a>
+            <a href="https://www.facebook.com/flugio/">
+              <img src="assets/icon/icon-facebook.svg" width="45" height="45" alt="Facebook Icon" class="facebook-icon">
+            </a>
           </li>
         </ul>
       </div>
@@ -184,8 +260,16 @@
       <div class="footer-ul-container">
         <ul>
           <h4>Connect</h4>
-          <li><p><a href="mailto:info@flugio.com?Subject=Frage">info@flugio.com</a></p></li>
-          <li><p><a href="tel:+41796522064">+41 79 652 20 64</a></p></li>
+          <li>
+            <p>
+              <a href="mailto:info@flugio.com?Subject=Frage">info@flugio.com</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="tel:+41796522064">+41 79 652 20 64</a>
+            </p>
+          </li>
         </ul>
       </div>
     </div>
@@ -194,7 +278,9 @@
     <div class="footer-center-wrap">
       <div class="footer-ul-container">
         <ul>
-          <li><p>&copy; 2018 Flugio</p></li>
+          <li>
+            <p>&copy; 2018 Flugio</p>
+          </li>
         </ul>
       </div>
     </div>

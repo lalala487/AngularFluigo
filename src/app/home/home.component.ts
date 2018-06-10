@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-home',
@@ -8,13 +9,14 @@ import { AngularFirestore } from 'angularfire2/firestore';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  items: Observable<any[]>;
+  deals: Observable<any[]>;
 
-  constructor(db: AngularFirestore) {
-    this.items = db.collection('flight').valueChanges();
+  constructor(protected db: FirestoreService) {
+    // this.items = db.collection('flight').valueChanges();
   }
 
   ngOnInit() {
+    this.deals = this.db.col$('deal');
   }
 
 }

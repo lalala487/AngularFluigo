@@ -27,18 +27,18 @@
       <div style="width:50%">
         <div class="deal-card-title">
           <h2>{{ deal.name.de_CH }}</h2>
-          <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight">
-          <span>+</span>
-          <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation">
-          <span>+</span>
-          <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity">
-          <span>+</span>
-          <img src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon" class="icon-transportation">
+          <img src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight" *ngIf="deal.services.hasFlight">
+          <span *ngIf="deal.services.hasFlight && deal.services.hasAccommodation">+</span>
+          <img src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon" class="icon-accommodation" *ngIf="deal.services.hasAccommodation">
+          <span *ngIf="deal.services.hasActivity && (deal.services.hasFlight || deal.services.hasAccommodation)">+</span>
+          <img src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity" *ngIf="deal.services.hasActivity">
+          <span *ngIf="deal.services.hasTransportation && (deal.services.hasFlight || deal.services.hasAccommodation || deal.services.hasActivity)">+</span>
+          <img src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon" class="icon-transportation" *ngIf="deal.services.hasTransportation">
         </div>
       </div>
-      <div style="width:50%">
+      <div style="width:50%" *ngIf="deal.marketingDiscount">
         <div class="discount-number">
-          <p class="percentage-number">23%</p>
+          <p class="percentage-number">{{ deal.marketingDiscount }}%</p>
           <p class="percentage-label">Rabatt</p>
         </div>
       </div>

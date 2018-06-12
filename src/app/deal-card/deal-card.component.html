@@ -1,3 +1,38 @@
-<p>
-  deal-card works!
-</p>
+<div style="width: 100%;">
+  <div style="height: 25vh; width:100%; display: -ms-flexbox; display: -webkit-flex; display: flex; -ms-flex-align: start; -webkit-align-items: flex-start; -webkit-box-align: start; align-items: flex-start;">
+    <div style="width: 50%; margin-top:1.85rem;">
+      <div class="deal-card-title">
+        <h2>{{ deal.name.de_CH }}</h2>
+        <img *ngIf="deal.availableServices.hasFlight" src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon" class="icon-fight">
+        <span *ngIf="deal.availableServices.hasFlight && deal.availableServices.hasAccommodation">+</span>
+        <img *ngIf="deal.availableServices.hasAccommodation" src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon"
+          class="icon-accommodation">
+        <span *ngIf="deal.availableServices.hasActivity && (deal.availableServices.hasFlight || deal.availableServices.hasAccommodation)">+</span>
+        <img *ngIf="deal.availableServices.hasActivity" src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon" class="icon-activity">
+        <span *ngIf="deal.availableServices.hasTransportation && (deal.availableServices.hasFlight || deal.availableServices.hasAccommodation || deal.availableServices.hasActivity)">+</span>
+        <img *ngIf="deal.availableServices.hasTransportation" src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon"
+          class="icon-transportation">
+      </div>
+    </div>
+    <div style="width: 50%; margin-top:2rem;">
+      <div class="discount" *ngIf="deal.marketingDiscount > 0">
+        <p class="amount">{{ deal.marketingDiscount }}%</p>
+        <p class="label">Rabatt</p>
+      </div>
+    </div>
+  </div>
+  <div style="height: 25vh; width:100%; display: -ms-flexbox; display: -webkit-flex; display: flex; -ms-flex-align: end; -webkit-align-items: flex-end; -webkit-box-align: end; align-items: flex-end;">
+    <div style="width: 50%; margin-bottom:.45rem;">
+      <div class="price">
+        <p>
+          <span>ab CHF</span>{{ deal.marketingPrice }}</p>
+      </div>
+    </div>
+    <div style="width: 50%; margin-bottom:.45rem;">
+      <div class="timer">
+        <p>
+          {{deal.endDate | amDifference: deal.startDate :'days' : true | number:'1.0-0'}} days
+      </div>
+    </div>
+  </div>
+</div>

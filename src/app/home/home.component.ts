@@ -12,7 +12,6 @@ export class HomeComponent implements OnInit {
   deals: Observable<any[]>;
 
   constructor(protected db: FirestoreService) {
-    // this.items = db.collection('flight').valueChanges();
   }
 
   ngOnInit() {

@@ -329,17 +329,47 @@ a:hover {
   opacity: .75 !important;
 }
 
-@media only screen and (max-width : 991.98px) {
+@media only screen and (max-width: 575.98px) {
   .header-row {
     height: auto;
-  }
-
-  .header-row .title-row {
-    margin-top: 4rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
   }
 
   .header-row .header-title{
     margin-bottom: 2.5rem;
+  }
+
+  .header-row .logo {
+    margin-top: 2.5rem;
+  }
+
+  .header-row .title-row {
+    margin-top: 0rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+  .header-row {
+    height: auto;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+  }
+
+  .header-row .header-title{
+    margin-bottom: 2.5rem;
+  }
+
+  .header-row .logo {
+    margin-top: 2.5rem;
+  }
+
+  .header-row .title-row {
+    margin-top: 0rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
 
@@ -1003,7 +1033,7 @@ hr {
 }
 
 /**********************************************************************/
-/*************************   Deal Card New   **************************/
+/****************************   Deal Card   ***************************/
 /**********************************************************************/
 
 .home-flex-container {
@@ -1014,7 +1044,7 @@ hr {
 }
 
 .home-flex-container .deal-container {
-  width: 50vw;
+  width: 100vw;
   height: 50vh;
   background-size: cover;
   background-position: center;
@@ -1035,7 +1065,7 @@ hr {
   font-size: 1.1rem;
   letter-spacing: .07rem;
   font-weight: 300;
-  margin-left: .5rem;
+  margin-left: .2rem;
   opacity: .5;
 }
 
@@ -1091,6 +1121,13 @@ hr {
   font-size: .7rem;
   margin-bottom: 0rem;
   opacity: .75;
+}
+
+@media only screen and (min-width: 767.98px)  {
+  .home-flex-container .deal-container {
+    width: 50vw;
+    height: 50vh;
+  }
 }
 
 /**********************************************************************/

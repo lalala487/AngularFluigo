@@ -1217,6 +1217,11 @@ hr {
   width: 100%;
 }
 
+.pdp-calendar-block .calendar-span {
+  width: 1rem;
+  display: inline-block;
+}
+
 .pdp-calendar-block .center-wrap {
   width: 100%;
 }
@@ -1256,7 +1261,7 @@ hr {
   border-style: solid;
   border-color: rgba(235,235,235,0.5);
   border-bottom-width: .12rem;
-  padding: 0.5rem 1rem;
+  padding: 1.5rem 1.5rem 1rem 3.2rem;
   color: rgba(235,235,235,1);
 }
 
@@ -1270,13 +1275,32 @@ hr {
 
   .pdp-calendar-block .filters .airport,
   .pdp-calendar-block .filters .nights {
-    width: 11.15rem;
+    width: 13.15rem;
   }
 
   .pdp-calendar-block .filters .airport::after,
   .pdp-calendar-block .filters .nights::after {
-    top: -1rem;
-    left: 9.5rem;
+    top: -1.8rem;
+    left: 11rem;
+  }
+
+  .pdp-calendar-block .filters .nights {
+    background-image: url(assets/icon/icon-moon.svg);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: top 1.8rem left 1.6rem;
+  }
+
+  .pdp-calendar-block .filters .airport {
+    background-image: url(assets/icon/icon-flight.svg);
+    background-size: 15px;
+    background-repeat: no-repeat;
+    background-position: top 1.8rem left 1.6rem;
+  }
+
+  .pdp-calendar-block .calendar-span {
+    width: 2rem;
+    display: inline-block;
   }
 
 }

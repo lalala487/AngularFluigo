@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { FirestoreService } from '../services/firestore.service';
 import { AngularFireStorage } from 'angularfire2/storage';
-import { Observable } from 'rxjs/Observable';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-deal-card',
@@ -11,9 +11,9 @@ import { Observable } from 'rxjs/Observable';
 export class DealCardComponent implements OnChanges {
   @Input() deal: any;
 
-  imageUrl: Observable<string | null>;
+  imageUrl: SafeStyle;
 
-  constructor(protected db: FirestoreService, protected storage: AngularFireStorage) {
+  constructor(protected db: FirestoreService, protected storage: AngularFireStorage, protected sanitizer: DomSanitizer) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -28,10 +28,13 @@ export class DealCardComponent implements OnChanges {
           const image = innerCity['image'].main;
 
           const ref = this.storage.ref(image);
-          this.imageUrl = ref.getDownloadURL();
+          ref.getDownloadURL().subscribe(img => {
+            this.imageUrl = this.sanitizer.bypassSecurityTrustStyle('url(' + img + ')');
+          });
         });
       }
     }
     // TODO: have a default img
   }
+
 }

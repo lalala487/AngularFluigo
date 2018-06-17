@@ -1033,104 +1033,6 @@ hr {
 }
 
 /**********************************************************************/
-/****************************   Deal Card   ***************************/
-/**********************************************************************/
-
-.home-flex-container {
-  margin-left:-15px;
-  margin-right:-15px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.home-flex-container .deal-container {
-  width: 100vw;
-  height: 50vh;
-  background-size: cover;
-  background-position: center;
-}
-
-.home-flex-container .icon-fight,
-.home-flex-container .icon-accommodation,
-.home-flex-container .icon-activity,
-.home-flex-container .icon-transportation {
-  opacity: .5;
-}
-
-.deal-card-title h2{
-  margin-bottom: .1rem;
-}
-
-.deal-card-title span {
-  font-size: 1.1rem;
-  letter-spacing: .07rem;
-  font-weight: 300;
-  margin-left: .2rem;
-  opacity: .5;
-}
-
-.deal-card-title {
-  font-size: 1.4rem;
-  letter-spacing: .07rem;
-  z-index: 3;
-  float: left;
-  font-weight: 400;
-  margin-left: 2rem;
-}
-
-.deal-container .price {
-  font-size: 1.4rem;
-  letter-spacing: .07rem;
-  font-weight: 400;
-  margin-left: 2rem;
-}
-
-.deal-container .price p span{
-  font-size: .7rem;
-  font-weight: 400;
-  margin-right: .25rem;
-}
-
-.deal-container .timer {
-  margin-right: 2rem;
-  font-size: 1.4rem;
-  letter-spacing: .07rem;
-  font-weight: 400;
-  float: right;
-}
-
-.deal-container .discount {
-  border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
-  padding-top: 1.2rem;
-  background: rgba(19, 78, 94, 1);
-  color: rgba(235, 235, 235, 1);
-  text-align: center;
-  float: right;
-  letter-spacing: .05rem;
-  margin-right: 2rem;
-}
-
-.deal-container .discount .amount {
-  font-size: 1.2rem;
-  margin-bottom: -0.2rem;
-}
-
-.deal-container .discount .label {
-  font-size: .7rem;
-  margin-bottom: 0rem;
-  opacity: .75;
-}
-
-@media only screen and (min-width: 767.98px)  {
-  .home-flex-container .deal-container {
-    width: 50vw;
-    height: 50vh;
-  }
-}
-
-/**********************************************************************/
 /*************************   Users Quantity   *************************/
 /**********************************************************************/
 
@@ -1218,7 +1120,7 @@ hr {
 }
 
 .pdp-calendar-block .calendar-span {
-  width: 1rem;
+  width: 0rem;
   display: inline-block;
 }
 
@@ -1228,7 +1130,7 @@ hr {
 
 .pdp-calendar-block .label-calendar {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   letter-spacing: .07rem;
   font-size: 1rem;
 }
@@ -1237,8 +1139,8 @@ hr {
 .pdp-calendar-block .filters .nights::after {
   position: relative;
   content: "";
-  top: 1px;
-  left: 0px;
+  top: -1.3rem;
+  left: 17.8rem;
   width: 0;
   height: 0;
   border: 6px solid transparent;
@@ -1261,8 +1163,36 @@ hr {
   border-style: solid;
   border-color: rgba(235,235,235,0.5);
   border-bottom-width: .12rem;
-  padding: 1.5rem 1.5rem 1rem 3.2rem;
+  padding: .5rem 1.5rem .5rem 2.8rem;
   color: rgba(235,235,235,1);
+}
+
+.pdp-calendar-block .filters .nights {
+  background-image: url(assets/icon/icon-moon.svg);
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: top .8rem left 1.15rem;
+}
+
+.pdp-calendar-block .filters .airport {
+  background-image: url(assets/icon/icon-flight.svg);
+  background-size: 15px;
+  background-repeat: no-repeat;
+  background-position: top .8rem left 1.15rem;
+}
+
+.pdp-calendar-block .filters .airport,
+.pdp-calendar-block .filters .nights {
+  width: 100%;
+}
+
+.pdp-calendar-block .filters .form-group {
+  margin-bottom: 0rem;
+}
+
+.pdp-calendar-block .filters .wrapper-airport,
+.pdp-calendar-block .filters .wrapper-nights {
+  width: 100%;
 }
 
 @media only screen and (min-width: 1200px)  {
@@ -1273,39 +1203,33 @@ hr {
     height: 100vh;
   }
 
+  .pdp-calendar-block .filters .wrapper-airport,
+  .pdp-calendar-block .filters .wrapper-nights {
+    width: auto;
+  }
+
   .pdp-calendar-block .filters .airport,
   .pdp-calendar-block .filters .nights {
-    width: 13.15rem;
+    width: 11.2rem !important;
   }
 
   .pdp-calendar-block .filters .airport::after,
   .pdp-calendar-block .filters .nights::after {
-    top: -1.8rem;
-    left: 11rem;
-  }
-
-  .pdp-calendar-block .filters .nights {
-    background-image: url(assets/icon/icon-moon.svg);
-    background-size: 15px;
-    background-repeat: no-repeat;
-    background-position: top 1.8rem left 1.6rem;
-  }
-
-  .pdp-calendar-block .filters .airport {
-    background-image: url(assets/icon/icon-flight.svg);
-    background-size: 15px;
-    background-repeat: no-repeat;
-    background-position: top 1.8rem left 1.6rem;
+    top: -1.3rem;
+    left: 9.50rem;
   }
 
   .pdp-calendar-block .calendar-span {
     width: 2rem;
     display: inline-block;
   }
-
 }
 
-.calendar-wrapper{
+.pdp-calendar-block .filters {
+  margin-bottom: 1rem;
+}
+
+.calendar-wrapper {
   margin: 0 auto;
 }
 
@@ -1318,6 +1242,11 @@ hr {
     /* background: rgba(0,0,0,1); */
     background: inherit;
     letter-spacing: .07rem !important;
+}
+
+.owl-dt-inline-container, .owl-dt-popup-container {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 @media only screen and (min-width: 1200px)  {
@@ -1377,6 +1306,21 @@ hr {
 
 .owl-dt-calendar-table .owl-dt-calendar-cell-out {
   opacity: .5;
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .pdp-calendar-block {
+    margin-top: 3rem;
+    margin-bottom: 10rem;
+  }
+
+  .pdp-calendar-block .label-calendar {
+    margin-bottom: 3rem;
+  }
+
+  .pdp-calendar-block .filters {
+    margin-bottom: 2rem;
+  }
 }
 
 /**********************************************************************/

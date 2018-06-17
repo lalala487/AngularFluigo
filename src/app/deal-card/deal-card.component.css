@@ -1,0 +1,91 @@
+.background {
+  background-size: cover;
+  background-position: center;
+}
+
+.deal-card-container {
+  width: 100vw;
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.title h2{
+  margin-bottom: .1rem;
+}
+
+.title span {
+  font-size: 1.1rem;
+  letter-spacing: .07rem;
+  font-weight: 300;
+  margin-left: .2rem;
+  opacity: .5;
+}
+
+.title {
+  font-size: 1.4rem;
+  letter-spacing: .07rem;
+  z-index: 3;
+  float: left;
+  font-weight: 400;
+  margin-left: 2rem;
+}
+
+.price {
+  font-size: 1.4rem;
+  letter-spacing: .07rem;
+  font-weight: 400;
+  margin-left: 2rem;
+}
+
+.price p span{
+  font-size: .7rem;
+  font-weight: 400;
+  margin-right: .25rem;
+}
+
+.timer {
+  margin-right: 2rem;
+  font-size: 1.4rem;
+  letter-spacing: .07rem;
+  font-weight: 400;
+  float: right;
+}
+
+.discount {
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+  padding-top: 1.2rem;
+  background: rgba(19, 78, 94, 1);
+  color: rgba(235, 235, 235, 1);
+  text-align: center;
+  float: right;
+  letter-spacing: .05rem;
+  margin-right: 2rem;
+}
+
+.amount {
+  font-size: 1.2rem;
+  margin-bottom: -0.2rem;
+}
+
+.label {
+  font-size: .7rem;
+  margin-bottom: 0rem;
+  opacity: .75;
+}
+
+@media only screen and (min-width: 767.98px)  {
+  .deal-card-container {
+    width: 50vw;
+    height: 50vh;
+  }
+}
+
+.icon-fight,
+.icon-accommodation,
+.icon-activity,
+.icon-transportation {
+  opacity: .5;
+}

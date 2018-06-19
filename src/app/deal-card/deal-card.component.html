@@ -33,7 +33,9 @@
         <div style="width: 50%; margin-bottom:.45rem;">
           <div class="timer">
             <p>
-              {{deal.endDate | amDifference: deal.startDate :'days' : true | number:'1.0-0'}} days
+              <!-- {{deal.endDate | amDifference: deal.startDate :'days' : true | number:'1.0-0'}} days -->
+
+              <countdown units="Days | Hours | Minutes | Seconds"  end="{{ deal.endDate }}"></countdown>
           </div>
         </div>
       </div>

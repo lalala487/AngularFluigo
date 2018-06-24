@@ -21,8 +21,7 @@ import { DocPipe } from './doc.pipe';
 import { FirestoreService } from './services/firestore.service';
 import { MomentModule } from 'ngx-moment';
 
-import { CountDown } from 'ng4-date-countdown-timer';
-
+import { DateCountdownCircleComponent } from './date-countdown-circle/date-countdown-circle.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +32,7 @@ import { CountDown } from 'ng4-date-countdown-timer';
     FooterComponent,
     HomeComponent,
     DocPipe,
-    CountDown
+    DateCountdownCircleComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +45,7 @@ import { CountDown } from 'ng4-date-countdown-timer';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AppRoutingModule,
-    MomentModule
+    MomentModule,
   ],
   providers: [FirestoreService],
   bootstrap: [AppComponent]

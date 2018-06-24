@@ -6,7 +6,7 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 @Component({
   selector: 'app-deal-card',
   templateUrl: './deal-card.component.html',
-  styleUrls: ['./deal-card.component.css']
+  styleUrls: ['./deal-card.component.css'],
 })
 export class DealCardComponent implements OnChanges {
   @Input() deal: any;

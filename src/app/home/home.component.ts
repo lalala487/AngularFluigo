@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.deals = this.db.col$('deal');
+    this.deals = this.db.col$('deal', ref => ref.where('endDate', '>', new Date()));
   }
 
 }

@@ -1,0 +1,66 @@
+<div class="timer-container">
+  <div class="countdown-circle" id="countdown-days" *ngIf="left.days">
+    <div id="countdown-number">
+      <p class="number-days">{{ left.days }}</p>
+      <p class="label-days">Tg</p>
+    </div>
+    <div class="bg-timer">
+      <svg>
+        <circle r="32" cx="34" cy="34"></circle>
+      </svg>
+    </div>
+    <div class="main-timer">
+      <svg>
+        <circle r="32" cx="34" cy="34" [style.animation]="'countdown ' + maxDaysInSeconds + 's linear infinite'" [style.animation-delay]="'-' + (maxDaysInSeconds - maxLeft.days * 24 * 60 * 60) + 's'"></circle>
+      </svg>
+    </div>
+  </div>
+  <div class="countdown-circle" id="countdown-hours" *ngIf="left.days || left.hours">
+    <div id="countdown-number">
+      <p class="number-hours">{{ left.hours }}</p>
+      <p class="label-hours">Std</p>
+    </div>
+    <div class="bg-timer">
+      <svg>
+        <circle r="32" cx="34" cy="34"></circle>
+      </svg>
+    </div>
+    <div class="main-timer">
+      <svg>
+        <circle r="32" cx="34" cy="34" [style.animation]="'countdown ' + maxHoursInSeconds + 's linear infinite'" [style.animation-delay]="'-' + (maxHoursInSeconds - maxLeft.hours * 60 * 60) + 's'"></circle>
+      </svg>
+    </div>
+  </div>
+  <div class="countdown-circle" id="countdown-minutes" *ngIf="left.days || left.hours || left.minutes">
+    <div id="countdown-number">
+      <p class="number-minutes">{{ left.minutes }}</p>
+      <p class="label-minutes">Min</p>
+    </div>
+    <div class="bg-timer">
+      <svg>
+        <circle r="32" cx="34" cy="34"></circle>
+      </svg>
+    </div>
+    <div class="main-timer">
+      <svg>
+        <circle r="32" cx="34" cy="34" [style.animation]="'countdown ' + maxMinutesInSeconds + 's linear infinite'" [style.animation-delay]="'-' + (maxMinutesInSeconds - maxLeft.minutes * 60) + 's'"></circle>
+      </svg>
+    </div>
+  </div>
+  <div class="countdown-circle" id="countdown-seconds" *ngIf="left.days || left.hours || left.minutes || left.seconds">
+    <div id="countdown-number">
+      <p class="number-seconds">{{ left.seconds }}</p>
+      <p class="label-seconds">Sek</p>
+    </div>
+    <div class="bg-timer">
+      <svg>
+        <circle r="32" cx="34" cy="34"></circle>
+      </svg>
+    </div>
+    <div class="main-timer">
+      <svg>
+        <circle r="32" cx="34" cy="34" [style.animation]="'countdown 60s linear infinite'" [style.animation-delay]="'-' + (60 - maxLeft.seconds) + 's'" ></circle>
+      </svg>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AngularFirestore } from 'angularfire2/firestore';
 import { FirestoreService } from '../services/firestore.service';
+
+import * as moment from 'moment';
+
 
 @Component({
   selector: 'app-home',
@@ -15,7 +17,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.deals = this.db.col$('deal', ref => ref.where('endDate', '>', new Date()));
+
+    const twoWeeksFromNow = moment().add(14, 'days').toDate();
+
+    this.deals = this.db.col$('deal', ref => ref.where('endDate', '>', new Date()).where('endDate', '<', twoWeeksFromNow));
   }
 
 }

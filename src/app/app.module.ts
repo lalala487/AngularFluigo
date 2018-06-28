@@ -22,6 +22,7 @@ import { FirestoreService } from './services/firestore.service';
 import { MomentModule } from 'ngx-moment';
 
 import { DateCountdownCircleComponent } from './date-countdown-circle/date-countdown-circle.component';
+import { DealDetailComponent } from './deal-detail/deal-detail.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DateCountdownCircleComponent } from './date-countdown-circle/date-count
     FooterComponent,
     HomeComponent,
     DocPipe,
-    DateCountdownCircleComponent
+    DateCountdownCircleComponent,
+    DealDetailComponent
   ],
   imports: [
     BrowserModule,

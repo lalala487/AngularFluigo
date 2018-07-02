@@ -1,3 +1,143 @@
-<p>
-  {{ deal.name.en_GB }}
-</p>
+<sidebar-js [sidebarjsConfig]="{position: 'left', backdropOpacity: 0}">
+  <div class="sidebarjs-center-container" style="display: flex; align-items: center; flex-wrap: wrap; height: 100%;">
+    <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
+      <div class="content-block price-title">
+        <p>Übersicht</p>
+        <hr class="price-hr"/>
+      </div>
+      <div  class="content-block">
+        <p class="price-label">Teilnehmer - 3. April 1988</p>
+        <p class="price-amount">CHF 189</p>
+      </div>
+      <div class="content-block">
+        <p class="price-label">Teilnehmer - 2. Juni 2017</p>
+        <p class="price-amount">CHF 149</p>
+      </div>
+      <div class="content-block">
+        <p class="price-label">2 x Aufgabegepäck bis 20 kg</p>
+        <p class="price-amount">CHF 120</p>
+      </div>
+      <div class="content-block">
+        <p class="price-label">Annullierungskosten-Versicherung</p>
+        <p class="price-amount">CHF 49</p>
+      </div>
+      <div class="content-block">
+        <p class="price-label">Buchungsgebühr</p>
+        <p class="price-amount">CHF 19</p>
+      </div>
+      <div class="content-block price-total">
+        <hr class="total-hr"/>
+        <p class="price-label">Insgesamt</p>
+        <p class="price-amount">CHF 526</p>
+      </div>
+      <div class="content-block sidebarjs-close-button">
+        <button sidebarjsClose class="btn btn-small btn-primary" type="next">Schliessen</button>
+      </div>
+    </div>
+  </div>
+</sidebar-js>
+<div class="row nav-container">
+  <div class="col-xl-3"></div>
+  <div class="col-xl-9 nav-col">
+    <div class="row">
+      <div class="col-xs-4">
+        <div class="btn-back-container">
+          <button type="button" name="button-back" class="btn-round-pdp">Zurück</button>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="price-container-small">
+          <div class="price-info">
+            <p class="price-label">Gesamtbetrag</p>
+            <p class="price-amount">CHF 526</p>
+            <button sidebarjsOpen class="btn btn-small btn-primary" type="next">Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <div class="btn-next-container">
+          <button type="button" name="button-next" class="btn-round-pdp">Weiter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row pdp-container" style="background-image: url(assets/img/100001_1.jpg);">
+  <nav class="col-xl-3 gradient-20 pdp-column-left-bar">
+    <div class="row logo">
+      <div class="col-xl-12">
+        <div class="logo-container">
+          <img src="assets/img/logo.svg" width="110" alt="Flugio Logo">
+        </div>
+        <div class="center-container">
+          <div class="steps">
+            <div class="price-container">
+              <div class="price-info">
+                <p class="price-label">Gesamtbetrag</p>
+                <p class="price-amount">CHF 526</p>
+                <button sidebarjsOpen class="btn btn-small btn-primary" type="next">Details</button>
+              </div>
+            </div>
+            <div class="timeline-container">
+              <div class="from-to-date">
+                <div class="from-date">
+                  <p class="day">14</p>
+                  <p class="month">Jun. 2018</p>
+                  <p class="weekday">Do. 08:15</p>
+                </div>
+                <div class="arrow-wrapper">
+                  <div class="arrow-nights">
+                    <ng-template #tipAccommodation>3 Nächte<br />Hotel Bulgari<br />Check-in: Jun. 14 2018<br />Check-out: Jun. 17 2018</ng-template>
+                    <ng-template #tipPeople>1 Erwachsene<br />1 Kind</ng-template>
+                    <p class="nights">3 <img src="assets/icon/icon-moon.svg" height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
+                    <p class="persons">2 <img src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top" [ngbTooltip]="tipPeople"></p>
+                  </div>
+                </div>
+                <div class="to-date">
+                  <p class="day">17</p>
+                  <p class="month">Jun. 2018</p>
+                  <p class="weekday">So. 17:30</p>
+                </div>
+              </div>
+            </div>
+            <div class="container-center-steps">
+              <div class="step-one">
+                <span class="active">1</span>
+                <p class="active">Stadt</p>
+              </div>
+              <div class="step-line active"></div>
+              <div class="step-two">
+                <span class="current">2</span>
+                <p class="current">Hotel</p>
+              </div>
+              <div class="step-line"></div>
+              <div class="step-three">
+                <span>3</span>
+                <p>Flug</p>
+              </div>
+              <div class="step-line"></div>
+              <div class="step-four">
+                <span>4</span>
+                <p>Aktivitäten</p>
+              </div>
+              <div class="step-line"></div>
+              <div class="step-five">
+                <span>5</span>
+                <p>Zahlung</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <section class="col-xl-9 pdp-column-right-bar">
+    <div class="container">
+      <div class="row pdp-row-right-bar-container">
+
+        <!-- Content should be injected here -->
+
+      </div>
+    </div>
+  </section>
+</div>

@@ -4,6 +4,7 @@ import { DealDetailComponent } from './deal-detail.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FirestoreService } from '../services/firestore.service';
 import { firestoreServiceStub } from '../services/firestore.service.stub';
+import { SidebarJSModule } from 'ng-sidebarjs';
 
 describe('DealDetailComponent', () => {
   let component: DealDetailComponent;
@@ -11,7 +12,7 @@ describe('DealDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, SidebarJSModule],
       declarations: [DealDetailComponent],
       providers: [
         { provide: FirestoreService, useValue: firestoreServiceStub },

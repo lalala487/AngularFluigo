@@ -26,6 +26,16 @@ import { DealDetailComponent } from './deal-detail/deal-detail.component';
 import { CityComponent } from './city/city.component';
 import { AccommodationComponent } from './accommodation/accommodation.component';
 import { UserQuantityComponent } from './user-quantity/user-quantity.component';
+import { UserAgeComponent } from './user-age/user-age.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { ActivitiesComponent } from './activities/activities.component';
+import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
+import { ActivityOptionComponent } from './activity-option/activity-option.component';
+import { OnBoardComponent } from './on-board/on-board.component';
+import { InsuranceComponent } from './insurance/insurance.component';
+import { UserDataComponent } from './user-data/user-data.component';
+import { PaymentComponent } from './payment/payment.component';
+import { SuccessComponent } from './success/success.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +50,17 @@ import { UserQuantityComponent } from './user-quantity/user-quantity.component';
     DealDetailComponent,
     CityComponent,
     AccommodationComponent,
-    UserQuantityComponent
+    UserQuantityComponent,
+    UserAgeComponent,
+    CalendarComponent,
+    ActivitiesComponent,
+    ActivityDetailComponent,
+    ActivityOptionComponent,
+    OnBoardComponent,
+    InsuranceComponent,
+    UserDataComponent,
+    PaymentComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,43 @@
+<div class="pdp-calendar-block col-xl-12">
+  <div class="center-wrap">
+    <div class="col-xl-12">
+      <div class="row">
+        <div class="col-xl-12">
+          <p class="label-calendar">Wählen Sie ein Reisedatum</p>
+        </div>
+      </div>
+      <div class="row filters">
+        <div style="margin:0 auto;">
+          <div style="float:left;" class="wrapper-airport">
+            <form>
+              <div class="form-group airport">
+                <select>
+                  <option value="" selected disabled hidden>Flughafen</option>
+                  <option value="1">Zürich</option>
+                  <option value="2">Basel</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <span class="calendar-span"></span>
+          <div style="float:right;" class="wrapper-nights">
+            <form>
+              <div class="form-group nights">
+                <select>
+                  <option value="" selected disabled hidden>Nächte</option>
+                  <option value="1">3 Nächte</option>
+                  <option value="2">4 Nächte</option>
+                </select>
+              </div>
+            </form>
+          </div>
+      </div>
+      </div>
+      <div class="row">
+        <div class="calendar-wrapper">
+          <owl-date-time-inline [pickerType]="'calendar'"></owl-date-time-inline>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

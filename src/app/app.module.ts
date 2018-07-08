@@ -23,6 +23,9 @@ import { MomentModule } from 'ngx-moment';
 
 import { DateCountdownCircleComponent } from './date-countdown-circle/date-countdown-circle.component';
 import { DealDetailComponent } from './deal-detail/deal-detail.component';
+import { CityComponent } from './city/city.component';
+import { AccommodationComponent } from './accommodation/accommodation.component';
+import { UserQuantityComponent } from './user-quantity/user-quantity.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { DealDetailComponent } from './deal-detail/deal-detail.component';
     HomeComponent,
     DocPipe,
     DateCountdownCircleComponent,
-    DealDetailComponent
+    DealDetailComponent,
+    CityComponent,
+    AccommodationComponent,
+    UserQuantityComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,6 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { DealCardComponent } from './deal-card/deal-card.component';
-import { DetailComponent } from './detail/detail.component';
 import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -42,7 +41,6 @@ import { SuccessComponent } from './success/success.component';
     AppComponent,
     HeaderComponent,
     DealCardComponent,
-    DetailComponent,
     FooterComponent,
     HomeComponent,
     DocPipe,

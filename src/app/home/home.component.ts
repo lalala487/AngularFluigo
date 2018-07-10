@@ -13,14 +13,31 @@ import * as moment from 'moment';
 export class HomeComponent implements OnInit {
   deals: Observable<any[]>;
 
+  maxDiscount = 0;
+
   constructor(protected db: FirestoreService) {
   }
 
   ngOnInit() {
-
     const twoWeeksFromNow = moment().add(14, 'days').toDate();
 
-    this.deals = this.db.col$('deal', ref => ref.where('endDate', '>', new Date()).where('endDate', '<', twoWeeksFromNow));
+    this.deals = this.db.col$(
+      'deal', ref => ref
+        .where('endDate', '>', new Date())
+        .where('endDate', '<', twoWeeksFromNow)
+    );
+
+    this.db.col$(
+      'deal', ref => ref
+        .where('endDate', '>', new Date())
+        .where('endDate', '<', twoWeeksFromNow)
+        .orderBy('endDate', 'desc')
+        .orderBy('marketingDiscount', 'desc')
+        .limit(1)
+    ).subscribe(collection => {
+      const deal = collection.pop() as Deal;
+      this.maxDiscount = deal.marketingDiscount;
+    });
   }
 
 }

@@ -8,8 +8,8 @@
     <div class="row title-row">
       <div class="col-xl-12">
         <p class="header-title">
-          <span>Zur Zeit </span>14 Exklusive
-          <span> Städtereisen bis zu </span>69%
+          <span>Zur Zeit </span>{{ (deals | async)?.length }} Exklusive
+          <span> Städtereisen bis zu </span>{{ maxDiscount }}%
           <span> günstiger</span>
         </p>
         <p class="header-subtitle">

@@ -6,8 +6,8 @@ interface Deal {
     merchant: any;
     city: any;
     accommodation: any;
-    startDate: string;
-    endDate: string;
+    startDate: Date;
+    endDate: Date;
     flights: any;
     activities: any;
     marketingPrice: number;

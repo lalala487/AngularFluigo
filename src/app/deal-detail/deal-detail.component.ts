@@ -9,7 +9,7 @@ import { FirestoreService } from '../services/firestore.service';
 })
 export class DealDetailComponent implements OnInit {
   slug: string;
-  @Input() deal: any;
+  @Input() deal: Deal;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,7 +23,7 @@ export class DealDetailComponent implements OnInit {
 
         return this.db.col$('deal', ref => ref.where('slug', '==', this.slug));
       }).subscribe(deals => {
-        this.deal = deals ? deals[0] : undefined;
+        this.deal = deals ? deals[0] as Deal : undefined;
       });
   }
 }

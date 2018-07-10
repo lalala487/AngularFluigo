@@ -28,7 +28,7 @@
       <div class="content-block price-total">
         <hr class="total-hr"/>
         <p class="price-label">Insgesamt</p>
-        <p class="price-amount">CHF 526</p>
+        <p class="price-amount">CHF {{ deal?.marketingPrice }}</p>
       </div>
       <div class="content-block sidebarjs-close-button">
         <button sidebarjsClose class="btn btn-small btn-primary" type="next">Schliessen</button>
@@ -36,7 +36,7 @@
     </div>
   </div>
 </sidebar-js>
-<div class="row nav-container">
+<!-- <div class="row nav-container">
   <div class="col-xl-3"></div>
   <div class="col-xl-9 nav-col">
     <div class="row">
@@ -49,7 +49,7 @@
         <div class="price-container-small">
           <div class="price-info">
             <p class="price-label">Gesamtbetrag</p>
-            <p class="price-amount">CHF 526</p>
+            <p class="price-amount">CHF {{ deal.marketingPrice }}</p>
             <button sidebarjsOpen class="btn btn-small btn-primary" type="next">Details</button>
           </div>
         </div>
@@ -61,7 +61,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <div class="row pdp-container" style="background-image: url(assets/img/100001_1.jpg);">
   <nav class="col-xl-3 gradient-20 pdp-column-left-bar">
     <div class="row logo">
@@ -74,16 +74,16 @@
             <div class="price-container">
               <div class="price-info">
                 <p class="price-label">Gesamtbetrag</p>
-                <p class="price-amount">CHF 526</p>
+                <p class="price-amount">CHF {{ deal?.marketingPrice }}</p>
                 <button sidebarjsOpen class="btn btn-small btn-primary" type="next">Details</button>
               </div>
             </div>
             <div class="timeline-container">
               <div class="from-to-date">
                 <div class="from-date">
-                  <p class="day">14</p>
-                  <p class="month">Jun. 2018</p>
-                  <p class="weekday">Do. 08:15</p>
+                  <p class="day">{{ deal?.startDate | date:'d'}}</p>
+                  <p class="month">{{ deal?.startDate | date:'MMM. yyyy'}}</p>
+                  <p class="weekday">{{ deal?.startDate | date:'E. hh:mm'}}</p>
                 </div>
                 <div class="arrow-wrapper">
                   <div class="arrow-nights">
@@ -94,9 +94,9 @@
                   </div>
                 </div>
                 <div class="to-date">
-                  <p class="day">17</p>
-                  <p class="month">Jun. 2018</p>
-                  <p class="weekday">So. 17:30</p>
+                  <p class="day">{{ deal?.endDate | date:'d'}}</p>
+                  <p class="month">{{ deal?.endDate | date:'MMM. yyyy'}}</p>
+                  <p class="weekday">{{ deal?.endDate | date:'E. hh:mm'}}</p>
                 </div>
               </div>
             </div>

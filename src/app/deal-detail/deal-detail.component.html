@@ -87,7 +87,7 @@
                 </div>
                 <div class="arrow-wrapper">
                   <div class="arrow-nights">
-                    <ng-template #tipAccommodation>3 Nächte<br />Hotel Bulgari<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
+                    <ng-template #tipAccommodation>3 Nächte<br />{{(accommodation | doc | async)?.name.en_GB}}<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
                     <ng-template #tipPeople>1 Erwachsene<br />1 Kind</ng-template>
                     <p class="nights">3 <img src="assets/icon/icon-moon.svg" height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
                     <p class="persons">2 <img src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top" [ngbTooltip]="tipPeople"></p>

@@ -10,6 +10,7 @@ import { FirestoreService } from '../services/firestore.service';
 export class DealDetailComponent implements OnInit {
   slug: string;
   @Input() deal: Deal;
+  accommodation: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,6 +25,8 @@ export class DealDetailComponent implements OnInit {
         return this.db.col$('deal', ref => ref.where('slug', '==', this.slug));
       }).subscribe(deals => {
         this.deal = deals ? deals[0] as Deal : undefined;
+
+        this.accommodation = this.deal.accommodation ? this.deal.accommodation[0] : undefined;
       });
   }
 }

@@ -13,4 +13,5 @@ interface Deal {
     marketingPrice: number;
     marketingDiscount: number;
     availableServices: object;
+    rating: number;
 }

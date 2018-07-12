@@ -161,7 +161,7 @@
     <div class="container">
       <div class="row pdp-row-right-bar-container">
 
-        <!-- Content should be injected here -->
+        <app-city *ngIf="currentStep == 0" [city]="city" [imageUrl]="imageUrl"></app-city>
 
       </div>
     </div>

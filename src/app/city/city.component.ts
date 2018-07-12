@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SafeStyle } from '@angular/platform-browser';
+import { City } from '../models/city';
 
 @Component({
   selector: 'app-city',
@@ -6,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./city.component.css']
 })
 export class CityComponent implements OnInit {
+
+  @Input() city: City;
+  @Input() imageUrl: SafeStyle;
 
   constructor() { }
 

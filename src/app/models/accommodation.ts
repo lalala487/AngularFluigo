@@ -1,5 +1,4 @@
-
-interface Accommodation {
+export interface Accommodation {
     active: boolean;
     name: Object;
     description: Object;

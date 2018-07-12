@@ -3,6 +3,8 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { FirestoreService } from '../services/firestore.service';
 import { SafeStyle } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
+import { Deal } from '../models/deal';
+import { City } from '../models/city';
 
 @Component({
   selector: 'app-deal-detail',
@@ -15,6 +17,8 @@ export class DealDetailComponent implements OnInit {
   accommodation: any;
   city: City;
   imageUrl: SafeStyle;
+
+  currentStep = 0;
 
   constructor(
     private route: ActivatedRoute,

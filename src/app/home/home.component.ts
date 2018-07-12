@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { FirestoreService } from '../services/firestore.service';
 
 import * as moment from 'moment';
+import { Deal } from '../models/deal';
 
 
 @Component({

@@ -1,4 +1,4 @@
-interface Deal {
+export interface Deal {
     active: boolean;
     name: object;
     description: object;

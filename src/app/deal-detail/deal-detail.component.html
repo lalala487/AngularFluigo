@@ -48,7 +48,7 @@
     <div class="row">
       <div class="col-xs-4">
         <div class="btn-back-container">
-          <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp">Zurück</button>
+          <button [disabled]="currentStep == 0" (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp">Zurück</button>
         </div>
       </div>
       <div class="col-xs-4">

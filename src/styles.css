@@ -924,6 +924,7 @@ width: 9.7rem;
 }
 
 .pdp-city-block-gradient .text-block p,
+.pdp-accommodation-block-gradient .text-block p,
 .pdp-activity-detail-block-gradient .text-block p {
   font-size: 1rem;
   letter-spacing: .07rem;
@@ -994,6 +995,10 @@ hr {
   }
 
   .pdp-city-block-title {
+    margin-top: 2.5rem;
+  }
+
+  .pdp-accommodation-block-title {
     margin-top: 2.5rem;
   }
 }

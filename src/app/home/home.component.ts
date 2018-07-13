@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { FirestoreService } from '../services/firestore.service';
 
 import * as moment from 'moment';
+import { Deal } from '../models/deal';
 
 
 @Component({
@@ -27,17 +28,17 @@ export class HomeComponent implements OnInit {
         .where('endDate', '<', twoWeeksFromNow)
     );
 
-    this.db.col$(
-      'deal', ref => ref
-        .where('endDate', '>', new Date())
-        .where('endDate', '<', twoWeeksFromNow)
-        .orderBy('endDate', 'desc')
-        .orderBy('marketingDiscount', 'desc')
-        .limit(1)
-    ).subscribe(collection => {
-      const deal = collection.pop() as Deal;
-      this.maxDiscount = deal.marketingDiscount;
+
+    this.deals.subscribe(collection => {
+      this.maxDiscount = this.findMaxDiscount(collection);
     });
+  }
+
+  private findMaxDiscount(listOfDeals: Array<Deal>): number {
+      listOfDeals.sort((a, b) => b.marketingDiscount - a.marketingDiscount);
+
+      const deal = listOfDeals[0] as Deal;
+      return deal.marketingDiscount;
   }
 
 }

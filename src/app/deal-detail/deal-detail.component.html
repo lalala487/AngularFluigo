@@ -48,7 +48,7 @@
     <div class="row">
       <div class="col-xs-4">
         <div class="btn-back-container">
-          <button type="button" name="button-back" class="btn-round-pdp">Zurück</button>
+          <button [disabled]="currentStep == 0" (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp">Zurück</button>
         </div>
       </div>
       <div class="col-xs-4">
@@ -65,20 +65,20 @@
       </div>
       <div class="col-xs-4">
         <div class="btn-next-container">
-          <button type="button" name="button-next" class="btn-round-pdp">Weiter</button>
+          <button (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp">Weiter</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!-- Below is the image which is used for the "city" data.
-So it's the same image as used on the deal card as used on the homepage. -->
-<div class="row pdp-container" style="background-image: url(assets/img/100001_1.jpg);">
+<div [style.background-image]="imageUrl" class="row pdp-container">
   <nav class="col-xl-3 gradient-20 pdp-column-left-bar">
     <div class="row logo">
       <div class="col-xl-12">
         <div class="logo-container">
-          <img src="assets/img/logo.svg" width="110" alt="Flugio Logo">
+          <a href="/">
+            <img src="assets/img/logo.svg" width="110" alt="Flugio Logo">
+          </a>
         </div>
         <div class="center-container">
           <div class="steps">
@@ -106,7 +106,7 @@ So it's the same image as used on the deal card as used on the homepage. -->
                 <div class="arrow-wrapper">
                   <div class="arrow-nights">
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
-                    <ng-template #tipAccommodation>3 Nächte<br />{{(accommodation | doc | async)?.name.en_GB}}<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
+                    <ng-template #tipAccommodation>3 Nächte<br />{{(accommodationDoc | doc | async)?.name.en_GB}}<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
                     <!-- Below is the amount of people that will be staying at the accommodation -->
                     <ng-template #tipPeople>1 Erwachsene<br />1 Kind</ng-template>
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
@@ -161,7 +161,9 @@ So it's the same image as used on the deal card as used on the homepage. -->
     <div class="container">
       <div class="row pdp-row-right-bar-container">
 
-        <!-- Content should be injected here -->
+        <app-city *ngIf="currentStep == 0" [city]="city" [imageUrl]="imageUrl"></app-city>
+
+        <app-accommodation *ngIf="currentStep == 1" [accommodation]="accommodation"></app-accommodation>
 
       </div>
     </div>

@@ -1,4 +1,4 @@
-interface Deal {
+export interface Deal {
     active: boolean;
     name: object;
     description: object;
@@ -13,4 +13,5 @@ interface Deal {
     marketingPrice: number;
     marketingDiscount: number;
     availableServices: object;
+    rating: number;
 }

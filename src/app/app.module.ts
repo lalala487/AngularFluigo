@@ -35,6 +35,7 @@ import { InsuranceComponent } from './insurance/insurance.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SuccessComponent } from './success/success.component';
+import { ImageService } from './services/image.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import { SuccessComponent } from './success/success.component';
     AppRoutingModule,
     MomentModule,
   ],
-  providers: [FirestoreService],
+  providers: [FirestoreService, ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

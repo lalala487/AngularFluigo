@@ -1,7 +1,9 @@
+import { TranslatableField } from './fields/translatable';
+
 export interface Accommodation {
     active: boolean;
-    name: Object;
-    description: Object;
+    name: TranslatableField;
+    description: TranslatableField;
     image: Object;
     location: Object;
     address: Object;

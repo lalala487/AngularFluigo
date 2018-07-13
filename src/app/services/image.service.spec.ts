@@ -2,7 +2,6 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { AngularFireStorage } from 'angularfire2/storage';
 import { ImageService } from './image.service';
-import { firestoreServiceStub } from './firestore.service.stub';
 import { of } from 'rxjs/observable/of';
 
 

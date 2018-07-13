@@ -5,6 +5,7 @@ import { SafeStyle } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
 import { Deal } from '../models/deal';
 import { City } from '../models/city';
+import { Accommodation } from '../models/accommodation';
 
 @Component({
   selector: 'app-deal-detail',
@@ -14,8 +15,9 @@ import { City } from '../models/city';
 export class DealDetailComponent implements OnInit {
   slug: string;
   @Input() deal: Deal;
-  accommodation: any;
+  accommodationDoc: any;
   city: City;
+  accommodation: Accommodation;
   imageUrl: SafeStyle;
 
   currentStep = 0;
@@ -35,7 +37,7 @@ export class DealDetailComponent implements OnInit {
       }).subscribe(deals => {
         this.deal = deals ? deals[0] as Deal : undefined;
 
-        this.accommodation = this.deal.accommodation ? this.deal.accommodation[0] : undefined;
+        this.accommodationDoc = this.deal.accommodation ? this.deal.accommodation[0] : undefined;
         const cityRef = this.deal.city ? this.deal.city[0] : undefined;
 
         if (cityRef) {
@@ -49,6 +51,21 @@ export class DealDetailComponent implements OnInit {
             );
           });
         }
+
+        if (this.accommodationDoc) {
+          this.db.doc$('accommodation/' + this.accommodationDoc.id).subscribe(innerAcc => {
+            this.accommodation = innerAcc as Accommodation;
+          });
+        }
       });
   }
+
+  moveToNextStep(): void {
+    this.currentStep = this.currentStep + 1;
+  }
+
+  moveToPreviousStep(): void {
+    this.currentStep = this.currentStep - 1;
+  }
+
 }

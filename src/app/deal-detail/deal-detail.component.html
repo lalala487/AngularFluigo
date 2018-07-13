@@ -48,7 +48,7 @@
     <div class="row">
       <div class="col-xs-4">
         <div class="btn-back-container">
-          <button type="button" name="button-back" class="btn-round-pdp">Zurück</button>
+          <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp">Zurück</button>
         </div>
       </div>
       <div class="col-xs-4">
@@ -65,7 +65,7 @@
       </div>
       <div class="col-xs-4">
         <div class="btn-next-container">
-          <button type="button" name="button-next" class="btn-round-pdp">Weiter</button>
+          <button (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp">Weiter</button>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
                 <div class="arrow-wrapper">
                   <div class="arrow-nights">
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
-                    <ng-template #tipAccommodation>3 Nächte<br />{{(accommodation | doc | async)?.name.en_GB}}<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
+                    <ng-template #tipAccommodation>3 Nächte<br />{{(accommodationDoc | doc | async)?.name.en_GB}}<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
                     <!-- Below is the amount of people that will be staying at the accommodation -->
                     <ng-template #tipPeople>1 Erwachsene<br />1 Kind</ng-template>
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
@@ -162,6 +162,8 @@
       <div class="row pdp-row-right-bar-container">
 
         <app-city *ngIf="currentStep == 0" [city]="city" [imageUrl]="imageUrl"></app-city>
+
+        <app-accommodation *ngIf="currentStep == 1" [accommodation]="accommodation"></app-accommodation>
 
       </div>
     </div>

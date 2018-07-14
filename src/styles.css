@@ -955,6 +955,7 @@ hr {
   display: flex;
   align-items: center;
   height: 20rem;
+  width: 100%;
 }
 
 .pdp-icons-block .text-block {
@@ -1009,6 +1010,7 @@ hr {
   display: flex;
   align-items: center;
   height: 20rem;
+  width: 100%;
 }
 
 .pdp-review-block .text-block {

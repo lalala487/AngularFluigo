@@ -161,13 +161,13 @@
     <div class="container">
       <div class="row pdp-row-right-bar-container">
 
-        <app-city *ngIf="currentStep == 0" [city]="city" [imageUrl]="imageUrl"></app-city>
+        <app-city *ngIf="currentStep == 0" [city]="city" [imageUrl]="imageUrl" style="width:100%;"></app-city>
 
-        <app-accommodation *ngIf="currentStep == 1" [accommodation]="accommodation"></app-accommodation>
+        <app-accommodation *ngIf="currentStep == 1" [accommodation]="accommodation" style="width:100%;"></app-accommodation>
 
-        <app-user-quantity *ngIf="currentStep == 2"></app-user-quantity>
+        <app-user-quantity *ngIf="currentStep == 2" style="width:100%;"></app-user-quantity>
 
-        <app-user-age *ngIf="currentStep == 3"></app-user-age>
+        <app-user-age *ngIf="currentStep == 3" style="width:100%;"></app-user-age>
 
       </div>
     </div>

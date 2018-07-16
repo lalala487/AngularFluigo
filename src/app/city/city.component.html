@@ -8,6 +8,7 @@
       </div>
     </div>
   </div>
+
   <div class="row" style="margin-left:0rem; margin-right:0rem;">
     <div class="col-xl-6 pdp-icons-block gradient">
       <div class="text-block">
@@ -27,7 +28,9 @@
       </div>
     </div>
 
-    <app-review [review]="city?.review"></app-review>
+    <div class="col-xl-6 pdp-review-block gradient">
+      <app-review [review]="city?.review" style="width:100%;"></app-review>
+    </div>
 
   </div>
 </div>

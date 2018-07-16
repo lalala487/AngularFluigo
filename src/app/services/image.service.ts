@@ -16,4 +16,8 @@ export class ImageService {
     return this.sanitizer.bypassSecurityTrustStyle('url(' + img + ')');
   }
 
+  sanitizeUrl(img) {
+    return this.sanitizer.bypassSecurityTrustUrl(img);
+  }
+
 }

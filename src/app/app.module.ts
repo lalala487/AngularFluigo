@@ -36,6 +36,7 @@ import { UserDataComponent } from './user-data/user-data.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SuccessComponent } from './success/success.component';
 import { ImageService } from './services/image.service';
+import { ReviewComponent } from './review/review.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { ImageService } from './services/image.service';
     InsuranceComponent,
     UserDataComponent,
     PaymentComponent,
-    SuccessComponent
+    SuccessComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

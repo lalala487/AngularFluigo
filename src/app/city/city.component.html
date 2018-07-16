@@ -26,14 +26,8 @@
         </div>
       </div>
     </div>
-    <div class="col-xl-6 pdp-review-block gradient">
-      <div class="text-block">
-        <p>"{{ city?.review.review.en_GB }}"</p>
-        <div class="avatar-block">
-          <img src="assets/img/avatar.jpg" width="75" height="75" alt="Review Avatar" class="avatar gradient">
-          <p class="avatar-name">{{ city?.review.name.en_GB }}</p>
-        </div>
-      </div>
-    </div>
+
+    <app-review [review]="city?.review"></app-review>
+
   </div>
 </div>

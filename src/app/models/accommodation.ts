@@ -1,5 +1,6 @@
 import { TranslatableField } from './fields/translatable';
 import { ImageField } from './fields/image';
+import { Review } from './review';
 
 export interface Accommodation {
     active: boolean;
@@ -12,4 +13,5 @@ export interface Accommodation {
     amenities: any;
     cities: any;
     segments: any;
+    review: Review;
 }

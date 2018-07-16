@@ -5,6 +5,7 @@ import { AccommodationComponent } from './accommodation.component';
 import { ImageService } from '../services/image.service';
 
 import { of } from 'rxjs/observable/of';
+import { ReviewComponent } from '../review/review.component';
 
 describe('AccommodationComponent', () => {
   let component: AccommodationComponent;
@@ -16,7 +17,7 @@ describe('AccommodationComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ AccommodationComponent ],
+      declarations: [ AccommodationComponent, ReviewComponent ],
       providers: [
         ImageService,
         { provide: AngularFireStorage, useValue: serviceStub }

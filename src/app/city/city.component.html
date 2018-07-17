@@ -10,21 +10,11 @@
   </div>
 
   <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-6 pdp-icons-block gradient">
+    <div *ngIf="featuredList" class="col-xl-6 pdp-icons-block gradient">
       <div class="text-block">
         <p>Perfekt für</p>
-        <div class="icon-block-one">
-          <img src="assets/icon/icon-chef.svg" width="35" height="35" alt="Chef Icon" placement="top" ngbTooltip="Gutes Essen">
-          <span></span>
-          <img src="assets/icon/icon-spa.svg" width="35" height="35" alt="Spa Icon" placement="top" ngbTooltip="Spa">
-          <span></span>
-          <img src="assets/icon/icon-cocktail.svg" width="35" height="35" alt="Cocktail Icon" placement="top" ngbTooltip="Bars">
-        </div>
-        <div class="icon-block-two">
-          <img src="assets/icon/icon-route.svg" width="35" height="35" alt="Route Icon" placement="top" ngbTooltip="City Tours">
-          <span></span>
-          <img src="assets/icon/icon-camera.svg" width="35" height="35" alt="Camera Icon" placement="top" ngbTooltip="Schöne Gebäuden">
-        </div>
+
+        <app-featured-icon [featured]="featured" *ngFor="let featured of featuredList"></app-featured-icon>
       </div>
     </div>
 

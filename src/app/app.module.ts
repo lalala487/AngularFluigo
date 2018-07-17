@@ -37,6 +37,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { SuccessComponent } from './success/success.component';
 import { ImageService } from './services/image.service';
 import { ReviewComponent } from './review/review.component';
+import { FeaturedIconComponent } from './featured-icon/featured-icon.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ReviewComponent } from './review/review.component';
     UserDataComponent,
     PaymentComponent,
     SuccessComponent,
-    ReviewComponent
+    ReviewComponent,
+    FeaturedIconComponent
   ],
   imports: [
     BrowserModule,

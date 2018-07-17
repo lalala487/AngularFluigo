@@ -14,4 +14,5 @@ export interface Accommodation {
     cities: any;
     segments: any;
     review: Review;
+    featured: any;
 }

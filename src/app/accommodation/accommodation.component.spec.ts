@@ -6,6 +6,11 @@ import { ImageService } from '../services/image.service';
 
 import { of } from 'rxjs/observable/of';
 import { ReviewComponent } from '../review/review.component';
+import { FeaturedIconComponent } from '../featured-icon/featured-icon.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CollectionsService } from '../services/collections.service';
+import { FirestoreService } from '../services/firestore.service';
+import { firestoreServiceStub } from '../services/firestore.service.stub';
 
 describe('AccommodationComponent', () => {
   let component: AccommodationComponent;
@@ -16,14 +21,21 @@ describe('AccommodationComponent', () => {
       getContent: () => of(''),
     };
 
+    const collectionServiceStub = {
+      getCollection: () => [],
+    };
+
     TestBed.configureTestingModule({
-      declarations: [ AccommodationComponent, ReviewComponent ],
+      imports: [NgbModule.forRoot()],
+      declarations: [AccommodationComponent, ReviewComponent, FeaturedIconComponent],
       providers: [
         ImageService,
-        { provide: AngularFireStorage, useValue: serviceStub }
+        { provide: FirestoreService, useValue: firestoreServiceStub },
+        { provide: CollectionsService, useValue: collectionServiceStub },
+        { provide: AngularFireStorage, useValue: serviceStub },
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -8,4 +8,5 @@ export interface City {
     image: Object;
     location: Object;
     review: Review;
+    featured: any;
 }

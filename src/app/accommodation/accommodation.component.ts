@@ -1,19 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { Accommodation } from '../models/accommodation';
 import { ImageService } from '../services/image.service';
 import { SafeStyle } from '@angular/platform-browser';
+import { Amenity } from '../models/amenity';
+import { CollectionsService } from '../services/collections.service';
 
 @Component({
   selector: 'app-accommodation',
   templateUrl: './accommodation.component.html',
-  styleUrls: ['./accommodation.component.css']
+  styleUrls: ['./accommodation.component.css'],
+  providers: [CollectionsService]
 })
-export class AccommodationComponent implements OnInit {
+export class AccommodationComponent implements OnInit, OnChanges {
   @Input() accommodation: Accommodation;
   imageUrl: SafeStyle;
 
+  featuredList: Array<Amenity> = [];
+
   constructor(
-    private imageService: ImageService
+    private imageService: ImageService,
+    private collectionUtils: CollectionsService,
   ) { }
 
   ngOnInit() {
@@ -23,6 +29,15 @@ export class AccommodationComponent implements OnInit {
       this.imageService.getImageDownloadUrl$(image).subscribe(
         url => this.imageUrl = this.imageService.sanitizeImage(url)
       );
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const accommodation: SimpleChange = changes.accommodation;
+
+    if (accommodation) {
+      this.accommodation = accommodation.currentValue as Accommodation;
+      this.featuredList = this.accommodation ? this.collectionUtils.getCollection<Amenity>(this.accommodation.featured) : [];
     }
   }
 

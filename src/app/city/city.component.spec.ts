@@ -5,6 +5,10 @@ import { ReviewComponent } from '../review/review.component';
 import { ImageService } from '../services/image.service';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { of } from 'rxjs/observable/of';
+import { FeaturedIconComponent } from '../featured-icon/featured-icon.component';
+import { FirestoreService } from '../services/firestore.service';
+import { firestoreServiceStub } from '../services/firestore.service.stub';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 describe('CityComponent', () => {
   let component: CityComponent;
@@ -16,9 +20,11 @@ describe('CityComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      declarations: [ CityComponent, ReviewComponent ],
+      imports: [NgbModule.forRoot()],
+      declarations: [ CityComponent, ReviewComponent, FeaturedIconComponent ],
       providers: [
         ImageService,
+        { provide: FirestoreService, useValue: firestoreServiceStub },
         { provide: AngularFireStorage, useValue: serviceStub }
       ]
     })

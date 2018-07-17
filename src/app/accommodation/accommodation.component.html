@@ -32,17 +32,9 @@
     <div class="text-block">
       <p>Bewertung Tripadvisor</p>
       <div class="icon-block-one">
-        <img src="assets/icon/icon-spa.svg" width="35" height="35" alt="Chef Icon" placement="top" ngbTooltip="Gutes Essen">
-        <span></span>
-        <img src="assets/icon/icon-spa.svg" width="35" height="35" alt="Spa Icon" placement="top" ngbTooltip="Spa">
-        <span></span>
-        <img src="assets/icon/icon-spa.svg" width="35" height="35" alt="Cocktail Icon" placement="top" ngbTooltip="Bars">
-        <span></span>
-        <img src="assets/icon/icon-spa.svg" width="35" height="35" alt="Route Icon" placement="top" ngbTooltip="City Tours">
-        <span></span>
-        <img src="assets/icon/icon-spa.svg" width="35" height="35" alt="Camera Icon" placement="top" ngbTooltip="Schöne Gebäuden">
+       <img src="assets/icon/icon-star-{{starNumber}}.png"/>
       </div>
-      <p class="rating-number">4.7 aus 5</p>
+      <p class="rating-number">{{ accommodation?.rating }} aus 5.</p>
     </div>
   </div>
 </div>

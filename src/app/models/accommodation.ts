@@ -15,4 +15,5 @@ export interface Accommodation {
     segments: any;
     review: Review;
     featured: any;
+    rating: number;
 }

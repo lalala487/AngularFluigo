@@ -38,6 +38,7 @@ import { SuccessComponent } from './success/success.component';
 import { ImageService } from './services/image.service';
 import { ReviewComponent } from './review/review.component';
 import { FeaturedIconComponent } from './featured-icon/featured-icon.component';
+import { RatingComponent } from './rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { FeaturedIconComponent } from './featured-icon/featured-icon.component';
     PaymentComponent,
     SuccessComponent,
     ReviewComponent,
-    FeaturedIconComponent
+    FeaturedIconComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,

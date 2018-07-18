@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CollectionsService } from '../services/collections.service';
 import { FirestoreService } from '../services/firestore.service';
 import { firestoreServiceStub } from '../services/firestore.service.stub';
+import { RatingComponent } from '../rating/rating.component';
 
 describe('AccommodationComponent', () => {
   let component: AccommodationComponent;
@@ -27,7 +28,7 @@ describe('AccommodationComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [NgbModule.forRoot()],
-      declarations: [AccommodationComponent, ReviewComponent, FeaturedIconComponent],
+      declarations: [AccommodationComponent, ReviewComponent, FeaturedIconComponent, RatingComponent],
       providers: [
         ImageService,
         { provide: FirestoreService, useValue: firestoreServiceStub },

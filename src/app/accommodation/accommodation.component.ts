@@ -16,8 +16,6 @@ export class AccommodationComponent implements OnInit, OnChanges {
   @Input() accommodation: Accommodation;
   imageUrl: SafeStyle;
 
-  starNumber: number;
-
   locale = environment.locale;
 
   featuredList: Array<Amenity> = [];
@@ -43,13 +41,6 @@ export class AccommodationComponent implements OnInit, OnChanges {
     if (accommodation) {
       this.accommodation = accommodation.currentValue as Accommodation;
       this.featuredList = this.accommodation ? this.collectionUtils.getCollection<Amenity>(this.accommodation.featured) : [];
-
-      this.starNumber = this.getStarNumber(this.accommodation.rating);
     }
   }
-
-  getStarNumber(rating: number): number {
-    return Math.floor(rating * 2);
-  }
-
 }

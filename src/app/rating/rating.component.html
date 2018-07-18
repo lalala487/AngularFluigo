@@ -1,0 +1,13 @@
+  <div class="col-xl-12 pdp-accommodation-review-block gradient">
+    <div class="text-block">
+      <p>Bewertung Tripadvisor</p>
+      <div class="icon-block-one">
+        <img *ngFor="let full of fullStars" src="assets/icon/icon-heart-10.png" width="32"/>
+
+        <img *ngIf="fullStars?.length !== 5" src="assets/icon/icon-heart-{{starFillingPercentage}}.png" width="32"/>
+
+        <img *ngFor="let empty of emptyStars" src="assets/icon/icon-heart-0.png" width="32"/>
+      </div>
+      <p class="rating-number">{{ rating }} <ng-container i18n="rating of">aus</ng-container> {{ maxRating }}</p>
+    </div>
+  </div>

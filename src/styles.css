@@ -815,14 +815,17 @@ width: 9.7rem;
   font-size: 1rem;
 }
 
-.pdp-accommodation-review-block .icon-block-one span {
-  width: .5rem;
-  display: inline-block;
-}
-
 .pdp-accommodation-review-block .icon-block-one {
   margin-bottom: 1rem;
   margin-top: 2rem;
+}
+
+.pdp-accommodation-review-block .icon-block-one img {
+  margin-right: .5rem;
+}
+
+.pdp-accommodation-review-block .icon-block-one img:last-child {
+  margin-right: 0rem;
 }
 
 .pdp-accommodation-review-block .rating-number {

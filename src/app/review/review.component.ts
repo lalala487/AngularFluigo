@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from
 import { Review } from '../models/review';
 import { SafeUrl } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-review',
@@ -11,6 +12,7 @@ import { ImageService } from '../services/image.service';
 export class ReviewComponent implements OnChanges {
   @Input() review: Review;
   imageUrl: SafeUrl;
+  locale = environment.locale;
 
   constructor(
     private imageService: ImageService

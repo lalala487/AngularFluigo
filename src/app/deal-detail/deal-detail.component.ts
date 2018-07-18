@@ -6,6 +6,7 @@ import { ImageService } from '../services/image.service';
 import { Deal } from '../models/deal';
 import { City } from '../models/city';
 import { Accommodation } from '../models/accommodation';
+import { environment } from '../../environments/environment.prod';
 
 @Component({
   selector: 'app-deal-detail',
@@ -19,6 +20,8 @@ export class DealDetailComponent implements OnInit {
   city: City;
   accommodation: Accommodation;
   imageUrl: SafeStyle;
+
+  locale = environment.locale;
 
   currentStep = 0;
 

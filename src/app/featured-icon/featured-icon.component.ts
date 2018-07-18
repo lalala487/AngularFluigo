@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from
 import { Amenity } from '../models/amenity';
 import { SafeUrl } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-featured-icon',
@@ -11,6 +12,8 @@ import { ImageService } from '../services/image.service';
 export class FeaturedIconComponent implements OnChanges {
   @Input() featured: Amenity;
   imageUrl: SafeUrl;
+
+  locale = environment.locale;
 
   constructor(
     private imageService: ImageService

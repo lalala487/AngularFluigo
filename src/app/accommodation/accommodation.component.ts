@@ -4,6 +4,7 @@ import { ImageService } from '../services/image.service';
 import { SafeStyle } from '@angular/platform-browser';
 import { Amenity } from '../models/amenity';
 import { CollectionsService } from '../services/collections.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-accommodation',
@@ -17,6 +18,7 @@ export class AccommodationComponent implements OnInit, OnChanges {
 
   starNumber: number;
 
+  locale = environment.locale;
 
   featuredList: Array<Amenity> = [];
 

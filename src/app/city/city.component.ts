@@ -3,6 +3,7 @@ import { SafeStyle } from '@angular/platform-browser';
 import { City } from '../models/city';
 import { Amenity } from '../models/amenity';
 import { CollectionsService } from '../services/collections.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-city',
@@ -16,6 +17,8 @@ export class CityComponent implements OnChanges {
   @Input() imageUrl: SafeStyle;
 
   featuredList: Array<Amenity> = [];
+
+  locale = environment.locale;
 
   constructor(
     private collectionUtils: CollectionsService,

@@ -32,6 +32,8 @@ describe('FeaturedIconComponent', () => {
     component = fixture.componentInstance;
     component.featured = {'description': {
       'en_GB': 'xpto',
+      'de_CH': 'xpto',
+      'nl_NL': 'xpto',
     }} as Amenity;
 
     fixture.detectChanges();

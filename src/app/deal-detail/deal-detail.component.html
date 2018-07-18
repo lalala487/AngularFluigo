@@ -2,7 +2,7 @@
   <div class="sidebarjs-center-container" style="display: flex; align-items: center; flex-wrap: wrap; height: 100%;">
     <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
       <div class="content-block price-title">
-        <p>Übersicht</p>
+        <p i18n="sidebar overview">Übersicht</p>
         <hr class="price-hr"/>
       </div>
       <!-- Below is the amount of money that customer 1 needs to pay based on the selection of the flight.
@@ -37,7 +37,7 @@
         <p class="price-amount">CHF {{ deal?.marketingPrice }}</p>
       </div>
       <div class="content-block sidebarjs-close-button">
-        <button sidebarjsClose class="btn btn-small btn-primary" type="next">Schliessen</button>
+        <button sidebarjsClose class="btn btn-small btn-primary" type="next" i18n="close sidebar">Schliessen</button>
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@
     <div class="row">
       <div class="col-xs-4">
         <div class="btn-back-container">
-          <button [disabled]="currentStep == 0" (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp">Zurück</button>
+          <button [disabled]="currentStep == 0" (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp" i18n="sidebar next">Zurück</button>
         </div>
       </div>
       <div class="col-xs-4">
@@ -59,13 +59,13 @@
             This changes throughout the checkout process because the customer can change all the time certain options.
             The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
             <p class="price-amount">CHF {{ deal?.marketingPrice }}</p>
-            <button sidebarjsOpen class="btn btn-small btn-primary" type="next">Details</button>
+            <button sidebarjsOpen class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
           </div>
         </div>
       </div>
       <div class="col-xs-4">
         <div class="btn-next-container">
-          <button (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp">Weiter</button>
+          <button (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp" i18n="sidebar next">Weiter</button>
         </div>
       </div>
     </div>
@@ -84,12 +84,12 @@
           <div class="steps">
             <div class="price-container">
               <div class="price-info">
-                <p class="price-label">Gesamtbetrag</p>
+                <p class="price-label" i18n="sidebar total">Gesamtbetrag</p>
                 <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
                 This changes throughout the checkout process because the customer can change all the time certain options.
                 The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
                 <p class="price-amount">CHF {{ deal?.marketingPrice }}</p>
-                <button sidebarjsOpen class="btn btn-small btn-primary" type="next">Details</button>
+                <button sidebarjsOpen class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
               </div>
             </div>
             <div class="timeline-container">
@@ -106,7 +106,7 @@
                 <div class="arrow-wrapper">
                   <div class="arrow-nights">
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
-                    <ng-template #tipAccommodation>3 Nächte<br />{{(accommodationDoc | doc | async)?.name.en_GB}}<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
+                    <ng-template #tipAccommodation>3 Nächte<br />{{(accommodationDoc | doc | async)?.name[locale]}}<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
                     <!-- Below is the amount of people that will be staying at the accommodation -->
                     <ng-template #tipPeople>1 Erwachsene<br />1 Kind</ng-template>
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->

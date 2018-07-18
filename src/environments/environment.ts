@@ -11,5 +11,6 @@ export const environment = {
     projectId: 'project-flugio',
     messagingSenderId: '82113536445',
     storageBucket: 'project-flugio.appspot.com',
-  }
+  },
+  locale: 'de_CH'
 };

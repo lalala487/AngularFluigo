@@ -39,7 +39,6 @@ import { ImageService } from './services/image.service';
 import { ReviewComponent } from './review/review.component';
 import { FeaturedIconComponent } from './featured-icon/featured-icon.component';
 import { RatingComponent } from './rating/rating.component';
-import { AgeOptionComponent } from './age-option/age-option.component';
 
 @NgModule({
   declarations: [
@@ -66,8 +65,7 @@ import { AgeOptionComponent } from './age-option/age-option.component';
     SuccessComponent,
     ReviewComponent,
     FeaturedIconComponent,
-    RatingComponent,
-    AgeOptionComponent
+    RatingComponent
   ],
   imports: [
     BrowserModule,

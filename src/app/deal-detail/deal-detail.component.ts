@@ -23,6 +23,10 @@ export class DealDetailComponent implements OnInit {
 
   locale = environment.locale;
 
+  accummulations = {
+    'people': 1
+  };
+
   currentStep = 0;
 
   constructor(

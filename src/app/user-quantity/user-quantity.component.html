@@ -3,39 +3,14 @@
     <div class="col-xl-12">
       <div class="row">
         <div class="col-xl-12">
-          <p class="label-user-quantity">Anzahl der Personen</p>
+          <p class="label-user-quantity" i18n="number of people">Anzahl der Personen</p>
         </div>
       </div>
       <div class="row">
         <div class="user-quantity-button-wrapper">
-          <div class="button-quantity">
-            <button class="btn-press fade-in-out" type="next">
-              <span class="button-number-day">1</span>
-            </button>
-          </div>
-          <div class="button-quantity">
-            <button class="btn-press fade-in-out active" type="next">
-              <span class="button-number-day">2</span>
-            </button>
-          </div>
-          <div class="button-quantity">
-            <button class="btn-press fade-in-out" type="next">
-              <span class="button-number-day">3</span>
-            </button>
-          </div>
-          <div class="button-quantity">
-            <button class="btn-press fade-in-out" type="next">
-              <span class="button-number-day">4</span>
-            </button>
-          </div>
-          <div class="button-quantity">
-            <button class="btn-press fade-in-out" type="next">
-              <span class="button-number-day">5</span>
-            </button>
-          </div>
-          <div class="button-quantity">
-            <button class="btn-press fade-in-out" type="next">
-              <span class="button-number-day">6</span>
+          <div *ngFor="let user of numberOfUsers" class="button-quantity">
+            <button (click)="selectNumberOfUsers(user)" [class.active]="user === userNumber" class="btn-press fade-in-out" type="next">
+              <span class="button-number-day">{{ user }}</span>
             </button>
           </div>
         </div>

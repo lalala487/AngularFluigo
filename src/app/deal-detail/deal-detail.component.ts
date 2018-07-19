@@ -24,7 +24,8 @@ export class DealDetailComponent implements OnInit {
   locale = environment.locale;
 
   accummulations = {
-    'people': 1
+    'people': 1,
+    'hasChildren': false,
   };
 
   currentStep = 0;

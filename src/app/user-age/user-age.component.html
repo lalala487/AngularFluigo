@@ -3,20 +3,20 @@
     <div>
       <div class="row">
         <div class="col-xl-12">
-          <p class="label-user-age">Am den gewünschte Reisedatum, sind alle Personen älter als 18?</p>
+          <p class="label-user-age" i18n="all persons under 18">Am den gewünschte Reisedatum, sind alle Personen älter als 18?</p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4">
         </div>
         <div class="col-md-2">
-          <button class="btn-press fade-in-out active" type="next">
-            <span class="button-number-day">Ja</span>
+          <button [class.active]="hasChildren" class="btn-press fade-in-out active" type="next" (click)=selectHasChildren(true)>
+            <span class="button-number-day" i18n="yes">Ja</span>
           </button>
         </div>
         <div class="col-md-2">
-          <button class="btn-press fade-in-out" type="next">
-            <span class="button-number-day">Nein</span>
+          <button [class.active]="!hasChildren" class="btn-press fade-in-out" type="next" (click)=selectHasChildren(false)>
+            <span class="button-number-day" i18n="no">Nein</span>
           </button>
         </div>
         <div class="col-sm-4">

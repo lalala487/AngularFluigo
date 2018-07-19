@@ -1005,6 +1005,11 @@ hr {
   margin: 0 auto;
   letter-spacing: .07rem;
   font-size: 1rem;
+  max-width: 12rem;
+}
+
+.pdp-icons-block .text-block img {
+  margin: .5rem .5rem .5rem .5rem;
 }
 
 .pdp-icons-block .icon-block-one span,

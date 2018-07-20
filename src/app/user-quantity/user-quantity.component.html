@@ -1,19 +1,58 @@
-<div class="pdp-user-quantity-block col-xl-12">
+<div class="pdp-payment-block col-xl-12">
   <div class="center-wrap">
-    <div class="col-xl-12">
+    <div>
       <div class="row">
         <div class="col-xl-12">
-          <p class="label-user-quantity" i18n="number of people">Anzahl der Personen</p>
+          <p class="label-payment">Wer kommt mit?</p>
         </div>
       </div>
-      <div class="row">
-        <div class="user-quantity-button-wrapper">
-          <div *ngFor="let user of numberOfUsers" class="button-quantity">
-            <button (click)="selectNumberOfUsers(user)" [class.active]="user === userNumber" class="btn-press fade-in-out" type="next">
-              <span class="button-number-day">{{ user }}</span>
-            </button>
+      <div class="row payment-form">
+        <div class="col-sm-2"></div>
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-6">
+              <p style="text-align: center;">Erwachsene</p>
+            </div>
+            <div class="col-lg-6">
+              <p style="text-align: center;">Kinder</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <form>
+                <div class="form-group month">
+                  <select>
+                    <option value="" selected disabled hidden>Number</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-6">
+              <form>
+                <div class="form-group month">
+                  <select>
+                    <option value="" selected disabled hidden>Number</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                  </select>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
+        <div class="col-sm-2"></div>
       </div>
     </div>
   </div>

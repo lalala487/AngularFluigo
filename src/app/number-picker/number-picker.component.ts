@@ -15,7 +15,6 @@ export class NumberPickerComponent {
   constructor() { }
 
   increaseNumber() {
-    console.log('increase', this.currentNumber);
     if (this.currentNumber < this.maxNumber) {
       this.currentNumber++;
       this.numberChange.emit(this.currentNumber);
@@ -23,7 +22,6 @@ export class NumberPickerComponent {
   }
 
   decreaseNumber() {
-    console.log('decrease', this.currentNumber);
     if (this.currentNumber > this.minNumber) {
       this.currentNumber--;
       this.numberChange.emit(this.currentNumber);

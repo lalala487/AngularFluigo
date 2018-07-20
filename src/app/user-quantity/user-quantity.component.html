@@ -6,6 +6,7 @@
           <p class="label-payment">Wer kommt mit?</p>
         </div>
       </div>
+      <app-number-picker [minNumber]="1" [maxNumber]="6" [(currentNumber)]="userNumber" (numberChange)="onNumberChange($event)"></app-number-picker>
       <div class="row payment-form">
         <div class="col-sm-2"></div>
         <div class="col-lg-8">
@@ -54,6 +55,8 @@
         </div>
         <div class="col-sm-2"></div>
       </div>
+
+
     </div>
   </div>
 </div>

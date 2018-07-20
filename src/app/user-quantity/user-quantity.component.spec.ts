@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserQuantityComponent } from './user-quantity.component';
+import { NumberPickerComponent } from '../number-picker/number-picker.component';
 
 describe('UserQuantityComponent', () => {
   let component: UserQuantityComponent;
@@ -8,7 +9,7 @@ describe('UserQuantityComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserQuantityComponent ]
+      declarations: [ UserQuantityComponent, NumberPickerComponent ],
     })
     .compileComponents();
   }));

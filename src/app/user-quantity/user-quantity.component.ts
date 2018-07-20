@@ -17,6 +17,18 @@ export class UserQuantityComponent implements OnInit {
     this.userNumberChange.emit(this.userNumber);
   }
 
+  onNumberChange(value) {
+    this.userNumber = value;
+
+    this.userNumberChange.emit(this.userNumber);
+  }
+
+  onValueChanged(value: number): void {
+    this.userNumber = value;
+
+    this.userNumberChange.emit(this.userNumber);
+  }
+
   constructor() { }
 
   ngOnInit() {

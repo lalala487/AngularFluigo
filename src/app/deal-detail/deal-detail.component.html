@@ -108,11 +108,11 @@
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
                     <ng-template #tipAccommodation>3 Nächte<br />{{(accommodationDoc | doc | async)?.name[locale]}}<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
                     <!-- Below is the amount of people that will be staying at the accommodation -->
-                    <ng-template #tipPeople>1 Erwachsene<br />1 Kind</ng-template>
+                    <ng-template #tipPeople>{{ accummulations.adults }} Erwachsene<br />{{ accummulations.children }} Kind</ng-template>
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
                     <p class="nights">3 <img src="assets/icon/icon-moon.svg" height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
                     <!-- Below is the amount of people that will be staying at the accommodation -->
-                    <p class="persons">{{ accummulations?.people }} <img src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top" [ngbTooltip]="tipPeople"></p>
+                    <p class="persons">{{ accummulations?.adults + accummulations?.children }} <img src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top" [ngbTooltip]="tipPeople"></p>
                   </div>
                 </div>
                 <div class="to-date">
@@ -165,7 +165,7 @@
 
         <app-accommodation *ngIf="currentStep == 1" [accommodation]="accommodation" style="width:100%;"></app-accommodation>
 
-        <app-user-quantity *ngIf="currentStep == 2" style="width:100%;" [(userNumber)]="accummulations.people"></app-user-quantity>
+        <app-user-quantity *ngIf="currentStep == 2" style="width:100%;" [(childrenNumber)]="accummulations.children" [(adultNumber)]="accummulations.adults"></app-user-quantity>
 
         <app-user-age *ngIf="currentStep == 3" style="width:100%;" [(hasChildren)]="accummulations.hasChildren"></app-user-age>
 

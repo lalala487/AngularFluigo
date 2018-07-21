@@ -25,6 +25,8 @@ export class DealDetailComponent implements OnInit {
 
   accummulations = {
     'people': 1,
+    'adults': 1,
+    'children': 0,
     'hasChildren': false,
   };
 

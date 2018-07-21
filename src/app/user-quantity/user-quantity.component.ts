@@ -6,27 +6,22 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./user-quantity.component.css']
 })
 export class UserQuantityComponent implements OnInit {
-  @Input() userNumber: number;
-  @Output() userNumberChange: EventEmitter<any> = new EventEmitter();
+  @Input() childrenNumber: number;
+  @Input() adultNumber: number;
 
-  numberOfUsers = [1, 2, 3, 4, 5, 6];
+  @Output() childrenNumberChange: EventEmitter<any> = new EventEmitter();
+  @Output() adultNumberChange: EventEmitter<any> = new EventEmitter();
 
-  selectNumberOfUsers(user) {
-    this.userNumber = user;
+  onChildrenChange(value) {
+    this.childrenNumber = value;
 
-    this.userNumberChange.emit(this.userNumber);
+    this.childrenNumberChange.emit(this.childrenNumber);
   }
 
-  onNumberChange(value) {
-    this.userNumber = value;
+  onAdultChange(value) {
+    this.adultNumber = value;
 
-    this.userNumberChange.emit(this.userNumber);
-  }
-
-  onValueChanged(value: number): void {
-    this.userNumber = value;
-
-    this.userNumberChange.emit(this.userNumber);
+    this.adultNumberChange.emit(this.adultNumber);
   }
 
   constructor() { }

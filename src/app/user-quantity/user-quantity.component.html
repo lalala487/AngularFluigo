@@ -12,11 +12,11 @@
           <div class="row">
             <div class="col-lg-6">
               <p style="text-align: center;">Erwachsene</p>
-              <app-number-picker [minNumber]="1" [maxNumber]="6" [(currentNumber)]="userNumber" (numberChange)="onNumberChange($event)"></app-number-picker>
+              <app-number-picker [minNumber]="1" [maxNumber]="6" [(currentNumber)]="adultNumber" (numberChange)="onAdultChange($event)"></app-number-picker>
             </div>
             <div class="col-lg-6">
               <p style="text-align: center;">Kinder</p>
-              <app-number-picker [minNumber]="1" [maxNumber]="6" [(currentNumber)]="userNumber" (numberChange)="onNumberChange($event)"></app-number-picker>
+              <app-number-picker [minNumber]="0" [maxNumber]="6" [(currentNumber)]="childrenNumber" (numberChange)="onChildrenChange($event)"></app-number-picker>
             </div>
           </div>
         </div>

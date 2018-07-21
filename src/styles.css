@@ -1098,7 +1098,7 @@ hr {
   width: 100%;
 }
 
-.pdp-user-quantity-block .label-user-quantity {
+.pdp-user-quantity-block .label-user-age {
   text-align: center;
   margin-bottom: 3rem;
   letter-spacing: .07rem;
@@ -1112,57 +1112,44 @@ hr {
     align-items: center;
     height: 100vh;
   }
-
 }
 
-@media only screen and (max-width: 767.98px)  {
-  .pdp-user-quantity-block .btn-press{
-  }
-
+@media only screen and (max-width: 1199.98px)  {
   .pdp-user-quantity-block {
     margin-top: 3rem;
+    margin-bottom: 6rem;
   }
 }
 
-@media only screen and (min-width: 768px)  {
-  .user-quantity-button-wrapper .button-quantity{
-    margin-bottom: 2rem;
-    float:left;
-    height: 4rem !important;
-    width: auto !important;
-    margin-bottom: 0rem !important;
-  }
-
-  .user-quantity-button-wrapper {
-    width: auto !important;
-    margin: 0 auto;
-  }
-
-  .user-quantity-button-wrapper .button-quantity{
-    margin-right: 1rem;
-  }
-
-  .user-quantity-button-wrapper .button-quantity:last-child{
-    margin-right: 0rem;
-  }
-
-  .user-quantity-button-wrapper .button-quantity .btn-press{
-    padding-top: 0rem;
-    padding-bottom: 0rem;
-    height: 4rem !important;
-    width: 4rem !important;
-  }
-
+.pdp-user-quantity-block .label-users {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
 }
 
-.user-quantity-button-wrapper .button-quantity{
-  height: 5rem;
-  width: 100%;
-  margin-bottom: 2rem;
+.number-picker-wrapper {
+  width:140px;
+  margin: 0 auto;
+  text-align:center;
 }
 
-.user-quantity-button-wrapper{
-  width: 100%;
+.btn-number-users {
+  display:inline-block;
+  text-align:center;
+}
+
+.number-picker-number {
+  display:inline-block;
+  text-align:center;
+}
+
+.number-picker-minus-btn {
+  margin-right: .75rem;
+}
+
+.number-picker-plus-btn {
+  margin-left: .75rem;
 }
 
 /**********************************************************************/
@@ -2070,6 +2057,28 @@ select:focus {
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-round-sm {
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 100%;
+  height: 2.6rem;
+  width: 2.6rem;
+  background: rgba(85, 144, 151, 1);
+  color: rgba(235, 235, 235, 1);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  cursor:pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.btn-round-sm:focus {
+  outline: none;
 }
 
 .btn-round-pdp {

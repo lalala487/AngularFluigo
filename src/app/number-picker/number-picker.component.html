@@ -1,5 +1,5 @@
-<button (click)="decreaseNumber()">-----</button>
-<p>
-  {{ currentNumber }}
-</p>
-<button (click)="increaseNumber()">+++++</button>
+<div class="number-picker-wrapper">
+  <button class="number-picker-minus-btn btn-round-sm btn-number-users" (click)="decreaseNumber()">-</button>
+  <p class="number-picker-number">{{ currentNumber }}</p>
+  <button class="number-picker-plus-btn btn-round-sm btn-number-users" (click)="increaseNumber()">+</button>
+</div>

@@ -1,62 +1,27 @@
-<div class="pdp-payment-block col-xl-12">
+<div class="pdp-user-quantity-block col-xl-12">
   <div class="center-wrap">
     <div>
       <div class="row">
         <div class="col-xl-12">
-          <p class="label-payment">Wer kommt mit?</p>
+          <p class="label-users">Wer kommt mit?</p>
         </div>
       </div>
-      <app-number-picker [minNumber]="1" [maxNumber]="6" [(currentNumber)]="userNumber" (numberChange)="onNumberChange($event)"></app-number-picker>
-      <div class="row payment-form">
+      <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-lg-8">
           <div class="row">
             <div class="col-lg-6">
               <p style="text-align: center;">Erwachsene</p>
+              <app-number-picker [minNumber]="1" [maxNumber]="6" [(currentNumber)]="userNumber" (numberChange)="onNumberChange($event)"></app-number-picker>
             </div>
             <div class="col-lg-6">
               <p style="text-align: center;">Kinder</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <form>
-                <div class="form-group month">
-                  <select>
-                    <option value="" selected disabled hidden>Number</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                  </select>
-                </div>
-              </form>
-            </div>
-            <div class="col-lg-6">
-              <form>
-                <div class="form-group month">
-                  <select>
-                    <option value="" selected disabled hidden>Number</option>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                  </select>
-                </div>
-              </form>
+              <app-number-picker [minNumber]="1" [maxNumber]="6" [(currentNumber)]="userNumber" (numberChange)="onNumberChange($event)"></app-number-picker>
             </div>
           </div>
         </div>
         <div class="col-sm-2"></div>
       </div>
-
-
     </div>
   </div>
 </div>

@@ -71,11 +71,20 @@ export class DealDetailComponent implements OnInit {
   }
 
   moveToNextStep(): void {
-    this.currentStep = this.currentStep + 1;
+
+    if (this.currentStep === 2 && this.accummulations.children === 0) {
+      this.currentStep = this.currentStep + 2;
+    } else {
+      this.currentStep = this.currentStep + 1;
+    }
   }
 
   moveToPreviousStep(): void {
-    this.currentStep = this.currentStep - 1;
+    if (this.currentStep === 4 && this.accummulations.children === 0) {
+      this.currentStep = this.currentStep - 2;
+    } else {
+      this.currentStep = this.currentStep - 1;
+    }
   }
 
 }

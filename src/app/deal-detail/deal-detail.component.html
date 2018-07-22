@@ -167,7 +167,9 @@
 
         <app-user-quantity *ngIf="currentStep == 2" style="width:100%;" [(childrenNumber)]="accummulations.children" [(adultNumber)]="accummulations.adults"></app-user-quantity>
 
-        <app-user-age *ngIf="currentStep == 3" style="width:100%;" [(hasChildren)]="accummulations.hasChildren"></app-user-age>
+        <app-ages-children *ngIf="currentStep == 3" style="width:100%;"></app-ages-children>
+
+        <app-calendar *ngIf="currentStep == 4" style="width:100%;"></app-calendar>
 
       </div>
     </div>

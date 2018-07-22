@@ -10,12 +10,12 @@
         <div class="col-sm-2"></div>
         <div class="col-lg-8">
           <div class="row">
-            <div class="col-lg-6">
-              <p style="text-align: center;">Erwachsene</p>
+            <div class="col-lg-6 adults">
+              <p class="number-picker-label">Erwachsene<img src="assets/icon/tooltip.svg" height="19" alt="Icon Tooltip" placement="top" ngbTooltip="Jahre 18+"></p>
               <app-number-picker [minNumber]="1" [maxNumber]="6" [(currentNumber)]="adultNumber" (numberChange)="onAdultChange($event)"></app-number-picker>
             </div>
-            <div class="col-lg-6">
-              <p style="text-align: center;">Kinder</p>
+            <div class="col-lg-6 children">
+              <p class="number-picker-label">Kinder<img src="assets/icon/tooltip.svg" height="19" alt="Icon Tooltip" placement="top" ngbTooltip="Jahre 0 - 17"></p>
               <app-number-picker [minNumber]="0" [maxNumber]="6" [(currentNumber)]="childrenNumber" (numberChange)="onChildrenChange($event)"></app-number-picker>
             </div>
           </div>

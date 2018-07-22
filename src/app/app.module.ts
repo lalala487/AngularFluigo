@@ -40,6 +40,7 @@ import { ReviewComponent } from './review/review.component';
 import { FeaturedIconComponent } from './featured-icon/featured-icon.component';
 import { RatingComponent } from './rating/rating.component';
 import { NumberPickerComponent } from './number-picker/number-picker.component';
+import { AgesChildrenComponent } from './ages-children/ages-children.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { NumberPickerComponent } from './number-picker/number-picker.component';
     ReviewComponent,
     FeaturedIconComponent,
     RatingComponent,
-    NumberPickerComponent
+    NumberPickerComponent,
+    AgesChildrenComponent
   ],
   imports: [
     BrowserModule,

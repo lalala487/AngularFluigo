@@ -1618,6 +1618,41 @@ select:focus {
 }
 
 /**********************************************************************/
+/**************************   Ages Children   *************************/
+/**********************************************************************/
+
+.pdp-ages-children-block {
+  width: 100%;
+}
+
+.pdp-ages-children-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-payment-block .label-ages-children {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-ages-children-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 1199.98px)  {
+  .pdp-ages-children-block {
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+  }
+}
+
+/**********************************************************************/
 /***************************   Insurance   ****************************/
 /**********************************************************************/
 

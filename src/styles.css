@@ -1625,15 +1625,43 @@ select:focus {
   width: 100%;
 }
 
+.pdp-ages-children-block .form-control {
+  background-color: inherit;
+  border-radius: 0;
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  color: rgba(235,235,235,1);
+  border-top: 0rem;
+  border-right: 0rem;
+  border-left: 0rem;
+  border-style: solid;
+  border-color: rgba(235,235,235,0.5);
+  border-bottom-width: .12rem;
+  padding: 0.5rem 1rem;
+  width: 29%;
+  display: inline-block;
+}
+
+.pdp-ages-children-block .birthdate-day,
+.pdp-ages-children-block .birthdate-month {
+  margin-right: .85rem;
+}
+
 .pdp-ages-children-block .center-wrap {
   width: 100%;
 }
 
-.pdp-payment-block .label-ages-children {
+.pdp-ages-children-block .label-ages-children {
   text-align: center;
   margin-bottom: 3rem;
   letter-spacing: .07rem;
   font-size: 1rem;
+}
+
+.pdp-ages-children-block  input[type=number]::-webkit-inner-spin-button,
+.pdp-ages-children-block  input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 @media only screen and (min-width: 1200px)  {
@@ -1645,9 +1673,17 @@ select:focus {
   }
 }
 
+@media only screen and (min-width: 992px)  {
+  .pdp-ages-children-block .label-birthdate {
+    padding-top: .5rem;
+    letter-spacing: .07rem;
+    font-size: 1rem;
+  }
+}
+
 @media only screen and (max-width: 1199.98px)  {
   .pdp-ages-children-block {
-    margin-top: 3rem;
+    margin-top: 1rem;
     margin-bottom: 6rem;
   }
 }

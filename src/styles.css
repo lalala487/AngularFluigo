@@ -1,5 +1,4 @@
 @import "~bootstrap/dist/css/bootstrap.css";
-@import "~ng-pick-datetime/assets/style/picker.min.css";
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 
 
@@ -1305,6 +1304,70 @@ hr {
   .pdp-calendar-block .filters {
     margin-bottom: 2rem;
   }
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .cal-month-view {
+    width: 19rem;
+  }
+}
+
+@media only screen and (min-width: 768px)  {
+  .cal-month-view {
+    width: 40rem;
+  }
+}
+
+@media only screen and (min-width: 1400px)  {
+  .cal-month-view {
+    width: 50rem;
+  }
+}
+
+.cal-month-view .cal-day-cell.cal-today {
+    background-color: inherit;
+}
+
+.cal-month-view .cal-day-cell.cal-today .cal-day-number {
+    font-size: 1rem;
+}
+
+.cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+    color: rgba(235,235,235,1);
+    font-size: 1rem;
+}
+
+.cal-month-view .cal-day-number {
+    color: rgba(235,235,235,1);
+    font-size: 1rem;
+}
+
+.cal-month-view .cal-day-cell:not(:last-child) {
+    border-right: 1px solid rgba(235,235,235,.25);
+}
+
+.cal-month-view .cal-days .cal-cell-row {
+    border-bottom: 1px solid rgba(235,235,235,.25);
+}
+
+.cal-month-view .cal-days {
+    border: 1px solid rgba(235,235,235,.25);
+    border-bottom: 0;
+}
+
+.cal-month-view .cal-cell-row:hover {
+    background-color: inherit;
+}
+
+.cal-month-view .cal-cell-row .cal-cell:hover, .cal-month-view .cal-cell.cal-has-events.cal-open {
+    background-color: rgba(235,235,235,.2);
+    color: rgba(235,235,235,1);
+}
+
+.cal-month-view .cal-header {
+  font-weight: normal;
+  font-size: 1rem;
+  letter-spacing: .07rem;
 }
 
 /**********************************************************************/

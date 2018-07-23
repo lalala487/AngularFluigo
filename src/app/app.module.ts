@@ -41,6 +41,7 @@ import { FeaturedIconComponent } from './featured-icon/featured-icon.component';
 import { RatingComponent } from './rating/rating.component';
 import { NumberPickerComponent } from './number-picker/number-picker.component';
 import { AgesChildrenComponent } from './ages-children/ages-children.component';
+import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { AgesChildrenComponent } from './ages-children/ages-children.component';
     SidebarJSModule.forRoot(),
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    CalendarModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,

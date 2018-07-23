@@ -1322,6 +1322,10 @@ hr {
   }
 }
 
+.cal-days {
+  background-image: linear-gradient(to bottom right, rgba(19,78,94,.6) 0%, rgba(77,131,132,.6) 100%);
+}
+
 @media only screen and (max-width: 767.98px)  {
   .cal-month-view {
     width: 19rem;
@@ -1364,15 +1368,15 @@ hr {
 }
 
 .cal-month-view .cal-day-cell:not(:last-child) {
-    border-right: 1px solid rgba(235,235,235,.25);
+    border-right: 1px solid rgba(235,235,235,.2);
 }
 
 .cal-month-view .cal-days .cal-cell-row {
-    border-bottom: 1px solid rgba(235,235,235,.25);
+    border-bottom: 1px solid rgba(235,235,235,.2);
 }
 
 .cal-month-view .cal-days {
-    border: 1px solid rgba(235,235,235,.25);
+    border: 0px solid rgba(235,235,235,.2);
     border-bottom: 0;
 }
 

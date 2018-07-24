@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
+import { Birthday } from '../models/birthday';
 
 @Component({
   selector: 'app-ages-children',
@@ -7,7 +8,10 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from
 })
 export class AgesChildrenComponent implements OnChanges {
   @Input() childrenNumber: number;
-  @Input() childrenBirthdays: Array<any>;
+  @Input() childrenBirthdays: Array<Birthday>;
+  @Input() accummulations: Object;
+
+  @Output() childrenBirthdaysChange: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -18,7 +22,9 @@ export class AgesChildrenComponent implements OnChanges {
       this.childrenNumber = childrenNumber.currentValue as number;
 
       if (this.childrenNumber >= 1) {
-        this.childrenBirthdays = Array(this.childrenNumber);
+        const birth = {'day': 1, 'month': 1, 'year': 2018} as Birthday;
+        this.childrenBirthdaysChange.emit(this.childrenBirthdays);
+        this.childrenBirthdays = Array(this.childrenNumber).fill(birth);
       }
     }
   }

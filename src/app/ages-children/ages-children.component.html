@@ -14,13 +14,11 @@
               <p class="label-birthdate">Geburtsdatum Kind {{ i + 1 }}</p>
             </div>
             <div class="col-xl-12">
-              <form>
                 <div class="form-group">
-                  <input type="number" required autocomplete="off" inputmode="numeric" pattern="[0-9]*{2}" min="0" class="form-control birthdate-day" id="formGroupExampleInput" placeholder="TT">
-                  <input type="number" required autocomplete="off" inputmode="numeric" pattern="[0-9]*{2}" min="0" class="form-control birthdate-month" id="formGroupExampleInput" placeholder="MM">
-                  <input type="number" required autocomplete="off" inputmode="numeric" pattern="[0-9]*{4}" min="0" class="form-control birthdate-year" id="formGroupExampleInput" placeholder="JJJJ">
+                  <input [(ngModel)]="accummulations['birthday' + i].day" name="day-{{i}}" type="number" required autocomplete="off" inputmode="numeric" min="0" max="31" class="form-control birthdate-day" placeholder="TT">
+                  <input [(ngModel)]="accummulations['birthday' + i].month" name="month-{{i}}" type="number" required autocomplete="off" inputmode="numeric" min="0" max="12" class="form-control birthdate-month" placeholder="MM">
+                  <input [(ngModel)]="accummulations['birthday' + i].year" name="year-{{i}}" type="number" required autocomplete="off" inputmode="numeric" min="0" max="2019" class="form-control birthdate-year" placeholder="JJJJ">
                 </div>
-              </form>
             </div>
           </div>
         </div>

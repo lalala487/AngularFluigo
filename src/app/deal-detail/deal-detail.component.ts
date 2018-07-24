@@ -7,6 +7,7 @@ import { Deal } from '../models/deal';
 import { City } from '../models/city';
 import { Accommodation } from '../models/accommodation';
 import { environment } from '../../environments/environment.prod';
+import { Birthday } from '../models/birthday';
 
 @Component({
   selector: 'app-deal-detail',
@@ -27,7 +28,13 @@ export class DealDetailComponent implements OnInit {
     'people': 1,
     'adults': 1,
     'children': 0,
-    'childrenBirthdays': [],
+    'childrenBirthdays': Object,
+    'birthday0': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
+    'birthday1': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
+    'birthday2': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
+    'birthday3': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
+    'birthday4': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
+    'birthday5': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
     'hasChildren': false,
   };
 
@@ -72,6 +79,9 @@ export class DealDetailComponent implements OnInit {
   }
 
   moveToNextStep(): void {
+    if (this.currentStep === 3) {
+      console.log('struct', this.accummulations);
+    }
 
     if (this.currentStep === 2 && this.accummulations.children === 0) {
       this.currentStep = this.currentStep + 2;

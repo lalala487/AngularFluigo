@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AgesChildrenComponent } from './ages-children.component';
+import { FormsModule } from '../../../node_modules/@angular/forms';
 
 describe('AgesChildrenComponent', () => {
   let component: AgesChildrenComponent;
@@ -8,6 +9,7 @@ describe('AgesChildrenComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [FormsModule],
       declarations: [ AgesChildrenComponent ]
     })
     .compileComponents();

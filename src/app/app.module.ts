@@ -41,6 +41,7 @@ import { RatingComponent } from './rating/rating.component';
 import { NumberPickerComponent } from './number-picker/number-picker.component';
 import { AgesChildrenComponent } from './ages-children/ages-children.component';
 import { CalendarModule } from 'angular-calendar';
+import { FormsModule } from '../../node_modules/@angular/forms';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { CalendarModule } from 'angular-calendar';
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule.forRoot(),
+    FormsModule,
     SidebarJSModule.forRoot(),
     CalendarModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),

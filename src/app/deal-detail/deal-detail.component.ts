@@ -27,6 +27,7 @@ export class DealDetailComponent implements OnInit {
     'people': 1,
     'adults': 1,
     'children': 0,
+    'childrenBirthdays': [],
     'hasChildren': false,
   };
 

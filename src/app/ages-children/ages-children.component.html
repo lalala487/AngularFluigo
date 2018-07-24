@@ -9,9 +9,9 @@
       <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-lg-8">
-          <div class="row">
+          <div class="row" *ngFor="let birthday of childrenBirthdays; let i = index">
             <div class="col-xl-12">
-              <p class="label-birthdate">Geburtsdatum Kind 1</p>
+              <p class="label-birthdate">Geburtsdatum Kind {{ i + 1 }}</p>
             </div>
             <div class="col-xl-12">
               <form>

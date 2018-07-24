@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarJSModule } from 'ng-sidebarjs';
-import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AngularFireModule } from 'angularfire2';
@@ -77,8 +76,6 @@ import { CalendarModule } from 'angular-calendar';
     BrowserAnimationsModule,
     NgbModule.forRoot(),
     SidebarJSModule.forRoot(),
-    OwlDateTimeModule,
-    OwlNativeDateTimeModule,
     CalendarModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

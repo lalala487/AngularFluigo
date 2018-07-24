@@ -8,11 +8,13 @@ import { City } from '../models/city';
 import { Accommodation } from '../models/accommodation';
 import { environment } from '../../environments/environment.prod';
 import { Birthday } from '../models/birthday';
+import { StepValidatorService } from '../services/step-validator.service';
 
 @Component({
   selector: 'app-deal-detail',
   templateUrl: './deal-detail.component.html',
-  styleUrls: ['./deal-detail.component.css']
+  styleUrls: ['./deal-detail.component.css'],
+  providers: [StepValidatorService]
 })
 export class DealDetailComponent implements OnInit {
   slug: string;
@@ -29,12 +31,12 @@ export class DealDetailComponent implements OnInit {
     'adults': 1,
     'children': 0,
     'childrenBirthdays': Object,
-    'birthday0': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
-    'birthday1': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
-    'birthday2': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
-    'birthday3': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
-    'birthday4': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
-    'birthday5': {'day': 1, 'month': 1, 'year': new Date().getFullYear()} as Birthday,
+    'birthday0': { 'day': 1, 'month': 1, 'year': new Date().getFullYear() } as Birthday,
+    'birthday1': { 'day': 1, 'month': 1, 'year': new Date().getFullYear() } as Birthday,
+    'birthday2': { 'day': 1, 'month': 1, 'year': new Date().getFullYear() } as Birthday,
+    'birthday3': { 'day': 1, 'month': 1, 'year': new Date().getFullYear() } as Birthday,
+    'birthday4': { 'day': 1, 'month': 1, 'year': new Date().getFullYear() } as Birthday,
+    'birthday5': { 'day': 1, 'month': 1, 'year': new Date().getFullYear() } as Birthday,
     'hasChildren': false,
   };
 
@@ -43,7 +45,8 @@ export class DealDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private db: FirestoreService,
-    private imageService: ImageService
+    private imageService: ImageService,
+    private stepValidatorService: StepValidatorService
   ) { }
 
   ngOnInit() {
@@ -79,8 +82,22 @@ export class DealDetailComponent implements OnInit {
   }
 
   moveToNextStep(): void {
-    if (this.currentStep === 3) {
+    if (this.currentStep === 3 && this.accummulations.children > 0) {
       console.log('struct', this.accummulations);
+
+      const dates: Array<Birthday> = Array(this.accummulations.children);
+      let currentNumber = 0;
+      while (currentNumber < this.accummulations.children) {
+        dates[currentNumber] = this.accummulations['birthday' + currentNumber];
+        currentNumber++;
+      }
+
+      if (!this.stepValidatorService.validateChildrenBirthdays(dates)) {
+        // TODO: send toast message
+        console.log('invalid dates');
+        return;
+      }
+
     }
 
     if (this.currentStep === 2 && this.accummulations.children === 0) {

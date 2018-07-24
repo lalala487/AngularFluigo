@@ -1196,15 +1196,17 @@ hr {
   text-align: center;
   letter-spacing: .07rem;
   font-size: .8rem;
+  color: rgba(235,235,235,.5);
 }
 
 .pdp-calendar-block .label-extra-info:first-child {
-  margin-top: 2rem;
-  margin-bottom: .2rem;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
 }
 
 .pdp-calendar-block .label-extra-info img {
   margin-top: -.1rem;
+  opacity: .5;
 }
 
 .pdp-calendar-block .filters .airport::after,
@@ -1212,7 +1214,7 @@ hr {
   position: relative;
   content: "";
   top: -1.3rem;
-  left: 17.8rem;
+  left: 90%;
   width: 0;
   height: 0;
   border: 6px solid transparent;
@@ -1288,7 +1290,7 @@ hr {
   .pdp-calendar-block .filters .airport::after,
   .pdp-calendar-block .filters .nights::after {
     top: -1.3rem;
-    left: 11.3rem;
+    left: 87%;
   }
 
   .pdp-calendar-block .calendar-span {
@@ -1375,6 +1377,10 @@ hr {
     border-bottom: 1px solid rgba(235,235,235,.2);
 }
 
+.cal-month-view .cal-days .ng-star-inserted:last-child .cal-cell-row {
+    border-bottom: 0px solid rgba(235,235,235,.2);
+}
+
 .cal-month-view .cal-days {
     border: 0px solid rgba(235,235,235,.2);
     border-bottom: 0;
@@ -1394,6 +1400,11 @@ hr {
   font-size: 1rem;
   letter-spacing: .07rem;
   color: rgba(235,235,235,.5);
+}
+
+.icon-dot-light-blue {
+  margin-top: -.1rem;
+  margin-right: .1rem;
 }
 
 /**********************************************************************/

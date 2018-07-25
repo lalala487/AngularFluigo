@@ -15,8 +15,8 @@
             </div>
             <div class="col-xl-12">
                 <div class="form-group">
-                  <input [(ngModel)]="accummulations['birthday' + i].day" name="day-{{i}}" type="number" required autocomplete="off" inputmode="numeric" min="0" max="31" class="form-control birthdate-day" placeholder="TT">
-                  <input [(ngModel)]="accummulations['birthday' + i].month" name="month-{{i}}" type="number" required autocomplete="off" inputmode="numeric" min="0" max="12" class="form-control birthdate-month" placeholder="MM">
+                  <input [(ngModel)]="accummulations['birthday' + i].day" name="day-{{i}}" required autocomplete="off" inputmode="numeric" min="0" max="31" class="form-control birthdate-day" placeholder="TT">
+                  <input [(ngModel)]="accummulations['birthday' + i].month" name="month-{{i}}" required autocomplete="off" inputmode="numeric" min="0" max="12" class="form-control birthdate-month" placeholder="MM">
                   <input [(ngModel)]="accummulations['birthday' + i].year" name="year-{{i}}" type="number" required autocomplete="off" inputmode="numeric" min="0" max="2019" class="form-control birthdate-year" placeholder="JJJJ">
                 </div>
             </div>

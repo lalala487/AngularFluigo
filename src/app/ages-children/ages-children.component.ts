@@ -22,9 +22,7 @@ export class AgesChildrenComponent implements OnChanges {
       this.childrenNumber = childrenNumber.currentValue as number;
 
       if (this.childrenNumber >= 1) {
-        const birth = {'day': 1, 'month': 1, 'year': 2018} as Birthday;
-        this.childrenBirthdaysChange.emit(this.childrenBirthdays);
-        this.childrenBirthdays = Array(this.childrenNumber).fill(birth);
+        this.childrenBirthdays = Array(this.childrenNumber);
       }
     }
   }

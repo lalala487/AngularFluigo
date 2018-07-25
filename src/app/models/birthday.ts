@@ -1,5 +1,5 @@
 export interface Birthday {
-    day: number;
-    month: number;
-    year: number;
+    day: string;
+    month: string;
+    year: string;
 }

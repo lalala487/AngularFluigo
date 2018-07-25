@@ -23,29 +23,35 @@ export class StepValidatorService {
     const range = (start, end) => Array.from({length: (end - start)}, (v, k) => k + start);
     const days = range(1, 32);
 
-    if (!days.includes(birthday.day) ) {
-        return false;
+    if (!days.includes(parseInt(birthday.day, 10)) ) {
+      console.log('invalid day');
+      return false;
     }
 
     const months = range(1, 13);
-    if (!months.includes(birthday.month) ) {
-        return false;
+    if (!months.includes(parseInt(birthday.month, 10)) ) {
+      console.log('invalid month');
+      return false;
     }
 
     const currentYear = moment().get('year');
     const limitChildrenYear = currentYear - 17;
 
-    if (birthday.year < limitChildrenYear || birthday.year > currentYear) {
+    if (parseInt(birthday.year, 10) < limitChildrenYear || parseInt(birthday.year, 10) > currentYear) {
+      console.log('older than 17, not a child');
       return false;
     }
 
     const date = moment(birthday.day + '-' + birthday.month + '-' + birthday.year, 'DD-MM-YYYY');
+    console.log('date', date);
 
     if (!date.isValid()) {
+      console.log('invalid date');
       return false;
     }
 
     if (!date.isBefore(moment())) {
+      console.log('date in the future');
       return false;
     }
 

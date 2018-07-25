@@ -42,6 +42,7 @@ import { NumberPickerComponent } from './number-picker/number-picker.component';
 import { AgesChildrenComponent } from './ages-children/ages-children.component';
 import { CalendarModule } from 'angular-calendar';
 import { FormsModule } from '../../node_modules/@angular/forms';
+import { CalendarOptionComponent } from './calendar-option/calendar-option.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { FormsModule } from '../../node_modules/@angular/forms';
     FeaturedIconComponent,
     RatingComponent,
     NumberPickerComponent,
-    AgesChildrenComponent
+    AgesChildrenComponent,
+    CalendarOptionComponent
   ],
   imports: [
     BrowserModule,

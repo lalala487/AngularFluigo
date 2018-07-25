@@ -27,8 +27,8 @@ export class DealDetailComponent implements OnInit {
   locale = environment.locale;
 
   accummulations = {
-    'people': 1,
-    'adults': 1,
+    'people': 2,
+    'adults': 2,
     'children': 0,
     'childrenBirthdays': Object,
     'birthday0': { 'day': 1, 'month': 1, 'year': new Date().getFullYear() } as Birthday,

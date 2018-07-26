@@ -31,12 +31,12 @@ export class DealDetailComponent implements OnInit {
     'adults': 2,
     'children': 0,
     'childrenBirthdays': Object,
-    'birthday0': { 'day': '01', 'month': '01', 'year': new Date().getFullYear().toString() } as Birthday,
-    'birthday1': { 'day': '01', 'month': '01', 'year': new Date().getFullYear().toString() } as Birthday,
-    'birthday2': { 'day': '01', 'month': '01', 'year': new Date().getFullYear().toString() } as Birthday,
-    'birthday3': { 'day': '01', 'month': '01', 'year': new Date().getFullYear().toString() } as Birthday,
-    'birthday4': { 'day': '01', 'month': '01', 'year': new Date().getFullYear().toString() } as Birthday,
-    'birthday5': { 'day': '01', 'month': '01', 'year': new Date().getFullYear().toString() } as Birthday,
+    'birthday0': { 'day': '', 'month': '', 'year': '' } as Birthday,
+    'birthday1': { 'day': '', 'month': '', 'year': '' } as Birthday,
+    'birthday2': { 'day': '', 'month': '', 'year': '' } as Birthday,
+    'birthday3': { 'day': '', 'month': '', 'year': '' } as Birthday,
+    'birthday4': { 'day': '', 'month': '', 'year': '' } as Birthday,
+    'birthday5': { 'day': '', 'month': '', 'year': '' } as Birthday,
     'hasChildren': false,
   };
 

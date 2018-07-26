@@ -1409,6 +1409,130 @@ hr {
 }
 
 /**********************************************************************/
+/*************************   Calendar Option   ************************/
+/**********************************************************************/
+
+.pdp-calendar-option-block {
+  width: 100%;
+}
+
+.pdp-calendar-option-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-calendar-option-block .label-calendar-option {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+.pdp-calendar-option-block .label-departure {
+  text-align: center;
+  margin-bottom: .5rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+.pdp-calendar-option-block .departures .flight-option {
+  margin-bottom: 2rem;
+}
+
+.pdp-calendar-option-block .departures .flight-option:last-child {
+  margin-bottom: 0rem !important;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-calendar-option-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 1199.98px)  {
+  .pdp-calendar-option-block {
+    margin-top: 1rem;
+    margin-bottom: 6rem;
+  }
+}
+
+.flight-leg__container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    position: relative;
+}
+
+.flight-leg__iata-codes, .flight-leg__iata-times {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-color: rgba(235, 235, 235, 1);
+    border-width: .12rem;
+    border-style: solid;
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    -moz-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    opacity: .5;
+}
+
+.flight-leg__container .active{
+    opacity: .5;
+}
+
+.flight-leg__iata-times {
+    min-width: 100%;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .flight-leg__iata-times {
+      min-width: 22rem;
+  }
+}
+
+.flight-leg__duration, .flight-leg__iata-time {
+    text-align: center;
+}
+
+.flight-leg__flight-type-mobile {
+    display: block;
+    font-size: 11px;
+    color: #93959f;
+}
+
+.flight-leg__duration-text {
+    font-size: 11px;
+    color: #93959f;
+}
+
+/**********************************************************************/
 /***************************   Users Age   ****************************/
 /**********************************************************************/
 

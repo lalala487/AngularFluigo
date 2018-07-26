@@ -43,6 +43,7 @@ import { AgesChildrenComponent } from './ages-children/ages-children.component';
 import { CalendarModule } from 'angular-calendar';
 import { FormsModule } from '../../node_modules/@angular/forms';
 import { CalendarOptionComponent } from './calendar-option/calendar-option.component';
+import { FlightTimeComponent } from './flight-time/flight-time.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { CalendarOptionComponent } from './calendar-option/calendar-option.compo
     RatingComponent,
     NumberPickerComponent,
     AgesChildrenComponent,
-    CalendarOptionComponent
+    CalendarOptionComponent,
+    FlightTimeComponent
   ],
   imports: [
     BrowserModule,

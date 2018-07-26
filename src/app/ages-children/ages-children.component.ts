@@ -27,4 +27,12 @@ export class AgesChildrenComponent implements OnChanges {
     }
   }
 
+  moveFocus(event: any, elementToFocus) {
+    const value = event.target.value;
+
+    if (value.length === 2) {
+      elementToFocus.focus();
+    }
+  }
+
 }

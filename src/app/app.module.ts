@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { DocPipe } from './doc.pipe';
 import { FirestoreService } from './services/firestore.service';
 import { MomentModule } from 'ngx-moment';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 import { DateCountdownCircleComponent } from './date-countdown-circle/date-countdown-circle.component';
 import { DealDetailComponent } from './deal-detail/deal-detail.component';
@@ -83,6 +84,7 @@ import { FlightTimeComponent } from './flight-time/flight-time.component';
     FormsModule,
     SidebarJSModule.forRoot(),
     CalendarModule.forRoot(),
+    ToastModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,

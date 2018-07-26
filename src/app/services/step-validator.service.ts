@@ -43,7 +43,6 @@ export class StepValidatorService {
     }
 
     const date = moment(birthday.day + '-' + birthday.month + '-' + birthday.year, 'DD-MM-YYYY');
-    console.log('date', date);
 
     if (!date.isValid()) {
       console.log('invalid date');

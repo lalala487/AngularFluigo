@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { FirestoreService } from '../services/firestore.service';
 import { SafeStyle } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
@@ -48,6 +49,7 @@ export class DealDetailComponent implements OnInit {
     private imageService: ImageService,
     private stepValidatorService: StepValidatorService,
     private router: Router,
+    public toastr: ToastsManager
   ) { }
 
   ngOnInit() {
@@ -94,8 +96,8 @@ export class DealDetailComponent implements OnInit {
       }
 
       if (!this.stepValidatorService.validateChildrenBirthdays(dates)) {
-        // TODO: send toast message
-        console.log('invalid dates');
+        this.toastr.error('You added an invalid date', 'Error');
+
         return;
       }
 

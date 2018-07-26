@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FirestoreService } from '../services/firestore.service';
 import { SafeStyle } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
@@ -46,7 +46,8 @@ export class DealDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private db: FirestoreService,
     private imageService: ImageService,
-    private stepValidatorService: StepValidatorService
+    private stepValidatorService: StepValidatorService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -108,6 +109,11 @@ export class DealDetailComponent implements OnInit {
   }
 
   moveToPreviousStep(): void {
+    if (this.currentStep === 0) {
+      this.router.navigate(['/']);
+      return;
+    }
+
     if (this.currentStep === 4 && this.accummulations.children === 0) {
       this.currentStep = this.currentStep - 2;
     } else {

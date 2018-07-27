@@ -2,6 +2,200 @@
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 @import "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css";
 
+/**********************************************************************/
+/**************************   Notifications   *************************/
+/**********************************************************************/
+
+.toast-title{
+    font-weight:700;
+    display: none;
+}
+.toast-message{
+    word-wrap:break-word;
+    font-size: 1rem;
+}
+.toast-message a,.toast-message label{
+    color: rgba(235,235,235,1);
+}
+.toast-message a:hover{
+    color: rgba(235,235,235,1);
+    text-decoration:none;
+}
+.toast-close-button{
+    position:relative;
+    right:-.3em;
+    top:-.3em;
+    float:right;
+    font-size:20px;
+    font-weight:700;
+    color:#fff;
+    -webkit-text-shadow:0 1px 0 #fff;
+    text-shadow:0 1px 0 #fff;
+    opacity:.8;
+}
+.toast-close-button:focus,.toast-close-button:hover{
+    color:#000;
+    text-decoration:none;
+    cursor:pointer;
+    opacity:.4;
+}
+button.toast-close-button{
+    padding:0;
+    cursor:pointer;
+    background:transparent;
+    border:0;
+    -webkit-appearance:none;
+}
+.toast-top-center{
+    top:0;
+    right:0;
+    width:100%;
+}
+.toast-bottom-center{
+    bottom:0;
+    right:0;
+    width:100%;
+}
+.toast-top-full-width{
+    top:0;
+    right:0;
+    width:100%;
+}
+.toast-bottom-full-width{
+    bottom:0;
+    right:0;
+    width:100%;
+}
+.toast-top-left{
+    top:12px;
+    left:12px;
+}
+.toast-top-right{
+    top:12px;
+    right:12px;
+}
+.toast-bottom-right{
+    right:12px;
+    bottom:12px;
+}
+.toast-bottom-left{
+    bottom:12px;
+    left:12px;
+}
+#toast-container{
+    pointer-events:none;
+    position:fixed;
+    z-index:99999;
+}
+#toast-container *{
+    box-sizing:border-box;
+}
+#toast-container>div{
+    position:relative;
+    overflow:hidden;
+    margin: 0 0 6px;
+    padding: 15px 15px 15px 95px;
+    width: 300px;
+    height:78px;
+    border-radius:50px 5px 5px 50px;
+    background-position:0 0;
+    background-repeat:no-repeat;
+    box-shadow:none;
+    /* color:#fff; */
+    opacity:1;
+}
+#toast-container>div.toast-custom{
+    padding:15px;
+    color:#030303;
+}
+#toast-container>div.toast-custom .toast-close-button{
+    color:#999!important;
+}
+#toast-container>:hover{
+    box-shadow: none;
+    /* opacity:1;
+    cursor:pointer; */
+}
+#toast-container>.toast-info{
+  background-image:;
+}
+#toast-container>.toast-error{
+  background-image: url(assets/img/avatar-round-notification@2x.png) !important;
+  background-size: 78px 78px;
+}
+#toast-container>.toast-success{
+  background-image:;
+}
+
+#toast-container>.toast-warning{
+    background-image:;
+}
+#toast-container.toast-bottom-center>div,#toast-container.toast-top-center>div{
+    width:300px;
+    margin:auto;
+}
+#toast-container.toast-bottom-full-width>div,#toast-container.toast-top-full-width>div{
+    width:96%;
+    margin:auto;
+}
+.toast{
+    background-color:#fff;
+    pointer-events:auto;
+}
+.toast-success{
+    background-color:#51a351;
+}
+.toast-error{
+    background-color: rgba(19, 78, 94,1);
+}
+
+@media only screen and (min-width: 1200px)  {
+  .toast-error{
+      background-color: rgba(19, 78, 94,.6);
+  }
+}
+
+.toast-info{
+    background-color:#2f96b4;
+}
+.toast-warning{
+    background-color:#f89406;
+}
+.toast-progress{
+    position:absolute;
+    left:0;
+    bottom:0;
+    height:4px;
+    background-color:#000;
+    opacity:.4;
+}
+@media (max-width:240px){
+    #toast-container>div{
+        padding:8px 8px 8px 50px;
+        width:11em;
+    }
+    #toast-container .toast-close-button{
+        right:-.2em;
+        top:-.2em;
+    }
+}
+@media (min-width:241px) and (max-width:480px){
+    #toast-container>div{
+        padding:8px 8px 8px 50px;
+        width:18em;
+    }
+    #toast-container .toast-close-button{
+        right:-.2em;
+        top:-.2em;
+    }
+}
+@media (min-width:481px) and (max-width:768px){
+    #toast-container>div{
+        padding:15px 15px 15px 50px;
+        width:25em;
+    }
+}
+
 
 /**********************************************************************/
 /*************************   Container Page   *************************/

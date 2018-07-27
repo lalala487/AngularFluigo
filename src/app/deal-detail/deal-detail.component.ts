@@ -96,7 +96,7 @@ export class DealDetailComponent implements OnInit {
       }
 
       if (!this.stepValidatorService.validateChildrenBirthdays(dates)) {
-        this.toastr.error('You added an invalid date', 'Error');
+        this.toastr.error('"Das Datum ist nicht korrekt eingefühlt"', 'Error');
 
         return;
       }

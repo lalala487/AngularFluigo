@@ -12,7 +12,8 @@
 }
 .toast-message{
     word-wrap:break-word;
-    font-size: 1rem;
+    font-size: .95rem;
+    letter-spacing: .07rem;
 }
 .toast-message a,.toast-message label{
     color: rgba(235,235,235,1);
@@ -120,7 +121,7 @@ button.toast-close-button{
   background-image:;
 }
 #toast-container>.toast-error{
-  background-image: url(assets/img/avatar-round-notification@2x.png) !important;
+  background-image: url(assets/img/avatar-round-notification-two@2x.png) !important;
   background-size: 78px 78px;
 }
 #toast-container>.toast-success{
@@ -171,7 +172,7 @@ button.toast-close-button{
 }
 @media (max-width:240px){
     #toast-container>div{
-        padding:8px 8px 8px 50px;
+        padding:15px 15px 15px 95px;
         width:11em;
     }
     #toast-container .toast-close-button{
@@ -181,7 +182,7 @@ button.toast-close-button{
 }
 @media (min-width:241px) and (max-width:480px){
     #toast-container>div{
-        padding:8px 8px 8px 50px;
+        padding:15px 15px 15px 95px;
         width:18em;
     }
     #toast-container .toast-close-button{
@@ -191,7 +192,7 @@ button.toast-close-button{
 }
 @media (min-width:481px) and (max-width:768px){
     #toast-container>div{
-        padding:15px 15px 15px 50px;
+        padding:15px 15px 15px 95px;
         width:25em;
     }
 }

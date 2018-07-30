@@ -1174,9 +1174,9 @@ width: 9.7rem;
 
 hr {
   display: block;
-  height: .1rem;
+  height: .12rem;
   border: 0;
-  border-top: .1rem solid rgba(235,235,235,.5);
+  border-top: .12rem solid rgba(235,235,235,.5);
   padding: 0;
 }
 
@@ -1629,11 +1629,12 @@ hr {
   font-size: 1rem;
 }
 
-.pdp-calendar-option-block .departures .flight-option {
+.pdp-calendar-option-block .departures .flight-option-col {
   margin-bottom: 2rem;
+  cursor: pointer;
 }
 
-.pdp-calendar-option-block .departures .flight-option:last-child {
+.pdp-calendar-option-block .departures .flight-option-col:last-child {
   margin-bottom: 0rem !important;
 }
 
@@ -1669,6 +1670,37 @@ hr {
     position: relative;
 }
 
+.active .flight-leg__container {
+    color: rgba(235,235,235,1);
+}
+
+.flight-option {
+    border-color: rgba(235, 235, 235, .5);
+    border-width: .12rem;
+    border-style: solid;
+    color: rgba(235,235,235,.5);
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.active .flight-option {
+    background-color: rgba(235, 235, 235, .15);
+    border-color: rgba(235, 235, 235, 1);
+    border-width: .12rem;
+    border-style: solid;
+    color: rgba(235,235,235,1);
+}
+
+.flight-option img{
+    opacity: .5;
+}
+
+.active .flight-option img{
+    opacity: 1;
+}
+
 .flight-leg__iata-codes, .flight-leg__iata-times {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1678,23 +1710,11 @@ hr {
     -webkit-justify-content: space-between;
     -ms-flex-pack: justify;
     justify-content: space-between;
-    border-color: rgba(235, 235, 235, 1);
-    border-width: .12rem;
-    border-style: solid;
-    padding-left: 4rem;
-    padding-right: 4rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
     -moz-transition: all 0.3s ease-in-out;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    opacity: .5;
-}
-
-.flight-leg__container .active{
-    opacity: .5;
 }
 
 .flight-leg__iata-times {
@@ -1706,25 +1726,42 @@ hr {
     margin: 0 auto;
 }
 
-@media only screen and (min-width: 1200px)  {
-  .flight-leg__iata-times {
-      min-width: 22rem;
-  }
-}
-
 .flight-leg__duration, .flight-leg__iata-time {
     text-align: center;
+    letter-spacing: .07rem;
 }
 
 .flight-leg__flight-type-mobile {
     display: block;
-    font-size: 11px;
-    color: #93959f;
+    font-size: .8rem;
+    letter-spacing: .07rem;
 }
 
 .flight-leg__duration-text {
-    font-size: 11px;
-    color: #93959f;
+    font-size: .8rem;
+    letter-spacing: .07rem;
+}
+
+.pdp-calendar-option-block .price-label {
+    font-size: .8rem;
+    letter-spacing: .07rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pdp-calendar-option-block hr {
+    margin-top: 2rem;
+}
+
+.pdp-calendar-option-block .active hr {
+    border-top: .12rem solid rgba(235,235,235,1);
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .flight-option {
+      padding-left: 2rem;
+      padding-right: 2rem;
+  }
 }
 
 /**********************************************************************/

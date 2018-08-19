@@ -40,6 +40,7 @@ export class CalendarComponent implements OnInit {
 
     // TODO: filter flightOffers by Merchant and Flight
     // (flight must be part of the list of flights of the deal)
+    // merchant of the flight offer must be the same as the one of the deal
 
     this.flightOffers.subscribe(collection => {
       collection.forEach(flightOffer => {
@@ -60,12 +61,14 @@ export class CalendarComponent implements OnInit {
 
         console.log('dealFlightIds', dealFlightIds);
 
+        // TODO: this logic by age segment doesn't make sense,
+        // I should sum the price for each of the segments needed from the previous choice
         this.db.colWithIds$('flightOffer/' + flightOfferId + '/offers').subscribe(col => {
         console.log('inneroffers: ', col);
           col.forEach(offer => {
-            console.log('flight offer', offer);
+            console.log('inner offer', offer);
             this.events.push({
-              title: offer.date,
+              title: offer.prices[0].amount + ' ' + flightOffer.currency,
               start: startOfDay(offer.date),
               end: endOfDay(offer.date),
             });

@@ -15,6 +15,7 @@ export class CollectionsService {
 
       itemRef.valueChanges().subscribe(
         item => {
+          item.id = itemRef.ref.id;
           if (item) {
             allItems.push(item as T);
           }

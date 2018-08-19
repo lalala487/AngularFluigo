@@ -8,6 +8,8 @@ import {
   endOfDay
 } from 'date-fns';
 import { Subject } from 'rxjs/Subject';
+import { Deal } from '../models/deal';
+import { Flight } from '../models/flight';
 
 @Component({
   selector: 'app-calendar',
@@ -16,8 +18,9 @@ import { Subject } from 'rxjs/Subject';
   providers: [CollectionsService]
 })
 export class CalendarComponent implements OnInit {
-  @Input() deal;
+  @Input() deal: Deal;
   events: CalendarEvent[] = [];
+  flights = [];
 
   flightOffers: Observable<any[]>;
 
@@ -30,6 +33,9 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const dealFlights = this.collectionUtils.getCollection<Flight>(this.deal.flights);
+    console.log('deal flights', dealFlights);
+
     this.flightOffers = this.db.colWithIds$('flightOffer');
 
     // TODO: filter flightOffers by Merchant and Flight
@@ -38,9 +44,21 @@ export class CalendarComponent implements OnInit {
     this.flightOffers.subscribe(collection => {
       collection.forEach(flightOffer => {
         console.log('offer: ', flightOffer);
+        console.log('offer.flight', flightOffer.flight);
 
         const flightOfferId = flightOffer.id;
         console.log('offerId: ', flightOfferId);
+        const dealFlightIds = this.getIds(dealFlights);
+
+        if (!flightOffer.flight) {
+          return;
+        }
+
+        if (!dealFlightIds.includes(flightOffer.flight[0].id)) {
+          return;
+        }
+
+        console.log('dealFlightIds', dealFlightIds);
 
         this.db.colWithIds$('flightOffer/' + flightOfferId + '/offers').subscribe(col => {
         console.log('inneroffers: ', col);
@@ -60,4 +78,7 @@ export class CalendarComponent implements OnInit {
     });
   }
 
+  getIds(list: Array<any>) {
+    return list.map( item => item.id);
+  }
 }

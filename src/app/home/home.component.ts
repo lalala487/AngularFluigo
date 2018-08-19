@@ -40,5 +40,4 @@ export class HomeComponent implements OnInit {
       const deal = listOfDeals[0] as Deal;
       return deal.marketingDiscount;
   }
-
 }

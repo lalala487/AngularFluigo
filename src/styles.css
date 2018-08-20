@@ -1555,14 +1555,18 @@ hr {
 }
 
 .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
-    color: rgba(235,235,235,1);
+    color: rgba(235,235,235,.5);
     font-size: 1rem;
 }
 
 .cal-month-view .cal-day-number {
-    color: rgba(235,235,235,1);
+    color: rgba(235,235,235,.5);
     font-size: 1rem;
     opacity: 1;
+}
+
+.cal-month-view .cal-day-cell.cal-in-month.cal-has-events .cal-day-number {
+    color: rgba(235,235,235,1);
 }
 
 .cal-month-view .cal-day-cell:not(:last-child) {
@@ -1601,6 +1605,26 @@ hr {
 .icon-dot-light-blue {
   margin-top: -.1rem;
   margin-right: .1rem;
+}
+
+.cal-month-view .cal-day-badge {
+    background-color: rgba(85, 144, 151, 1);
+    color: rgba(235,235,235,1);
+    font-weight: normal;
+    font-size: .8rem;
+    min-width: 1.4rem;
+    min-height: 1.4rem;
+    padding: 5px 0px;
+    border-radius: 100%;
+    margin-top: 16px;
+}
+
+.cal-month-view small {
+    margin-right: 15px;
+    margin-bottom: 10px;
+    letter-spacing: .07rem;
+    font-size: .8rem;
+    text-align: right;
 }
 
 /**********************************************************************/

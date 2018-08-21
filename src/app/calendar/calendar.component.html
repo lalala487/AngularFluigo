@@ -41,7 +41,6 @@
               <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
             </div>
             <small *ngIf="day.events.length > 0">
-              <!-- There are {{ day.events.length }} events on this day -->
               {{ day.events[0].title }}
             </small>
           </ng-template>
@@ -51,7 +50,6 @@
            [events]="events"
            [refresh]="refresh"
            [cellTemplate]="customCellTemplate">
-           >
           </mwl-calendar-month-view>
         </div>
       </div>

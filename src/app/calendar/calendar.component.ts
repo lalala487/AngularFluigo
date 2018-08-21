@@ -36,6 +36,10 @@ export class CalendarComponent implements OnInit {
     const dealFlights = this.collectionUtils.getCollection<Flight>(this.deal.flights);
     console.log('deal flights', dealFlights);
 
+    console.log('deal,merchant', this.deal.merchant[0].id);
+
+    const dealMerchantId = this.deal.merchant[0].id;
+
     this.flightOffers = this.db.colWithIds$('flightOffer');
 
     // TODO: filter flightOffers by Merchant and Flight
@@ -55,7 +59,15 @@ export class CalendarComponent implements OnInit {
           return;
         }
 
+        if (!flightOffer.merchant) {
+          return;
+        }
+
         if (!dealFlightIds.includes(flightOffer.flight[0].id)) {
+          return;
+        }
+
+        if (dealMerchantId !== flightOffer.merchant[0].id) {
           return;
         }
 

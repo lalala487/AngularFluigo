@@ -169,7 +169,7 @@
 
         <app-ages-children *ngIf="currentStep == 3" style="width:100%;" [accummulations]="accummulations" [childrenNumber]="accummulations.children" [(childrenBirthdays)]="accummulations.childrenBirthdays"></app-ages-children>
 
-        <app-calendar *ngIf="currentStep == 4" style="width:100%;" [deal]="deal"></app-calendar>
+        <app-calendar *ngIf="currentStep == 4" style="width:100%;" [deal]="deal" [accummulations]="accummulations"></app-calendar>
 
         <app-calendar-option *ngIf="currentStep == 5" style="width:100%;"></app-calendar-option>
 

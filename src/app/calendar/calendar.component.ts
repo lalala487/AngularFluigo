@@ -19,8 +19,13 @@ import { Flight } from '../models/flight';
 })
 export class CalendarComponent implements OnInit {
   @Input() deal: Deal;
+  @Input() accummulations: Object;
+
   events: CalendarEvent[] = [];
   flights = [];
+
+  wayOffers = [];
+  returnOffers = [];
 
   flightOffers: Observable<any[]>;
 
@@ -42,8 +47,9 @@ export class CalendarComponent implements OnInit {
 
     this.flightOffers = this.db.colWithIds$('flightOffer');
 
-    // TODO: filter flightOffers by Merchant and Flight
-    // (flight must be part of the list of flights of the deal)
+    const amsterdamAirport = 'JFAnSriEs0g7XS2MlxVk';
+    const zurichAirport = 'hfVxPrPOE7ct3L3Iy5Eg';
+
     // merchant of the flight offer must be the same as the one of the deal
 
     this.flightOffers.subscribe(collection => {
@@ -63,7 +69,9 @@ export class CalendarComponent implements OnInit {
           return;
         }
 
-        if (!dealFlightIds.includes(flightOffer.flight[0].id)) {
+        const flightOfferFlight = flightOffer.flight[0];
+        // (offer flight must be part of the list of flights of the deal)
+        if (!dealFlightIds.includes(flightOfferFlight.id)) {
           return;
         }
 
@@ -71,24 +79,39 @@ export class CalendarComponent implements OnInit {
           return;
         }
 
-        console.log('dealFlightIds', dealFlightIds);
+        console.log('flightOffer.flight[0]', flightOfferFlight);
+
+        let isReturn = false;
+        this.db.doc$('flight/' + flightOfferFlight.id).subscribe(flight => {
+          console.log('flight.origin', flight['origin']);
+          if (flight['origin'][0].id === amsterdamAirport) {
+            isReturn = true;
+          }
+        });
 
         // TODO: this logic by age segment doesn't make sense,
         // I should sum the price for each of the segments needed from the previous choice
         this.db.colWithIds$('flightOffer/' + flightOfferId + '/offers').subscribe(col => {
         console.log('inneroffers: ', col);
           col.forEach(offer => {
+            if (isReturn) {
+              this.returnOffers.push(offer);
+            } else {
+              this.wayOffers.push(offer);
+            }
+
             console.log('inner offer', offer);
             this.events.push({
               title: offer.prices[0].amount + ' ' + flightOffer.currency,
               start: startOfDay(offer.date),
               end: endOfDay(offer.date),
             });
-            console.log('events', this.events);
             this.refresh.next();
           });
+          console.log('events', this.events);
+          console.log('wayOffers', this.wayOffers);
+          console.log('returnOffers', this.returnOffers);
         });
-
       });
     });
   }

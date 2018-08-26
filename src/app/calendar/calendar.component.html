@@ -35,6 +35,30 @@
       </div>
       <div class="row">
         <div class="calendar-wrapper">
+          <div class="btn-group">
+              <div
+                class="btn btn-primary"
+                mwlCalendarPreviousView
+                [view]="view"
+                [(viewDate)]="viewDate"
+                (viewDateChange)="activeDayIsOpen = false">
+                Previous
+              </div>
+              <div
+                class="btn btn-outline-secondary"
+                mwlCalendarToday
+                [(viewDate)]="viewDate">
+                Today
+              </div>
+              <div
+                class="btn btn-primary"
+                mwlCalendarNextView
+                [view]="view"
+                [(viewDate)]="viewDate"
+                (viewDateChange)="activeDayIsOpen = false">
+                Next
+              </div>
+            </div>
           <ng-template #customCellTemplate let-day="day" let-locale="locale">
             <div class="cal-cell-top">
               <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>

@@ -36,6 +36,7 @@ export class CalendarComponent implements OnInit {
   completeOffers: any[] = [];
 
   viewDate: Date = new Date();
+  view = 'month';
   refresh: Subject<any> = new Subject();
 
   constructor(

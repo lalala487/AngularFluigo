@@ -35,28 +35,33 @@
       </div>
       <div class="row">
         <div class="calendar-wrapper">
-          <div class="btn-group">
-              <div
-                class="btn btn-primary"
-                mwlCalendarPreviousView
-                [view]="view"
-                [(viewDate)]="viewDate"
-                (viewDateChange)="activeDayIsOpen = false">
-                Previous
+            <div class="row">
+              <div class="col-xs-4">
+                <button
+                  class="btn-round-sm btn-back"
+                  mwlCalendarPreviousView
+                  [view]="view"
+                  [(viewDate)]="viewDate"
+                  (viewDateChange)="activeDayIsOpen = false">
+                  <img src="assets/icon/back.svg" height="10" alt="Icon Back">
+                  </button>
               </div>
-              <div
-                class="btn btn-outline-secondary"
-                mwlCalendarToday
-                [(viewDate)]="viewDate">
-                Today
+              <div class="col-xs-4">
+                <!-- <button
+                  class="btn btn-outline-secondary btn-today"
+                  mwlCalendarToday
+                  [(viewDate)]="viewDate">
+                  Today</button> -->
               </div>
-              <div
-                class="btn btn-primary"
-                mwlCalendarNextView
-                [view]="view"
-                [(viewDate)]="viewDate"
-                (viewDateChange)="activeDayIsOpen = false">
-                Next
+              <div class="col-xs-4">
+                <button
+                  class="btn-round-sm btn-next"
+                  mwlCalendarNextView
+                  [view]="view"
+                  [(viewDate)]="viewDate"
+                  (viewDateChange)="activeDayIsOpen = false">
+                  <img src="assets/icon/next.svg" height="10" alt="Icon Next">
+                  </button>
               </div>
             </div>
           <ng-template #customCellTemplate let-day="day" let-locale="locale">

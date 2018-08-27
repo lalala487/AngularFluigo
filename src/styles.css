@@ -1373,8 +1373,14 @@ hr {
 
 .pdp-calendar-block {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-bottom: 5rem;
+}
+
+@media only screen and (min-width: 1500px)  {
+  .pdp-calendar-block {
+    align-items: center;
+  }
 }
 
 .pdp-calendar-block .calendar-span {
@@ -1384,6 +1390,20 @@ hr {
 
 .pdp-calendar-block .center-wrap {
   width: 100%;
+}
+
+.pdp-calendar-block .btn-back {
+  float: left !important;
+}
+
+.pdp-calendar-block .btn-next {
+  float: right !important;
+}
+
+.pdp-calendar-block .calendar-wrapper .col-xs-4 {
+  width: calc(100% / 3);
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .pdp-calendar-block .label-calendar {
@@ -1424,22 +1444,22 @@ hr {
 
 .pdp-calendar-block .filters select {
   background-color: inherit;
-    letter-spacing: .07rem;
-    font-size: 1rem;
-    background-color: inherit;
-    -webkit-appearance: none;
-    -webkit-border-radius: 0px;
-    font-size: 1rem;
-    letter-spacing: .07rem;
-    width: 100%;
-    border-top: 0rem;
-    border-right: 0rem;
-    border-left: 0rem;
-    border-style: solid;
-    border-color: rgba(235,235,235,0.5);
-    border-bottom-width: .12rem;
-    padding: 0.5rem 1rem 0.5rem 3rem;
-    color: rgba(235,235,235,1);
+  letter-spacing: .07rem;
+  font-size: 1rem;
+  background-color: inherit;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  width: 100%;
+  border-top: 0rem;
+  border-right: 0rem;
+  border-left: 0rem;
+  border-style: solid;
+  border-color: rgba(235,235,235,0.5);
+  border-bottom-width: .12rem;
+  padding: 0.5rem 1rem 0.5rem 3rem;
+  color: rgba(235,235,235,1);
 }
 
 .pdp-calendar-block .filters .nights {
@@ -1474,7 +1494,6 @@ hr {
   .pdp-calendar-block {
     width: 100%;
     display: flex;
-    align-items: center;
     height: 100vh;
   }
 
@@ -1531,6 +1550,11 @@ hr {
       margin-right: 0px !important;
       min-height: 0px !important;
   }
+
+  .pdp-calendar-block .filters .col-xl-4 {
+    padding-left: 6px;
+    padding-right: 5px;
+  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 758.98px)  {
@@ -1582,6 +1606,12 @@ hr {
 @media only screen and (min-width: 1920px) {
   .cal-month-view {
     width: 55.8rem !important;
+  }
+}
+
+@media only screen and (max-width: 1199.98px) {
+  .pdp-calendar-block .filters select {
+    margin-bottom: 2rem;
   }
 }
 
@@ -2655,6 +2685,21 @@ select:focus {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.btn-round-sm:hover {
+  background-color: rgba(85, 144, 151, 0.7);
+  cursor: pointer;
+  color: rgba(235, 235, 235, 1);
+}
+
+.btn-round-sm:not(:disabled):not(.disabled):active:focus, .btn-round-sm:not(:disabled):not(.disabled).active:focus, .show > .btn-round-sm.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
+  box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
 }
 
 .btn-round-sm:focus {

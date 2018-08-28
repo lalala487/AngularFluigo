@@ -1501,6 +1501,11 @@ hr {
     width: 2rem;
     display: inline-block;
   }
+
+  .pdp-calendar-block .next-back-buttons {
+    margin-top: 1rem;
+    margin-bottom: 1.35rem;
+  }
 }
 
 .pdp-calendar-block .filters {
@@ -1511,7 +1516,12 @@ hr {
   margin: 0 auto;
 }
 
-
+@media only screen and (min-width: 768px) and (max-width: 1199.98px)  {
+  .pdp-calendar-block .next-back-buttons {
+    margin-top: 1rem;
+    margin-bottom: 1.3rem;
+  }
+}
 
 @media only screen and (max-width: 767.98px)  {
   .pdp-calendar-block {
@@ -1525,6 +1535,10 @@ hr {
 
   .pdp-calendar-block .filters {
     margin-bottom: 2rem;
+  }
+
+  .pdp-calendar-block .next-back-buttons {
+    margin-bottom: 1.3rem;
   }
 }
 

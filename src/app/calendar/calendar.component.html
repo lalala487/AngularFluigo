@@ -45,13 +45,11 @@
                   <img src="assets/icon/back.svg" height="10" alt="Icon Back">
                   </button>
               </div>
+
               <div class="col-xs-4">
-                <!-- <button
-                  class="btn btn-outline-secondary btn-today"
-                  mwlCalendarToday
-                  [(viewDate)]="viewDate">
-                  Today</button> -->
+                <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
               </div>
+
               <div class="col-xs-4">
                 <button
                   class="btn-round-sm btn-next"

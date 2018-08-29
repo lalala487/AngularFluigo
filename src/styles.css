@@ -2722,7 +2722,7 @@ select:focus {
 }
 
 .btn-round-sm:hover {
-  background-color: rgba(85, 144, 151, 0.7);
+  background-color: rgba(86, 138, 144, 1);
   cursor: pointer;
   color: rgba(235, 235, 235, 1);
 }
@@ -2753,6 +2753,21 @@ select:focus {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.btn-round-pdp:not(:disabled):not(.disabled):active:focus, .btn-round-pdp:not(:disabled):not(.disabled).active:focus, .show > .btn-round-pdp.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
+  box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
+}
+
+.btn-round-pdp:hover {
+  background-color: rgba(86, 138, 144, 1);
+  cursor: pointer;
+  color: rgba(235, 235, 235, 1);
 }
 
 .btn-round-pdp:focus {
@@ -2767,7 +2782,7 @@ select:focus {
 }
 
 .btn-primary:hover {
-  background-color: rgba(85, 144, 151, 0.7);
+  background-color: rgba(86, 138, 144, 1);
   cursor: pointer;
   color: rgba(235, 235, 235, 1);
 }

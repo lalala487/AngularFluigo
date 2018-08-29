@@ -30,8 +30,10 @@ export class CalendarComponent implements OnInit {
 
   wayOffers: Offer[] = [];
   returnOffers: Offer[] = [];
+  roomOffers: Map<Number, Offer> = new Map();
 
   flightOffers: Observable<any[]>;
+  accommodationOffers: Observable<any[]>;
 
   completeOffers: any[] = [];
 
@@ -55,8 +57,38 @@ export class CalendarComponent implements OnInit {
     // TODO: only look at future offers
     this.flightOffers = this.db.colWithIds$('flightOffer');
 
+    this.accommodationOffers = this.db.colWithIds$('accommodationOffer');
+
     const amsterdamAirport = 'JFAnSriEs0g7XS2MlxVk';
     const zurichAirport = 'hfVxPrPOE7ct3L3Iy5Eg';
+
+    this.accommodationOffers.subscribe(collection => {
+      collection.forEach(accommodationOffer => {
+        console.log('accommodationOffer: ', accommodationOffer);
+
+        const accommodationOfferId = accommodationOffer.id;
+
+        if (!accommodationOffer.merchant) {
+          return;
+        }
+
+        // merchant of the accommodationOffer offer must be the same as the one of the deal
+        if (dealMerchantId !== accommodationOffer.merchant[0].id) {
+          return;
+        }
+
+        // TODO: verificar que accommodationOffer.room.accommodation.city == city do deal
+
+        this.db.colWithIds$<Offer>('accommodationOffer/' + accommodationOfferId + '/offers').subscribe(col => {
+          col.forEach(offer => {
+            console.log('roomOffer', offer);
+            this.roomOffers.set(offer.date.getTime(), offer);
+            console.log('roomOffers', this.roomOffers);
+            console.log('roomOffers[date]', this.roomOffers.get(offer.date));
+          });
+        });
+      });
+    });
 
     this.flightOffers.subscribe(collection => {
       collection.forEach(flightOffer => {
@@ -134,7 +166,7 @@ export class CalendarComponent implements OnInit {
 
             if (differenceInDays === this.numberOfNights) {
 
-              const price = this.computeOffersTotalPrice(wayOffer, returnOffer);
+              const price = this.computeFlightOffersTotalPrice(wayOffer, returnOffer);
               console.log('price', price);
 
               this.completeOffers.push({
@@ -143,16 +175,23 @@ export class CalendarComponent implements OnInit {
                 'totalPrice': price
               });
 
-              this.events.push({
-                // TODO: this logic by age segment doesn't make sense,
-                // I should sum the price for each of the segments needed from the previous choice
-                title: price + ' CHF', // TODO: consider currency + flightOffer.currency,
-                start: startOfDay(wayOffer.date),
-                end: endOfDay(wayOffer.date),
-              });
-              console.log('events', this.events);
-              this.refresh.next();
+              if (this.checkIfThereAreRoomOffersInTheInterval(wayOffer.date)) {
+                const totalPrice = price + this.completeRoomOfferTotalPrice(wayOffer.date);
+
+                console.log('price', price, 'roomPrices', this.completeRoomOfferTotalPrice(wayOffer.date));
+
+                this.events.push({
+                  // TODO: this logic by age segment doesn't make sense,
+                  // I should sum the price for each of age the segments needed from the previous choice
+                  title: totalPrice + ' CHF', // TODO: consider currency + flightOffer.currency,
+                  start: startOfDay(wayOffer.date),
+                  end: endOfDay(wayOffer.date),
+                });
+                console.log('events', this.events);
+                this.refresh.next();
               }
+
+            }
 
             return;
           });
@@ -163,7 +202,35 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-  computeOffersTotalPrice(offer1, offer2) {
+  checkIfThereAreRoomOffersInTheInterval(startDate): boolean {
+    for (let index = 0; index < this.numberOfNights; index++) {
+      const currentDate = moment(startDate).add(index, 'days').valueOf();
+
+      console.log('currentDate', currentDate, this.roomOffers);
+      console.log('roomOfferFordate', this.roomOffers.get(currentDate));
+
+      if (!this.roomOffers.has(currentDate)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  completeRoomOfferTotalPrice(startDate): number {
+    let price = 0;
+    for (let index = 0; index < this.numberOfNights; index++) {
+      const currentDate = moment(startDate).add(index, 'days').valueOf();
+      const roomOffer = this.roomOffers.get(currentDate);
+
+      price = price + roomOffer.prices[0].amount;
+    }
+
+    // TODO: use adults/children and instead of [0], use the right segment
+    return this.accummulations['adults'] * price;
+  }
+
+  computeFlightOffersTotalPrice(offer1, offer2) {
     // TODO: use adults/children and instead of [0], use the right segment
     return this.accummulations['adults'] * (offer1.prices[0].amount + offer2.prices[0].amount);
   }

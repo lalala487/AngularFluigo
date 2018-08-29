@@ -1400,10 +1400,26 @@ hr {
   float: right !important;
 }
 
-.pdp-calendar-block .calendar-wrapper .col-xs-4 {
-  width: calc(100% / 3);
+.pdp-calendar-block .calendar-wrapper .col-button-back {
+  width: calc((100% / 20)*4);
   padding-left: 15px;
+}
+
+.pdp-calendar-block .calendar-wrapper .col-button-next {
+  width: calc((100% / 20)*4);
   padding-right: 15px;
+}
+
+.pdp-calendar-block .calendar-wrapper .col-month-title {
+  width: calc((100% / 20)*12);
+}
+
+.pdp-calendar-block .calendar-wrapper .calendar-month-title {
+  letter-spacing: .07rem;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 0rem;
+  padding-top: .65rem;
 }
 
 .pdp-calendar-block .label-calendar {

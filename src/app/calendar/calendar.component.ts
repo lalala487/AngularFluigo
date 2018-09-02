@@ -23,7 +23,7 @@ export class CalendarComponent implements OnInit {
   @Input() deal: Deal;
   @Input() accummulations: Object;
 
-  numberOfNights = 3;
+  numberOfNights: Number = 3;
 
   events: CalendarEvent[] = [];
   flights = [];
@@ -47,17 +47,22 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.updateCalendarEvents();
+  }
+
+  updateCalendarEvents() {
     const dealFlights = this.collectionUtils.getCollection<Flight>(this.deal.flights);
     console.log('deal flights', dealFlights);
 
     console.log('deal,merchant', this.deal.merchant[0].id);
 
-    const dealMerchantId = this.deal.merchant[0].id;
-
     // TODO: only look at future offers
     this.flightOffers = this.db.colWithIds$('flightOffer');
 
     this.accommodationOffers = this.db.colWithIds$('accommodationOffer');
+
+
+    const dealMerchantId = this.deal.merchant[0].id;
 
     const amsterdamAirport = 'JFAnSriEs0g7XS2MlxVk';
     const zurichAirport = 'hfVxPrPOE7ct3L3Iy5Eg';
@@ -158,13 +163,16 @@ export class CalendarComponent implements OnInit {
       });
 
       setTimeout(() => {
+        this.events = [];
         this.wayOffers.forEach(wayOffer => {
           this.returnOffers.forEach(returnOffer => {
             const differenceInDays = moment(returnOffer.date).diff(moment(wayOffer.date), 'days');
 
-            console.log('differenceInDays', differenceInDays);
+            console.log('differenceInDays', differenceInDays, 'numberOfNights', this.numberOfNights);
 
             if (differenceInDays === this.numberOfNights) {
+
+              console.log('!!We have way and return offers separated by the number of Nights we want!!');
 
               const price = this.computeFlightOffersTotalPrice(wayOffer, returnOffer);
               console.log('price', price);
@@ -180,13 +188,17 @@ export class CalendarComponent implements OnInit {
 
                 console.log('price', price, 'roomPrices', this.completeRoomOfferTotalPrice(wayOffer.date));
 
-                this.events.push({
+                const event = {
                   // TODO: this logic by age segment doesn't make sense,
                   // I should sum the price for each of age the segments needed from the previous choice
                   title: totalPrice + ' CHF', // TODO: consider currency + flightOffer.currency,
                   start: startOfDay(wayOffer.date),
                   end: endOfDay(wayOffer.date),
-                });
+                };
+
+                console.log('creating event', event);
+
+                this.events.push(event);
                 console.log('events', this.events);
                 this.refresh.next();
               }
@@ -203,6 +215,7 @@ export class CalendarComponent implements OnInit {
   }
 
   checkIfThereAreRoomOffersInTheInterval(startDate): boolean {
+    console.log('checkIfThereAreRoomOffersInTheInterval');
     for (let index = 0; index < this.numberOfNights; index++) {
       const currentDate = moment(startDate).add(index, 'days').valueOf();
 
@@ -237,5 +250,12 @@ export class CalendarComponent implements OnInit {
 
   getIds(list: Array<any>) {
     return list.map(item => item.id);
+  }
+
+  selectedNightChange(night) {
+    console.log('number of nights changed to', night);
+    this.numberOfNights = +night;
+
+    this.updateCalendarEvents();
   }
 }

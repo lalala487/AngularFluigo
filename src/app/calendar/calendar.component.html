@@ -19,7 +19,10 @@
           </form>
         </div>
         <div class="col-xl-4">
-          <form>
+
+          <app-nights [numberOfNights]="numberOfNights" (selectedNightChange)="selectedNightChange($event)"></app-nights>
+
+          <!-- <form>
             <div class="form-group nights">
               <select>
                 <option value="" selected disabled hidden>Nächte</option>
@@ -27,7 +30,7 @@
                 <option value="2">4 Nächte</option>
               </select>
             </div>
-          </form>
+          </form> -->
         </div>
         <div class="col-xl-4">
           <button class="btn btn-full btn-secondary" type="next"><img class="icon-dot-light-blue" src="assets/icon/icon-dot-light-blue.svg" height="10"> Besten Preis</button>

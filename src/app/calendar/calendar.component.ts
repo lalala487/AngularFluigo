@@ -25,17 +25,17 @@ export class CalendarComponent implements OnInit {
 
   numberOfNights: Number = 3;
 
-  events: CalendarEvent[] = [];
+  events: CalendarEvent[];
   flights = [];
 
-  wayOffers: Offer[] = [];
-  returnOffers: Offer[] = [];
-  roomOffers: Map<Number, Offer> = new Map();
+  wayOffers: Offer[];
+  returnOffers: Offer[];
+  roomOffers: Map<Number, Offer>;
 
   flightOffers: Observable<any[]>;
   accommodationOffers: Observable<any[]>;
 
-  completeOffers: any[] = [];
+  completeOffers: any[];
 
   viewDate: Date = new Date();
   view = 'month';
@@ -51,8 +51,12 @@ export class CalendarComponent implements OnInit {
   }
 
   updateCalendarEvents() {
-    const dealFlights = this.collectionUtils.getCollection<Flight>(this.deal.flights);
-    console.log('deal flights', dealFlights);
+    this.events = [];
+    this.flights = [];
+    this.wayOffers = [];
+    this.returnOffers = [];
+    this.roomOffers = new Map();
+    this.completeOffers = [];
 
     console.log('deal,merchant', this.deal.merchant[0].id);
 
@@ -61,12 +65,65 @@ export class CalendarComponent implements OnInit {
 
     this.accommodationOffers = this.db.colWithIds$('accommodationOffer');
 
-
     const dealMerchantId = this.deal.merchant[0].id;
 
-    const amsterdamAirport = 'JFAnSriEs0g7XS2MlxVk';
-    const zurichAirport = 'hfVxPrPOE7ct3L3Iy5Eg';
+    this.findAccommodationOffers(dealMerchantId);
 
+    this.findFlightOffers(dealMerchantId);
+
+    setTimeout(() => {
+      this.events = [];
+      this.wayOffers.forEach(wayOffer => {
+        this.returnOffers.forEach(returnOffer => {
+          const differenceInDays = moment(returnOffer.date).diff(moment(wayOffer.date), 'days');
+
+          console.log('differenceInDays', differenceInDays, 'numberOfNights', this.numberOfNights);
+
+          if (differenceInDays === this.numberOfNights) {
+
+            console.log('!!We have way and return offers separated by the number of Nights we want!!');
+
+            const price = this.computeFlightOffersTotalPrice(wayOffer, returnOffer);
+            console.log('price', price);
+
+            this.completeOffers.push({
+              'way': wayOffer,
+              'return': returnOffer,
+              'totalPrice': price
+            });
+
+            if (this.checkIfThereAreRoomOffersInTheInterval(wayOffer.date)) {
+              const totalPrice = price + this.completeRoomOfferTotalPrice(wayOffer.date);
+
+              console.log('price', price, 'roomPrices', this.completeRoomOfferTotalPrice(wayOffer.date));
+
+              const event = {
+                // TODO: this logic by age segment doesn't make sense,
+                // I should sum the price for each of age the segments needed from the previous choice
+                title: totalPrice + ' CHF', // TODO: consider currency + flightOffer.currency,
+                start: startOfDay(wayOffer.date),
+                end: endOfDay(wayOffer.date),
+              };
+
+              console.log('creating event', event);
+
+              this.events.push(event);
+              console.log('events', this.events);
+              this.refresh.next();
+            }
+
+          }
+
+          return;
+        });
+      });
+
+      console.log('completeOffers', this.completeOffers);
+    }, 2000);
+
+  }
+
+  findAccommodationOffers(dealMerchantId) {
     this.accommodationOffers.subscribe(collection => {
       collection.forEach(accommodationOffer => {
         console.log('accommodationOffer: ', accommodationOffer);
@@ -94,6 +151,14 @@ export class CalendarComponent implements OnInit {
         });
       });
     });
+  }
+
+  findFlightOffers(dealMerchantId) {
+    const dealFlights = this.collectionUtils.getCollection<Flight>(this.deal.flights);
+    console.log('deal flights', dealFlights);
+
+    const amsterdamAirport = 'JFAnSriEs0g7XS2MlxVk';
+    const zurichAirport = 'hfVxPrPOE7ct3L3Iy5Eg';
 
     this.flightOffers.subscribe(collection => {
       collection.forEach(flightOffer => {
@@ -162,57 +227,9 @@ export class CalendarComponent implements OnInit {
 
       });
 
-      setTimeout(() => {
-        this.events = [];
-        this.wayOffers.forEach(wayOffer => {
-          this.returnOffers.forEach(returnOffer => {
-            const differenceInDays = moment(returnOffer.date).diff(moment(wayOffer.date), 'days');
-
-            console.log('differenceInDays', differenceInDays, 'numberOfNights', this.numberOfNights);
-
-            if (differenceInDays === this.numberOfNights) {
-
-              console.log('!!We have way and return offers separated by the number of Nights we want!!');
-
-              const price = this.computeFlightOffersTotalPrice(wayOffer, returnOffer);
-              console.log('price', price);
-
-              this.completeOffers.push({
-                'way': wayOffer,
-                'return': returnOffer,
-                'totalPrice': price
-              });
-
-              if (this.checkIfThereAreRoomOffersInTheInterval(wayOffer.date)) {
-                const totalPrice = price + this.completeRoomOfferTotalPrice(wayOffer.date);
-
-                console.log('price', price, 'roomPrices', this.completeRoomOfferTotalPrice(wayOffer.date));
-
-                const event = {
-                  // TODO: this logic by age segment doesn't make sense,
-                  // I should sum the price for each of age the segments needed from the previous choice
-                  title: totalPrice + ' CHF', // TODO: consider currency + flightOffer.currency,
-                  start: startOfDay(wayOffer.date),
-                  end: endOfDay(wayOffer.date),
-                };
-
-                console.log('creating event', event);
-
-                this.events.push(event);
-                console.log('events', this.events);
-                this.refresh.next();
-              }
-
-            }
-
-            return;
-          });
-        });
-
-        console.log('completeOffers', this.completeOffers);
-      }, 2000);
     });
   }
+
 
   checkIfThereAreRoomOffersInTheInterval(startDate): boolean {
     console.log('checkIfThereAreRoomOffersInTheInterval');

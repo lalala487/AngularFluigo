@@ -12,6 +12,7 @@ import { Deal } from '../models/deal';
 import { Flight } from '../models/flight';
 import { Offer } from '../models/offer';
 import * as moment from 'moment';
+import { Airport } from '../models/airport';
 
 @Component({
   selector: 'app-calendar',
@@ -24,6 +25,7 @@ export class CalendarComponent implements OnInit {
   @Input() accummulations: Object;
 
   numberOfNights: Number = 3;
+  currentAirport: Airport = { name: 'Zürich', value: 'hfVxPrPOE7ct3L3Iy5Eg' } as Airport;
 
   events: CalendarEvent[];
   flights = [];
@@ -158,7 +160,6 @@ export class CalendarComponent implements OnInit {
     console.log('deal flights', dealFlights);
 
     const amsterdamAirport = 'JFAnSriEs0g7XS2MlxVk';
-    const zurichAirport = 'hfVxPrPOE7ct3L3Iy5Eg';
 
     this.flightOffers.subscribe(collection => {
       collection.forEach(flightOffer => {
@@ -193,7 +194,7 @@ export class CalendarComponent implements OnInit {
         let isReturn = false;
         this.db.doc$('flight/' + flightOfferFlight.id).subscribe(flight => {
           console.log('flight.origin', flight['origin']);
-          if (flight['origin'][0].id === amsterdamAirport && flight['destination'][0].id === zurichAirport) {
+          if (flight['origin'][0].id === amsterdamAirport && flight['destination'][0].id === this.currentAirport.value) {
             isReturn = true;
           }
         });
@@ -274,5 +275,9 @@ export class CalendarComponent implements OnInit {
     this.numberOfNights = +night;
 
     this.updateCalendarEvents();
+  }
+
+  selectedAirportChange(airport) {
+    this.currentAirport = airport;
   }
 }

@@ -3,7 +3,7 @@
     <select [ngModel]="numberOfNights" (ngModelChange)="onChange($event)" name="selectNumberOfNights">
       <option value="" selected disabled hidden>Nächte</option>
 
-      <option [value]="night" *ngFor="let night of nightList">{{night}}
+      <option [value]="night" *ngFor="let night of nightList">{{night}} Nächte</option>
     </select>
   </div>
 </form>

@@ -1,0 +1,9 @@
+<form>
+  <div class="form-group airport">
+    <select [compareWith]="compareFn" [ngModel]="selectedAirport" (ngModelChange)="onChange($event)" name="selectAirport">
+      <option value="" selected disabled hidden>Flughafen</option>
+
+      <option [ngValue]="airport" *ngFor="let airport of airports">{{airport.name}}</option>
+    </select>
+  </div>
+</form>

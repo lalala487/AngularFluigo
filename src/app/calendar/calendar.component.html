@@ -8,15 +8,7 @@
       </div>
       <div class="row filters">
         <div class="col-xl-4">
-          <form>
-            <div class="form-group airport">
-              <select>
-                <option value="" selected disabled hidden>Flughafen</option>
-                <option value="1">Zürich</option>
-                <option value="2">Basel</option>
-              </select>
-            </div>
-          </form>
+          <app-airport-list [selectedAirport]="currentAirport" (selectedAirportChange)="selectedAirportChange($event)"></app-airport-list>
         </div>
         <div class="col-xl-4">
           <app-nights [numberOfNights]="numberOfNights" (selectedNightChange)="selectedNightChange($event)"></app-nights>

@@ -95,9 +95,9 @@ export class CalendarComponent implements OnInit {
             });
 
             if (this.checkIfThereAreRoomOffersInTheInterval(wayOffer.date)) {
-              const totalPrice = price + this.completeRoomOfferTotalPrice(wayOffer.date);
+              const totalPrice = price + this.computeRoomOfferTotalPrice(wayOffer.date);
 
-              console.log('price', price, 'roomPrices', this.completeRoomOfferTotalPrice(wayOffer.date));
+              console.log('price', price, 'roomPrices', this.computeRoomOfferTotalPrice(wayOffer.date));
 
               const event = {
                 // TODO: this logic by age segment doesn't make sense,
@@ -209,14 +209,6 @@ export class CalendarComponent implements OnInit {
             }
 
             console.log('inner offer', offer);
-            // this.events.push({
-            //   // TODO: this logic by age segment doesn't make sense,
-            //   // I should sum the price for each of the segments needed from the previous choice
-            //   title: offer.prices[0].amount + ' ' + flightOffer.currency,
-            //   start: startOfDay(offer.date),
-            //   end: endOfDay(offer.date),
-            // });
-            // this.refresh.next();
           });
           console.log('events', this.events);
           console.log('wayOffers', this.wayOffers);
@@ -248,7 +240,7 @@ export class CalendarComponent implements OnInit {
     return true;
   }
 
-  completeRoomOfferTotalPrice(startDate): number {
+  computeRoomOfferTotalPrice(startDate): number {
     let price = 0;
     for (let index = 0; index < this.numberOfNights; index++) {
       const currentDate = moment(startDate).add(index, 'days').valueOf();

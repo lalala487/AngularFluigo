@@ -278,6 +278,8 @@ export class CalendarComponent implements OnInit {
   }
 
   selectedAirportChange(airport) {
+    this.updateCalendarEvents();
+
     this.currentAirport = airport;
   }
 }

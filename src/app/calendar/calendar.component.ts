@@ -13,6 +13,7 @@ import { Flight } from '../models/flight';
 import { Offer } from '../models/offer';
 import * as moment from 'moment';
 import { Airport } from '../models/airport';
+import { Segment } from '../models/segment';
 
 @Component({
   selector: 'app-calendar',
@@ -85,33 +86,35 @@ export class CalendarComponent implements OnInit {
 
             console.log('!!We have way and return offers separated by the number of Nights we want!!');
 
-            const price = this.computeFlightOffersTotalPrice(wayOffer, returnOffer);
-            console.log('price', price);
-
-            this.completeOffers.push({
+            const fullOffer = {
               'way': wayOffer,
               'return': returnOffer,
-              'totalPrice': price
-            });
+              'totalPrice': 0,
+            };
+
+            this.computeFlightOffersTotalPrice(wayOffer, returnOffer, fullOffer);
+
+            this.completeOffers.push(fullOffer);
 
             if (this.checkIfThereAreRoomOffersInTheInterval(wayOffer.date)) {
-              const totalPrice = price + this.computeRoomOfferTotalPrice(wayOffer.date);
+              setTimeout(() => {
+                console.log('full offer set timeout', fullOffer);
+                const totalPrice = fullOffer['totalPrice'] + this.computeRoomOfferTotalPrice(wayOffer.date);
 
-              console.log('price', price, 'roomPrices', this.computeRoomOfferTotalPrice(wayOffer.date));
+                console.log('price', fullOffer['totalPrice'], 'roomPrices', this.computeRoomOfferTotalPrice(wayOffer.date));
 
-              const event = {
-                // TODO: this logic by age segment doesn't make sense,
-                // I should sum the price for each of age the segments needed from the previous choice
-                title: totalPrice + ' CHF', // TODO: consider currency + flightOffer.currency,
-                start: startOfDay(wayOffer.date),
-                end: endOfDay(wayOffer.date),
-              };
-
-              console.log('creating event', event);
-
-              this.events.push(event);
-              console.log('events', this.events);
-              this.refresh.next();
+                const event = {
+                  // TODO: this logic by age segment doesn't make sense,
+                  // I should sum the price for each of age the segments needed from the previous choice
+                  title: totalPrice + ' CHF', // TODO: consider currency + flightOffer.currency,
+                  start: startOfDay(wayOffer.date),
+                  end: endOfDay(wayOffer.date),
+                };
+                console.log('creating event', event);
+                this.events.push(event);
+                console.log('events', this.events);
+                this.refresh.next();
+              }, 1000);
             }
 
           }
@@ -146,6 +149,7 @@ export class CalendarComponent implements OnInit {
         this.db.colWithIds$<Offer>('accommodationOffer/' + accommodationOfferId + '/offers').subscribe(col => {
           col.forEach(offer => {
             console.log('roomOffer', offer);
+
             this.roomOffers.set(offer.date.getTime(), offer);
             console.log('roomOffers', this.roomOffers);
             console.log('roomOffers[date]', this.roomOffers.get(offer.date));
@@ -159,6 +163,7 @@ export class CalendarComponent implements OnInit {
     const dealFlights = this.collectionUtils.getCollection<Flight>(this.deal.flights);
     console.log('deal flights', dealFlights);
 
+    // TODO: read this value from the deal
     const amsterdamAirport = 'JFAnSriEs0g7XS2MlxVk';
 
     this.flightOffers.subscribe(collection => {
@@ -253,9 +258,33 @@ export class CalendarComponent implements OnInit {
     return this.accummulations['adults'] * price;
   }
 
-  computeFlightOffersTotalPrice(offer1, offer2) {
+  computeFlightOffersTotalPrice(offer1, offer2, fullOffer) {
+    console.log('start computeFlightOffersTotalPrice');
+
+    offer1.prices.forEach(element => {
+      this.db.doc$<Segment>('flightSegment/' + element.ref.id).subscribe(flightSegment => {
+        // console.log('flightSement offer 1', flightSegment);
+        if (flightSegment.name.en_GB === 'Adult') {
+          fullOffer['totalPrice'] += this.accummulations['adults'] * element.amount;
+        } else if (flightSegment.name.en_GB === 'Child') {
+          fullOffer['totalPrice'] += this.accummulations['children'] * element.amount;
+        }
+      });
+    });
+
+    offer2.prices.forEach(element => {
+      this.db.doc$<Segment>('flightSegment/' + element.ref.id).subscribe(flightSegment => {
+        // console.log('flightSement offer 2', flightSegment);
+        if (flightSegment.name.en_GB === 'Adult') {
+          fullOffer['totalPrice'] += this.accummulations['adults'] * element.amount;
+        } else if (flightSegment.name.en_GB === 'child') {
+          fullOffer['totalPrice'] += this.accummulations['children'] * element.amount;
+        }
+      });
+    });
+
     // TODO: use adults/children and instead of [0], use the right segment
-    return this.accummulations['adults'] * (offer1.prices[0].amount + offer2.prices[0].amount);
+    // return this.accummulations['adults'] * (offer1.prices[0].amount + offer2.prices[0].amount);
   }
 
   getIds(list: Array<any>) {

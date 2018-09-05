@@ -110,6 +110,10 @@ export class CalendarComponent implements OnInit {
                   start: startOfDay(wayOffer.date),
                   end: endOfDay(wayOffer.date),
                 };
+
+                // TODO: instead of this, it should be the price of the selected event
+                this.accummulations['totalPrice'] = totalPrice;
+
                 console.log('creating event', event);
                 this.events.push(event);
                 console.log('events', this.events);

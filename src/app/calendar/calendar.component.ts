@@ -110,7 +110,11 @@ export class CalendarComponent implements OnInit {
                 const event = {
                   title: 'CHF ' + totalPrice, // TODO: consider currency + flightOffer.currency,
                   start: startOfDay(wayOffer.date),
-                  end: endOfDay(returnOffer.date),
+                  end: endOfDay(wayOffer.date),
+                  meta: {
+                    way: wayOffer,
+                    return: returnOffer,
+                  }
                 };
 
 
@@ -155,7 +159,7 @@ export class CalendarComponent implements OnInit {
 
           this.accummulations['totalPrice'] = event.title;
           this.accummulations['startDate'] = event.start;
-          this.accummulations['endDate'] = event.end;
+          this.accummulations['endDate'] = event.meta.return.date;
 
           console.log('accummulations', this.accummulations);
         }

@@ -2951,3 +2951,7 @@ select:focus {
 .btn-icon-press:focus {
     outline: none;
 }
+
+.cal-open-day-events {
+  display: none;
+}

@@ -88,20 +88,20 @@
                 <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
                 This changes throughout the checkout process because the customer can change all the time certain options.
                 The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
-                <p class="price-amount">CHF {{ accummulations.totalPrice }}</p>
+                <p class="price-amount">{{ accummulations.totalPrice }}</p>
                 <button sidebarjsOpen class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
               </div>
             </div>
             <div class="timeline-container">
               <div class="from-to-date">
-                <div class="from-date">
+                <div *ngIf="accummulations.startDate" class="from-date">
                   <!-- Below is the day number (example: "20") that the customer flies (based on his/her selection) -->
-                  <p class="day">{{ deal?.startDate | date:'d'}}</p>
+                  <p class="day">{{ accummulations.startDate | date:'d'}}</p>
                   <!-- Below is the day number (example: "June") that the customer flies (based on his/her selection) -->
-                  <p class="month">{{ deal?.startDate | date:'MMM. yyyy'}}</p>
+                  <p class="month">{{ accummulations?.startDate | date:'MMM. yyyy'}}</p>
                   <!-- Below is the day name (example: "Wed.") that the customer flies (based on his/her selection).
                   The day name is always shorted to 3 letters followed by a point (".") -->
-                  <p class="weekday">{{ deal?.startDate | date:'E. hh:mm'}}</p>
+                  <p class="weekday">{{ accummulations?.startDate | date:'E. hh:mm'}}</p>
                 </div>
                 <div class="arrow-wrapper">
                   <div class="arrow-nights">
@@ -115,14 +115,14 @@
                     <p class="persons">{{ accummulations?.adults + accummulations?.children }} <img src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top" [ngbTooltip]="tipPeople"></p>
                   </div>
                 </div>
-                <div class="to-date">
+                <div class="to-date" *ngIf="accummulations.endDate">
                   <!-- Below is the day number (example: "20") that the customer flies back (based on his/her selection) -->
-                  <p class="day">{{ deal?.endDate | date:'d'}}</p>
+                  <p class="day">{{ accummulations?.endDate | date:'d'}}</p>
                   <!-- Below is the day number (example: "June") that the customer flies back (based on his/her selection) -->
-                  <p class="month">{{ deal?.endDate | date:'MMM. yyyy'}}</p>
+                  <p class="month">{{ accummulations?.endDate | date:'MMM. yyyy'}}</p>
                   <!-- Below is the day name (example: "Wed.") that the customer flies back (based on his/her selection).
                   The day name is always shorted to 3 letters followed by a point (".") -->
-                  <p class="weekday">{{ deal?.endDate | date:'E. hh:mm'}}</p>
+                  <p class="weekday">{{ accummulations?.endDate | date:'E. hh:mm'}}</p>
                 </div>
               </div>
             </div>

@@ -58,6 +58,8 @@
            [viewDate]="viewDate"
            [events]="events"
            [refresh]="refresh"
+           [activeDayIsOpen]="activeDayIsOpen"
+           (dayClicked)="dayClicked($event.day)"
            [cellTemplate]="customCellTemplate">
           </mwl-calendar-month-view>
         </div>

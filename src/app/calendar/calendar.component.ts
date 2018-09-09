@@ -5,7 +5,9 @@ import { CalendarEvent } from 'angular-calendar';
 import { FirestoreService } from '../services/firestore.service';
 import {
   startOfDay,
-  endOfDay
+  endOfDay,
+  isSameMonth,
+  isSameDay,
 } from 'date-fns';
 import { Subject } from 'rxjs/Subject';
 import { Deal } from '../models/deal';
@@ -24,6 +26,8 @@ import { Segment } from '../models/segment';
 export class CalendarComponent implements OnInit {
   @Input() deal: Deal;
   @Input() accummulations: Object;
+
+  activeDayIsOpen = false;
 
   numberOfNights: Number = 3;
   currentAirport: Airport = { name: 'Zürich', value: 'hfVxPrPOE7ct3L3Iy5Eg' } as Airport;
@@ -104,15 +108,11 @@ export class CalendarComponent implements OnInit {
                 console.log('price', fullOffer['totalPrice'], 'roomPrices', this.computeRoomOfferTotalPrice(wayOffer.date));
 
                 const event = {
-                  // TODO: this logic by age segment doesn't make sense,
-                  // I should sum the price for each of age the segments needed from the previous choice
-                  title: totalPrice + ' CHF', // TODO: consider currency + flightOffer.currency,
+                  title: 'CHF ' + totalPrice, // TODO: consider currency + flightOffer.currency,
                   start: startOfDay(wayOffer.date),
-                  end: endOfDay(wayOffer.date),
+                  end: endOfDay(returnOffer.date),
                 };
 
-                // TODO: instead of this, it should be the price of the selected event
-                this.accummulations['totalPrice'] = totalPrice;
 
                 console.log('creating event', event);
                 this.events.push(event);
@@ -130,6 +130,37 @@ export class CalendarComponent implements OnInit {
       console.log('completeOffers', this.completeOffers);
     }, 2000);
 
+  }
+
+  dayClicked({
+    date,
+    events
+  }: {
+    date: Date;
+    events: Array<CalendarEvent>;
+  }): void {
+    console.log('day clicked', events, date);
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
+      } else {
+        this.activeDayIsOpen = true;
+        this.viewDate = date;
+
+        if (events.length) {
+          const event = events[0];
+
+          this.accummulations['totalPrice'] = event.title;
+          this.accummulations['startDate'] = event.start;
+          this.accummulations['endDate'] = event.end;
+
+          console.log('accummulations', this.accummulations);
+        }
+      }
+    }
   }
 
   findAccommodationOffers(dealMerchantId) {

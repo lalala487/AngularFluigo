@@ -39,7 +39,9 @@ export class DealDetailComponent implements OnInit {
     'birthday4': { 'day': '', 'month': '', 'year': '' } as Birthday,
     'birthday5': { 'day': '', 'month': '', 'year': '' } as Birthday,
     'hasChildren': false,
-    'totalPrice': 0,
+    'totalPrice': '-',
+    'startDate': undefined,
+    'endDate': undefined
   };
 
   currentStep = 0;

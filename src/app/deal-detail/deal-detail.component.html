@@ -106,7 +106,7 @@
                 <div class="arrow-wrapper">
                   <div class="arrow-nights">
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
-                    <ng-template #tipAccommodation>3 Nächte<br />{{(accommodationDoc | doc | async)?.name[locale]}}<br />Check-in: {{ deal?.startDate | date:'mediumDate'}}<br />Check-out: {{ deal?.endDate | date:'mediumDate'}}</ng-template>
+                    <ng-template #tipAccommodation>{{ accummulations?.numberOfNights}} Nächte<br />{{(accommodationDoc | doc | async)?.name[locale]}}<br />Check-in: {{ accummulations?.startDate | date:'mediumDate'}}<br />Check-out: {{ accummulations?.endDate | date:'mediumDate'}}</ng-template>
                     <!-- Below is the amount of people that will be staying at the accommodation -->
                     <ng-template #tipPeople>{{ accummulations.adults }} Erwachsene<br />{{ accummulations.children }} Kind</ng-template>
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->

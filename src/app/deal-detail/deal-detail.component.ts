@@ -41,7 +41,8 @@ export class DealDetailComponent implements OnInit {
     'hasChildren': false,
     'totalPrice': '-',
     'startDate': undefined,
-    'endDate': undefined
+    'endDate': undefined,
+    'numberOfNights': 3
   };
 
   currentStep = 0;

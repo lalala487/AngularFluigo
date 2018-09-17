@@ -110,7 +110,7 @@
                     <!-- Below is the amount of people that will be staying at the accommodation -->
                     <ng-template #tipPeople>{{ accummulations.adults }} Erwachsene<br />{{ accummulations.children }} Kind</ng-template>
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
-                    <p class="nights">3 <img src="assets/icon/icon-moon.svg" height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
+                    <p class="nights">{{ accummulations?.numberOfNights}} <img src="assets/icon/icon-moon.svg" height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
                     <!-- Below is the amount of people that will be staying at the accommodation -->
                     <p class="persons">{{ accummulations?.adults + accummulations?.children }} <img src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top" [ngbTooltip]="tipPeople"></p>
                   </div>

@@ -82,7 +82,7 @@ export class CalendarComponent implements OnInit {
       this.events = [];
       this.wayOffers.forEach(wayOffer => {
         this.returnOffers.forEach(returnOffer => {
-          const differenceInDays = moment(returnOffer.date).diff(moment(wayOffer.date), 'days');
+          const differenceInDays = this.differenceInDays(returnOffer.date, wayOffer.date);
 
           console.log('differenceInDays', differenceInDays, 'numberOfNights', this.numberOfNights);
 
@@ -136,6 +136,10 @@ export class CalendarComponent implements OnInit {
 
   }
 
+  private differenceInDays(returnDate: string, wayDate: string) {
+    return moment(returnDate).diff(moment(wayDate), 'days');
+  }
+
   dayClicked({
     date,
     events
@@ -160,6 +164,10 @@ export class CalendarComponent implements OnInit {
           this.accummulations['totalPrice'] = event.title;
           this.accummulations['startDate'] = event.start;
           this.accummulations['endDate'] = event.meta.return.date;
+
+
+          const differenceInDays = this.differenceInDays(this.accummulations['endDate'], this.accummulations['startDate']);
+          this.accummulations['numberOfNights'] = differenceInDays;
 
           console.log('accummulations', this.accummulations);
         }

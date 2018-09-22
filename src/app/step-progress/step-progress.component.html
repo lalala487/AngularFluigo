@@ -1,0 +1,68 @@
+<div class="container-center-steps">
+  <div class="step-one">
+    <span [ngClass]="{
+                    'active': currentStep > 0,
+                    'current': currentStep == 0
+                  }">1</span>
+    <p [ngClass]="{
+                  'active': currentStep > 0,
+                  'current': currentStep == 0
+                }">Stadt</p>
+  </div>
+  <div [ngClass]="{
+                    'step-line': true,
+                    'active': currentStep > 0
+                  }"></div>
+  <div class="step-two">
+    <span [ngClass]="{
+                    'active': currentStep > 0,
+                    'current': currentStep == 1 || currentStep == 2
+                  }">2</span>
+    <p [ngClass]="{
+                    'active': currentStep > 0,
+                    'current': currentStep == 1 || currentStep == 2
+                  }">Hotel</p>
+  </div>
+  <div [ngClass]="{
+                    'step-line': true,
+                    'active': currentStep > 3
+                  }"></div>
+  <div class="step-three">
+    <span [ngClass]="{
+                  'active': currentStep > 3,
+                  'current': currentStep == 4 || currentStep == 5
+                }">3</span>
+    <p [ngClass]="{
+                  'active': currentStep > 3,
+                  'current': currentStep == 4 || currentStep == 5
+                }">Flug</p>
+  </div>
+  <div [ngClass]="{
+                    'step-line': true,
+                    'active': currentStep > 5
+                  }"></div>
+  <div class="step-four">
+    <span [ngClass]="{
+                  'active': currentStep > 5,
+                  'current': currentStep == 6 || currentStep == 7 || currentStep == 8
+                }">4</span>
+    <p [ngClass]="{
+                  'active': currentStep > 5,
+                  'current': currentStep == 6 || currentStep == 7 || currentStep == 8
+                }">Aktivitäten</p>
+  </div>
+  <div [ngClass]="{
+                'step-line': true,
+                'active': currentStep > 8
+              }"></div>
+  <div class="step-five">
+    <span [ngClass]="{
+                  'active': currentStep > 8,
+                  'current': currentStep > 8
+                }">5</span>
+    <p [ngClass]="{
+                  'active': currentStep > 8,
+                  'current': currentStep > 8
+                }">Zahlung</p>
+  </div>
+</div>

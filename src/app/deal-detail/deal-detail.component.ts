@@ -104,7 +104,6 @@ export class DealDetailComponent implements OnInit {
 
         return;
       }
-
     }
 
     if (this.currentStep === 2 && this.accummulations.children === 0) {

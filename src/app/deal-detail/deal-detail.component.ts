@@ -77,8 +77,8 @@ export class DealDetailComponent implements OnInit {
         this.deal = deals ? deals[0] as Deal : undefined;
 
         if (this.deal.marketing) {
-          this.accummulations.startDate = this.deal.marketing.from;
-          this.accummulations.endDate = this.deal.marketing.to;
+          this.accummulations.startDate = this.deal.marketing.departingFlight;
+          this.accummulations.endDate = this.deal.marketing.returningFlight;
           this.accummulations.totalPrice = 'CHF ' + this.deal.marketing.price.toString();
         }
 

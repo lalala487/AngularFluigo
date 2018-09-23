@@ -10,13 +10,13 @@
         <div class="col-sm-2">
         </div>
         <div class="col-md-4">
-          <button class="btn-icon-press fade-in-out active" type="next">
+          <button class="btn-icon-press fade-in-out" type="next" [class.active]="!accummulations['hasInsurance']" (click)="onClickMe()">
             <img src="assets/icon/icon-umbrella.svg" height="45" alt="Icon Umbrella">
             <p>Mit</p>
           </button>
         </div>
         <div class="col-md-4">
-          <button class="btn-icon-press fade-in-out" type="next">
+          <button class="btn-icon-press fade-in-out" type="next" [class.active]="!accummulations['hasInsurance']" (click)="onClickMe()">
             <img src="assets/icon/icon-cloud-rain.svg" height="45" alt="Icon Cloud Rain">
             <p>Ohne</p>
           </button>

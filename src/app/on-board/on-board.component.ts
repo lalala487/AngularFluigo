@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-on-board',
@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./on-board.component.css']
 })
 export class OnBoardComponent implements OnInit {
+  @Input() accummulations: Object;
 
-  constructor() { }
+  ngOnInit(): void {
+  }
 
-  ngOnInit() {
+  onClickMe() {
+    this.accummulations['hasChampagne'] = !this.accummulations['hasChampagne'];
   }
 
 }

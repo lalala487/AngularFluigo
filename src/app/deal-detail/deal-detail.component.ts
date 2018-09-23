@@ -49,7 +49,11 @@ export class DealDetailComponent implements OnInit {
       'airport': { name: 'Zürich', value: 'hfVxPrPOE7ct3L3Iy5Eg' } as Airport,
       'list': []
     },
-    'eventSelected': undefined
+    'eventSelected': undefined,
+    'hasChampagne': true,
+    'hasInsurance': true,
+    'champagnePrice': 39,
+    'insurancePrice': 25.56,
   };
 
   currentStep = 0;

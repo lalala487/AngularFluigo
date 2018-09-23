@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-insurance',
   templateUrl: './insurance.component.html',
   styleUrls: ['./insurance.component.css']
 })
-export class InsuranceComponent implements OnInit {
+export class InsuranceComponent {
+  @Input() accummulations: Object;
 
-  constructor() { }
-
-  ngOnInit() {
+  onClickMe() {
+    this.accummulations['hasInsurance'] = !this.accummulations['hasInsurance'];
   }
-
 }

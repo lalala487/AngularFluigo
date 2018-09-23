@@ -65,6 +65,12 @@ export class DealDetailComponent implements OnInit {
       }).subscribe(deals => {
         this.deal = deals ? deals[0] as Deal : undefined;
 
+        if (this.deal.marketing) {
+          this.accummulations.startDate = this.deal.marketing.from;
+          this.accummulations.endDate = this.deal.marketing.to;
+          this.accummulations.totalPrice = 'CHF ' + this.deal.marketing.price.toString();
+        }
+
         this.accommodationDoc = this.deal.accommodation ? this.deal.accommodation[0] : undefined;
         const cityRef = this.deal.city ? this.deal.city[0] : undefined;
 

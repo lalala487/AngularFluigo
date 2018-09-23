@@ -48,7 +48,8 @@ export class DealDetailComponent implements OnInit {
       'nights': 3,
       'airport': { name: 'Zürich', value: 'hfVxPrPOE7ct3L3Iy5Eg' } as Airport,
       'list': []
-    }
+    },
+    'eventSelected': undefined
   };
 
   currentStep = 0;
@@ -118,6 +119,15 @@ export class DealDetailComponent implements OnInit {
       }
     }
 
+    // calendar
+    if (this.currentStep === 4) {
+      if (this.accummulations['eventSelected'] !== undefined) {
+        this.currentStep = this.currentStep + 5;
+      }
+
+      return;
+    }
+
     if (this.currentStep === 2 && this.accummulations.children === 0) {
       this.currentStep = this.currentStep + 2;
     } else {
@@ -133,6 +143,9 @@ export class DealDetailComponent implements OnInit {
 
     if (this.currentStep === 4 && this.accummulations.children === 0) {
       this.currentStep = this.currentStep - 2;
+    } else if (this.currentStep === 9) {
+      this.currentStep = this.currentStep - 5;
+
     } else {
       this.currentStep = this.currentStep - 1;
     }

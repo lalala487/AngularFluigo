@@ -58,6 +58,7 @@ export class CalendarComponent implements OnInit {
       this.accummulations['events']['nights'] === this.numberOfNights &&
       this.accummulations['events']['list'].length > 0) {
         this.events = this.accummulations['events']['list'];
+        // TODO: select that event
     } else {
       this.updateCalendarEvents();
     }
@@ -181,6 +182,8 @@ export class CalendarComponent implements OnInit {
 
           const differenceInDays = this.differenceInDays(this.accummulations['endDate'], this.accummulations['startDate']);
           this.accummulations['numberOfNights'] = differenceInDays;
+
+          this.accummulations['eventSelected'] = event;
 
           console.log('accummulations', this.accummulations);
         }

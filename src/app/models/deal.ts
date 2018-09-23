@@ -1,3 +1,5 @@
+import { MarketingField } from './fields/marketing';
+
 export interface Deal {
     active: boolean;
     name: object;
@@ -10,8 +12,7 @@ export interface Deal {
     endDate: Date;
     flights: any;
     activities: any;
-    marketingPrice: number;
-    marketingDiscount: number;
     availableServices: object;
     rating: number;
+    marketing: MarketingField;
 }

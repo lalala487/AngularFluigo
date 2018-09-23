@@ -19,8 +19,8 @@
             </div>
           </div>
           <div style="width: 50%; margin-top:2rem;">
-            <div class="discount" *ngIf="deal.marketingDiscount > 0">
-              <p class="amount">{{ deal.marketingDiscount }}%</p>
+            <div class="discount" *ngIf="deal.marketing.discount > 0">
+              <p class="amount">{{ deal.marketing.discount }}%</p>
               <p class="label" i18n="deal discount">Rabatt</p>
             </div>
           </div>
@@ -29,7 +29,7 @@
           <div style="width: 40%; margin-bottom:.45rem;">
             <div class="price">
               <p>
-                <span>ab CHF</span>{{ deal.marketingPrice }}</p>
+                <span>ab CHF</span>{{ deal.marketing.price }}</p>
             </div>
           </div>
           <div style="width: 60%; margin-bottom:.45rem;">

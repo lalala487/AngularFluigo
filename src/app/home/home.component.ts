@@ -35,9 +35,9 @@ export class HomeComponent implements OnInit {
   }
 
   private findMaxDiscount(listOfDeals: Array<Deal>): number {
-      listOfDeals.sort((a, b) => b.marketingDiscount - a.marketingDiscount);
+      listOfDeals.sort((a, b) => b.marketing.discount - a.marketing.discount);
 
       const deal = listOfDeals[0] as Deal;
-      return deal.marketingDiscount;
+      return deal.marketing.discount;
   }
 }

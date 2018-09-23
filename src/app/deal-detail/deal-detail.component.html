@@ -34,7 +34,7 @@
         <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
         This changes throughout the checkout process because the customer can change all the time certain options.
         The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
-        <p class="price-amount">CHF {{ deal?.marketingPrice }}</p>
+        <p class="price-amount">CHF {{ deal?.marketing.price }}</p>
       </div>
       <div class="content-block sidebarjs-close-button">
         <button sidebarjsClose class="btn btn-small btn-primary" type="next" i18n="close sidebar">Schliessen</button>
@@ -58,7 +58,7 @@
             <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
             This changes throughout the checkout process because the customer can change all the time certain options.
             The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
-            <p class="price-amount">CHF {{ deal?.marketingPrice }}</p>
+            <p class="price-amount">CHF {{ deal?.marketing.price }}</p>
             <button sidebarjsOpen class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
           </div>
         </div>

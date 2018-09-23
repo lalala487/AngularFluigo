@@ -10,6 +10,7 @@ import { Accommodation } from '../models/accommodation';
 import { environment } from '../../environments/environment.prod';
 import { Birthday } from '../models/birthday';
 import { StepValidatorService } from '../services/step-validator.service';
+import { Airport } from '../models/airport';
 
 @Component({
   selector: 'app-deal-detail',
@@ -42,7 +43,12 @@ export class DealDetailComponent implements OnInit {
     'totalPrice': '-',
     'startDate': undefined,
     'endDate': undefined,
-    'numberOfNights': 3
+    'numberOfNights': 3,
+    'events': {
+      'nights': 3,
+      'airport': { name: 'Zürich', value: 'hfVxPrPOE7ct3L3Iy5Eg' } as Airport,
+      'list': []
+    }
   };
 
   currentStep = 0;

@@ -54,7 +54,13 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.updateCalendarEvents();
+    if (this.accummulations['events']['airport']['value'] === this.currentAirport.value &&
+      this.accummulations['events']['nights'] === this.numberOfNights &&
+      this.accummulations['events']['list'].length > 0) {
+        this.events = this.accummulations['events']['list'];
+    } else {
+      this.updateCalendarEvents();
+    }
   }
 
   updateCalendarEvents() {
@@ -122,6 +128,13 @@ export class CalendarComponent implements OnInit {
                 this.events.push(event);
                 console.log('events', this.events);
                 this.refresh.next();
+
+                this.accummulations['events'] = {
+                  'nights': this.numberOfNights,
+                  'airport': this.currentAirport,
+                  'list': this.events
+                };
+
               }, 1000);
             }
 
@@ -144,9 +157,9 @@ export class CalendarComponent implements OnInit {
     date,
     events
   }: {
-    date: Date;
-    events: Array<CalendarEvent>;
-  }): void {
+      date: Date;
+      events: Array<CalendarEvent>;
+    }): void {
     console.log('day clicked', events, date);
     if (isSameMonth(date, this.viewDate)) {
       if (

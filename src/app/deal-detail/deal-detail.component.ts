@@ -80,6 +80,11 @@ export class DealDetailComponent implements OnInit {
           this.accummulations.startDate = this.deal.marketing.departingFlight;
           this.accummulations.endDate = this.deal.marketing.returningFlight;
           this.accummulations.totalPrice = 'CHF ' + this.deal.marketing.price.toString();
+
+          this.accummulations['numberOfNights'] = this.deal.marketing.nights;
+          this.accummulations['adults'] = this.deal.marketing.adults;
+          this.accummulations['children'] = this.deal.marketing.children;
+          this.accummulations['total'] = this.deal.marketing.children + this.deal.marketing.adults;
         }
 
         this.accommodationDoc = this.deal.accommodation ? this.deal.accommodation[0] : undefined;

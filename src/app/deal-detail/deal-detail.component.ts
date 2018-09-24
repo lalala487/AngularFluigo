@@ -128,7 +128,7 @@ export class DealDetailComponent implements OnInit {
       }
     }
 
-    // calendar
+    // calendar step (ignore acivities for now)
     if (this.currentStep === 4) {
       if (this.accummulations['eventSelected'] !== undefined) {
         this.currentStep = this.currentStep + 5;
@@ -153,6 +153,7 @@ export class DealDetailComponent implements OnInit {
     if (this.currentStep === 4 && this.accummulations.children === 0) {
       this.currentStep = this.currentStep - 2;
     } else if (this.currentStep === 9) {
+      // ignore activities for now
       this.currentStep = this.currentStep - 5;
 
     } else {

@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FirestoreService } from '../services/firestore.service';
 import { TranslatableField } from '../models/fields/translatable';
-
 import { Money, Currencies } from 'ts-money';
 
 

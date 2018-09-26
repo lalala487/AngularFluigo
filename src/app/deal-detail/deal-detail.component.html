@@ -1,3 +1,19 @@
+<ngx-smart-modal #myBootstrapModal identifier="myBootstrapModal" [closable]="false" customClass="no-padding">
+  <div class="modal-header">
+    <h5 class="modal-title">Modal title</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="myBootstrapModal.close()"><span aria-hidden="true">&times;</span></button>
+  </div>
+  <div class="modal-body">
+    <h6>NgxSmartModal doesn't interfere with any CSS framework</h6>
+    <img src="http://lorempicsum.com/futurama/1000/400/6" class="img-fluid rounded" alt="Responsive image">
+    <p class="py-3">Modal body text goes here.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary">Save changes</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="myBootstrapModal.close()">Close</button>
+  </div>
+</ngx-smart-modal>
+
 <sidebar-js [sidebarjsConfig]="{position: 'left', backdropOpacity: 0}">
   <div class="sidebarjs-center-container" style="display: flex; align-items: center; flex-wrap: wrap; height: 100%;">
     <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
@@ -48,6 +64,7 @@
     </div>
   </div>
 </sidebar-js>
+
 <div class="row nav-container">
   <div class="col-xl-3"></div>
   <div class="col-xl-9 nav-col">
@@ -60,7 +77,7 @@
       <div class="col-xs-4">
         <div class="price-container-small">
           <div class="price-info">
-            <p class="price-label">Gesamtbetrag</p>
+            <p class="price-label">Gesamtbetraag</p>
             <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
             This changes throughout the checkout process because the customer can change all the time certain options.
             The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
@@ -90,7 +107,7 @@
           <div class="steps">
             <div class="price-container">
               <div class="price-info">
-                <p class="price-label" i18n="sidebar total">Gesamtbetrag</p>
+                <p class="price-label" i18n="sidebar total" (click)="myBootstrapModal.open()">Gesamtbetrag</p>
                 <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
                 This changes throughout the checkout process because the customer can change all the time certain options.
                 The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->

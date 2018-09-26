@@ -50,7 +50,7 @@ export class DealDetailComponent implements OnInit {
       'list': []
     },
     'eventSelected': undefined,
-    'hasChampagne': true,
+    'hasUpsell': true,
     'hasInsurance': true,
     'champagnePrice': 39,
     'insurancePrice': 25.56,

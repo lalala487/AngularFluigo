@@ -28,14 +28,14 @@ export class OnBoardComponent implements OnInit {
 
   yes() {
     this.accummulations['hasUpsell'] = true;
-    this.accummulations['champagnePrice'] = this.onBoard.amount;
+    this.accummulations['upsellPrice'] = this.onBoard.amount;
 
     console.log('hasUpsell', this.accummulations['hasUpsell']);
   }
 
   no() {
     this.accummulations['hasUpsell'] = false;
-    this.accummulations['champagnePrice'] = 0;
+    this.accummulations['upsellPrice'] = 0;
     console.log('hasUpsell', this.accummulations['hasUpsell']);
   }
 

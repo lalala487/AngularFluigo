@@ -41,6 +41,7 @@ export class DealDetailComponent implements OnInit {
     'birthday5': { 'day': '', 'month': '', 'year': '' } as Birthday,
     'hasChildren': false,
     'totalPrice': '-',
+    'totalPriceAmount': 0,
     'startDate': undefined,
     'endDate': undefined,
     'numberOfNights': 3,
@@ -52,8 +53,8 @@ export class DealDetailComponent implements OnInit {
     'eventSelected': undefined,
     'hasUpsell': true,
     'hasInsurance': true,
-    'champagnePrice': 39,
-    'insurancePrice': 25.56,
+    'upsellPrice': 0,
+    'insuranceRate': 0,
   };
 
   currentStep = 0;
@@ -80,6 +81,7 @@ export class DealDetailComponent implements OnInit {
           this.accummulations.startDate = this.deal.marketing.departingFlight;
           this.accummulations.endDate = this.deal.marketing.returningFlight;
           this.accummulations.totalPrice = 'CHF ' + this.deal.marketing.price.toString();
+          this.accummulations.totalPriceAmount = this.deal.marketing.price;
 
           this.accummulations['numberOfNights'] = this.deal.marketing.nights;
           this.accummulations['adults'] = this.deal.marketing.adults;

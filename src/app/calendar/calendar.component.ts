@@ -121,6 +121,7 @@ export class CalendarComponent implements OnInit {
                   meta: {
                     way: wayOffer,
                     return: returnOffer,
+                    totalPriceAmount: totalPrice
                   }
                 };
 
@@ -176,6 +177,7 @@ export class CalendarComponent implements OnInit {
           const event = events[0];
 
           this.accummulations['totalPrice'] = event.title;
+          this.accummulations['totalPriceAmount'] = event.meta.totalPriceAmount;
           this.accummulations['startDate'] = event.start;
           this.accummulations['endDate'] = event.meta.return.date;
 

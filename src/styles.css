@@ -2930,6 +2930,7 @@ select:focus {
 }
 
 .pdp-user-age-block .active,
+.pdp-onboard-block .active,
 .pdp-insurance-block .active,
 .pdp-user-quantity-block .active {
   opacity: 1;

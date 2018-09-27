@@ -12,6 +12,8 @@ export class OnBoardComponent implements OnInit {
 
   onBoard: OnBoard;
 
+  hasAddedMoney = false;
+
   constructor(
     protected db: FirestoreService
   ) {
@@ -19,9 +21,15 @@ export class OnBoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.db.colWithIds$('onBoardService').subscribe(collection => {
-      console.log('col', collection);
+    this.db.colWithIds$<OnBoard>('onBoardService').subscribe(collection => {
       this.onBoard = collection[0];
+      console.log('onboard amount', this.onBoard.amount);
+
+      console.log('total amount', this.accummulations['totalPriceAmount']);
+
+      if (this.accummulations['hasUpsell']) {
+        this.yes();
+      }
     });
 
   }
@@ -30,13 +38,23 @@ export class OnBoardComponent implements OnInit {
     this.accummulations['hasUpsell'] = true;
     this.accummulations['upsellPrice'] = this.onBoard.amount;
 
-    console.log('hasUpsell', this.accummulations['hasUpsell']);
+    this.accummulations['totalPriceAmount'] = this.accummulations['totalPriceAmount'] + +this.onBoard.amount;
+    this.accummulations['totalPrice'] = 'CHF ' + this.accummulations['totalPriceAmount'];
+    this.hasAddedMoney = true;
+    console.log('total amount', this.accummulations['totalPriceAmount']);
   }
 
   no() {
     this.accummulations['hasUpsell'] = false;
     this.accummulations['upsellPrice'] = 0;
-    console.log('hasUpsell', this.accummulations['hasUpsell']);
+
+    if (this.hasAddedMoney) {
+      this.hasAddedMoney = false;
+
+      this.accummulations['totalPriceAmount'] -= this.onBoard.amount;
+      this.accummulations['totalPrice'] = 'CHF ' + this.accummulations['totalPriceAmount'];
+      console.log('total amount', this.accummulations['totalPriceAmount']);
+    }
   }
 
 }

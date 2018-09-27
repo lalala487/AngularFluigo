@@ -54,7 +54,7 @@ export class DealDetailComponent implements OnInit {
     'hasUpsell': true,
     'hasInsurance': true,
     'upsellPrice': 0,
-    'insuranceRate': 0,
+    'insurancePrice': 0,
   };
 
   currentStep = 0;

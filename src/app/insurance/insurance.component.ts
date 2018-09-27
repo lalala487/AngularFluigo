@@ -15,7 +15,7 @@ export class InsuranceComponent implements OnInit {
   insurance: Insurance;
   insuranceMessage: string;
 
-  rate: number;
+  price: number;
 
   constructor(
     protected db: FirestoreService
@@ -31,9 +31,10 @@ export class InsuranceComponent implements OnInit {
 
       this.db.doc$('insurer/' + this.insurance.insurer.id).subscribe(
         insurer => {
-          this.rate = insurer['commission'] / 100;
+          const rate = insurer['commission'] / 100;
 
-          const price = Money.fromDecimal(this.rate * this.accummulations['totalPriceAmount'], 'CHF', Math.ceil);
+          const price = Money.fromDecimal(rate * this.accummulations['totalPriceAmount'], 'CHF', Math.ceil);
+          this.price = price.amount;
 
           this.insuranceMessage = this.insuranceMessage.replace('xxx', price.currency + ' ' + price.toString());
         }
@@ -44,12 +45,12 @@ export class InsuranceComponent implements OnInit {
 
   yes() {
     this.accummulations['hasInsurance'] = true;
-    this.accummulations['insuranceRate'] = this.rate;
+    this.accummulations['insurancePrice'] = this.price;
   }
 
   no() {
     this.accummulations['hasInsurance'] = false;
-    this.accummulations['insuranceRate'] = 0;
+    this.accummulations['insurancePrice'] = 0;
   }
 }
 

@@ -1,16 +1,47 @@
 <ngx-smart-modal #myBootstrapModal identifier="myBootstrapModal" [closable]="false" customClass="no-padding">
   <div class="modal-header">
-    <h5 class="modal-title">Modal title</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="myBootstrapModal.close()"><span aria-hidden="true">&times;</span></button>
   </div>
   <div class="modal-body">
-    <h6>NgxSmartModal doesn't interfere with any CSS framework</h6>
-    <img src="http://lorempicsum.com/futurama/1000/400/6" class="img-fluid rounded" alt="Responsive image">
-    <p class="py-3">Modal body text goes here.</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary">Save changes</button>
-    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="myBootstrapModal.close()">Close</button>
+    <div class="logo-container">
+      <a href="/">
+        <img src="assets/img/logo.svg" width="110" alt="Flugio Logo" style="margin: 0 auto; display: block;">
+      </a>
+    </div>
+    <!-- <img src="http://lorempicsum.com/futurama/1000/400/6" class="img-fluid rounded" alt="Responsive image"> -->
+    <div class="col-lg-12">
+      <p class="modal-header-one">Exklusive Städtereisen bis zu 67% günstiger</p>
+    </div>
+    <div class="col-lg-12">
+      <p class="modal-header-two">Kostenloser Zugang zu Exclusive Angeboten nur mit Ihrer E-Mail</p>
+    </div>
+    <div class="col-lg-12">
+      <form>
+        <div class="form-group">
+          <input type="email" autocomplete="email" class="form-control modal-input-email" id="formGroupExampleInput" placeholder="E-Mail">
+          <button class="btn btn-primary modal-input-button-email" type="next">Weiter</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-12 modal-hr">
+      <div class="strike">
+        <span>oder</span>
+      </div>
+    </div>
+    <div class="col-lg-12">
+      <form>
+        <div class="form-group">
+          <button class="btn btn-primary modal-input-button-facebook" type="next">Weiter mit Facebook</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg-12">
+      <form>
+        <div class="form-group">
+          <p class="modal-legal-text">Mit dem Klick auf "Weiter" stimmen Sie unseren AGB sowie dem Einsatz von Cookies zu und nehmen unsere Datenschutzbestimmungen zur Kenntnis</p>
+        </div>
+      </form>
+    </div>
   </div>
 </ngx-smart-modal>
 

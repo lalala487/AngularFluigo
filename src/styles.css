@@ -74,7 +74,11 @@ body.dialog-open {
   flex-direction: column;
   pointer-events: auto;
   background-clip: padding-box;
-  background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
+  background-image:
+  linear-gradient(to bottom right, rgba(19,78,94,.95) 0%, rgba(77,131,132,.95) 100%),
+    url(assets/img/100001_1.jpg);
+  background-size: cover;
+  background-position: center;
   background-color: rgba(77, 131, 132, 1);
   border-radius: .5rem;
   padding-top: 0rem;
@@ -197,7 +201,7 @@ body.dialog-open {
 .modal-hr .strike>span {
   position: relative;
   display: inline-block;
-  font-size: .95em;
+  font-size: .8rem;
   letter-spacing: .07rem;
 }
 

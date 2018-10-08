@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CollectionsService } from '../services/collections.service';
 import { Observable } from 'rxjs/Observable';
 import { CalendarEvent } from 'angular-calendar';
@@ -26,6 +26,12 @@ import { Segment } from '../models/segment';
 export class CalendarComponent implements OnInit {
   @Input() deal: Deal;
   @Input() accummulations: Object;
+
+  @Input() hasFlightAccommodation: boolean;
+  @Input() flightAccommodationPrice: number;
+
+  @Output() hasFlightAccommodationChange: EventEmitter<any> = new EventEmitter();
+  @Output() flightAccommodationPriceChange: EventEmitter<any> = new EventEmitter();
 
   activeDayIsOpen = false;
 
@@ -176,8 +182,12 @@ export class CalendarComponent implements OnInit {
         if (events.length) {
           const event = events[0];
 
-          this.accummulations['totalPrice'] = event.title;
-          this.accummulations['totalPriceAmount'] = event.meta.totalPriceAmount;
+          this.hasFlightAccommodation = true;
+          this.hasFlightAccommodationChange.emit(this.hasFlightAccommodation);
+
+          this.flightAccommodationPrice = event.meta.totalPriceAmount;
+          this.flightAccommodationPriceChange.emit(this.flightAccommodationPrice);
+
           this.accummulations['startDate'] = event.start;
           this.accummulations['endDate'] = event.meta.return.date;
 

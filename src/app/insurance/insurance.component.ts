@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FirestoreService } from '../services/firestore.service';
 import { TranslatableField } from '../models/fields/translatable';
 import { Money, Currencies } from 'ts-money';
@@ -12,10 +12,14 @@ import { Money, Currencies } from 'ts-money';
 export class InsuranceComponent implements OnInit {
   @Input() accummulations: Object;
 
+  @Input() hasInsurance: boolean;
+  @Input() insurancePrice: number;
+
+  @Output() hasInsuranceChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() insurancePriceChange: EventEmitter<number> = new EventEmitter();
+
   insurance: Insurance;
   insuranceMessage: string;
-
-  price: number;
 
   constructor(
     protected db: FirestoreService
@@ -31,10 +35,22 @@ export class InsuranceComponent implements OnInit {
 
       this.db.doc$('insurer/' + this.insurance.insurer.id).subscribe(
         insurer => {
-          const rate = insurer['commission'] / 100;
+          let price;
+          console.log('insurer', insurer);
 
-          const price = Money.fromDecimal(rate * this.accummulations['totalPriceAmount'], 'CHF', Math.ceil);
-          this.price = price.amount;
+          if (!this.insurancePrice) {
+            const rate = insurer['commission'] / 100;
+            console.log('rate', rate);
+            console.log('totalPriceAmount', this.accummulations['totalPriceAmount'], rate * this.accummulations['totalPriceAmount']);
+
+            price = Money.fromDecimal(rate * this.accummulations['totalPriceAmount'], 'CHF', Math.ceil);
+            console.log('price money', price, this.accummulations['totalPriceAmount']);
+            this.insurancePrice = price.amount / 100;
+            console.log('insurance price', price.amount);
+            this.insurancePriceChange.emit(this.insurancePrice);
+          } else {
+            price = Money.fromDecimal(this.insurancePrice, 'CHF', Math.ceil);
+          }
 
           this.insuranceMessage = this.insuranceMessage.replace('xxx', price.currency + ' ' + price.toString());
         }
@@ -44,13 +60,13 @@ export class InsuranceComponent implements OnInit {
   }
 
   yes() {
-    this.accummulations['hasInsurance'] = true;
-    this.accummulations['insurancePrice'] = this.price;
+    this.hasInsurance = true;
+    this.hasInsuranceChange.emit(this.hasInsurance);
   }
 
   no() {
-    this.accummulations['hasInsurance'] = false;
-    this.accummulations['insurancePrice'] = 0;
+    this.hasInsurance = false;
+    this.hasInsuranceChange.emit(this.hasInsurance);
   }
 }
 

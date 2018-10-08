@@ -55,6 +55,8 @@ export class DealDetailComponent implements OnInit {
     'hasInsurance': true,
     'upsellPrice': 0,
     'insurancePrice': 0,
+    'hasFlightAccommodation': false,
+    'flightAccommodationPrice': 0
   };
 
   currentStep = 0;
@@ -110,6 +112,65 @@ export class DealDetailComponent implements OnInit {
           });
         }
       });
+  }
+
+  calculatePrice(): void {
+    let price = 0;
+    console.log('calculate price', this.accummulations);
+
+    if (this.accummulations['hasFlightAccommodation']) {
+      price += this.accummulations['flightAccommodationPrice'];
+      console.log('flightAccommodationPrice', this.accummulations['hasFlightAccommodation'], 'totalPrice', price);
+    }
+
+    if (this.accummulations['hasUpsell']) {
+      price += this.accummulations['upsellPrice'];
+      console.log('upsellPrice', this.accummulations['upsellPrice'], 'totalPrice', price);
+    }
+
+    if (this.accummulations['hasInsurance']) {
+      price += this.accummulations['insurancePrice'];
+      console.log('insurancePrice', this.accummulations['insurancePrice'], 'totalPrice', price);
+    }
+
+    this.accummulations['totalPriceAmount'] = price;
+    this.accummulations['totalPrice'] = 'CHF ' + price;
+  }
+
+  hasUpsellChange(hasUpsell: boolean) {
+    this.accummulations['hasUpsell'] = hasUpsell;
+    this.calculatePrice();
+    console.log('hasUpsellChange', hasUpsell, this.accummulations);
+  }
+
+  upsellPriceChange(upsellPrice: number) {
+    this.accummulations['upsellPrice'] = upsellPrice;
+    this.calculatePrice();
+    console.log('upsellPriceChange', upsellPrice, this.accummulations);
+  }
+
+  hasInsuranceChange(hasInsurance: boolean) {
+    this.accummulations['hasInsurance'] = hasInsurance;
+    this.calculatePrice();
+    console.log('hasInsuranceChange', hasInsurance, this.accummulations);
+  }
+
+  insurancePriceChange(insurancePrice: number) {
+    this.accummulations['insurancePrice'] = insurancePrice;
+    this.calculatePrice();
+    console.log('insurancePriceChange', insurancePrice, this.accummulations);
+  }
+
+  hasFlightAccommodationChange(hasFlightAccommodation: boolean) {
+    this.accummulations['hasFlightAccommodation'] = hasFlightAccommodation;
+    this.calculatePrice();
+    console.log('hasFlightAccommodationChange', hasFlightAccommodation, this.accummulations);
+  }
+
+  flightAccommodationPriceChange(flightAccommodationPrice: number) {
+    this.accummulations['flightAccommodationPrice'] = flightAccommodationPrice;
+    this.calculatePrice();
+    console.log('flightAccommodationPriceChange', flightAccommodationPrice, this.accummulations);
   }
 
   moveToNextStep(): void {

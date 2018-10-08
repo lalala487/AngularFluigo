@@ -60,6 +60,7 @@ export class DealDetailComponent implements OnInit {
     'flightAccommodationPrice': new Money(0, Currencies.CHF),
     'totalPriceAmount': new Money(0, Currencies.CHF),
     'contact': new User(),
+    'bookingFee': new Money(0, Currencies.CHF)
   };
 
   currentStep = 0;
@@ -91,6 +92,10 @@ export class DealDetailComponent implements OnInit {
           this.accummulations['adults'] = this.deal.marketing.adults;
           this.accummulations['children'] = this.deal.marketing.children;
           this.accummulations['total'] = this.deal.marketing.children + this.deal.marketing.adults;
+        }
+
+        if (this.deal.bookingFee) {
+          this.accummulations.bookingFee = Money.fromDecimal(this.deal.bookingFee, Currencies.CHF, Math.ceil);
         }
 
         this.accommodationDoc = this.deal.accommodation ? this.deal.accommodation[0] : undefined;
@@ -135,6 +140,8 @@ export class DealDetailComponent implements OnInit {
       price = price.add(this.accummulations['insurancePrice']);
       console.log('insurancePrice', this.accummulations['insurancePrice'], 'totalPrice', price);
     }
+
+    price = price.add(this.accummulations['bookingFee']);
 
     this.accummulations['totalPriceAmount'] = price;
   }

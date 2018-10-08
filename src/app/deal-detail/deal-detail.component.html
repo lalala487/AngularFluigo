@@ -77,9 +77,9 @@
         <p class="price-amount">CHF 49</p>
       </div>
       <!-- The block below is only displayed when the component in the deal detail view is active and filled in. -->
-      <div class="content-block">
+      <div class="content-block" *ngIf="accummulations.bookingFee.amount > 0">
         <p class="price-label">Buchungsgebühr</p>
-        <p class="price-amount">CHF 19</p>
+        <p class="price-amount">{{ accummulations.bookingFee.currency }} {{ accummulations.bookingFee }}</p>
       </div>
       <div class="content-block price-total">
         <hr class="total-hr"/>
@@ -87,7 +87,7 @@
         <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
         This changes throughout the checkout process because the customer can change all the time certain options.
         The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
-        <p class="price-amount">CHF {{ deal?.marketing.price }}</p>
+        <p class="price-amount">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
       </div>
       <div class="content-block sidebarjs-close-button">
         <button sidebarjsClose class="btn btn-small btn-primary" type="next" i18n="close sidebar">Schliessen</button>

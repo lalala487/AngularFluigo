@@ -13,14 +13,14 @@
             <div class="col-lg-6">
               <form>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Vorname">
+                  <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" placeholder="Vorname">
                 </div>
               </form>
             </div>
             <div class="col-lg-6">
               <form>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Nachname">
+                  <input [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" placeholder="Nachname">
                 </div>
               </form>
             </div>
@@ -29,7 +29,7 @@
             <div class="col-lg-12">
               <form>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="E-Mail-Addresse">
+                  <input [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="E-Mail-Addresse">
                 </div>
               </form>
             </div>
@@ -38,7 +38,7 @@
             <div class="col-lg-12">
               <form>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Telefonnummer">
+                  <input [(ngModel)]="user.phoneNumber" name="phone" type="text" class="form-control" placeholder="Telefonnummer">
                 </div>
               </form>
             </div>

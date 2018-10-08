@@ -13,6 +13,7 @@ import { StepValidatorService } from '../services/step-validator.service';
 import { Airport } from '../models/airport';
 
 import { Money, Currencies } from 'ts-money';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-deal-detail',
@@ -58,6 +59,7 @@ export class DealDetailComponent implements OnInit {
     'hasFlightAccommodation': false,
     'flightAccommodationPrice': new Money(0, Currencies.CHF),
     'totalPriceAmount': new Money(0, Currencies.CHF),
+    'contact': new User(),
   };
 
   currentStep = 0;

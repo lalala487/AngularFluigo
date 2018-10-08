@@ -214,7 +214,7 @@
 
         <app-insurance *ngIf="currentStep == 10" style="width:100%;" [accummulations]="accummulations" [hasInsurance]="accummulations['hasInsurance']" [insurancePrice]="accummulations['insurancePrice']" (hasInsuranceChange)="hasInsuranceChange($event)" (insurancePriceChange)="insurancePriceChange($event)"></app-insurance>
 
-        <app-user-data *ngIf="currentStep == 11" style="width:100%;"></app-user-data>
+        <app-user-data *ngIf="currentStep == 11" style="width:100%;" [(user)]="accummulations['contact']"></app-user-data>
 
         <app-payment *ngIf="currentStep == 12" style="width:100%;"></app-payment>
 

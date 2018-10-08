@@ -12,6 +12,8 @@ import { Birthday } from '../models/birthday';
 import { StepValidatorService } from '../services/step-validator.service';
 import { Airport } from '../models/airport';
 
+import { Money, Currencies } from 'ts-money';
+
 @Component({
   selector: 'app-deal-detail',
   templateUrl: './deal-detail.component.html',
@@ -40,8 +42,6 @@ export class DealDetailComponent implements OnInit {
     'birthday4': { 'day': '', 'month': '', 'year': '' } as Birthday,
     'birthday5': { 'day': '', 'month': '', 'year': '' } as Birthday,
     'hasChildren': false,
-    'totalPrice': '-',
-    'totalPriceAmount': 0,
     'startDate': undefined,
     'endDate': undefined,
     'numberOfNights': 3,
@@ -53,10 +53,11 @@ export class DealDetailComponent implements OnInit {
     'eventSelected': undefined,
     'hasUpsell': true,
     'hasInsurance': true,
-    'upsellPrice': 0,
-    'insurancePrice': 0,
+    'upsellPrice': new Money(0, Currencies.CHF),
+    'insurancePrice': new Money(0, Currencies.CHF),
     'hasFlightAccommodation': false,
-    'flightAccommodationPrice': 0
+    'flightAccommodationPrice': new Money(0, Currencies.CHF),
+    'totalPriceAmount': new Money(0, Currencies.CHF),
   };
 
   currentStep = 0;
@@ -82,8 +83,7 @@ export class DealDetailComponent implements OnInit {
         if (this.deal.marketing) {
           this.accummulations.startDate = this.deal.marketing.departingFlight;
           this.accummulations.endDate = this.deal.marketing.returningFlight;
-          this.accummulations.totalPrice = 'CHF ' + this.deal.marketing.price.toString();
-          this.accummulations.totalPriceAmount = this.deal.marketing.price;
+          this.accummulations.totalPriceAmount = Money.fromDecimal(this.deal.marketing.price, Currencies.CHF, Math.ceil);
 
           this.accummulations['numberOfNights'] = this.deal.marketing.nights;
           this.accummulations['adults'] = this.deal.marketing.adults;
@@ -115,26 +115,26 @@ export class DealDetailComponent implements OnInit {
   }
 
   calculatePrice(): void {
-    let price = 0;
+    let price = new Money(0, Currencies.CHF);
     console.log('calculate price', this.accummulations);
 
     if (this.accummulations['hasFlightAccommodation']) {
-      price += this.accummulations['flightAccommodationPrice'];
+      price = price.add(this.accummulations['flightAccommodationPrice']);
+
       console.log('flightAccommodationPrice', this.accummulations['hasFlightAccommodation'], 'totalPrice', price);
     }
 
     if (this.accummulations['hasUpsell']) {
-      price += this.accummulations['upsellPrice'];
+      price = price.add(this.accummulations['upsellPrice']);
       console.log('upsellPrice', this.accummulations['upsellPrice'], 'totalPrice', price);
     }
 
     if (this.accummulations['hasInsurance']) {
-      price += this.accummulations['insurancePrice'];
+      price = price.add(this.accummulations['insurancePrice']);
       console.log('insurancePrice', this.accummulations['insurancePrice'], 'totalPrice', price);
     }
 
     this.accummulations['totalPriceAmount'] = price;
-    this.accummulations['totalPrice'] = 'CHF ' + price;
   }
 
   hasUpsellChange(hasUpsell: boolean) {
@@ -143,7 +143,7 @@ export class DealDetailComponent implements OnInit {
     console.log('hasUpsellChange', hasUpsell, this.accummulations);
   }
 
-  upsellPriceChange(upsellPrice: number) {
+  upsellPriceChange(upsellPrice: Money) {
     this.accummulations['upsellPrice'] = upsellPrice;
     this.calculatePrice();
     console.log('upsellPriceChange', upsellPrice, this.accummulations);
@@ -155,7 +155,7 @@ export class DealDetailComponent implements OnInit {
     console.log('hasInsuranceChange', hasInsurance, this.accummulations);
   }
 
-  insurancePriceChange(insurancePrice: number) {
+  insurancePriceChange(insurancePrice: Money) {
     this.accummulations['insurancePrice'] = insurancePrice;
     this.calculatePrice();
     console.log('insurancePriceChange', insurancePrice, this.accummulations);
@@ -167,7 +167,7 @@ export class DealDetailComponent implements OnInit {
     console.log('hasFlightAccommodationChange', hasFlightAccommodation, this.accummulations);
   }
 
-  flightAccommodationPriceChange(flightAccommodationPrice: number) {
+  flightAccommodationPriceChange(flightAccommodationPrice: Money) {
     this.accummulations['flightAccommodationPrice'] = flightAccommodationPrice;
     this.calculatePrice();
     console.log('flightAccommodationPriceChange', flightAccommodationPrice, this.accummulations);

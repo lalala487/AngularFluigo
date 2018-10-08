@@ -13,10 +13,10 @@ export class InsuranceComponent implements OnInit {
   @Input() accummulations: Object;
 
   @Input() hasInsurance: boolean;
-  @Input() insurancePrice: number;
+  @Input() insurancePrice: Money;
 
   @Output() hasInsuranceChange: EventEmitter<boolean> = new EventEmitter();
-  @Output() insurancePriceChange: EventEmitter<number> = new EventEmitter();
+  @Output() insurancePriceChange: EventEmitter<Money> = new EventEmitter();
 
   insurance: Insurance;
   insuranceMessage: string;
@@ -35,21 +35,20 @@ export class InsuranceComponent implements OnInit {
 
       this.db.doc$('insurer/' + this.insurance.insurer.id).subscribe(
         insurer => {
-          let price;
+          let price: Money = this.insurancePrice;
           console.log('insurer', insurer);
 
-          if (!this.insurancePrice) {
+          console.log('this.insurance.price', this.insurancePrice);
+          if (this.insurancePrice.amount === 0) {
             const rate = insurer['commission'] / 100;
             console.log('rate', rate);
-            console.log('totalPriceAmount', this.accummulations['totalPriceAmount'], rate * this.accummulations['totalPriceAmount']);
+            console.log('totalPriceAmount', this.accummulations['totalPriceAmount']);
 
-            price = Money.fromDecimal(rate * this.accummulations['totalPriceAmount'], 'CHF', Math.ceil);
+            price = this.accummulations['totalPriceAmount'].multiply(rate, Math.ceil);
             console.log('price money', price, this.accummulations['totalPriceAmount']);
-            this.insurancePrice = price.amount / 100;
-            console.log('insurance price', price.amount);
+            this.insurancePrice = price;
+            console.log('insurance price', price);
             this.insurancePriceChange.emit(this.insurancePrice);
-          } else {
-            price = Money.fromDecimal(this.insurancePrice, 'CHF', Math.ceil);
           }
 
           this.insuranceMessage = this.insuranceMessage.replace('xxx', price.currency + ' ' + price.toString());

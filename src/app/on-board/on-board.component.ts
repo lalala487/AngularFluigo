@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FirestoreService } from '../services/firestore.service';
 import { TranslatableField } from '../models/fields/translatable';
+import { Money, Currencies } from 'ts-money';
 
 @Component({
   selector: 'app-on-board',
@@ -9,10 +10,10 @@ import { TranslatableField } from '../models/fields/translatable';
 })
 export class OnBoardComponent implements OnInit {
   @Input() hasUpsell: boolean;
-  @Input() upsellPrice: number;
+  @Input() upsellPrice: Money;
 
   @Output() hasUpsellChange: EventEmitter<boolean> = new EventEmitter();
-  @Output() upsellPriceChange: EventEmitter<number> = new EventEmitter();
+  @Output() upsellPriceChange: EventEmitter<Money> = new EventEmitter();
 
   onBoard: OnBoard;
 
@@ -25,9 +26,8 @@ export class OnBoardComponent implements OnInit {
   ngOnInit(): void {
     this.db.colWithIds$<OnBoard>('onBoardService').subscribe(collection => {
       this.onBoard = collection[0] as OnBoard;
-      console.log('onboard amount', this.onBoard.amount, typeof(this.onBoard.amount));
 
-      this.upsellPrice = this.onBoard.amount;
+      this.upsellPrice = Money.fromDecimal(this.onBoard.amount, Currencies.CHF, Math.ceil);
       this.upsellPriceChange.emit(this.upsellPrice);
 
       if (this.hasUpsell) {

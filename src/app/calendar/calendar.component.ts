@@ -16,6 +16,7 @@ import { Offer } from '../models/offer';
 import * as moment from 'moment';
 import { Airport } from '../models/airport';
 import { Segment } from '../models/segment';
+import { Money, Currencies } from 'ts-money';
 
 @Component({
   selector: 'app-calendar',
@@ -28,10 +29,10 @@ export class CalendarComponent implements OnInit {
   @Input() accummulations: Object;
 
   @Input() hasFlightAccommodation: boolean;
-  @Input() flightAccommodationPrice: number;
+  @Input() flightAccommodationPrice: Money;
 
-  @Output() hasFlightAccommodationChange: EventEmitter<any> = new EventEmitter();
-  @Output() flightAccommodationPriceChange: EventEmitter<any> = new EventEmitter();
+  @Output() hasFlightAccommodationChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() flightAccommodationPriceChange: EventEmitter<Money> = new EventEmitter();
 
   activeDayIsOpen = false;
 
@@ -185,7 +186,7 @@ export class CalendarComponent implements OnInit {
           this.hasFlightAccommodation = true;
           this.hasFlightAccommodationChange.emit(this.hasFlightAccommodation);
 
-          this.flightAccommodationPrice = event.meta.totalPriceAmount;
+          this.flightAccommodationPrice = Money.fromDecimal(event.meta.totalPriceAmount, Currencies.CHF, Math.ceil);
           this.flightAccommodationPriceChange.emit(this.flightAccommodationPrice);
 
           this.accummulations['startDate'] = event.start;

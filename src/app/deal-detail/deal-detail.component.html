@@ -72,9 +72,9 @@
       </div>
       <!-- The block below is only displayed when the customer has chosen for an insurance.
       Otherwise, this block is not being displayed. -->
-      <div class="content-block">
+      <div class="content-block" *ngIf="accummulations.hasInsurance">
         <p class="price-label">Annullierungskosten-Versicherung</p>
-        <p class="price-amount">CHF 49</p>
+        <p class="price-amount">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</p>
       </div>
       <!-- The block below is only displayed when the component in the deal detail view is active and filled in. -->
       <div class="content-block" *ngIf="accummulations.bookingFee.amount > 0">

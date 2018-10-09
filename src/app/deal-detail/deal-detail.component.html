@@ -46,51 +46,22 @@
 </ngx-smart-modal>
 
 <sidebar-js [sidebarjsConfig]="{position: 'left', backdropOpacity: 0}">
-  <div class="sidebarjs-center-container" style="display: flex; align-items: center; flex-wrap: wrap; height: 100%;">
+  <div *ngIf="accummulations.hasFlightAccommodation" class="sidebarjs-center-container" style="display: flex; align-items: center; flex-wrap: wrap; height: 100%;">
     <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
       <div class="content-block price-title">
         <p i18n="sidebar overview">Übersicht</p>
         <hr class="price-hr"/>
       </div>
-      <!-- Below is the amount of money that customer 1 needs to pay based on the selection of the flight.
-      This amount includes the flight and accommodation costs for this one person. -->
-      <!-- <div class="content-block">
+
+      <div class="content-block" *ngFor="let item of arrayOne(accummulations.adults)">
         <p class="price-label">Erwachsene - 18+</p>
-        <p class="price-amount">CHF 189</p>
-      </div> -->
-      <!-- Below is the amount of money that customer 2 needs to pay based on the selection of the flight.
-      This amount includes the flight and accommodation costs for this one person. -->
-      <!-- <div class="content-block">
-        <p class="price-label">Erwachsene - 18+</p>
-        <p class="price-amount">CHF 189</p>
-      </div> -->
-
-      <!-- Below is the amount of money that customer 3 needs to pay based on the selection of the flight.
-      This amount includes the flight and accommodation costs for this one person. -->
-      <!-- <div class="content-block">
-        <p class="price-label">Kind - 2. Juni 2017</p>
-        <p class="price-amount">CHF 149</p>
-      </div> -->
-
-
-      <div *ngIf="accummulations.hasFlightAccommodation">
-        <div class="content-block" *ngFor="let item of arrayOne(accummulations.adults)">
-          <p class="price-label">Erwachsene - 18+</p>
-          <p class="price-amount">{{ accummulations.adultPrice.currency }} {{ accummulations.adultPrice / accummulations.adults }}</p>
-        </div>
-
-        <div class="content-block" *ngFor="let item of arrayOne(accummulations.children)">
-          <p class="price-label">Kind</p>
-          <p class="price-amount">{{ accummulations.childrenPrice.currency }} {{ accummulations.childrenPrice / accummulations.children }}</p>
-        </div>
-
+        <p class="price-amount">{{ accummulations.adultPrice.currency }} {{ accummulations.adultPrice / accummulations.adults }}</p>
       </div>
 
-
-      <!-- <div class="content-block" *ngIf="accummulations.flightAccommodationPrice.amount > 0">
-        <p class="price-label">Flight + Accommodation</p>
-        <p class="price-amount">{{ accummulations.flightAccommodationPrice.currency }} {{ accummulations.flightAccommodationPrice }}</p>
-      </div> -->
+      <div class="content-block" *ngFor="let item of arrayOne(accummulations.children)">
+        <p class="price-label">Kind </p>
+        <p class="price-amount">{{ accummulations.childrenPrice.currency }} {{ accummulations.childrenPrice / accummulations.children }}</p>
+      </div>
 
       <!-- The block below is only displayed when the customer has chosen for an upsell
       Otherwise, this block is not being displayed. -->

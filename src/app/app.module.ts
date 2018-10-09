@@ -47,6 +47,7 @@ import { FormsModule } from '../../node_modules/@angular/forms';
 import { CalendarOptionComponent } from './calendar-option/calendar-option.component';
 import { NightsComponent } from './nights/nights.component';
 import { AirportListComponent } from './airport-list/airport-list.component';
+import { TransportationComponent } from './transportation/transportation.component';
 import { StepProgressComponent } from './step-progress/step-progress.component';
 
 @NgModule({
@@ -80,6 +81,7 @@ import { StepProgressComponent } from './step-progress/step-progress.component';
     CalendarOptionComponent,
     NightsComponent,
     AirportListComponent,
+    TransportationComponent,
     StepProgressComponent
   ],
   imports: [

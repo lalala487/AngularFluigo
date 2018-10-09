@@ -65,14 +65,14 @@
 
       <!-- The block below is only displayed when the customer has chosen for an upsell
       Otherwise, this block is not being displayed. -->
-      <div class="content-block" *ngIf="accummulations.upsellPrice.amount > 0">
+      <div class="content-block" *ngIf="accummulations.upsellPrice.amount > 0 && accummulations.hasUpsell">
         <p class="price-label">Upsell</p>
         <p class="price-amount">{{ accummulations.upsellPrice.currency }} {{ accummulations.upsellPrice }}</p>
       </div>
 
       <!-- The block below is only displayed when the customer has chosen for an insurance.
       Otherwise, this block is not being displayed. -->
-      <div class="content-block" *ngIf="accummulations.insurancePrice.amount > 0">
+      <div class="content-block" *ngIf="accummulations.insurancePrice.amount > 0 && accummulations.hasInsurance">
         <p class="price-label">Annullierungskosten-Versicherung</p>
         <p class="price-amount">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</p>
       </div>

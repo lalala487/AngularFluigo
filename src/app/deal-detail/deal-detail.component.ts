@@ -58,6 +58,8 @@ export class DealDetailComponent implements OnInit {
     'insurancePrice': new Money(0, Currencies.CHF),
     'hasFlightAccommodation': false,
     'flightAccommodationPrice': new Money(0, Currencies.CHF),
+    'adultPrice': new Money(0, Currencies.CHF),
+    'childrenPrice': new Money(0, Currencies.CHF),
     'totalPriceAmount': new Money(0, Currencies.CHF),
     'contact': new User(),
     'bookingFee': new Money(0, Currencies.CHF)
@@ -126,9 +128,12 @@ export class DealDetailComponent implements OnInit {
     console.log('calculate price', this.accummulations);
 
     if (this.accummulations['hasFlightAccommodation']) {
-      price = price.add(this.accummulations['flightAccommodationPrice']);
 
-      console.log('flightAccommodationPrice', this.accummulations['hasFlightAccommodation'], 'totalPrice', price);
+      price = price.add(this.accummulations['childrenPrice']).add(this.accummulations['adultPrice']);
+
+      // price = price.add(this.accummulations['flightAccommodationPrice']);
+
+      // console.log('flightAccommodationPrice', this.accummulations['hasFlightAccommodation'], 'totalPrice', price);
     }
 
     if (this.accummulations['hasUpsell']) {
@@ -182,6 +187,18 @@ export class DealDetailComponent implements OnInit {
     console.log('flightAccommodationPriceChange', flightAccommodationPrice, this.accummulations);
   }
 
+  adultPriceChange(adultPrice: Money) {
+    this.accummulations['adultPrice'] = adultPrice;
+    this.calculatePrice();
+    console.log('adultPriceChange', adultPrice, this.accummulations);
+  }
+
+  childrenPriceChange(childrenPrice: Money) {
+    this.accummulations['childrenPrice'] = childrenPrice;
+    this.calculatePrice();
+    console.log('childrenPriceChange', childrenPrice, this.accummulations);
+  }
+
   moveToNextStep(): void {
     if (this.currentStep === 3 && this.accummulations.children > 0) {
       console.log('struct', this.accummulations);
@@ -231,6 +248,10 @@ export class DealDetailComponent implements OnInit {
     } else {
       this.currentStep = this.currentStep - 1;
     }
+  }
+
+  arrayOne(n: number): any[] {
+    return Array(n);
   }
 
 }

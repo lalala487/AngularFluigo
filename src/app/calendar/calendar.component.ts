@@ -30,9 +30,14 @@ export class CalendarComponent implements OnInit {
 
   @Input() hasFlightAccommodation: boolean;
   @Input() flightAccommodationPrice: Money;
+  @Input() adultPrice: Money;
+  @Input() childrenPrice: Money;
+
 
   @Output() hasFlightAccommodationChange: EventEmitter<boolean> = new EventEmitter();
   @Output() flightAccommodationPriceChange: EventEmitter<Money> = new EventEmitter();
+  @Output() adultPriceChange: EventEmitter<Money> = new EventEmitter();
+  @Output() childrenPriceChange: EventEmitter<Money> = new EventEmitter();
 
   activeDayIsOpen = false;
 
@@ -191,11 +196,15 @@ export class CalendarComponent implements OnInit {
           this.hasFlightAccommodationChange.emit(this.hasFlightAccommodation);
 
           this.flightAccommodationPrice = event.meta.totalPriceAmount;
+          this.adultPrice = event.meta.adultPrice;
+          this.childrenPrice = event.meta.childrenPrice;
+
           this.flightAccommodationPriceChange.emit(this.flightAccommodationPrice);
+          this.adultPriceChange.emit(this.adultPrice);
+          this.childrenPriceChange.emit(this.childrenPrice);
 
           this.accummulations['startDate'] = event.start;
           this.accummulations['endDate'] = event.meta.return.date;
-
 
           const differenceInDays = this.differenceInDays(this.accummulations['endDate'], this.accummulations['startDate']);
           this.accummulations['numberOfNights'] = differenceInDays;

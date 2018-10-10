@@ -130,16 +130,25 @@ export class CalendarComponent implements OnInit {
                   const totalPrice = fullOffer['totalPrice'];
                   console.log('event total price', totalPrice, fullOffer);
 
+                  const metaStartDate = moment(wayOffer.date);
+                  metaStartDate.hour(wayOffer.flightDepartureHour.hours());
+                  metaStartDate.minute(wayOffer.flightDepartureHour.minutes());
+                  const metaReturnDate = moment(returnOffer.date);
+                  metaReturnDate.hour(returnOffer.flightArrivalHour.hours());
+                  metaReturnDate.minute(returnOffer.flightArrivalHour.minutes());
+
                   const event = {
                     title: totalPrice.currency + ' ' + totalPrice.toString(),
-                    start: startOfDay(wayOffer.date),
-                    end: endOfDay(wayOffer.date),
+                    start: moment(wayOffer.date).toDate(),
+                    end: moment(wayOffer.date).toDate(),
                     meta: {
                       way: wayOffer,
                       return: returnOffer,
                       totalPriceAmount: totalPrice,
                       adultPrice: fullOffer['adultPrice'],
-                      childrenPrice: fullOffer['childrenPrice']
+                      childrenPrice: fullOffer['childrenPrice'],
+                      startDate: metaStartDate,
+                      returnDate: metaReturnDate
                     }
                   };
 
@@ -159,7 +168,6 @@ export class CalendarComponent implements OnInit {
 
               }, 1000);
             }
-
           }
 
           return;
@@ -207,8 +215,8 @@ export class CalendarComponent implements OnInit {
           this.adultPriceChange.emit(this.adultPrice);
           this.childrenPriceChange.emit(this.childrenPrice);
 
-          this.accummulations['startDate'] = event.start;
-          this.accummulations['endDate'] = event.meta.return.date;
+          this.accummulations['startDate'] = event.meta.startDate;
+          this.accummulations['endDate'] = event.meta.returnDate;
 
           const differenceInDays = this.differenceInDays(this.accummulations['endDate'], this.accummulations['startDate']);
           this.accummulations['numberOfNights'] = differenceInDays;
@@ -289,20 +297,26 @@ export class CalendarComponent implements OnInit {
 
         console.log('flightOffer.flight[0]', flightOfferFlight);
 
+        let flightFromOffer;
+
         let isReturn = false;
         this.db.doc$('flight/' + flightOfferFlight.id).subscribe(flight => {
           console.log('flight.origin', flight['origin']);
           if (flight['origin'][0].id === amsterdamAirport && flight['destination'][0].id === this.currentAirport.value) {
             isReturn = true;
           }
+          flightFromOffer = flight;
         });
 
         this.db.colWithIds$<Offer>('flightOffer/' + flightOfferId + '/offers').subscribe(col => {
           console.log('inneroffers: ', col);
           col.forEach(offer => {
             if (isReturn) {
+
+              offer['flightArrivalHour'] = moment(flightFromOffer.arrival);
               this.returnOffers.push(offer);
             } else {
+              offer['flightDepartureHour'] = moment(flightFromOffer.departure);
               this.wayOffers.push(offer);
             }
 

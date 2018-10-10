@@ -5,4 +5,6 @@ export interface Offer {
     stock: number;
     date: string;
     prices: any;
+    flightDepartureHour: any;
+    flightArrivalHour: any;
 }

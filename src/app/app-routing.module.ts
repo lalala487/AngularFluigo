@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DealDetailComponent } from './deal-detail/deal-detail.component';
-import { AgbComponent } from './agb/agb.component';
+import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 
 const routes: Routes = [
   { path: 'deal/:slug', component: DealDetailComponent, },
   { path: 'home', component: HomeComponent },
-  { path: 'agb', component: AgbComponent },
+  { path: 'datenschutz', component: DatenschutzComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

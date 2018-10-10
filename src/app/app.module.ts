@@ -49,7 +49,7 @@ import { NightsComponent } from './nights/nights.component';
 import { AirportListComponent } from './airport-list/airport-list.component';
 import { TransportationComponent } from './transportation/transportation.component';
 import { StepProgressComponent } from './step-progress/step-progress.component';
-import { AgbComponent } from './agb/agb.component';
+import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +84,7 @@ import { AgbComponent } from './agb/agb.component';
     AirportListComponent,
     TransportationComponent,
     StepProgressComponent,
-    AgbComponent
+    DatenschutzComponent
   ],
   imports: [
     BrowserModule,

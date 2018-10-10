@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DatenschutzComponent } from './datenschutz.component';
+import { FooterComponent } from '../footer/footer.component';
 
 describe('DatenschutzComponent', () => {
   let component: DatenschutzComponent;
@@ -8,7 +9,7 @@ describe('DatenschutzComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatenschutzComponent ]
+      declarations: [ DatenschutzComponent, FooterComponent ]
     })
     .compileComponents();
   }));

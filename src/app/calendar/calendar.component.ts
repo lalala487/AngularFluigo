@@ -69,8 +69,8 @@ export class CalendarComponent implements OnInit {
     if (this.accummulations['events']['airport']['value'] === this.currentAirport.value &&
       this.accummulations['events']['nights'] === this.numberOfNights &&
       this.accummulations['events']['list'].length > 0) {
-        this.events = this.accummulations['events']['list'];
-        // TODO: select that event
+      this.events = this.accummulations['events']['list'];
+      // TODO: select that event
     } else {
       this.updateCalendarEvents();
     }
@@ -126,32 +126,36 @@ export class CalendarComponent implements OnInit {
                 console.log('full offer set timeout', fullOffer);
                 this.computeRoomOfferTotalPrice(wayOffer.date, fullOffer);
 
-                const totalPrice = fullOffer['totalPrice'];
+                setTimeout(() => {
+                  const totalPrice = fullOffer['totalPrice'];
+                  console.log('event total price', totalPrice, fullOffer);
 
-                const event = {
-                  title: totalPrice.currency + ' ' + totalPrice.toString(),
-                  start: startOfDay(wayOffer.date),
-                  end: endOfDay(wayOffer.date),
-                  meta: {
-                    way: wayOffer,
-                    return: returnOffer,
-                    totalPriceAmount: totalPrice,
-                    adultPrice: fullOffer['adultPrice'],
-                    childrenPrice: fullOffer['childrenPrice']
-                  }
-                };
+                  const event = {
+                    title: totalPrice.currency + ' ' + totalPrice.toString(),
+                    start: startOfDay(wayOffer.date),
+                    end: endOfDay(wayOffer.date),
+                    meta: {
+                      way: wayOffer,
+                      return: returnOffer,
+                      totalPriceAmount: totalPrice,
+                      adultPrice: fullOffer['adultPrice'],
+                      childrenPrice: fullOffer['childrenPrice']
+                    }
+                  };
 
 
-                console.log('creating event', event);
-                this.events.push(event);
-                console.log('events', this.events);
-                this.refresh.next();
+                  console.log('creating event', event);
+                  this.events.push(event);
+                  console.log('events', this.events);
+                  this.refresh.next();
 
-                this.accummulations['events'] = {
-                  'nights': this.numberOfNights,
-                  'airport': this.currentAirport,
-                  'list': this.events
-                };
+                  this.accummulations['events'] = {
+                    'nights': this.numberOfNights,
+                    'airport': this.currentAirport,
+                    'list': this.events
+                  };
+
+                }, 1000);
 
               }, 1000);
             }
@@ -317,7 +321,6 @@ export class CalendarComponent implements OnInit {
     });
   }
 
-
   checkIfThereAreRoomOffersInTheInterval(startDate): boolean {
     console.log('checkIfThereAreRoomOffersInTheInterval');
     for (let index = 0; index < this.numberOfNights; index++) {
@@ -335,22 +338,28 @@ export class CalendarComponent implements OnInit {
   }
 
   computeRoomOfferTotalPrice(startDate, fullOffer): void {
-    // let price = 0;
     for (let index = 0; index < this.numberOfNights; index++) {
       const currentDate = moment(startDate).add(index, 'days').valueOf();
       const roomOffer = this.roomOffers.get(currentDate);
 
-      const adultPrice = new Money(roomOffer.prices[0].amount * this.accummulations['adults'] * 100, Currencies.CHF);
+      roomOffer.prices.forEach(element => {
+        this.db.doc$<Segment>('accommodationSegment/' + element.ref.id).subscribe(accommodationSegment => {
+          if (accommodationSegment.name.en_GB === 'Adult') {
+            const adultPrice = new Money(this.accummulations['adults'] * element.amount * 100, Currencies.CHF);
 
-      fullOffer['adultPrice'] = fullOffer['adultPrice'].add(adultPrice);
-      fullOffer['totalPrice'] = fullOffer['totalPrice'].add(adultPrice);
+            fullOffer['totalPrice'] = fullOffer['totalPrice'].add(adultPrice);
+            fullOffer['adultPrice'] = fullOffer['adultPrice'].add(adultPrice);
+            console.log('adult room price for night ', index, adultPrice, fullOffer['totalPrice']);
+          } else if (accommodationSegment.name.en_GB === 'Child') {
+            const childrenPrice = new Money(this.accummulations['children'] * element.amount * 100, Currencies.CHF);
 
-      const childrenPrice = new Money(roomOffer.prices[1].amount * this.accummulations['children'] * 100, Currencies.CHF);
-      fullOffer['childrenPrice'] = fullOffer['childrenPrice'].add(childrenPrice);
-      fullOffer['totalPrice'] = fullOffer['totalPrice'].add(childrenPrice);
+            fullOffer['totalPrice'] = fullOffer['totalPrice'].add(childrenPrice);
+            fullOffer['adultPrice'] = fullOffer['adultPrice'].add(childrenPrice);
+            console.log('child room price for night ', index, childrenPrice, fullOffer['totalPrice']);
+          }
+        });
+      });
     }
-
-    // TODO: use adults/children and instead of [0], use the right segment
   }
 
   computeFlightOffersTotalPrice(offer1, offer2, fullOffer) {
@@ -361,11 +370,13 @@ export class CalendarComponent implements OnInit {
 
           fullOffer['totalPrice'] = fullOffer['totalPrice'].add(adultPrice);
           fullOffer['adultPrice'] = fullOffer['adultPrice'].add(adultPrice);
+          console.log('adult flight price going ', adultPrice, fullOffer['totalPrice']);
         } else if (flightSegment.name.en_GB === 'Child') {
           const childrenPrice = new Money(this.accummulations['children'] * element.amount * 100, Currencies.CHF);
 
           fullOffer['totalPrice'] = fullOffer['totalPrice'].add(childrenPrice);
           fullOffer['adultPrice'] = fullOffer['adultPrice'].add(childrenPrice);
+          console.log('children flight price going ', childrenPrice, fullOffer['totalPrice']);
         }
       });
     });
@@ -377,11 +388,13 @@ export class CalendarComponent implements OnInit {
 
           fullOffer['totalPrice'] = fullOffer['totalPrice'].add(adultPrice);
           fullOffer['adultPrice'] = fullOffer['adultPrice'].add(adultPrice);
+          console.log('adult flight price return ', adultPrice, fullOffer['totalPrice']);
         } else if (flightSegment.name.en_GB === 'Child') {
           const childrenPrice = new Money(this.accummulations['children'] * element.amount * 100, Currencies.CHF);
 
           fullOffer['totalPrice'] = fullOffer['totalPrice'].add(childrenPrice);
           fullOffer['adultPrice'] = fullOffer['adultPrice'].add(childrenPrice);
+          console.log('children flight price return ', childrenPrice, fullOffer['totalPrice']);
         }
       });
     });

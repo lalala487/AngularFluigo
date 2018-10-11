@@ -50,6 +50,7 @@ import { AirportListComponent } from './airport-list/airport-list.component';
 import { TransportationComponent } from './transportation/transportation.component';
 import { StepProgressComponent } from './step-progress/step-progress.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { AgbComponent } from './agb/agb.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
     AirportListComponent,
     TransportationComponent,
     StepProgressComponent,
-    DatenschutzComponent
+    DatenschutzComponent,
+    AgbComponent
   ],
   imports: [
     BrowserModule,

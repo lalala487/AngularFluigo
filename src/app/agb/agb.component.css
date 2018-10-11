@@ -1,0 +1,37 @@
+.section-agb {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 2.5rem;
+  height:75vh;
+  overflow: scroll;
+}
+
+.section-agb:after {
+  content: "";
+  display: block;
+  height: 2.5rem;
+  width: 100%;
+}
+
+.section-agb ul {
+  padding-left: 1rem;
+}
+
+.section-agb p {
+  letter-spacing: .05rem;
+}
+
+@media only screen and (min-width: 1200px) {
+  .section-agb {
+    padding-left: 15rem;
+    padding-right: 15rem;
+    padding-top: 5rem;
+  }
+
+  .section-agb:after {
+  content: "";
+  display: block;
+  height: 5rem;
+  width: 100%;
+}
+}

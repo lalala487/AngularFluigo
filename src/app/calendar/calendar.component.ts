@@ -71,7 +71,8 @@ export class CalendarComponent implements OnInit {
       this.accummulations['events']['list'].length > 0) {
       this.events = this.accummulations['events']['list'];
 
-      this.triggerChangesOnEventSelection(this.events);
+      this.activeDayIsOpen = true;
+      this.viewDate = this.accummulations['eventSelected']['start'];
     } else {
       this.updateCalendarEvents();
     }
@@ -206,6 +207,12 @@ export class CalendarComponent implements OnInit {
         this.viewDate = date;
 
         this.triggerChangesOnEventSelection(events);
+
+        this.accummulations['events'] = {
+          'nights': this.numberOfNights,
+          'airport': this.currentAirport,
+          'list': this.events
+        };
 
       }
     }

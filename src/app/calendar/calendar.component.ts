@@ -70,7 +70,8 @@ export class CalendarComponent implements OnInit {
       this.accummulations['events']['nights'] === this.numberOfNights &&
       this.accummulations['events']['list'].length > 0) {
       this.events = this.accummulations['events']['list'];
-      // TODO: select that event
+
+      this.triggerChangesOnEventSelection(this.events);
     } else {
       this.updateCalendarEvents();
     }
@@ -152,10 +153,13 @@ export class CalendarComponent implements OnInit {
                     }
                   };
 
+                  this.activeDayIsOpen = true;
+                  this.viewDate = event.start;
 
                   console.log('creating event', event);
                   this.events.push(event);
                   console.log('events', this.events);
+                  this.triggerChangesOnEventSelection(this.events);
                   this.refresh.next();
 
                   this.accummulations['events'] = {
@@ -201,31 +205,36 @@ export class CalendarComponent implements OnInit {
         this.activeDayIsOpen = true;
         this.viewDate = date;
 
-        if (events.length) {
-          const event = events[0];
+        this.triggerChangesOnEventSelection(events);
 
-          this.hasFlightAccommodation = true;
-          this.hasFlightAccommodationChange.emit(this.hasFlightAccommodation);
-
-          this.flightAccommodationPrice = event.meta.totalPriceAmount;
-          this.adultPrice = event.meta.adultPrice;
-          this.childrenPrice = event.meta.childrenPrice;
-
-          this.flightAccommodationPriceChange.emit(this.flightAccommodationPrice);
-          this.adultPriceChange.emit(this.adultPrice);
-          this.childrenPriceChange.emit(this.childrenPrice);
-
-          this.accummulations['startDate'] = event.meta.startDate;
-          this.accummulations['endDate'] = event.meta.returnDate;
-
-          const differenceInDays = this.differenceInDays(this.accummulations['endDate'], this.accummulations['startDate']);
-          this.accummulations['numberOfNights'] = differenceInDays;
-
-          this.accummulations['eventSelected'] = event;
-
-          console.log('accummulations', this.accummulations);
-        }
       }
+    }
+  }
+
+  triggerChangesOnEventSelection(events): void {
+    if (events.length) {
+      const event = events[0];
+
+      this.hasFlightAccommodation = true;
+      this.hasFlightAccommodationChange.emit(this.hasFlightAccommodation);
+
+      this.flightAccommodationPrice = event.meta.totalPriceAmount;
+      this.adultPrice = event.meta.adultPrice;
+      this.childrenPrice = event.meta.childrenPrice;
+
+      this.flightAccommodationPriceChange.emit(this.flightAccommodationPrice);
+      this.adultPriceChange.emit(this.adultPrice);
+      this.childrenPriceChange.emit(this.childrenPrice);
+
+      this.accummulations['startDate'] = event.meta.startDate;
+      this.accummulations['endDate'] = event.meta.returnDate;
+
+      const differenceInDays = this.differenceInDays(this.accummulations['endDate'], this.accummulations['startDate']);
+      this.accummulations['numberOfNights'] = differenceInDays;
+
+      this.accummulations['eventSelected'] = event;
+
+      console.log('accummulations', this.accummulations);
     }
   }
 

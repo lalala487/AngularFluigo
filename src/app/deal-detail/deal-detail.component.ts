@@ -54,6 +54,8 @@ export class DealDetailComponent implements OnInit {
     'eventSelected': undefined,
     'hasUpsell': true,
     'upsellPrice': new Money(0, Currencies.CHF),
+    'hasTransportation': true,
+    'transportationPrice': new Money(0, Currencies.CHF),
     'hasInsurance': true,
     'insurancePrice': new Money(0, Currencies.CHF),
     'hasFlightAccommodation': false,
@@ -130,15 +132,16 @@ export class DealDetailComponent implements OnInit {
     if (this.accummulations['hasFlightAccommodation']) {
 
       price = price.add(this.accummulations['childrenPrice']).add(this.accummulations['adultPrice']);
-
-      // price = price.add(this.accummulations['flightAccommodationPrice']);
-
-      // console.log('flightAccommodationPrice', this.accummulations['hasFlightAccommodation'], 'totalPrice', price);
     }
 
     if (this.accummulations['hasUpsell']) {
       price = price.add(this.accummulations['upsellPrice']);
       console.log('upsellPrice', this.accummulations['upsellPrice'], 'totalPrice', price);
+    }
+
+    if (this.accummulations['hasTransportation']) {
+      price = price.add(this.accummulations['transportationPrice']);
+      console.log('transportationPrice', this.accummulations['transportationPrice'], 'totalPrice', price);
     }
 
     if (this.accummulations['hasInsurance']) {
@@ -161,6 +164,18 @@ export class DealDetailComponent implements OnInit {
     this.accummulations['upsellPrice'] = upsellPrice;
     this.calculatePrice();
     console.log('upsellPriceChange', upsellPrice, this.accummulations);
+  }
+
+  hasTransportationChange(hasTransportation: boolean) {
+    this.accummulations['hasTransportation'] = hasTransportation;
+    this.calculatePrice();
+    console.log('hasTransportationChange', hasTransportation, this.accummulations);
+  }
+
+  transportationPriceChange(transportationPrice: Money) {
+    this.accummulations['transportationPrice'] = transportationPrice;
+    this.calculatePrice();
+    console.log('transportationPriceChange', transportationPrice, this.accummulations);
   }
 
   hasInsuranceChange(hasInsurance: boolean) {

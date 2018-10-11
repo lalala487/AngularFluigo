@@ -6,6 +6,7 @@ export interface Deal {
     description: object;
     slug: string;
     merchant: any;
+    ride: any;
     city: any;
     accommodation: any;
     startDate: Date;

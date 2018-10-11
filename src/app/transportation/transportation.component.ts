@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FirestoreService } from '../services/firestore.service';
 import { TranslatableField } from '../models/fields/translatable';
 import { Money, Currencies } from 'ts-money';
+import { Deal } from '../models/deal';
 
 @Component({
   selector: 'app-transportation',
@@ -9,13 +10,16 @@ import { Money, Currencies } from 'ts-money';
   styleUrls: ['./transportation.component.css']
 })
 export class TransportationComponent implements OnInit {
-  @Input() hasUpsell: boolean;
-  @Input() upsellPrice: Money;
+  @Input() hasTransportation: boolean;
+  @Input() transportationPrice: Money;
 
-  @Output() hasUpsellChange: EventEmitter<boolean> = new EventEmitter();
-  @Output() upsellPriceChange: EventEmitter<Money> = new EventEmitter();
+  @Input() deal: Deal;
 
-  transportation: Transportation;
+  @Output() hasTransportationChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() transportationPriceChange: EventEmitter<Money> = new EventEmitter();
+
+  transportation: Ride;
+  transportationMessage: string;
 
   constructor(
     protected db: FirestoreService
@@ -24,32 +28,40 @@ export class TransportationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.db.colWithIds$<Transportation>('transportationService').subscribe(collection => {
-      this.transportation = collection[0] as Transportation;
 
-      this.upsellPrice = Money.fromDecimal(this.transportation.amount, Currencies.CHF, Math.ceil);
-      this.upsellPriceChange.emit(this.upsellPrice);
+    const dealRride = this.deal.ride;
+    console.log('ride', dealRride);
 
-      if (this.hasUpsell) {
+    this.db.doc$<Ride>('/ride/' + dealRride.id).subscribe(ride => {
+      this.transportation = ride as Ride;
+
+      this.transportationPrice = Money.fromDecimal(this.transportation.amount, Currencies.CHF, Math.ceil);
+      this.transportationPriceChange.emit(this.transportationPrice);
+
+      this.transportationMessage = ride.name.de_CH.replace(
+        'xxx',
+        this.transportationPrice.currency + ' ' + this.transportationPrice.toString()
+      );
+
+      if (this.hasTransportation) {
         this.yes();
       }
     });
-
   }
 
   yes() {
-    this.hasUpsell = true;
-    this.hasUpsellChange.emit(this.hasUpsell);
+    this.hasTransportation = true;
+    this.hasTransportationChange.emit(this.hasTransportation);
   }
 
   no() {
-    this.hasUpsell = false;
-    this.hasUpsellChange.emit(this.hasUpsell);
+    this.hasTransportation = false;
+    this.hasTransportationChange.emit(this.hasTransportation);
   }
 
 }
 
-interface Transportation {
+interface Ride {
   active: boolean;
   name: TranslatableField;
   description: TranslatableField;

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Birthday } from '../models/birthday';
 
 import * as moment from 'moment';
+import { User } from '../models/user';
 
 @Injectable()
 export class StepValidatorService {
@@ -14,6 +15,22 @@ export class StepValidatorService {
       if (!this.validateBirthday(date)) {
         return false;
       }
+    }
+
+    return true;
+  }
+
+  validateUserContact(user: User) {
+    if (!(user.firstName || user.lastName)) {
+      return false;
+    }
+
+    if (!user.email) {
+      return false;
+    }
+
+    if (!user.phoneNumber) {
+      return false;
     }
 
     return true;

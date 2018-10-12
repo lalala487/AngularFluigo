@@ -51,6 +51,7 @@ import { TransportationComponent } from './transportation/transportation.compone
 import { StepProgressComponent } from './step-progress/step-progress.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { AgbComponent } from './agb/agb.component';
+import { PaymentModule } from './payments/payment/payment.module';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { AgbComponent } from './agb/agb.component';
     AngularFireStorageModule,
     AppRoutingModule,
     MomentModule,
+    PaymentModule
   ],
   providers: [FirestoreService, ImageService],
   bootstrap: [AppComponent]

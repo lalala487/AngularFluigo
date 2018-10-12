@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
+  stripeKey: 'pk_test_RSOTBYFAP5bHTg256mgJQIbj',
   firebase: {
     apiKey: 'AIzaSyDjmMKdE4O85AasneIe3GJWUKBuNsBoxOU',
     databaseURL: 'https://project-flugio.firebaseio.com',

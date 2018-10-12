@@ -57,7 +57,9 @@ export class FirestoreService {
   /// **************
   /// Firebase Server Timestamp
   get timestamp() {
-    return firebase.firestore.FieldValue.serverTimestamp();
+    if (firebase && firebase.firestore) {
+      return firebase.firestore.FieldValue.serverTimestamp();
+    }
   }
   set<T>(ref: DocPredicate<T>, data: any) {
     const timestamp = this.timestamp;
@@ -78,10 +80,11 @@ export class FirestoreService {
   }
   add<T>(ref: CollectionPredicate<T>, data) {
     const timestamp = this.timestamp;
+
     return this.col(ref).add({
       ...data,
-      updatedAt: timestamp,
-      createdAt: timestamp
+      updatedAt: timestamp ? timestamp : new Date(),
+      createdAt: timestamp ? timestamp : new Date(),
     });
   }
   geopoint(lat: number, lng: number) {

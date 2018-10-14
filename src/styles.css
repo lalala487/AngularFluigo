@@ -211,7 +211,7 @@ body.dialog-open {
   top: 46%;
   width: 9999px;
   height: 0.3rem;
-  background: rgba(235, 235, 235, .5);
+  background: rgba(235, 235, 235, 0);
 }
 
 .modal-hr .strike>span:before {

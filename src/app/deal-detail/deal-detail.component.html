@@ -227,7 +227,7 @@
 
         <app-user-data *ngIf="currentStep == 11" style="width:100%;" [(user)]="accummulations['contact']"></app-user-data>
 
-        <app-payment *ngIf="currentStep == 12" style="width:100%;"></app-payment>
+        <app-payment *ngIf="currentStep == 12" style="width:100%;" [amount]="accummulations['totalPriceAmount']"></app-payment>
 
         <app-success *ngIf="currentStep == 13" style="width:100%;"></app-success>
 

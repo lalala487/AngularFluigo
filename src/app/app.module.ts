@@ -51,6 +51,7 @@ import { AirportListComponent } from './airport-list/airport-list.component';
 import { TransportationComponent } from './transportation/transportation.component';
 import { StepProgressComponent } from './step-progress/step-progress.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { AccountComponent } from './account/account.component';
 import { AgbComponent } from './agb/agb.component';
 import { PaymentModule } from './payments/payment/payment.module';
 
@@ -88,6 +89,7 @@ import { PaymentModule } from './payments/payment/payment.module';
     TransportationComponent,
     StepProgressComponent,
     DatenschutzComponent,
+    AccountComponent,
     AgbComponent
   ],
   imports: [

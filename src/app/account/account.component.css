@@ -1,0 +1,98 @@
+.account-header-row .logo img {
+  display: block;
+  margin: 0 auto;
+}
+
+.account-header-row {
+  height: 50vh;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.account-header-row .logo-container {
+  margin-top: 0rem;
+}
+
+.account-header-row .logo .left-col,
+.account-header-row .logo .mid-col,
+.account-header-row .logo .right-col {
+  width: calc(100%/3);
+}
+
+.account-header-row .logo .right-col {
+  padding-right: 2rem;
+}
+
+.account-header-row .logo .left-col {
+  padding-left: 2rem;
+}
+
+.account-header-row .logo .right-col .icon-account,
+.account-header-row .logo .right-col .label-account {
+  float: right;
+}
+
+.account-header-row .logo .left-col .icon-menu-small,
+.account-header-row .logo .left-col .label-menu-small {
+  float: left;
+}
+
+.account-header-row .logo .right-col .label-account {
+  margin-left: .5rem;
+  margin-top: .3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+.account-header-row .logo .left-col .label-menu-small {
+  margin-left: .5rem;
+  margin-top: .3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .account-header-row .logo .right-col .label-account {
+    display: none;
+  }
+
+  .account-header-row .logo .left-col .label-menu-small {
+    display: none;
+  }
+}
+
+.account-header-row .logo .right-col .icon-account {
+  margin-top: -.1rem;
+}
+
+@media only screen and (max-width: 575.98px) {
+  .account-header-row {
+    height: auto;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+  }
+
+  .account-header-row .logo {
+    margin-top: 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+  .account-header-row {
+    height: auto;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+  }
+
+  .account-header-row .logo {
+    margin-top: 2.5rem;
+  }
+}
+
+.account-bg-container {
+  background: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%), rgba(77, 131, 132, 1);
+  background-attachment: fixed;
+  margin-left: -15px;
+  margin-right: -15px;
+  height: 100vh;
+}

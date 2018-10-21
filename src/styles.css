@@ -7,7 +7,13 @@
 /**********************************************************************/
 
 body.dialog-open {
-  overflow: hidden; }
+  overflow: hidden;
+}
+
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active, textarea:-webkit-autofill, textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus, textarea:-webkit-autofill:active, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus, select:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: rgba(235, 235, 235, 1) !important;
+}
 
 .nsm-dialog-btn-close {
   border: 0;
@@ -427,7 +433,7 @@ button.toast-close-button{
     cursor:pointer; */
 }
 #toast-container>.toast-error{
-  background-image: url(assets/img/avatar-round-notification-two@2x.png) !important;
+  background-image: url(assets/img/avatar-round-notification@2x.png) !important;
   background-size: 78px 78px;
 }
 #toast-container.toast-bottom-center>div,#toast-container.toast-top-center>div{

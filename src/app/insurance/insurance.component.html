@@ -2,24 +2,29 @@
   <div class="center-wrap">
     <div>
       <div class="row">
-        <div class="col-xl-12">
-          <p class="label-insurance">{{ insuranceMessage }}<img src="assets/icon/tooltip.svg" height="19" alt="Icon Tooltip" placement="top" ngbTooltip="Text for more information about the insurance"></p>
+        <div class="col-sm-2"></div>
+        <div class="col-lg-8">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="butler-container">
+              <span>"{{ insuranceMessage }}" <img src="assets/icon/tooltip.svg" height="19" alt="Icon Tooltip" placement="top" ngbTooltip="Text for more information about the insurance"></span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-2">
+        <div class="row">
+          <div class="col-md-6">
+            <button class="btn-icon-press fade-in-out" type="next" [class.active]="hasInsurance" (click)="yes()">
+              <img src="assets/icon/icon-umbrella.svg" height="55" alt="Icon Umbrella">
+              <p>Mit</p>
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn-icon-press fade-in-out" type="next" [class.active]="!hasInsurance" (click)="no()">
+              <img src="assets/icon/icon-cloud-rain.svg" height="55" alt="Icon Cloud Rain">
+              <p>Ohne</p>
+            </button>
+          </div>
         </div>
-        <div class="col-md-4">
-          <button class="btn-icon-press fade-in-out" type="next" [class.active]="hasInsurance" (click)="yes()">
-            <img src="assets/icon/icon-umbrella.svg" height="55" alt="Icon Umbrella">
-            <p>Mit</p>
-          </button>
-        </div>
-        <div class="col-md-4">
-          <button class="btn-icon-press fade-in-out" type="next" [class.active]="!hasInsurance" (click)="no()">
-            <img src="assets/icon/icon-cloud-rain.svg" height="55" alt="Icon Cloud Rain">
-            <p>Ohne</p>
-          </button>
         </div>
         <div class="col-sm-2">
         </div>

@@ -1,26 +1,28 @@
 <div class="pdp-user-data-block col-xl-12">
   <div class="center-wrap">
     <div>
-      <div class="row">
-        <div class="col-xl-12">
-          <p class="label-user-age">Persönliche Angaben</p>
-        </div>
-      </div>
       <div class="row user-data-form">
         <div class="col-sm-2"></div>
         <div class="col-lg-8">
           <div class="row">
+            <div class="col-lg-12">
+              <div class="butler-container">
+                <span>"Wie kann ich Sie kontaktieren?"</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-lg-6">
               <form>
                 <div class="form-group">
-                  <input [(ngModel)]="user.firstName" name="firstName" type="text" class="form-control" placeholder="Vorname">
+                  <input required="required" [(ngModel)]="user.firstName" autocomplete="off" name="firstName" type="text" class="form-control" placeholder="Vorname">
                 </div>
               </form>
             </div>
             <div class="col-lg-6">
               <form>
                 <div class="form-group">
-                  <input required="required" [(ngModel)]="user.lastName" name="lastName" type="text" class="form-control" placeholder="Nachname">
+                  <input required="required" [(ngModel)]="user.lastName" autocomplete="off" name="lastName" type="text" class="form-control" placeholder="Nachname">
                 </div>
               </form>
             </div>
@@ -29,7 +31,7 @@
             <div class="col-lg-12">
               <form>
                 <div class="form-group">
-                  <input required="required" [(ngModel)]="user.email" name="email" type="text" class="form-control" placeholder="E-Mail-Addresse">
+                  <input required="required" [(ngModel)]="user.email" autocomplete="off" name="email" type="text" class="form-control" placeholder="E-Mail-Addresse">
                 </div>
               </form>
             </div>
@@ -38,7 +40,7 @@
             <div class="col-lg-12">
               <form>
                 <div class="form-group">
-                  <input required="required" [(ngModel)]="user.phoneNumber" name="phone" type="text" class="form-control" placeholder="Telefonnummer">
+                  <input required="required" [(ngModel)]="user.phoneNumber" autocomplete="off" name="phone" type="text" class="form-control" placeholder="Telefonnummer">
                 </div>
               </form>
             </div>

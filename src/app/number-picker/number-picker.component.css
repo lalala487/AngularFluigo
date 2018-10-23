@@ -1,0 +1,80 @@
+.number-picker-wrapper {
+  width:100%;
+  margin: 0 auto;
+  text-align:center;
+  border-width: .12rem;
+  border-color: rgba(235, 235, 235, .5);
+  border-style: solid;
+  border-radius: .5rem;
+  height: 3.5rem;
+  line-height: 3.2rem;
+}
+
+.number-picker-wrapper button {
+  line-height: normal;
+}
+
+.number-picker-minus-btn {
+  float: left;
+  margin-top: .4rem;
+  margin-left: .4rem;
+}
+
+.number-picker-plus-btn {
+  float: right;
+  margin-top: .4rem;
+  margin-right: .4rem;
+}
+
+.btn-number-users {
+  text-align:center;
+}
+
+.number-picker-number {
+  display:inline-block;
+  text-align:center;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+/**********************************************************************/
+/****************************   Buttons   *****************************/
+/**********************************************************************/
+
+.number-picker-wrapper .btn-round-sm {
+  border: none;
+  font-size: 1.2rem;
+  font-weight: normal;
+  border-radius: .5rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  background: rgba(85, 144, 151, 1);
+  color: rgba(235, 235, 235, 1);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
+  cursor:pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.number-picker-wrapper .btn-round-sm:hover {
+  background-color: rgba(86, 138, 144, 1);
+  cursor: pointer;
+  color: rgba(235, 235, 235, 1);
+}
+
+.number-picker-wrapper .btn-round-sm:not(:disabled):not(.disabled):active:focus, .number-picker-wrapper .btn-round-sm:not(:disabled):not(.disabled).active:focus, .show > .number-picker-wrapper .btn-round-sm.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
+  box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
+}
+
+.number-picker-wrapper .btn-round-sm:focus {
+  outline: none;
+}

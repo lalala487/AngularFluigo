@@ -1,0 +1,51 @@
+.pdp-user-quantity-block {
+  width: 100%;
+}
+
+.pdp-user-quantity-block .number-picker-label img {
+    margin-left: .5rem;
+    margin-top: -.15rem;
+}
+
+.pdp-user-quantity-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-user-quantity-block .label-users {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-user-quantity-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 1199.98px)  {
+  .pdp-user-quantity-block {
+    margin-top: 0rem;
+    margin-bottom: 6rem;
+  }
+}
+
+@media only screen and (max-width: 991.98px)  {
+  .pdp-user-quantity-block .adults {
+    margin-bottom: 2rem;
+  }
+}
+
+.number-picker-label {
+  letter-spacing: .07rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.number-picker-label span {
+  color: rgba(235,235,235,.5);
+}

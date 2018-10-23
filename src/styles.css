@@ -1654,86 +1654,6 @@ hr {
 }
 
 /**********************************************************************/
-/*************************   Users Quantity   *************************/
-/**********************************************************************/
-
-.pdp-user-quantity-block {
-  width: 100%;
-}
-
-.pdp-user-quantity-block .number-picker-label img {
-    margin-left: .5rem;
-    margin-top: -.15rem;
-}
-
-.pdp-user-quantity-block .center-wrap {
-  width: 100%;
-}
-
-.pdp-user-quantity-block .label-users {
-  text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: .07rem;
-  font-size: 1rem;
-}
-
-@media only screen and (min-width: 1200px)  {
-  .pdp-user-quantity-block {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-  }
-}
-
-@media only screen and (max-width: 1199.98px)  {
-  .pdp-user-quantity-block {
-    margin-top: 0rem;
-    margin-bottom: 6rem;
-  }
-}
-
-@media only screen and (max-width: 991.98px)  {
-  .pdp-user-quantity-block .adults {
-    margin-bottom: 2rem;
-  }
-}
-
-.number-picker-wrapper {
-  width:140px;
-  margin: 0 auto;
-  text-align:center;
-}
-
-.btn-number-users {
-  display:inline-block;
-  text-align:center;
-}
-
-.number-picker-number {
-  display:inline-block;
-  text-align:center;
-}
-
-.number-picker-label {
-  letter-spacing: .07rem;
-  font-size: 1rem;
-  text-align: center;
-}
-
-.number-picker-label span {
-  color: rgba(235,235,235,.5);
-}
-
-.number-picker-minus-btn {
-  margin-right: .75rem;
-}
-
-.number-picker-plus-btn {
-  margin-left: .75rem;
-}
-
-/**********************************************************************/
 /****************************   Calendar   ****************************/
 /**********************************************************************/
 
@@ -2291,47 +2211,9 @@ hr {
   }
 }
 
-/**********************************************************************/
-/***************************   Users Data   ***************************/
-/**********************************************************************/
-
-.pdp-user-data-block {
-  width: 100%;
-}
-
-.pdp-user-data-block .center-wrap {
-  width: 100%;
-}
-
-.pdp-user-data-block .label-user-age {
-  text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: .07rem;
-  font-size: 1rem;
-}
-
-@media only screen and (min-width: 1200px)  {
-  .pdp-user-data-block {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-  }
-}
-
-@media only screen and (max-width: 1199.98px)  {
-  .pdp-user-data-block {
-    margin-top: -6.2rem;
-  }
-}
-
-.user-data-form .form-group {
-  margin-bottom: 3rem;
-}
-
-.user-data-form .row:last-child .form-group:last-child {
-  margin-bottom: 0rem;
-}
+/*********************************************************************/
+/*****************************   Forms   *****************************/
+/*********************************************************************/
 
 .form-control::-webkit-input-placeholder {
   color: rgba(235,235,235,0.5);
@@ -2348,19 +2230,6 @@ hr {
   color: rgba(235,235,235,0.5);
 }
 
-.form-control:focus {
-  background-color: inherit;
-  border-color: rgba(235,235,235,1);
-  color: rgba(235,235,235,1);
-  -moz-transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-}
-
 .form-control {
   background-color: inherit;
   border-radius: 0;
@@ -2374,6 +2243,19 @@ hr {
   border-color: rgba(235,235,235,0.5);
   border-bottom-width: .12rem;
   padding: 0.5rem 1rem;
+}
+
+.form-control:focus {
+  background-color: inherit;
+  border-color: rgba(235,235,235,1);
+  color: rgba(235,235,235,1);
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 .form-control:active {
@@ -3106,43 +2988,6 @@ select:focus {
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-}
-
-.btn-round-sm {
-  border: none;
-  font-size: 1.2rem;
-  border-radius: 100%;
-  height: 2.6rem;
-  width: 2.6rem;
-  background: rgba(85, 144, 151, 1);
-  color: rgba(235, 235, 235, 1);
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-  cursor:pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-}
-
-.btn-round-sm:hover {
-  background-color: rgba(86, 138, 144, 1);
-  cursor: pointer;
-  color: rgba(235, 235, 235, 1);
-}
-
-.btn-round-sm:not(:disabled):not(.disabled):active:focus, .btn-round-sm:not(:disabled):not(.disabled).active:focus, .show > .btn-round-sm.dropdown-toggle:focus {
-  -webkit-box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
-  box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
-}
-
-.btn-round-sm:focus {
-  outline: none;
 }
 
 .btn-round-pdp {

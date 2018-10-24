@@ -7,26 +7,45 @@
 /**********************************************************************/
 
 .butler-container {
-  background-color: rgba(235, 235, 235, 0.15);
   width: 100%;
-  height: 6rem;
-  line-height: 6rem;
-  background-image: url(assets/img/avatar-round-notification@2x.png) !important;
-  background-size: 6rem 6rem;
-  padding-left: 7.5rem;
-  padding-right: 1.5rem;
-  border-radius:50rem 15rem 15rem 50rem;
-  background-repeat: no-repeat;
-  background-position:0 0;
   margin-bottom: 2.5rem;
 }
 
-.butler-container span {
+.butler-container .butler-image {
+  margin: 0 auto;
+  width: 5rem;
+  height: 5rem;
+}
+
+.butler-container img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.butler-container .butler-text {
+  background-color: rgba(235, 235, 235, 0.15);
+  width: 100%;
+  line-height: 8rem;
+  border-radius: .75rem .75rem .75rem .75rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  margin-top: -1.5rem;
+  text-align: center;
+}
+
+.butler-container .butler-text span {
   display: inline-block;
   vertical-align: middle;
-  line-height: 1.5rem;
+  line-height: 1.6rem;
   letter-spacing: .07rem;
   font-size: 1rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.butler-container img {
+  /* background-image: url(assets/img/avatar-round-notification@2x.png) !important; */
+  /* background-size: 4rem 4rem; */
 }
 
 /**********************************************************************/

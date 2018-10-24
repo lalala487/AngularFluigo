@@ -219,6 +219,7 @@
         <app-activity-option *ngIf="currentStep == 8" style="width:100%;"></app-activity-option>
 
         <!-- <app-on-board *ngIf="currentStep == 9" style="width:100%;" [hasUpsell]="accummulations['hasUpsell']" [upsellPrice]="accummulations['upsellPrice']" (hasUpsellChange)="hasUpsellChange($event)" (upsellPriceChange)="upsellPriceChange($event)"></app-on-board> -->
+
         <app-transportation *ngIf="currentStep == 9" style="width:100%;" [deal]="deal" [hasTransportation]="accummulations['hasTransportation']" [transportationPrice]="accummulations['transportationPrice']" (hasTransportationChange)="hasTransportationChange($event)" (transportationPriceChange)="transportationPriceChange($event)"></app-transportation>
 
         <app-insurance *ngIf="currentStep == 10" style="width:100%;" [accummulations]="accummulations" [hasInsurance]="accummulations['hasInsurance']" [insurancePrice]="accummulations['insurancePrice']" (hasInsuranceChange)="hasInsuranceChange($event)" (insurancePriceChange)="insurancePriceChange($event)"></app-insurance>

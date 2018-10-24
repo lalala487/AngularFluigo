@@ -2,13 +2,16 @@
   <div class="center-wrap">
     <div>
       <div class="row">
-        <div class="col-xl-12">
-          <p class="label-ages-children">Wie alt sind die Kinder?</p>
-        </div>
-      </div>
-      <div class="row">
         <div class="col-sm-2"></div>
         <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="butler-container">
+                <div class="butler-image"><img src="assets/img/avatar-round-notification@2x.png" alt="Butler Flugio"></div>
+                <div class="butler-text"><span>"Wie alt sind die Kinder?"</span></div>
+              </div>
+            </div>
+          </div>
           <div class="row" *ngFor="let birthday of childrenBirthdays; let i = index">
             <div class="col-xl-12">
               <p class="label-birthdate">Geburtsdatum Kind {{ i + 1 }}</p>

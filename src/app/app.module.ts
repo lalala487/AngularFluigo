@@ -27,7 +27,6 @@ import { DealDetailComponent } from './deal-detail/deal-detail.component';
 import { CityComponent } from './city/city.component';
 import { AccommodationComponent } from './accommodation/accommodation.component';
 import { UserQuantityComponent } from './user-quantity/user-quantity.component';
-import { UserAgeComponent } from './user-age/user-age.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
@@ -68,7 +67,6 @@ import { PaymentModule } from './payments/payment/payment.module';
     CityComponent,
     AccommodationComponent,
     UserQuantityComponent,
-    UserAgeComponent,
     CalendarComponent,
     ActivitiesComponent,
     ActivityDetailComponent,

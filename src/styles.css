@@ -17,7 +17,7 @@
   height: 5rem;
 }
 
-.butler-container img {
+.butler-container .butler-image img {
   width: 5rem;
   height: 5rem;
 }
@@ -31,6 +31,13 @@
   padding-right: 2.5rem;
   margin-top: -1.5rem;
   text-align: center;
+
+  background-image:
+    url(assets/icon/quote-start.svg),
+    url(assets/icon/quote-end.svg);
+  background-position: left 1rem top .75rem, right 1rem bottom .75rem;
+  background-repeat: no-repeat;
+  background-size: 2rem 2rem, 2rem 2rem;
 }
 
 .butler-container .butler-text span {
@@ -43,9 +50,8 @@
   margin-bottom: 2.5rem;
 }
 
-.butler-container img {
-  /* background-image: url(assets/img/avatar-round-notification@2x.png) !important; */
-  /* background-size: 4rem 4rem; */
+.butler-container .butler-text img {
+  margin-top: -.2rem;
 }
 
 /**********************************************************************/

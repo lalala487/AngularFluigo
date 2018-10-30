@@ -20,7 +20,3 @@
     margin-top: -1rem;
   }
 }
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}

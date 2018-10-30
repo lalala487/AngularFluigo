@@ -1817,6 +1817,11 @@ hr {
   width: 100%;
 }
 
+.pdp-calendar-block .filters .col-xl-4 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 @media only screen and (min-width: 1200px)  {
   .pdp-calendar-block {
     width: 100%;
@@ -1833,6 +1838,16 @@ hr {
     margin-top: 1rem;
     margin-bottom: 1.35rem;
   }
+
+  .pdp-calendar-block .filters .airport,
+  .pdp-calendar-block .filters .nights {
+    padding-right: 1rem;
+  }
+
+  .pdp-calendar-block .filters .nights
+  .pdp-calendar-block .filters button {
+    padding-left: 1rem;
+  }
 }
 
 .pdp-calendar-block .filters {
@@ -1840,7 +1855,7 @@ hr {
 }
 
 .calendar-wrapper {
-  margin: 0 auto;
+  width: 100%;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1199.98px)  {
@@ -1874,9 +1889,6 @@ hr {
 }
 
 @media only screen and (max-width: 575.98px)  {
-  .cal-month-view {
-    width: 19rem;
-  }
 
   .cal-month-view .cal-day-number {
       width: 1rem !important;
@@ -1891,62 +1903,12 @@ hr {
       margin-right: 0px !important;
       min-height: 0px !important;
   }
-
-  .pdp-calendar-block .filters .col-xl-4 {
-    padding-left: 6px;
-    padding-right: 5px;
-  }
 }
 
 @media only screen and (min-width: 576px) and (max-width: 758.98px)  {
-  .cal-month-view {
-    width: 30rem;
-  }
 
   .cal-month-view .cal-day-badge {
       display: none;
-  }
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991.98px)  {
-  .cal-month-view {
-    width: 41.2rem;
-  }
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
-  .cal-month-view {
-    width: 56.2rem;
-  }
-}
-
-@media only screen and (min-width: 1200px) and (max-width: 1279.98px) {
-  .cal-month-view {
-    width: 38.9rem !important;
-  }
-}
-
-@media only screen and (min-width: 1280px) and (max-width: 1439.98px) {
-  .cal-month-view {
-    width: 42.6rem !important;
-  }
-}
-
-@media only screen and (min-width: 1440px) and (max-width: 1679.98px) {
-  .cal-month-view {
-    width: 50rem !important;
-  }
-}
-
-@media only screen and (min-width: 1680px) and (max-width: 1919.98px) {
-  .cal-month-view {
-    width: 55.8rem !important;
-  }
-}
-
-@media only screen and (min-width: 1920px) {
-  .cal-month-view {
-    width: 55.8rem !important;
   }
 }
 

@@ -2521,54 +2521,6 @@ select:focus {
 }
 
 /**********************************************************************/
-/***************************   Insurance   ****************************/
-/**********************************************************************/
-
-.pdp-insurance-block {
-  width: 100%;
-}
-
-.pdp-insurance-block .center-wrap {
-  width: 100%;
-}
-
-.pdp-insurance-block .label-insurance {
-  text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: .07rem;
-  font-size: 1rem;
-}
-
-.pdp-insurance-block .label-insurance img {
-    margin-left: .5rem;
-    margin-top: -.15rem;
-}
-
-@media only screen and (min-width: 1200px)  {
-  .pdp-insurance-block {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-  }
-}
-
-@media only screen and (max-width: 767.98px)  {
-  .pdp-insurance-block .btn-icon-press{
-    margin-bottom: 2rem;
-  }
-
-  .pdp-insurance-block {
-    margin-top: -1rem;
-  }
-}
-
-.pdp-insurance-block .btn-icon-press p {
-  margin-bottom: 0rem;
-  margin-top: 1rem;
-}
-
-/**********************************************************************/
 /****************************   Success   *****************************/
 /**********************************************************************/
 
@@ -3235,4 +3187,177 @@ select:focus {
 
 .cal-open-day-events {
   display: none;
+}
+
+/**********************************************************************/
+/*****************************   Select   *****************************/
+/**********************************************************************/
+
+[include*="activity-date-input-select()"] {
+  display: block;
+  padding: 0;
+  position: relative;
+  /* Set options to normal weight */
+  /* ------------------------------------  */
+  /* START OF UGLY BROWSER-SPECIFIC HACKS */
+  /* ----------------------------------  */
+  /* FIREFOX won't let us hide the native select arrow, so we have to make it wider than needed and clip it via overflow on the parent container.
+     The percentage width is a fallback since FF 4+ supports calc() so we can just add a fixed amount of extra width to push the native arrow out of view. We're applying this hack across all FF versions because all the previous hacks were too fragile and complex.
+     You might want to consider not using this hack and using the native select arrow in FF. Note this makes the menus wider than the select button because they display at the specified width and aren't clipped. Targeting hack via http://browserhacks.com/#hack-758bff81c5c32351b02e10480b5ed48e */
+  /* Show only the native arrow */
+  color: rgba(235,235,235,1);
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  width: 100%;
+}
+[include*="activity-date-input-select()"]::before, [include*="activity-date-input-select()"]::after {
+  content: '';
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+[include*="activity-date-input-select()"] select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  background: none;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  outline: none;
+  /* Focus style */
+}
+[include*="activity-date-input-select()"] select:focus {
+  background-color: transparent;
+  outline: none;
+}
+[include*="activity-date-input-select()"] option {
+  font-weight: normal;
+}
+[include*="activity-date-input-select()"] x:-o-prefocus, [include*="activity-date-input-select()"]::after {
+  display: none;
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  [include*="activity-date-input-select()"] select::-ms-expand {
+    display: none;
+  }
+  [include*="activity-date-input-select()"] select:focus::-ms-value {
+    background: transparent;
+    color: #000;
+  }
+}
+@-moz-document url-prefix() {
+  [include*="activity-date-input-select()"] {
+    overflow: hidden;
+  }
+  [include*="activity-date-input-select()"] select {
+    width: 120%;
+    width: calc(100% + 3em);
+    /* Firefox focus has odd artifacts around the text, this kills that. See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring */
+  }
+  @supports (-moz-appearance: none) {
+    [include*="activity-date-input-select()"] select {
+      width: 100%;
+    }
+  }
+  [include*="activity-date-input-select()"] select:-moz-focusring {
+    color: transparent;
+    text-shadow: none;
+  }
+}
+@supports (-moz-appearance: none) {
+  [include*="activity-date-input-select()"] {
+    width: 100%;
+  }
+}
+[include*="activity-date-input-select()"]::before, [include*="activity-date-input-select()"]::after {
+  content: '';
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  border: 1px solid transparent;
+  width: 0;
+  height: 0;
+  right: 16px;
+}
+[include*="activity-date-input-select()"]::before {
+  bottom: 55%;
+  border-width: 0 6.5px 8px 6.5px;
+  border-bottom-color: rgba(235,235,235,.5);
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+[include*="activity-date-input-select()"]::after {
+  border-width: 8px 6.5px 0 6.5px;
+  border-top-color: rgba(235,235,235,.5);
+  top: 55%;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+@-moz-document url-prefix() {
+  [include*="activity-date-input-select()"] {
+    border-right: .12rem solid rgba(235,235,235,.5);
+  }
+  [include*="activity-date-input-select()"]:hover {
+    border-right: .12rem solid rgba(235,235,235,1);
+  }
+}
+[include*="activity-date-input-select()"]:hover select {
+  box-shadow: none;
+  border-bottom-color: rgba(235,235,235,1);
+}
+[include*="activity-date-input-select()"]:hover select:focus {
+  outline-color: transparent;
+}
+[include*="activity-date-input-select()"]:hover::before {
+  border-bottom-color: rgba(235,235,235,1);
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+[include*="activity-date-input-select()"]:hover::after {
+  border-top-color: rgba(235,235,235,1);
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+[include*="activity-date-input-select()"] select {
+  border-bottom: .1rem solid rgba(235,235,235,.5);
+  border-radius: 0;
+  font-weight: 400;
+  color: inherit;
+  padding: 11px 15px;
+  line-height: normal;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+[include*="activity-date-input-select()"] select:focus {
+  box-shadow: none;
+}
+[include*="activity-date-input-select()"] select[disabled], [include*="activity-date-input-select()"] select:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+[include*="activity-date-input-select()"] select:invalid {
+  color: rgba(235,235,235,.5);
 }

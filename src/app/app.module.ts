@@ -30,6 +30,7 @@ import { UserQuantityComponent } from './user-quantity/user-quantity.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
+import { ActivityDateComponent } from './activity-date/activity-date.component';
 import { ActivityOptionComponent } from './activity-option/activity-option.component';
 import { OnBoardComponent } from './on-board/on-board.component';
 import { InsuranceComponent } from './insurance/insurance.component';
@@ -70,6 +71,7 @@ import { PaymentModule } from './payments/payment/payment.module';
     CalendarComponent,
     ActivitiesComponent,
     ActivityDetailComponent,
+    ActivityDateComponent,
     ActivityOptionComponent,
     OnBoardComponent,
     InsuranceComponent,

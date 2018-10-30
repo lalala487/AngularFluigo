@@ -1,11 +1,6 @@
 <div class="pdp-calendar-block col-xl-12">
   <div class="center-wrap">
     <div class="col-xl-12">
-      <div class="row">
-        <div class="col-xl-12">
-          <p class="label-calendar">Wählen Sie ein Reisedatum</p>
-        </div>
-      </div>
       <div class="row filters">
         <div class="col-xl-4">
           <app-airport-list [selectedAirport]="currentAirport" (selectedAirportChange)="selectedAirportChange($event)"></app-airport-list>
@@ -62,12 +57,6 @@
            (dayClicked)="dayClicked($event.day)"
            [cellTemplate]="customCellTemplate">
           </mwl-calendar-month-view>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xl-12">
-          <p class="label-extra-info"><img src="assets/icon/icon-dot.svg" height="7" alt="Icon Dot"> Berechnet pro Person auf der Basis von 2 Erwachsenen</p>
-          <p class="label-extra-info"><img src="assets/icon/icon-dot.svg" height="7" alt="Icon Dot"> Alle Preise sind in CHF</p>
         </div>
       </div>
     </div>

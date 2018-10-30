@@ -1,8 +1,9 @@
 <form>
-  <div class="form-group nights">
+  <div class="form-group nights" include="activity-date-input-select()">
     <select [ngModel]="numberOfNights" (ngModelChange)="onChange($event)" name="selectNumberOfNights">
-      <option value="" selected disabled hidden>Nächte</option>
-
+      <!-- Placeholder -->
+      <option value="" hidden>Nächte</option>
+      <!-- Options -->
       <option [value]="night" *ngFor="let night of nightList">{{night}} Nächte</option>
     </select>
   </div>

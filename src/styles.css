@@ -1740,53 +1740,9 @@ hr {
   font-size: 1rem;
 }
 
-.pdp-calendar-block .label-extra-info {
-  text-align: center;
-  letter-spacing: .07rem;
-  font-size: .8rem;
-  color: rgba(235,235,235,.5);
-}
-
-.pdp-calendar-block .label-extra-info:first-child {
-  margin-top: 1rem;
-  margin-bottom: 0rem;
-}
-
-.pdp-calendar-block .label-extra-info img {
-  margin-top: -.1rem;
-  opacity: .5;
-}
-
-.pdp-calendar-block .filters .airport::after,
-.pdp-calendar-block .filters .nights::after {
-  position: absolute;
-  content: "";
-  top: 17px;
-  right: 30px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
 .pdp-calendar-block .filters select {
-  background-color: inherit;
-  letter-spacing: .07rem;
-  font-size: 1rem;
-  background-color: inherit;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-  font-size: 1rem;
-  letter-spacing: .07rem;
-  width: 100%;
-  border-top: 0rem;
-  border-right: 0rem;
-  border-left: 0rem;
-  border-style: solid;
-  border-color: rgba(235,235,235,0.5);
-  border-bottom-width: .12rem;
-  padding: 0.5rem 1rem 0.5rem 3rem;
-  color: rgba(235,235,235,1);
+  padding-left: 3rem;
+  padding-right: 1rem;
 }
 
 .pdp-calendar-block .filters .nights {
@@ -1803,18 +1759,8 @@ hr {
   background-position: top .7rem left 1.15rem;
 }
 
-.pdp-calendar-block .filters .airport,
-.pdp-calendar-block .filters .nights {
-  width: 100%;
-}
-
 .pdp-calendar-block .filters .form-group {
   margin-bottom: 0rem;
-}
-
-.pdp-calendar-block .filters .wrapper-airport,
-.pdp-calendar-block .filters .wrapper-nights {
-  width: 100%;
 }
 
 .pdp-calendar-block .filters .col-xl-4 {
@@ -1827,11 +1773,6 @@ hr {
     width: 100%;
     display: flex;
     height: 100vh;
-  }
-
-  .pdp-calendar-block .calendar-span {
-    width: 2rem;
-    display: inline-block;
   }
 
   .pdp-calendar-block .next-back-buttons {
@@ -1960,6 +1901,10 @@ hr {
 
 .cal-month-view .cal-cell-row:hover {
     background-color: inherit;
+}
+
+.cal-month-view .cal-cell-top {
+    min-height: 0px;
 }
 
 .cal-month-view .cal-cell-row .cal-cell:hover, .cal-month-view .cal-cell.cal-has-events.cal-open {
@@ -3247,7 +3192,7 @@ select:focus {
   border: 1px solid transparent;
   width: 0;
   height: 0;
-  right: 16px;
+  right: 1.75rem;
 }
 [include*="activity-date-input-select()"]::before {
   bottom: 55%;
@@ -3301,11 +3246,11 @@ select:focus {
   transition: all 0.3s ease-in-out;
 }
 [include*="activity-date-input-select()"] select {
-  border-bottom: .1rem solid rgba(235,235,235,.5);
+  border-bottom: .12rem solid rgba(235,235,235,.5);
   border-radius: 0;
   font-weight: 400;
   color: inherit;
-  padding: 11px 15px;
+  padding: 8px 15px 10px 15px;
   line-height: normal;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;

@@ -35,7 +35,6 @@ import { ActivityOptionComponent } from './activity-option/activity-option.compo
 import { OnBoardComponent } from './on-board/on-board.component';
 import { InsuranceComponent } from './insurance/insurance.component';
 import { UserDataComponent } from './user-data/user-data.component';
-import { PaymentComponent } from './payment/payment.component';
 import { SuccessComponent } from './success/success.component';
 import { ImageService } from './services/image.service';
 import { ReviewComponent } from './review/review.component';
@@ -53,7 +52,8 @@ import { StepProgressComponent } from './step-progress/step-progress.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { AccountComponent } from './account/account.component';
 import { AgbComponent } from './agb/agb.component';
-import { PaymentModule } from './payments/payment/payment.module';
+import { PaymentFormComponent } from './payment-form/payment-form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -76,7 +76,6 @@ import { PaymentModule } from './payments/payment/payment.module';
     OnBoardComponent,
     InsuranceComponent,
     UserDataComponent,
-    PaymentComponent,
     SuccessComponent,
     ReviewComponent,
     FeaturedIconComponent,
@@ -90,7 +89,8 @@ import { PaymentModule } from './payments/payment/payment.module';
     StepProgressComponent,
     DatenschutzComponent,
     AccountComponent,
-    AgbComponent
+    AgbComponent,
+    PaymentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -107,7 +107,7 @@ import { PaymentModule } from './payments/payment/payment.module';
     AngularFireStorageModule,
     AppRoutingModule,
     MomentModule,
-    PaymentModule
+    HttpClientModule
   ],
   providers: [FirestoreService, ImageService],
   bootstrap: [AppComponent]

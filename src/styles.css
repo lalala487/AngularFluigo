@@ -2,7 +2,42 @@
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 @import "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css";
 
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active, textarea:-webkit-autofill, textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus, textarea:-webkit-autofill:active, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus, select:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: #fff !important;
+}
+
 /**********************************************************************/
+/*****************************   Stripe   *****************************/
+/**********************************************************************/
+
+.StripeElement {
+  border-top: 0rem;
+  border-right: 0rem;
+  border-left: 0rem;
+  border-style: solid;
+  border-color: rgba(235,235,235,0.5);
+  border-bottom-width: .12rem;
+  padding: 0.5rem 1rem;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.StripeElement--active,
+.StripeElement--focus {
+  border-color: rgba(235,235,235,1);
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-box-shadow: none;
+}
+
+/**********************************************************************/
+/******************************   Modal   *****************************/
 /*****************************   Butler   *****************************/
 /**********************************************************************/
 
@@ -2162,6 +2197,20 @@ hr {
   color: rgba(235,235,235,0.5);
 }
 
+.form-control:focus,
+.form-control:active {
+  background-color: inherit;
+  border-color: rgba(235,235,235,1);
+  color: rgba(235,235,235,1);
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
 .form-control {
   background-color: inherit;
   border-radius: 0;
@@ -2850,7 +2899,7 @@ select:focus {
   text-align: center;
   vertical-align: middle;
   letter-spacing: .07rem;
-  font-size: .95rem;
+  font-size: 1rem;
 }
 
 .btn-full {

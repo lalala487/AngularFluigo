@@ -4,6 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
+  functionsURL: 'http://localhost:5000/project-flugio/us-central1',
   production: false,
   stripeKey: 'pk_test_RSOTBYFAP5bHTg256mgJQIbj',
   firebase: {

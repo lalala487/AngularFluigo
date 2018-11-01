@@ -1,0 +1,62 @@
+<div class="pdp-payment-block col-xl-12">
+  <div class="center-wrap">
+    <div>
+      <div class="row payment-form">
+        <div class="col-sm-2"></div>
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-12">
+              <fieldset>
+                <form #paymentForm="ngForm" (ngSubmit)="formHandler()" class="checkout">
+
+                  <div class="row" style="">
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <div id="card-element" class="field" #cardElement></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-xs-6" style="width:50%; padding-left:15px; padding-right:15px;">
+                      <div class="form-group">
+                        <div id="card-expiry-element" class="field"></div>
+                      </div>
+                    </div>
+                    <div class="col-xs-6" style="width:50%; padding-left:15px; padding-right:15px;">
+                      <div class="form-group">
+                        <div id="card-cvc-element" class="field"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="card-errors" class="help is-danger" role="alert" *ngIf="formError">{{ formError }}</div>
+
+                  <div class="row">
+                    <div class="col-lg-12">
+
+                      <button type="submit" class="button is-info btn btn-primary btn-full payment-btn" [disabled]="!cardNumberComplete || !cardExpiryComplete || !cardCvcComplete || loading"
+                        [class.is-loading]="loading">
+                        Pay {{ amount.currency }} {{ amount }}
+                      </button>
+
+                      <div *ngIf="result?.id" class="notification is-success">
+                        {{ result.id }} has a status of {{ result.status }} for {{ result.amount }}
+                      </div>
+
+                      <!-- If error, show the user the raw error msg from Stripe -->
+                      <div *ngIf="result?.error" class="notification is-danger">
+                        {{ result.error?.message }}
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </fieldset>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+    </div>
+  </div>
+</div>

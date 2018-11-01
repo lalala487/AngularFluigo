@@ -1,4 +1,5 @@
 export const environment = {
+  functionsURL: 'https://us-central1-project-flugio.cloudfunctions.net',
   production: true,
   stripeKey: 'pk_live_KSYTHSwIe8s7XlO3RxHGeYLX',
   firebase: {

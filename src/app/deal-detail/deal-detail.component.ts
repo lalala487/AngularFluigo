@@ -14,12 +14,14 @@ import { Airport } from '../models/airport';
 
 import { Money, Currencies } from 'ts-money';
 import { User } from '../models/user';
+import { Charge } from '../payment-form/models';
+import { PaymentService } from '../payments/payment.service';
 
 @Component({
   selector: 'app-deal-detail',
   templateUrl: './deal-detail.component.html',
   styleUrls: ['./deal-detail.component.css'],
-  providers: [StepValidatorService]
+  providers: [StepValidatorService, PaymentService]
 })
 export class DealDetailComponent implements OnInit {
   slug: string;
@@ -64,7 +66,8 @@ export class DealDetailComponent implements OnInit {
     'childrenPrice': new Money(0, Currencies.CHF),
     'totalPriceAmount': new Money(0, Currencies.CHF),
     'contact': new User(),
-    'bookingFee': new Money(0, Currencies.CHF)
+    'bookingFee': new Money(0, Currencies.CHF),
+    'payed': false
   };
 
   currentStep = 0;
@@ -75,6 +78,7 @@ export class DealDetailComponent implements OnInit {
     private imageService: ImageService,
     private stepValidatorService: StepValidatorService,
     private router: Router,
+    private paymentService: PaymentService,
     public toastr: ToastsManager
   ) { }
 
@@ -214,7 +218,28 @@ export class DealDetailComponent implements OnInit {
     console.log('childrenPriceChange', childrenPrice, this.accummulations);
   }
 
+  stripeResult(charge: Charge): void {
+    console.log('stripeResult', charge);
+
+    this.paymentService.writePaymentToDb(charge);
+    this.accummulations['payed'] = true;
+
+    this.moveToNextStep();
+  }
+
+  errorStripe(error): void {
+    console.log('stripeError', error);
+
+    this.toastr.error(error.statusText, 'Error');
+  }
+
   moveToNextStep(): void {
+    if (this.currentStep === 12) {
+      if (!this.accummulations['payed']) {
+        return;
+      }
+    }
+
     if (this.currentStep === 3 && this.accummulations.children > 0) {
       console.log('struct', this.accummulations);
 

@@ -1,22 +1,20 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { PaymentComponent } from './payment.component';
-// import { PaymentService } from '../payments/payment.service';
+// import { PaymentFormComponent } from './payment-form.component';
 
-// describe('PaymentComponent', () => {
-//   let component: PaymentComponent;
-//   let fixture: ComponentFixture<PaymentComponent>;
+// describe('PaymentFormComponent', () => {
+//   let component: PaymentFormComponent;
+//   let fixture: ComponentFixture<PaymentFormComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       providers: [PaymentService],
-//       declarations: [ PaymentComponent ]
+//       declarations: [ PaymentFormComponent ]
 //     })
 //     .compileComponents();
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(PaymentComponent);
+//     fixture = TestBed.createComponent(PaymentFormComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

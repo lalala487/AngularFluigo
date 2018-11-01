@@ -1,47 +1,3 @@
-<ngx-smart-modal #myBootstrapModal identifier="myBootstrapModal" [closable]="false" customClass="no-padding">
-  <div class="modal-header">
-  </div>
-  <div class="modal-body">
-    <div class="logo-container">
-      <a href="/">
-        <img src="assets/img/logo.svg" width="110" alt="Flugio Logo" style="margin: 0 auto; display: block;">
-      </a>
-    </div>
-    <div class="col-lg-12">
-      <p class="modal-header-one">Exklusive Städtereisen bis zu 67% günstiger</p>
-    </div>
-    <div class="col-lg-12">
-      <p class="modal-header-two">Kostenloser Zugang zu Exclusive Angeboten nur mit Ihrer E-Mail</p>
-    </div>
-    <div class="col-lg-12">
-      <form>
-        <div class="form-group">
-          <input type="email" autocomplete="email" class="form-control modal-input-email" id="formGroupExampleInput" placeholder="E-Mail">
-          <button class="btn btn-primary modal-input-button-email" type="next">Weiter</button>
-        </div>
-      </form>
-    </div>
-    <div class="col-lg-12 modal-hr">
-      <div class="strike">
-        <span>oder</span>
-      </div>
-    </div>
-    <div class="col-lg-12">
-      <form>
-        <div class="form-group">
-          <button class="btn btn-primary modal-input-button-facebook" type="next">Weiter mit Facebook</button>
-        </div>
-      </form>
-    </div>
-    <div class="col-lg-12">
-      <form>
-        <div class="form-group">
-          <p class="modal-legal-text">Mit dem Klick auf "Weiter" stimmen Sie unseren AGB sowie dem Einsatz von Cookies zu und nehmen unsere Datenschutzbestimmungen zur Kenntnis</p>
-        </div>
-      </form>
-    </div>
-  </div>
-</ngx-smart-modal>
 
 <sidebar-js [sidebarjsConfig]="{position: 'left', backdropOpacity: 0}">
   <div *ngIf="accummulations.hasFlightAccommodation" class="sidebarjs-center-container" style="display: flex; align-items: center; flex-wrap: wrap; height: 100%;">
@@ -146,7 +102,7 @@
           <div class="steps">
             <div class="price-container">
               <div class="price-info">
-                <p class="price-label" i18n="sidebar total" (click)="myBootstrapModal.open()">Gesamtbetrag</p>
+                <p class="price-label" i18n="sidebar total">Gesamtbetrag</p>
                 <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
                 This changes throughout the checkout process because the customer can change all the time certain options.
                 The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->

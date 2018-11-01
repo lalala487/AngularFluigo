@@ -5,9 +5,10 @@ import { DealDetailComponent } from './deal-detail/deal-detail.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
 import { AccountComponent } from './account/account.component';
 import { AgbComponent } from './agb/agb.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'deal/:slug', component: DealDetailComponent, },
+  { path: 'deal/:slug', component: DealDetailComponent, canActivate: [AuthGuardService] },
   { path: 'home', component: HomeComponent },
   { path: 'datenschutz', component: DatenschutzComponent },
   { path: 'account', component: AccountComponent },

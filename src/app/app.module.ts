@@ -9,6 +9,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -54,6 +55,8 @@ import { AccountComponent } from './account/account.component';
 import { AgbComponent } from './agb/agb.component';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -105,11 +108,12 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
+    AngularFireAuthModule,
     AppRoutingModule,
     MomentModule,
     HttpClientModule
   ],
-  providers: [FirestoreService, ImageService],
+  providers: [FirestoreService, ImageService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

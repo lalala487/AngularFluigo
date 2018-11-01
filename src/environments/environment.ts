@@ -5,10 +5,15 @@
 
 export const environment = {
   functionsURL: 'http://localhost:5000/project-flugio/us-central1',
+  passwordlessAuthSettings: {
+    url: 'http://localhost:4200/home',
+    handleCodeInApp: true
+  },
   production: false,
   stripeKey: 'pk_test_RSOTBYFAP5bHTg256mgJQIbj',
   firebase: {
     apiKey: 'AIzaSyDjmMKdE4O85AasneIe3GJWUKBuNsBoxOU',
+    authDomain: 'flugio-frontend.firebaseapp.com',
     databaseURL: 'https://project-flugio.firebaseio.com',
     projectId: 'project-flugio',
     messagingSenderId: '82113536445',

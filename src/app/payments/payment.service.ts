@@ -41,12 +41,6 @@ export class PaymentService {
     );
   }
 
-  processPayment(token: any, amount: number) {
-    const payment = { 'token': token, 'amount': amount, 'userId': this.userId };
-    console.log('will write payment to db', payment);
-    return this.db.add('payment', payment);
-  }
-
   writePaymentToDb(charge: Charge) {
     const payment = {
       'id': charge.id,

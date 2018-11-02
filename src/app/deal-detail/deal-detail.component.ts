@@ -16,6 +16,7 @@ import { Money, Currencies } from 'ts-money';
 import { User } from '../models/user';
 import { Charge } from '../payment-form/models';
 import { PaymentService } from '../payments/payment.service';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-deal-detail',
@@ -79,7 +80,8 @@ export class DealDetailComponent implements OnInit {
     private stepValidatorService: StepValidatorService,
     private router: Router,
     private paymentService: PaymentService,
-    public toastr: ToastsManager
+    public toastr: ToastsManager,
+    public ngxSmartModalService: NgxSmartModalService,
   ) { }
 
   ngOnInit() {
@@ -298,6 +300,14 @@ export class DealDetailComponent implements OnInit {
 
     } else {
       this.currentStep = this.currentStep - 1;
+    }
+  }
+
+  isLoggedInChange(isLoggedIn: boolean): void {
+    if (isLoggedIn) {
+      this.ngxSmartModalService.close('loginModal');
+    } else {
+      this.ngxSmartModalService.open('loginModal');
     }
   }
 

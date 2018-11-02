@@ -8,10 +8,10 @@ import { AgbComponent } from './agb/agb.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'deal/:slug', component: DealDetailComponent, canActivate: [AuthGuardService] },
+  { path: 'deal/:slug', component: DealDetailComponent },
   { path: 'home', component: HomeComponent },
   { path: 'datenschutz', component: DatenschutzComponent },
-  { path: 'account', component: AccountComponent },
+  { path: 'account', component: AccountComponent, canActivate: [AuthGuardService] },
   { path: 'agb', component: AgbComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

@@ -17,9 +17,6 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  user: Observable<any>;
-  email: string;
-  emailSent = false;
   isLoggedIn = false;
 
   deals: Observable<any[]>;
@@ -28,17 +25,10 @@ export class HomeComponent implements OnInit {
 
   constructor(
     protected db: FirestoreService,
-    protected angularFireAuth: AngularFireAuth,
-    private router: Router,
-    public ngxSmartModalService: NgxSmartModalService,
-    public auth: AuthService
-    ) {
+  ) {
   }
 
   ngOnInit() {
-    this.user = this.angularFireAuth.authState;
-    const url = this.router.url;
-
     const twoWeeksFromNow = moment().add(14, 'days').toDate();
 
     this.deals = this.db.col$(
@@ -47,20 +37,9 @@ export class HomeComponent implements OnInit {
         .where('endDate', '<', twoWeeksFromNow)
     );
 
-
     this.deals.subscribe(collection => {
       this.maxDiscount = this.findMaxDiscount(collection);
     });
-
-    this.auth.isAuthenticated().subscribe(
-      loginStatus => {
-        this.isLoggedIn = loginStatus;
-        if (!loginStatus) {
-          this.ngxSmartModalService.open('loginModal');
-          this.confirmSignIn(url);
-        }
-      }
-    );
   }
 
   private findMaxDiscount(listOfDeals: Array<Deal>): number {
@@ -68,45 +47,5 @@ export class HomeComponent implements OnInit {
 
     const deal = listOfDeals[0] as Deal;
     return deal.marketing.discount;
-  }
-
-  async sendEmailLink() {
-    try {
-      await this.angularFireAuth.auth.sendSignInLinkToEmail(
-        this.email,
-        environment.passwordlessAuthSettings
-      );
-
-      window.localStorage.setItem('emailForSignIn', this.email);
-
-      this.emailSent = true;
-
-    } catch (error) {
-      console.log('error', error);
-    }
-  }
-
-
-  async confirmSignIn(url) {
-    try {
-      if (this.angularFireAuth.auth.isSignInWithEmailLink(url)) {
-        let email = window.localStorage.getItem('emailForSignIn');
-        console.log('email', email);
-
-        // If missing email, prompt user for it
-        if (!email) {
-          email = window.prompt('Please provide your email for confirmation');
-        }
-
-        // Signin user and remove the email localStorage
-        const result = await this.angularFireAuth.auth.signInWithEmailLink(email, url);
-        console.log('result', result);
-        window.localStorage.removeItem('emailForSignIn');
-
-        this.ngxSmartModalService.close('loginModal');
-      }
-    } catch (error) {
-      console.log('error', error);
-    }
   }
 }

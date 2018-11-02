@@ -57,6 +57,7 @@ import { PaymentFormComponent } from './payment-form/payment-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { AuthGuardService } from './services/auth-guard.service';
     DatenschutzComponent,
     AccountComponent,
     AgbComponent,
-    PaymentFormComponent
+    PaymentFormComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,

@@ -58,6 +58,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { AuthComponent } from './auth/auth.component';
     AccountComponent,
     AgbComponent,
     PaymentFormComponent,
-    AuthComponent
+    AuthComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

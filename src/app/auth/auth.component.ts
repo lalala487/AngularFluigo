@@ -28,15 +28,12 @@ export class AuthComponent implements OnInit {
   ngOnInit() {
     this.user = this.angularFireAuth.authState;
 
-    const url = this.router.url;
-    console.log('url', url);
     this.auth.isAuthenticated().subscribe(
       loginStatus => {
         this.isLoggedIn = loginStatus;
         console.log('loginStatus', loginStatus);
         if (!loginStatus) {
           this.isLoggedInChange.emit(false);
-          this.confirmSignIn(url);
         } else {
           this.isLoggedInChange.emit(true);
         }
@@ -51,36 +48,14 @@ export class AuthComponent implements OnInit {
         environment.passwordlessAuthSettings
       );
 
+      const url = this.router.url;
+      console.log('url', url);
       window.localStorage.setItem('emailForSignIn', this.email);
+      window.localStorage.setItem('redirectUrl', url);
 
       this.emailSent = true;
 
       // TODO: emit email sent
-    } catch (error) {
-      console.log('error', error);
-    }
-  }
-
-  async confirmSignIn(url) {
-    try {
-      if (this.angularFireAuth.auth.isSignInWithEmailLink(url)) {
-        let email = window.localStorage.getItem('emailForSignIn');
-        console.log('email', email);
-
-        // If missing email, prompt user for it
-        if (!email) {
-          email = window.prompt('Please provide your email for confirmation');
-        }
-
-        // Signin user and remove the email localStorage
-        const result = await this.angularFireAuth.auth.signInWithEmailLink(email, url);
-        console.log('result', result);
-        window.localStorage.removeItem('emailForSignIn');
-
-        // this.ngxSmartModalService.close('loginModal');
-        // TODO: emit sign in done
-        this.isLoggedInChange.emit(true);
-      }
     } catch (error) {
       console.log('error', error);
     }

@@ -6,7 +6,7 @@
 export const environment = {
   functionsURL: 'http://localhost:5000/project-flugio/us-central1',
   passwordlessAuthSettings: {
-    url: 'http://localhost:4200/home',
+    url: 'http://localhost:4200/login',
     handleCodeInApp: true
   },
   production: false,

@@ -3,7 +3,7 @@ export const environment = {
   production: true,
   stripeKey: 'pk_live_KSYTHSwIe8s7XlO3RxHGeYLX',
   passwordlessAuthSettings: {
-    url: 'https://flugio-frontend.firebaseapp.com/home',
+    url: 'https://flugio-frontend.firebaseapp.com/login',
     handleCodeInApp: true
   },
   firebase: {

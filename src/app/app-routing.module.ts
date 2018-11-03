@@ -18,6 +18,8 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardService] },
   { path: 'agb', component: AgbComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

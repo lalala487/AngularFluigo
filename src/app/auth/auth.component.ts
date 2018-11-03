@@ -14,10 +14,11 @@ export class AuthComponent implements OnInit {
   user: Observable<any>;
   email: string;
   isLoggedIn = false;
+  emailSent = false;
 
   @Output() isLoggedInChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() emailSentChanged: EventEmitter<boolean> = new EventEmitter();
 
-  emailSent = false;
 
   constructor(
     protected angularFireAuth: AngularFireAuth,
@@ -55,7 +56,9 @@ export class AuthComponent implements OnInit {
 
       this.emailSent = true;
 
-      // TODO: emit email sent
+      console.log('emitting email sent');
+      this.emailSentChanged.emit(true);
+
     } catch (error) {
       console.log('error', error);
     }

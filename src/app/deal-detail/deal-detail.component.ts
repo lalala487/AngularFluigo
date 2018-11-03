@@ -311,6 +311,13 @@ export class DealDetailComponent implements OnInit {
     }
   }
 
+  emailSentChanged(emailSent: boolean): void {
+    console.log('email.sent', emailSent);
+    if (emailSent) {
+      this.toastr.success('Please click the link in the email you have received to login.', 'Success');
+    }
+  }
+
   arrayOne(n: number): any[] {
     return Array(n);
   }

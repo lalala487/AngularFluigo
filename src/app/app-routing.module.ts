@@ -7,11 +7,13 @@ import { AccountComponent } from './account/account.component';
 import { AgbComponent } from './agb/agb.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 const routes: Routes = [
   { path: 'deal/:slug', component: DealDetailComponent },
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'datenschutz', component: DatenschutzComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardService] },
   { path: 'agb', component: AgbComponent },

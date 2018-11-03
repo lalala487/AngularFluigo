@@ -59,6 +59,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { LoginComponent } from './login/login.component';
     AgbComponent,
     PaymentFormComponent,
     AuthComponent,
-    LoginComponent
+    LoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,8 @@ export class DealDetailComponent implements OnInit {
   accommodation: Accommodation;
   imageUrl: SafeStyle;
 
+  emailSent = false;
+
   locale = environment.locale;
 
   accummulations = {
@@ -312,10 +314,8 @@ export class DealDetailComponent implements OnInit {
   }
 
   emailSentChanged(emailSent: boolean): void {
+    this.emailSent = emailSent;
     console.log('email.sent', emailSent);
-    if (emailSent) {
-      this.toastr.success('Please click the link in the email you have received to login.', 'Success');
-    }
   }
 
   arrayOne(n: number): any[] {

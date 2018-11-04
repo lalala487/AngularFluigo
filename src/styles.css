@@ -204,6 +204,7 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   border-bottom: none !important;
   border-top-left-radius: 0.3rem;
   border-top-right-radius: 0.3rem;
+  margin-top: 1rem;
 }
 
 .modal-header .close {
@@ -270,8 +271,15 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
     font-size: .8rem;
     letter-spacing: .07rem;
     text-align: center;
-    margin-bottom: 0rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.modal-verify-text {
+    font-size: 1rem;
+    letter-spacing: .07rem;
+    text-align: center;
+    margin-top: 3rem;
     margin-bottom: 2rem;
 }
 

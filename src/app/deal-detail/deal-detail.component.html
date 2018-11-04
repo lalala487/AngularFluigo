@@ -65,7 +65,6 @@
   </div>
   <div class="modal-body">
     <app-auth (emailSentChanged)="emailSentChanged($event)" (isLoggedInChange)="isLoggedInChange($event)" *ngIf="!emailSent"></app-auth>
-
     <app-email-sent *ngIf="emailSent"></app-email-sent>
   </div>
 </ngx-smart-modal>

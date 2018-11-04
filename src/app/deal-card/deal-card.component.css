@@ -4,8 +4,6 @@
 }
 
 .deal-card-container {
-  width: 100vw;
-  height: 50vh;
   background-size: cover;
   background-position: center;
 }
@@ -78,7 +76,6 @@
 
 @media only screen and (min-width: 767.98px)  {
   .deal-card-container {
-    width: 50vw;
     height: 50vh;
   }
 }

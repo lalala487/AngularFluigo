@@ -4,3 +4,7 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.home-flex-container>div {
+  flex: 0 50%;
+}

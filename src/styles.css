@@ -930,12 +930,6 @@ a:hover {
   font-size: 1rem;
 }
 
-@media (max-width: 575.98px) {
-  .header-row .logo .right-col .label-account {
-    display: none;
-  }
-}
-
 .header-row .logo .right-col .icon-account {
   margin-top: -.1rem;
 }
@@ -987,28 +981,11 @@ a:hover {
     margin-top: 0rem;
     padding-top: 4rem;
     padding-bottom: 4rem;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767.98px) {
-  .header-row {
     height: auto;
-    padding-top: 0rem;
-    padding-bottom: 0rem;
   }
 
-  .header-row .header-title{
-    margin-bottom: 2.5rem;
-  }
-
-  .header-row .logo {
-    margin-top: 2.5rem;
-  }
-
-  .header-row .title-row {
-    margin-top: 0rem;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+  .header-row .logo .right-col .label-account {
+    display: none;
   }
 }
 

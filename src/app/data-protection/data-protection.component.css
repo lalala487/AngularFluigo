@@ -1,4 +1,4 @@
-.section-datenschutz {
+.section-data-protection {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 2.5rem;
@@ -6,29 +6,29 @@
   overflow: scroll;
 }
 
-.section-datenschutz:after {
+.section-data-protection:after {
   content: "";
   display: block;
   height: 2.5rem;
   width: 100%;
 }
 
-.section-datenschutz ul {
+.section-data-protection ul {
   padding-left: 1rem;
 }
 
-.section-datenschutz p {
+.section-data-protection p {
   letter-spacing: .05rem;
 }
 
 @media only screen and (min-width: 1200px) {
-  .section-datenschutz {
+  .section-data-protection {
     padding-left: 15rem;
     padding-right: 15rem;
     padding-top: 5rem;
   }
 
-  .section-datenschutz:after {
+  .section-data-protection:after {
   content: "";
   display: block;
   height: 5rem;

@@ -50,9 +50,11 @@ import { NightsComponent } from './nights/nights.component';
 import { AirportListComponent } from './airport-list/airport-list.component';
 import { TransportationComponent } from './transportation/transportation.component';
 import { StepProgressComponent } from './step-progress/step-progress.component';
-import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { DataProtectionComponent } from './data-protection/data-protection.component';
 import { AccountComponent } from './account/account.component';
 import { AgbComponent } from './agb/agb.component';
+import { TravelGuidesComponent } from './travel-guides/travel-guides.component';
+import { TeamComponent } from './team/team.component';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
@@ -94,9 +96,11 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
     AirportListComponent,
     TransportationComponent,
     StepProgressComponent,
-    DatenschutzComponent,
+    DataProtectionComponent,
     AccountComponent,
     AgbComponent,
+    TravelGuidesComponent,
+    TeamComponent,
     PaymentFormComponent,
     AuthComponent,
     LoginComponent,

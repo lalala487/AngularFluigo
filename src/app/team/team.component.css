@@ -10,7 +10,7 @@
 .section-team-questions {
   background-image:
     linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
-    url(assets/img/300002_1.jpg);
+    url('/assets/img/300002_1.jpg');
   background-position: center;
   background-size: cover;
 }

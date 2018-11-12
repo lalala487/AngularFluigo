@@ -1,4 +1,5 @@
-.section-team-intro {
+.section-team-intro,
+.section-team-questions {
   padding-left: 15px;
   padding-right: 15px;
   text-align: center;
@@ -6,20 +7,31 @@
   padding-bottom: 5rem;
 }
 
-.section-team-intro p {
+.section-team-questions {
+  background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
+    url(assets/img/300002_1.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.section-team-intro p,
+.section-team-questions p {
   margin-bottom: 0rem;
   letter-spacing: .07rem;
 }
 
 @media only screen and (min-width: 576px) {
-  .section-team-intro {
+  .section-team-intro,
+  .section-team-questions {
     padding-top: 7.5rem;
     padding-bottom: 7.5rem;
   }
 }
 
 @media only screen and (min-width: 768px) {
-  .section-team-intro {
+  .section-team-intro,
+  .section-team-questions {
     padding-left: 15rem;
     padding-right: 15rem;
   }

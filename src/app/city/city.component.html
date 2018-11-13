@@ -1,4 +1,5 @@
 <div class="pdp-city-block col-xl-12">
+
   <div class="col-xl-12 pdp-city-block-title" [style.background-image]="imageUrl">
     <div class="pdp-city-block-gradient">
       <div class="text-block">
@@ -13,14 +14,22 @@
     <div *ngIf="featuredList" class="col-xl-6 pdp-icons-block gradient">
       <div class="text-block">
         <p i18n="perfect for">Perfekt für</p>
-
         <app-featured-icon [featured]="featured" *ngFor="let featured of featuredList"></app-featured-icon>
       </div>
     </div>
-
     <div class="col-xl-6 pdp-review-block gradient">
       <app-review [review]="city?.review" style="width:100%;"></app-review>
     </div>
-
   </div>
+
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-12 pdp-city-description-block" style="background-image: url(assets/img/200001_1.jpg);">
+      <div class="pdp-city-description-block-gradient">
+        <div class="text-block">
+          <p>Dit is de tekst voor de beschrijving van de stad. Handige informatie voor de toerist, een aantal tips om wegwijs te worden in de grote stad.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

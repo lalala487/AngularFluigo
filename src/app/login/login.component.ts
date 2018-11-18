@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
 
   constructor(
     protected angularFireAuth: AngularFireAuth,
     private router: Router,
+    protected db: FirestoreService
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,11 @@ export class LoginComponent implements OnInit {
         const result = await this.angularFireAuth.auth.signInWithEmailLink(email, url);
         console.log('result', result);
         window.localStorage.removeItem('emailForSignIn');
+
+        const userId = result['user']['uid'];
+
+        // TODO: add only if it's not there already
+        this.db.add('user', {'userId': userId, 'email': email });
 
         this.redirect();
       }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 import { FirestoreService } from '../services/firestore.service';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   constructor(
     protected angularFireAuth: AngularFireAuth,
     private router: Router,
-    protected db: FirestoreService
+    private afs: AngularFirestore,
   ) { }
 
   ngOnInit() {
@@ -37,10 +38,18 @@ export class LoginComponent implements OnInit {
         console.log('result', result);
         window.localStorage.removeItem('emailForSignIn');
 
+        // Adds or updates user
+        const user = result['user'];
         const userId = result['user']['uid'];
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${userId}`);
 
-        // TODO: add only if it's not there already
-        this.db.add('user', {'userId': userId, 'email': email });
+        const data = {
+          uid: user.uid,
+          email: user.email || null,
+          displayName: user.displayName || null,
+          photoURL: user.photoURL || null
+        };
+        userRef.set(data, { merge: true });
 
         this.redirect();
       }

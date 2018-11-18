@@ -1,54 +1,52 @@
-<div class="pdp-user-data-block col-xl-12">
-  <div class="center-wrap">
-    <div>
-      <div class="row user-data-form">
-        <div class="col-sm-2"></div>
-        <div class="col-lg-8">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="butler-container">
-                <div class="butler-image"><img src="assets/img/avatar-round-notification@2x.png" alt="Butler Flugio"></div>
-                <div class="butler-text"><span>Wie kann ich Sie kontaktieren?</span></div>
+<form>
+  <div class="pdp-user-data-block col-xl-12">
+    <div class="center-wrap">
+      <div>
+        <div class="row user-data-form">
+          <div class="col-sm-2"></div>
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="butler-container">
+                  <div class="butler-image"><img src="assets/img/avatar-round-notification@2x.png" alt="Butler Flugio"></div>
+                  <div class="butler-text"><span>Wie kann ich Sie kontaktieren?</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input required="required" [(ngModel)]="user.firstName" autocomplete="off" name="firstName" type="text"
+                    class="form-control" placeholder="Vorname">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <input required="required" [(ngModel)]="user.lastName" autocomplete="off" name="lastName" type="text"
+                    class="form-control" placeholder="Nachname">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input required="required" [(ngModel)]="user.email" autocomplete="off" name="email" type="email"
+                    class="form-control" placeholder="E-Mail">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="form-group">
+                  <input required="required" [(ngModel)]="user.phoneNumber" autocomplete="off" name="phone" type="tel"
+                    class="form-control" placeholder="Telefonnummer">
+                </div>
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <form>
-                <div class="form-group">
-                  <input required="required" [(ngModel)]="user.firstName" autocomplete="off" name="firstName" type="text" class="form-control" placeholder="Vorname">
-                </div>
-              </form>
-            </div>
-            <div class="col-lg-6">
-              <form>
-                <div class="form-group">
-                  <input required="required" [(ngModel)]="user.lastName" autocomplete="off" name="lastName" type="text" class="form-control" placeholder="Nachname">
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <form>
-                <div class="form-group">
-                  <input required="required" [(ngModel)]="user.email" autocomplete="off" name="email" type="email" class="form-control" placeholder="E-Mail">
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <form>
-                <div class="form-group">
-                  <input required="required" [(ngModel)]="user.phoneNumber" autocomplete="off" name="phone" type="tel" class="form-control" placeholder="Telefonnummer">
-                </div>
-              </form>
-            </div>
-          </div>
+          <div class="col-sm-2"></div>
         </div>
-        <div class="col-sm-2"></div>
       </div>
     </div>
   </div>
-</div>
+</form>

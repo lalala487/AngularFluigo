@@ -56,13 +56,14 @@ import { AgbComponent } from './agb/agb.component';
 import { TravelGuidesComponent } from './travel-guides/travel-guides.component';
 import { TeamComponent } from './team/team.component';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { EmailSentComponent } from './email-sent/email-sent.component';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
   declarations: [
@@ -124,8 +125,14 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
     AppRoutingModule,
     MomentModule,
     HttpClientModule
+ ],
+  providers: [
+    FirestoreService,
+    ImageService,
+    AuthService,
+    AuthGuardService,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
-  providers: [FirestoreService, ImageService, AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

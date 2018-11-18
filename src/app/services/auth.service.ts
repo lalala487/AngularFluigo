@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { fromPromise } from 'rxjs/observable/fromPromise';
 
 @Injectable()
 export class AuthService {
@@ -18,4 +19,9 @@ export class AuthService {
   isAuthenticated(): Observable<boolean> {
     return this.user.map(user => user && (user.uid !== undefined));
   }
+
+  getUserIdToken(): Observable<string> {
+    return fromPromise(this.afAuth.auth.currentUser.getIdToken());
+  }
+
 }

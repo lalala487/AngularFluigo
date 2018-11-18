@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { switchMap } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { FirestoreService } from '../services/firestore.service';
 import { Charge, Source } from '../payment-form/models';
 import { Money } from 'ts-money';
@@ -35,6 +35,7 @@ export class PaymentService {
           'currency': amount.currency,
           'sourceId': data.source.id
         };
+
         console.log('toSend', toSend);
         return this.http.post<Charge>(url, toSend);
       })

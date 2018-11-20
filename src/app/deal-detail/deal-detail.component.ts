@@ -130,6 +130,11 @@ export class DealDetailComponent implements OnInit {
             this.accommodation = innerAcc as Accommodation;
           });
         }
+
+        const merchantRef = this.deal.merchant ? this.deal.merchant[0] : undefined;
+        if (merchantRef) {
+          this.accummulations['merchantId'] = merchantRef.id;
+        }
       });
   }
 
@@ -225,8 +230,9 @@ export class DealDetailComponent implements OnInit {
   stripeResult(charge: Charge): void {
     console.log('stripeResult', charge);
 
-    this.paymentService.writePaymentToDb(charge);
+    const paymentResult = this.paymentService.writePaymentToDb(charge);
     this.accummulations['payed'] = true;
+    this.accummulations['payment'] = paymentResult;
 
     this.moveToNextStep();
   }
@@ -270,7 +276,7 @@ export class DealDetailComponent implements OnInit {
       return;
     }
 
-    // contact step (must be filled in order to process)
+    // contact step (must be filled in order to proceed)
     if (this.currentStep === 11) {
       if (this.stepValidatorService.validateUserContact(this.accummulations.contact)) {
         this.currentStep = this.currentStep + 1;

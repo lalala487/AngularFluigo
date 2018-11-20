@@ -193,7 +193,7 @@
 
         <app-payment-form *ngIf="currentStep == 12" style="width:100%;" [amount]="accummulations['totalPriceAmount']" (stripeResult)="stripeResult($event)" (errorStripe)="errorStripe($event)"></app-payment-form>
 
-        <app-success *ngIf="currentStep == 13" style="width:100%;"></app-success>
+        <app-success *ngIf="currentStep == 13" style="width:100%;" [accummulations]="accummulations"></app-success>
 
       </div>
     </div>

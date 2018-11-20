@@ -3,4 +3,8 @@ export class User {
     lastName: string;
     email: string;
     phoneNumber: string;
+    displayName: string;
+    photoURL: string;
+    stripeCustomerId: string;
+    uid: string;
 }

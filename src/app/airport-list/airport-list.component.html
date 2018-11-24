@@ -1,5 +1,5 @@
 <form>
-  <div class="form-group airport" include="activity-date-input-select()">
+  <div class="form-group airport" include="form-input-select()">
     <select [compareWith]="compareFn" [ngModel]="selectedAirport" (ngModelChange)="onChange($event)" name="selectAirport">
       <!-- Placeholder -->
       <option value="" hidden>Flughafen</option>

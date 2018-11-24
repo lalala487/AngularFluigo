@@ -3024,7 +3024,7 @@ select:focus {
 /*****************************   Select   *****************************/
 /**********************************************************************/
 
-[include*="activity-date-input-select()"] {
+[include*="form-input-select()"] {
   display: block;
   padding: 0;
   position: relative;
@@ -3044,14 +3044,14 @@ select:focus {
   letter-spacing: .07rem;
   width: 100%;
 }
-[include*="activity-date-input-select()"]::before, [include*="activity-date-input-select()"]::after {
+[include*="form-input-select()"]::before, [include*="form-input-select()"]::after {
   content: '';
   display: block;
   position: absolute;
   pointer-events: none;
   z-index: 2;
 }
-[include*="activity-date-input-select()"] select {
+[include*="form-input-select()"] select {
   -webkit-appearance: none;
   -moz-appearance: none;
        appearance: none;
@@ -3065,50 +3065,50 @@ select:focus {
   outline: none;
   /* Focus style */
 }
-[include*="activity-date-input-select()"] select:focus {
+[include*="form-input-select()"] select:focus {
   background-color: transparent;
   outline: none;
 }
-[include*="activity-date-input-select()"] option {
+[include*="form-input-select()"] option {
   font-weight: normal;
 }
-[include*="activity-date-input-select()"] x:-o-prefocus, [include*="activity-date-input-select()"]::after {
+[include*="form-input-select()"] x:-o-prefocus, [include*="form-input-select()"]::after {
   display: none;
 }
 @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-  [include*="activity-date-input-select()"] select::-ms-expand {
+  [include*="form-input-select()"] select::-ms-expand {
     display: none;
   }
-  [include*="activity-date-input-select()"] select:focus::-ms-value {
+  [include*="form-input-select()"] select:focus::-ms-value {
     background: transparent;
     color: #000;
   }
 }
 @-moz-document url-prefix() {
-  [include*="activity-date-input-select()"] {
+  [include*="form-input-select()"] {
     overflow: hidden;
   }
-  [include*="activity-date-input-select()"] select {
+  [include*="form-input-select()"] select {
     width: 120%;
     width: calc(100% + 3em);
     /* Firefox focus has odd artifacts around the text, this kills that. See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring */
   }
   @supports (-moz-appearance: none) {
-    [include*="activity-date-input-select()"] select {
+    [include*="form-input-select()"] select {
       width: 100%;
     }
   }
-  [include*="activity-date-input-select()"] select:-moz-focusring {
+  [include*="form-input-select()"] select:-moz-focusring {
     color: transparent;
     text-shadow: none;
   }
 }
 @supports (-moz-appearance: none) {
-  [include*="activity-date-input-select()"] {
+  [include*="form-input-select()"] {
     width: 100%;
   }
 }
-[include*="activity-date-input-select()"]::before, [include*="activity-date-input-select()"]::after {
+[include*="form-input-select()"]::before, [include*="form-input-select()"]::after {
   content: '';
   display: block;
   position: absolute;
@@ -3118,8 +3118,8 @@ select:focus {
   height: 0;
   right: 1.75rem;
 }
-[include*="activity-date-input-select()"]::before {
-  bottom: 55%;
+[include*="form-input-select()"]::before {
+  bottom: 75%;
   border-width: 0 6.5px 8px 6.5px;
   border-bottom-color: rgba(235,235,235,.5);
   -moz-transition: all 0.3s ease-in-out;
@@ -3128,32 +3128,42 @@ select:focus {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-[include*="activity-date-input-select()"]::after {
+[include*="form-input-select()"]::after {
   border-width: 8px 6.5px 0 6.5px;
   border-top-color: rgba(235,235,235,.5);
-  top: 55%;
+  top: 31%;
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
+@media (min-width: 1200px) {
+  [include*="form-input-select()"]::before {
+    bottom: 55%;
+  }
+  [include*="form-input-select()"]::after {
+    top: 55%;
+  }
+ }
+
 @-moz-document url-prefix() {
-  [include*="activity-date-input-select()"] {
+  [include*="form-input-select()"] {
     border-right: .12rem solid rgba(235,235,235,.5);
   }
-  [include*="activity-date-input-select()"]:hover {
+  [include*="form-input-select()"]:hover {
     border-right: .12rem solid rgba(235,235,235,1);
   }
 }
-[include*="activity-date-input-select()"]:hover select {
+[include*="form-input-select()"]:hover select {
   box-shadow: none;
   border-bottom-color: rgba(235,235,235,1);
 }
-[include*="activity-date-input-select()"]:hover select:focus {
+[include*="form-input-select()"]:hover select:focus {
   outline-color: transparent;
 }
-[include*="activity-date-input-select()"]:hover::before {
+[include*="form-input-select()"]:hover::before {
   border-bottom-color: rgba(235,235,235,1);
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -3161,7 +3171,7 @@ select:focus {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-[include*="activity-date-input-select()"]:hover::after {
+[include*="form-input-select()"]:hover::after {
   border-top-color: rgba(235,235,235,1);
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
@@ -3169,7 +3179,7 @@ select:focus {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-[include*="activity-date-input-select()"] select {
+[include*="form-input-select()"] select {
   border-bottom: .12rem solid rgba(235,235,235,.5);
   border-radius: 0;
   font-weight: 400;
@@ -3182,13 +3192,13 @@ select:focus {
   -ms-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
-[include*="activity-date-input-select()"] select:focus {
+[include*="form-input-select()"] select:focus {
   box-shadow: none;
 }
-[include*="activity-date-input-select()"] select[disabled], [include*="activity-date-input-select()"] select:disabled {
+[include*="form-input-select()"] select[disabled], [include*="form-input-select()"] select:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
-[include*="activity-date-input-select()"] select:invalid {
+[include*="form-input-select()"] select:invalid {
   color: rgba(235,235,235,.5);
 }

@@ -230,11 +230,13 @@ export class DealDetailComponent implements OnInit {
   stripeResult(charge: Charge): void {
     console.log('stripeResult', charge);
 
-    const paymentResult = this.paymentService.writePaymentToDb(charge);
-    this.accummulations['payed'] = true;
-    this.accummulations['payment'] = paymentResult;
+    this.paymentService.writePaymentToDb(charge).then(result => {
+      console.log('write to payment result', result);
+      this.accummulations['payed'] = true;
+      this.accummulations['payment'] = result;
+      this.moveToNextStep();
+    });
 
-    this.moveToNextStep();
   }
 
   errorStripe(error): void {

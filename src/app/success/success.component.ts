@@ -30,6 +30,7 @@ export class SuccessComponent implements OnInit {
         userId: innerUser.uid,
         contact: this.accummulations['contact']['email'],
         totalPrice: this.accummulations['totalPriceAmount'].toJSON(),
+        payment: this.accummulations['payment']
       } as Order;
 
       // TODO: decrease stock in accommodation and flightOffers.

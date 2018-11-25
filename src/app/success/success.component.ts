@@ -33,9 +33,29 @@ export class SuccessComponent implements OnInit {
         payment: this.accummulations['payment']
       } as Order;
 
-      // TODO: decrease stock in accommodation and flightOffers.
+      const wayOfferId = this.accummulations['eventSelected']['meta']['way']['id'];
+      const wayFlightOfferId = this.accummulations['eventSelected']['meta']['way']['flightOfferId'];
+      const returnOfferId = this.accummulations['eventSelected']['meta']['return']['id'];
+      const returnFlightOfferId = this.accummulations['eventSelected']['meta']['return']['flightOfferId'];
 
-      // TODO: add payment id
+      this.db.doc$('flightOffer/' + wayFlightOfferId + '/offers/' + wayOfferId).take(1).subscribe(offer => {
+        console.log('offer', offer);
+        offer['stock'] = offer['stock'] - 1;
+
+        this.db.update('flightOffer/' + wayFlightOfferId + '/offers/' + wayOfferId, offer);
+
+        return offer['stock'];
+
+      });
+
+      this.db.doc$('flightOffer/' + returnFlightOfferId + '/offers/' + returnOfferId).take(1).subscribe(offer => {
+        console.log('offer', offer);
+        offer['stock'] = offer['stock'] - 1;
+
+        this.db.update('flightOffer/' + returnFlightOfferId + '/offers/' + returnOfferId, offer);
+
+        return offer['stock'];
+      });
 
       this.db.add('order', this.order);
     });

@@ -327,12 +327,14 @@ export class CalendarComponent implements OnInit {
         this.db.colWithIds$<Offer>('flightOffer/' + flightOfferId + '/offers').subscribe(col => {
           console.log('inneroffers: ', col);
           col.forEach(offer => {
+            offer['flightOfferId'] = flightOfferId;
             if (isReturn) {
-
               offer['flightArrivalHour'] = moment(flightFromOffer.arrival);
+
               this.returnOffers.push(offer);
             } else {
               offer['flightDepartureHour'] = moment(flightFromOffer.departure);
+
               this.wayOffers.push(offer);
             }
 

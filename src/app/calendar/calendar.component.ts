@@ -161,6 +161,10 @@ export class CalendarComponent implements OnInit {
                   this.events.push(event);
                   console.log('events', this.events);
                   this.triggerChangesOnEventSelection(this.events);
+
+                  this.activeDayIsOpen = true;
+                  this.viewDate = this.accummulations['eventSelected']['start'];
+
                   this.refresh.next();
 
                   this.accummulations['events'] = {
@@ -220,7 +224,11 @@ export class CalendarComponent implements OnInit {
 
   triggerChangesOnEventSelection(events): void {
     if (events.length) {
-      const event = events[0];
+      const sortedEvents = events.sort((n1, n2) => {
+        return n1.meta.totalPriceAmount.amount - n2.meta.totalPriceAmount.amount;
+      });
+
+      const event = sortedEvents[0];
 
       this.hasFlightAccommodation = true;
       this.hasFlightAccommodationChange.emit(this.hasFlightAccommodation);

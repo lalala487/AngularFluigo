@@ -438,6 +438,10 @@ export class CalendarComponent implements OnInit {
         }
       });
     });
+
+    if (this.accummulations['bookingFee'].amount > 0) {
+      fullOffer['totalPrice'] = fullOffer['totalPrice'].add(this.accummulations['bookingFee']);
+    }
   }
 
   getIds(list: Array<any>) {

@@ -140,7 +140,7 @@ export class CalendarComponent implements OnInit {
                   metaReturnDate.minute(returnOffer.flightArrivalHour.minutes());
 
                   const event = {
-                    title: totalPrice.currency + ' ' + totalPrice.toString(),
+                    title: totalPrice.currency + ' ' + totalPrice.getAmount() / 100,
                     start: moment(wayOffer.date).toDate(),
                     end: moment(wayOffer.date).toDate(),
                     meta: {

@@ -31,7 +31,7 @@ export class InsuranceComponent implements OnInit {
     this.db.colWithIds$('insurance').subscribe(collection => {
       this.insurance = collection[0];
 
-      this.insuranceMessage = this.insurance.name.de_CH;
+      const name = this.insurance.name.de_CH;
 
       this.db.doc$('insurer/' + this.insurance.insurer.id).subscribe(
         insurer => {
@@ -51,7 +51,7 @@ export class InsuranceComponent implements OnInit {
             this.insurancePriceChange.emit(this.insurancePrice);
           }
 
-          this.insuranceMessage = this.insuranceMessage.replace('xxx', price.currency + ' ' + price.toString());
+          this.insuranceMessage = name.replace('xxx', price.currency + ' ' + price.toString());
         }
       );
 

@@ -932,6 +932,7 @@ a:hover {
   margin-top: .3rem;
   letter-spacing: .07rem;
   font-size: 1rem;
+  margin-bottom: 0rem;
 }
 
 .header-row .logo .right-col .icon-account {
@@ -949,6 +950,7 @@ a:hover {
   font-size: 1rem;
   letter-spacing: .07rem;
   text-align: center;
+  margin-bottom: 0rem;
 }
 
 .header-row .title-row {
@@ -957,7 +959,6 @@ a:hover {
   font-weight: 600;
   opacity: 1;
   height: 100%;
-  height: stretch;
   align-items: center;
 }
 

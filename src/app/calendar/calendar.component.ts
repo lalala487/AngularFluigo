@@ -59,6 +59,7 @@ export class CalendarComponent implements OnInit {
   viewDate: Date = new Date();
   view = 'month';
   refresh: Subject<any> = new Subject();
+  locale = 'de';
 
   constructor(
     private collectionUtils: CollectionsService,
@@ -418,7 +419,9 @@ export class CalendarComponent implements OnInit {
           fullOffer['adultPrice'] = fullOffer['adultPrice'].add(childrenPrice);
           console.log('children flight price going ', childrenPrice, fullOffer['totalPrice']);
         }
+
       });
+
     });
 
     offer2.prices.forEach(element => {

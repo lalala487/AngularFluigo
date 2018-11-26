@@ -26,7 +26,7 @@
               </div>
 
               <div class="col-xs-4 col-month-title">
-                <p class="calendar-month-title">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</p>
+                <p class="calendar-month-title">{{ viewDate | calendarDate:(view + 'ViewTitle'): 'de' }}</p>
               </div>
 
               <div class="col-xs-4 col-button-next">
@@ -55,6 +55,7 @@
            [refresh]="refresh"
            [activeDayIsOpen]="activeDayIsOpen"
            (dayClicked)="dayClicked($event.day)"
+           [locale]="locale"
            [cellTemplate]="customCellTemplate">
           </mwl-calendar-month-view>
         </div>

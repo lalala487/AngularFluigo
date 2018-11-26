@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
+import localeDe from '@angular/common/locales/de';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
@@ -64,6 +66,10 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { EmailSentComponent } from './email-sent/email-sent.component';
 import { TokenInterceptor } from './token.interceptor';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeDe);
+
 
 @NgModule({
   declarations: [

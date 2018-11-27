@@ -33,6 +33,11 @@ export class SuccessComponent implements OnInit {
         payment: this.accummulations['payment']
       } as Order;
 
+
+      const contact = Object.assign({}, this.accummulations['contact']);
+
+      this.db.update('users/' + innerUser.uid, {'contact': contact} );
+
       const wayOfferId = this.accummulations['eventSelected']['meta']['way']['id'];
       const wayFlightOfferId = this.accummulations['eventSelected']['meta']['way']['flightOfferId'];
       const returnOfferId = this.accummulations['eventSelected']['meta']['return']['id'];

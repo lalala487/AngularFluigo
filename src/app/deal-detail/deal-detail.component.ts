@@ -239,6 +239,10 @@ export class DealDetailComponent implements OnInit {
 
   }
 
+  userContactChange(contact: User) {
+    this.accummulations['contact'] = contact;
+  }
+
   errorStripe(error): void {
     console.log('stripeError', error);
 

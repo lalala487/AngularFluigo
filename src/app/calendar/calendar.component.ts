@@ -80,6 +80,8 @@ export class CalendarComponent implements OnInit {
   }
 
   updateCalendarEvents() {
+    this.accummulations['loading'] = true;
+
     this.events = [];
     this.flights = [];
     this.wayOffers = [];
@@ -173,6 +175,8 @@ export class CalendarComponent implements OnInit {
                     'airport': this.currentAirport,
                     'list': this.events
                   };
+
+                  this.accummulations['loading'] = false;
 
                 }, 1000);
 

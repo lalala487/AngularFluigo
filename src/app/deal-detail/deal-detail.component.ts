@@ -70,7 +70,8 @@ export class DealDetailComponent implements OnInit {
     'totalPriceAmount': new Money(0, Currencies.CHF),
     'contact': new User(),
     'bookingFee': new Money(0, Currencies.CHF),
-    'payed': false
+    'payed': false,
+    'loading': false,
   };
 
   currentStep = 0;
@@ -250,6 +251,10 @@ export class DealDetailComponent implements OnInit {
   }
 
   moveToNextStep(): void {
+    if (this.accummulations['loading']) {
+      return;
+    }
+
     if (this.currentStep === 12) {
       if (!this.accummulations['payed']) {
         return;
@@ -301,6 +306,11 @@ export class DealDetailComponent implements OnInit {
   }
 
   moveToPreviousStep(): void {
+
+    if (this.accummulations['loading']) {
+      return;
+    }
+
     if (this.currentStep === 0) {
       this.router.navigate(['/']);
       return;

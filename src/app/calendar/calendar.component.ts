@@ -276,7 +276,8 @@ export class CalendarComponent implements OnInit {
 
         // TODO: verificar que accommodationOffer.room.accommodation.city == city do deal
 
-        this.db.colWithIds$<Offer>('accommodationOffer/' + accommodationOfferId + '/offers').subscribe(col => {
+        this.db.colWithIds$<Offer>('accommodationOffer/' + accommodationOfferId + '/offers',
+          ref => ref.where('date', '>', new Date())).subscribe(col => {
           col.forEach(offer => {
             console.log('roomOffer', offer);
 
@@ -337,7 +338,8 @@ export class CalendarComponent implements OnInit {
           flightFromOffer = flight;
         });
 
-        this.db.colWithIds$<Offer>('flightOffer/' + flightOfferId + '/offers').subscribe(col => {
+        this.db.colWithIds$<Offer>('flightOffer/' + flightOfferId + '/offers',
+          ref => ref.where('date', '>', new Date())).subscribe(col => {
           console.log('inneroffers: ', col);
           col.forEach(offer => {
             offer['flightOfferId'] = flightOfferId;

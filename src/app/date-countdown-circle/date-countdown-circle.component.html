@@ -1,6 +1,6 @@
 <div class="timer-container">
-  <div class="countdown-circle" id="countdown-days" *ngIf="left.days">
-    <div id="countdown-number">
+  <div class="countdown-circle countdown-days" *ngIf="left.days">
+    <div class="countdown-number">
       <p class="number-days">{{ left.days }}</p>
       <p class="label-days">Tg</p>
     </div>
@@ -15,8 +15,8 @@
       </svg>
     </div>
   </div>
-  <div class="countdown-circle" id="countdown-hours" *ngIf="left.days || left.hours">
-    <div id="countdown-number">
+  <div class="countdown-circle countdown-hours" *ngIf="left.days || left.hours">
+    <div class="countdown-number">
       <p class="number-hours">{{ left.hours }}</p>
       <p class="label-hours">Std</p>
     </div>
@@ -31,8 +31,8 @@
       </svg>
     </div>
   </div>
-  <div class="countdown-circle" id="countdown-minutes" *ngIf="left.days || left.hours || left.minutes">
-    <div id="countdown-number">
+  <div class="countdown-circle countdown-minutes" *ngIf="left.days || left.hours || left.minutes">
+    <div class="countdown-number">
       <p class="number-minutes">{{ left.minutes }}</p>
       <p class="label-minutes">Min</p>
     </div>
@@ -47,8 +47,8 @@
       </svg>
     </div>
   </div>
-  <div class="countdown-circle" id="countdown-seconds" *ngIf="left.days || left.hours || left.minutes || left.seconds">
-    <div id="countdown-number">
+  <div class="countdown-circle countdown-seconds" *ngIf="left.days || left.hours || left.minutes || left.seconds">
+    <div class="countdown-number">
       <p class="number-seconds">{{ left.seconds }}</p>
       <p class="label-seconds">Sek</p>
     </div>

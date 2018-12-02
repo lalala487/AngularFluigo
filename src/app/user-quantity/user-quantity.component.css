@@ -40,6 +40,13 @@
   }
 }
 
+@media (max-width: 575.98px) {
+  .pdp-user-quantity-block {
+    margin-top: 1.95rem;
+    margin-bottom: 8rem;
+  }
+}
+
 .number-picker-label {
   letter-spacing: .07rem;
   font-size: 1rem;

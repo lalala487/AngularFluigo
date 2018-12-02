@@ -28,6 +28,13 @@
   }
 }
 
+@media only screen and (max-width: 575.98px)  {
+  .pdp-user-data-block {
+    margin-top: 1.95rem;
+    margin-bottom: 8rem;
+  }
+}
+
 .pdp-user-data-block .user-data-form .form-group {
   margin-bottom: 2rem;
 }

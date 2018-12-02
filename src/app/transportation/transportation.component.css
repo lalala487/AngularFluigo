@@ -1,0 +1,45 @@
+.pdp-transportation-block {
+  width: 100%;
+}
+
+.pdp-transportation-block .center-wrap {
+  width: 100%;
+}
+
+.pdp-transportation-block .label-transportation {
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-transportation-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .pdp-transportation-block .btn-icon-press{
+    margin-bottom: 2rem;
+  }
+
+  .pdp-transportation-block {
+    margin-top: -1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .pdp-transportation-block {
+    margin-top: 1.95rem;
+    margin-bottom: 8rem;
+  }
+}
+
+.pdp-transportation-block .btn-icon-press p {
+  margin-bottom: 0rem;
+  margin-top: 1rem;
+}

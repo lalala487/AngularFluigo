@@ -27,3 +27,54 @@
   text-align: center;
   margin-bottom: 2.5rem;
 }
+
+.pdp-payment-block {
+  width: 100%;
+}
+
+.pdp-payment-block .center-wrap {
+  width: 100%;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-payment-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 1199.98px)  {
+  .pdp-payment-block {
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+  }
+}
+
+@media only screen and (max-width: 575.98px)  {
+  .pdp-payment-block {
+    margin-top: 1.95rem;
+    margin-bottom: 8rem;
+  }
+}
+
+.pdp-payment-block select {
+  background-color: inherit;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+  background-color: inherit;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0px;
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  width: 100%;
+  border-top: 0rem;
+  border-right: 0rem;
+  border-left: 0rem;
+  border-style: solid;
+  border-color: rgba(235,235,235,0.5);
+  border-bottom-width: .12rem;
+  padding: 0.5rem 1rem;
+  color: rgba(235,235,235,1);
+}

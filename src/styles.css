@@ -7,6 +7,10 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
   -webkit-text-fill-color: #fff !important;
 }
 
+select:focus {
+  outline: none;
+}
+
 /**********************************************************************/
 /*****************************   Stripe   *****************************/
 /**********************************************************************/
@@ -2129,128 +2133,6 @@ hr {
 }
 
 /**********************************************************************/
-/****************************   Payment   *****************************/
-/**********************************************************************/
-
-.pdp-payment-block {
-  width: 100%;
-}
-
-.pdp-payment-block .center-wrap {
-  width: 100%;
-}
-
-.pdp-payment-block .label-user-age {
-  text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: .07rem;
-  font-size: 1rem;
-}
-
-@media only screen and (min-width: 1200px)  {
-  .pdp-payment-block {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-  }
-
-  .payment-form .name,
-  .payment-form .number {
-    margin-bottom: 3rem;
-  }
-
-  .payment-form .month,
-  .payment-form .year {
-    margin-bottom: 0rem !important;
-  }
-
-  .pdp-payment-block .label-trust {
-    margin-bottom: 0rem !important;
-  }
-}
-
-@media only screen and (max-width: 1199.98px)  {
-  .pdp-payment-block {
-    margin-top: 3rem;
-    margin-bottom: 6rem;
-  }
-}
-
-.payment-form .name,
-.payment-form .number,
-.payment-form .month,
-.payment-form .year {
-  margin-bottom: 3rem;
-}
-
-.payment-form .month::after,
-.payment-form .year::after {
-  position: absolute;
-  content: "";
-  top: 17px;
-  right: 30px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-color: #fff transparent transparent transparent;
-}
-
-.pdp-payment-block .label-payment {
-  text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: .07rem;
-  font-size: 1rem;
-}
-
-.pdp-payment-block select {
-  background-color: inherit;
-  letter-spacing: .07rem;
-  font-size: 1rem;
-  background-color: inherit;
-  -webkit-appearance: none;
-  -webkit-border-radius: 0px;
-  font-size: 1rem;
-  letter-spacing: .07rem;
-  width: 100%;
-  border-top: 0rem;
-  border-right: 0rem;
-  border-left: 0rem;
-  border-style: solid;
-  border-color: rgba(235,235,235,0.5);
-  border-bottom-width: .12rem;
-  padding: 0.5rem 1rem;
-  color: rgba(235,235,235,1);
-}
-
-.pdp-payment-block .powered-by-stripe img {
-  display: block;
-  margin: 0 auto;
-  opacity: .5;
-}
-
-.pdp-payment-block .powered-by-stripe {
-  margin-top: 3rem;
-}
-
-select:focus {
-  outline: none;
-}
-
-.pdp-payment-block .label-trust {
-  text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: .07rem;
-  font-size: .8rem;
-  margin-top: 3.3rem;
-}
-
-.pdp-payment-block .icon-lock {
-  margin-top: -.3rem;
-  margin-right: .5rem;
-}
-
-/**********************************************************************/
 /**************************   Ages Children   *************************/
 /**********************************************************************/
 
@@ -2457,49 +2339,6 @@ select:focus {
 }
 
 .pdp-onboard-block .btn-icon-press p {
-  margin-bottom: 0rem;
-  margin-top: 1rem;
-}
-
-/**********************************************************************/
-/************************   Transportation   **************************/
-/**********************************************************************/
-
-.pdp-transportation-block {
-  width: 100%;
-}
-
-.pdp-transportation-block .center-wrap {
-  width: 100%;
-}
-
-.pdp-transportation-block .label-transportation {
-  text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: .07rem;
-  font-size: 1rem;
-}
-
-@media only screen and (min-width: 1200px)  {
-  .pdp-transportation-block {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-  }
-}
-
-@media only screen and (max-width: 767.98px)  {
-  .pdp-transportation-block .btn-icon-press{
-    margin-bottom: 2rem;
-  }
-
-  .pdp-transportation-block {
-    margin-top: -1rem;
-  }
-}
-
-.pdp-transportation-block .btn-icon-press p {
   margin-bottom: 0rem;
   margin-top: 1rem;
 }

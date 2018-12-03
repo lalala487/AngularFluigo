@@ -5,20 +5,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './nights.component.html',
   styleUrls: ['./nights.component.css']
 })
-export class NightsComponent implements OnInit {
-
+export class NightsComponent {
   @Input() numberOfNights = 3;
-  @Output() selectedNightChange: EventEmitter<any> = new EventEmitter();
+  @Input() listOfNights: any;
 
-  nightList = [3, 4];
+  @Output() selectedNightChange: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit() {
-  }
-
   onChange(newValue) {
-    console.log(newValue);
     this.numberOfNights = newValue;
 
     this.selectedNightChange.emit(this.numberOfNights);

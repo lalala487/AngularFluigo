@@ -6,7 +6,7 @@
           <app-airport-list [selectedAirport]="currentAirport" (selectedAirportChange)="selectedAirportChange($event)"></app-airport-list>
         </div>
         <div class="col-xl-4">
-          <app-nights [numberOfNights]="numberOfNights" (selectedNightChange)="selectedNightChange($event)"></app-nights>
+          <app-nights [numberOfNights]="numberOfNights" [listOfNights]="deal.numberOfNights" (selectedNightChange)="selectedNightChange($event)"></app-nights>
         </div>
         <div class="col-xl-4">
           <button class="btn btn-full btn-secondary" type="next"><img class="icon-dot-light-blue" src="assets/icon/icon-dot-light-blue.svg" height="10"> Besten Preis</button>

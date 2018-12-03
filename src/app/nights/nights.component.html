@@ -4,7 +4,7 @@
       <!-- Placeholder -->
       <option value="" hidden>Nächte</option>
       <!-- Options -->
-      <option [value]="night" *ngFor="let night of nightList">{{night}} Nächte</option>
+      <option [value]="night.id" *ngFor="let night of listOfNights">{{night.id}} Nächte</option>
     </select>
   </div>
 </form>

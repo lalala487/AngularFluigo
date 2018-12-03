@@ -17,4 +17,5 @@ export interface Deal {
     rating: number;
     marketing: MarketingField;
     bookingFee: number;
+    numberOfNights: any;
 }

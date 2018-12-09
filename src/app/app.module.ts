@@ -67,6 +67,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { EmailSentComponent } from './email-sent/email-sent.component';
 import { TokenInterceptor } from './token.interceptor';
 import { registerLocaleData } from '@angular/common';
+import { SendgridService } from './services/sendgrid.service';
 
 registerLocaleData(localeDe);
 
@@ -137,6 +138,7 @@ registerLocaleData(localeDe);
     ImageService,
     AuthService,
     AuthGuardService,
+    SendgridService,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

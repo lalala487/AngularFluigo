@@ -3,6 +3,7 @@ import { FirestoreService } from '../services/firestore.service';
 import { AuthService } from '../services/auth.service';
 import { User } from '../models/user';
 import { Money } from 'ts-money';
+import { SendgridService } from '../services/sendgrid.service';
 
 @Component({
   selector: 'app-success',
@@ -16,7 +17,8 @@ export class SuccessComponent implements OnInit {
 
   constructor(
     private db: FirestoreService,
-    private authService: AuthService
+    private authService: AuthService,
+    private sendGridService: SendgridService
   ) { }
 
   ngOnInit() {
@@ -33,40 +35,39 @@ export class SuccessComponent implements OnInit {
         payment: this.accummulations['payment']
       } as Order;
 
-
-      const contact = Object.assign({}, this.accummulations['contact']);
-
-      this.db.update('users/' + innerUser.uid, {'contact': contact} );
+      this.updateContact(innerUser);
 
       const wayOfferId = this.accummulations['eventSelected']['meta']['way']['id'];
       const wayFlightOfferId = this.accummulations['eventSelected']['meta']['way']['flightOfferId'];
+      this.reduceFlightOfferStock(wayFlightOfferId, wayOfferId);
+
       const returnOfferId = this.accummulations['eventSelected']['meta']['return']['id'];
       const returnFlightOfferId = this.accummulations['eventSelected']['meta']['return']['flightOfferId'];
-
-      this.db.doc$('flightOffer/' + wayFlightOfferId + '/offers/' + wayOfferId).take(1).subscribe(offer => {
-        console.log('offer', offer);
-        offer['stock'] = offer['stock'] - 1;
-
-        this.db.update('flightOffer/' + wayFlightOfferId + '/offers/' + wayOfferId, offer);
-
-        return offer['stock'];
-
-      });
-
-      this.db.doc$('flightOffer/' + returnFlightOfferId + '/offers/' + returnOfferId).take(1).subscribe(offer => {
-        console.log('offer', offer);
-        offer['stock'] = offer['stock'] - 1;
-
-        this.db.update('flightOffer/' + returnFlightOfferId + '/offers/' + returnOfferId, offer);
-
-        return offer['stock'];
-      });
+      this.reduceFlightOfferStock(returnFlightOfferId, returnOfferId);
 
       this.db.add('order', this.order);
     });
 
   }
 
+  private reduceFlightOfferStock(flightOfferId: any, offerId: any) {
+    this.db.doc$('flightOffer/' + flightOfferId + '/offers/' + offerId).take(1).subscribe(offer => {
+      console.log('offer', offer);
+      offer['stock'] = offer['stock'] - 1;
+      this.db.update('flightOffer/' + flightOfferId + '/offers/' + offerId, offer);
+      return offer['stock'];
+    });
+  }
+
+  private updateContact(innerUser: User) {
+    const contact = Object.assign({}, this.accummulations['contact']);
+    this.sendGridService.updateSendGridContact(contact).subscribe((data) => {
+      console.log('sendgrid response', data);
+    });
+
+    this.db.update('users/' + innerUser.uid, { 'contact': contact });
+
+  }
 }
 
 interface Order {

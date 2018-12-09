@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment';
 import { switchMap } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FirestoreService } from '../services/firestore.service';
 import { Charge, Source } from '../payment-form/models';
 import { Money } from 'ts-money';
@@ -16,13 +16,11 @@ export class PaymentService {
 
   readonly api = environment.functionsURL;
 
-  userId = 123;
-
   constructor(
     protected db: FirestoreService,
     private http: HttpClient
   ) {
-    this.elements = this.stripe.elements({'locale': 'de'});
+    this.elements = this.stripe.elements({ 'locale': 'de' });
   }
 
   createCharge(card: any, amount: Money): Observable<Charge> {

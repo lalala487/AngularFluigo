@@ -2,9 +2,18 @@
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 @import "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css";
 
+body {
+  font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 100%;
+  font-weight: 400;
+  color: rgba(235, 235, 235, 1);
+}
+
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active, textarea:-webkit-autofill, textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus, textarea:-webkit-autofill:active, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus, select:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s;
-  -webkit-text-fill-color: #fff !important;
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: rgba(235, 235, 235, 1) !important;
 }
 
 select:focus {
@@ -70,7 +79,6 @@ select:focus {
   padding-right: 2.5rem;
   margin-top: -1.5rem;
   text-align: center;
-
   background-image:
     url(assets/icon/quote-start.svg),
     url(assets/icon/quote-end.svg);
@@ -93,17 +101,19 @@ select:focus {
   margin-top: -.2rem;
 }
 
+@media only screen and (min-width: 576px)  {
+  .butler-container .butler-text {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
 /**********************************************************************/
 /**************************   Notifications   *************************/
 /**********************************************************************/
 
 body.dialog-open {
   overflow: hidden;
-}
-
-input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active, textarea:-webkit-autofill, textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus, textarea:-webkit-autofill:active, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus, select:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s;
-  -webkit-text-fill-color: rgba(235, 235, 235, 1) !important;
 }
 
 .nsm-dialog-btn-close {
@@ -609,10 +619,6 @@ button.toast-close-button{
 /**********************************************************************/
 /*************************   Container Page   *************************/
 /**********************************************************************/
-
-body {
-  font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-}
 
 .bs-tooltip-top .arrow::before, .bs-tooltip-auto[x-placement^="top"] .arrow::before {
     border-top-color: rgba(235,235,235,1);

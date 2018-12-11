@@ -54,6 +54,8 @@ import { TransportationComponent } from './transportation/transportation.compone
 import { StepProgressComponent } from './step-progress/step-progress.component';
 import { DataProtectionComponent } from './data-protection/data-protection.component';
 import { AccountComponent } from './account/account.component';
+import { AccountProfileComponent } from './account-profile/account-profile.component';
+import { AccountDataComponent } from './account-data/account-data.component';
 import { AgbComponent } from './agb/agb.component';
 import { TravelGuidesComponent } from './travel-guides/travel-guides.component';
 import { TeamComponent } from './team/team.component';
@@ -106,6 +108,8 @@ registerLocaleData(localeDe);
     StepProgressComponent,
     DataProtectionComponent,
     AccountComponent,
+    AccountProfileComponent,
+    AccountDataComponent,
     AgbComponent,
     TravelGuidesComponent,
     TeamComponent,

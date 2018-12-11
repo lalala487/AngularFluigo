@@ -6,6 +6,7 @@
   margin-right: -15px;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
+  min-height: 100vh;
 }
 
 /* ============== Header ============== */
@@ -16,7 +17,7 @@
 }
 
 .account-header-row {
-  padding-bottom: 2.5rem;
+  padding-bottom: 5rem;
 }
 
 .account-header-row .logo-container {
@@ -96,27 +97,4 @@
 .sidebarjs-center-container-content
 {
   text-align: center;
-}
-
-/* ============== Forms ============== */
-
-.account-settings,
-.account-remove {
-  margin-right: 0px !important;
-  margin-left: 0px !important;
-}
-
-.account-settings {
-  margin-bottom: 2.5rem;
-}
-
-.account-settings .contact-data-form input,
-.account-remove .contact-data-form input {
-  margin-bottom: 2rem;
-}
-
-.account-settings .contact-data-form button,
-.account-remove .contact-data-form button {
-  width: 100%;
-  margin-top: .5rem;
 }

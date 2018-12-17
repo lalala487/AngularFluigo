@@ -292,7 +292,7 @@ export class DealDetailComponent implements OnInit {
       if (this.stepValidatorService.validateUserContact(this.accummulations.contact)) {
         this.currentStep = this.currentStep + 1;
       } else {
-        this.toastr.error('"Das Datum ist nicht korrekt eingefühlt"', 'Error');
+        this.toastr.error('"Hast du alles richtig ausgefüllt?"', 'Error');
       }
 
       return;

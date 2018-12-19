@@ -53,6 +53,7 @@ import { AirportListComponent } from './airport-list/airport-list.component';
 import { TransportationComponent } from './transportation/transportation.component';
 import { StepProgressComponent } from './step-progress/step-progress.component';
 import { DataProtectionComponent } from './data-protection/data-protection.component';
+import { CustomerServiceComponent } from './customer-service/customer-service.component';
 import { AccountComponent } from './account/account.component';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { AccountDataComponent } from './account-data/account-data.component';
@@ -107,6 +108,7 @@ registerLocaleData(localeDe);
     TransportationComponent,
     StepProgressComponent,
     DataProtectionComponent,
+    CustomerServiceComponent,
     AccountComponent,
     AccountProfileComponent,
     AccountDataComponent,

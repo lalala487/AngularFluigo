@@ -71,6 +71,7 @@ import { EmailSentComponent } from './email-sent/email-sent.component';
 import { TokenInterceptor } from './token.interceptor';
 import { registerLocaleData } from '@angular/common';
 import { SendgridService } from './services/sendgrid.service';
+import { CityActivityComponent } from './city-activity/city-activity.component';
 
 registerLocaleData(localeDe);
 
@@ -119,7 +120,8 @@ registerLocaleData(localeDe);
     AuthComponent,
     LoginComponent,
     LogoutComponent,
-    EmailSentComponent
+    EmailSentComponent,
+    CityActivityComponent
   ],
   imports: [
     BrowserModule,

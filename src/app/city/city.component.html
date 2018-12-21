@@ -42,16 +42,22 @@
     </div>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-
-    <app-city-activity [activity]="city.activity1"></app-city-activity>
-    <app-city-activity [activity]="city?.activity2"></app-city-activity>
-
+  <div class="row pdp-city-activities-detail-block" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-lg-6">
+      <app-city-activity [activity]="city.activity1"></app-city-activity>
+    </div>
+    <div class="col-lg-6">
+      <app-city-activity [activity]="city?.activity2"></app-city-activity>
+    </div>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <app-city-activity [activity]="city?.activity3"></app-city-activity>
-    <app-city-activity [activity]="city?.activity4"></app-city-activity>
+  <div class="row pdp-city-activities-detail-block" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-lg-6">
+      <app-city-activity [activity]="city.activity3"></app-city-activity>
+    </div>
+    <div class="col-lg-6">
+      <app-city-activity [activity]="city?.activity4"></app-city-activity>
+    </div>
   </div>
 
 </div>

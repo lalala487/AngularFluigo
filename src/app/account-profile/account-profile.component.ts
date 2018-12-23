@@ -2,7 +2,6 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { User } from '../models/user';
 import { FirestoreService } from '../services/firestore.service';
 import { AuthService } from '../services/auth.service';
-import { switchMap } from 'rxjs/operator/switchMap';
 
 @Component({
   selector: 'app-account-profile',

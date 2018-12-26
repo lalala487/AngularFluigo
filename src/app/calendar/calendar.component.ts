@@ -4,8 +4,6 @@ import { Observable } from 'rxjs/Observable';
 import { CalendarEvent } from 'angular-calendar';
 import { FirestoreService } from '../services/firestore.service';
 import {
-  startOfDay,
-  endOfDay,
   isSameMonth,
   isSameDay,
 } from 'date-fns';

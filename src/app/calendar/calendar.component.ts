@@ -1,470 +1,604 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { CollectionsService } from '../services/collections.service';
-import { Observable } from 'rxjs/Observable';
-import { CalendarEvent } from 'angular-calendar';
-import { FirestoreService } from '../services/firestore.service';
-import {
-  isSameMonth,
-  isSameDay,
-} from 'date-fns';
-import { Subject } from 'rxjs/Subject';
+import { Component, OnInit, Input } from '@angular/core';
 import { Deal } from '../models/deal';
-import { Flight } from '../models/flight';
-import { Offer } from '../models/offer';
-import * as moment from 'moment';
+import { Accummulation } from '../models/fields/accummulation';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Airport } from '../models/airport';
-import { Segment } from '../models/segment';
+import { Observable, Subject, combineLatest, of } from 'rxjs';
+import { CalendarEvent } from 'angular-calendar';
+import { Travel } from '../models/travel';
+import { FlightOffer } from '../models/flight-offer';
+import { switchMap, flatMap, map, scan, filter } from 'rxjs/operators';
+import { Offer } from '../models/offer';
+import { Flight } from '../models/flight';
+import * as moment from 'moment';
 import { Money, Currencies } from 'ts-money';
+import { AccommodationOffer } from '../models/accommodation-offer';
+import { Segment } from '../models/segment';
+import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css'],
-  providers: [CollectionsService]
+  styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
   @Input() deal: Deal;
-  @Input() accummulations: Object;
+  @Input() accummulations: Accummulation;
 
-  @Input() hasFlightAccommodation: boolean;
-  @Input() flightAccommodationPrice: Money;
-  @Input() adultPrice: Money;
-  @Input() childrenPrice: Money;
-
-
-  @Output() hasFlightAccommodationChange: EventEmitter<boolean> = new EventEmitter();
-  @Output() flightAccommodationPriceChange: EventEmitter<Money> = new EventEmitter();
-  @Output() adultPriceChange: EventEmitter<Money> = new EventEmitter();
-  @Output() childrenPriceChange: EventEmitter<Money> = new EventEmitter();
+  identifier = {};
 
   activeDayIsOpen = false;
 
-  numberOfNights: Number = 3;
-  currentAirport: Airport = { name: 'Zürich', value: 'hfVxPrPOE7ct3L3Iy5Eg' } as Airport;
+  cheapestEvent: CalendarEvent<Travel>;
+  numberOfNights: Number;
+  currentAirport: Airport;
 
-  events: CalendarEvent[];
-  flights = [];
-
-  wayOffers: Offer[];
-  returnOffers: Offer[];
-  roomOffers: Map<Number, Offer>;
-
-  flightOffers: Observable<any[]>;
-  accommodationOffers: Observable<any[]>;
-
-  completeOffers: any[];
+  events$: Observable<Array<CalendarEvent<Travel>>>;
 
   viewDate: Date = new Date();
   view = 'month';
+  locale = environment.localeSimple;
   refresh: Subject<any> = new Subject();
-  locale = 'de';
+
+  roomOffers = new Map<number, Offer>();
+
+  allOffers = {
+    'way': [],
+    'return': []
+  };
 
   constructor(
-    private collectionUtils: CollectionsService,
-    protected db: FirestoreService
+    private db: AngularFirestore,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
-    if (this.accummulations['events']['airport']['value'] === this.currentAirport.value &&
-      this.accummulations['events']['nights'] === this.numberOfNights &&
-      this.accummulations['events']['list'].length > 0) {
-      this.events = this.accummulations['events']['list'];
-
-      this.activeDayIsOpen = true;
-      this.viewDate = this.accummulations['eventSelected']['start'];
+    if (!this.accummulations.event) {
+      this.findAsyncEvents();
     } else {
-      this.updateCalendarEvents();
+      this.findAsyncEvents(null, null, this.accummulations.event);
     }
   }
 
-  updateCalendarEvents() {
-    this.accummulations['loading'] = true;
+  bestPrice() {
+    this.cheapestEvent = null;
+    this.currentAirport = null;
+    this.numberOfNights = null;
 
-    this.events = [];
-    this.flights = [];
-    this.wayOffers = [];
-    this.returnOffers = [];
-    this.roomOffers = new Map();
-    this.completeOffers = [];
-
-    console.log('deal,merchant', this.deal.merchant[0].id);
-
-    // TODO: only look at future offers
-    this.flightOffers = this.db.colWithIds$('flightOffer');
-
-    this.accommodationOffers = this.db.colWithIds$('accommodationOffer');
-
-    const dealMerchantId = this.deal.merchant[0].id;
-
-    this.findAccommodationOffers(dealMerchantId);
-
-    this.findFlightOffers(dealMerchantId);
-
-    setTimeout(() => {
-      this.events = [];
-      this.wayOffers.forEach(wayOffer => {
-        this.returnOffers.forEach(returnOffer => {
-          const differenceInDays = this.differenceInDays(returnOffer.date, wayOffer.date);
-
-          console.log('differenceInDays', differenceInDays, 'numberOfNights', this.numberOfNights);
-
-          if (differenceInDays === this.numberOfNights) {
-
-            console.log('!!We have way and return offers separated by the number of Nights we want!!');
-
-            const fullOffer = {
-              'way': wayOffer,
-              'return': returnOffer,
-              'totalPrice': new Money(0, Currencies.CHF),
-              'adultPrice': new Money(0, Currencies.CHF),
-              'childrenPrice': new Money(0, Currencies.CHF),
-            };
-
-            this.computeFlightOffersTotalPrice(wayOffer, returnOffer, fullOffer);
-
-            this.completeOffers.push(fullOffer);
-
-            if (this.checkIfThereAreRoomOffersInTheInterval(wayOffer.date)) {
-              setTimeout(() => {
-                console.log('full offer set timeout', fullOffer);
-                this.computeRoomOfferTotalPrice(wayOffer.date, fullOffer);
-
-                setTimeout(() => {
-                  const totalPrice = fullOffer['totalPrice'];
-                  console.log('event total price', totalPrice, fullOffer);
-
-                  const metaStartDate = moment(wayOffer.date);
-                  metaStartDate.hour(wayOffer.flightDepartureHour.hours());
-                  metaStartDate.minute(wayOffer.flightDepartureHour.minutes());
-                  const metaReturnDate = moment(returnOffer.date);
-                  metaReturnDate.hour(returnOffer.flightArrivalHour.hours());
-                  metaReturnDate.minute(returnOffer.flightArrivalHour.minutes());
-
-                  const event = {
-                    title: totalPrice.currency + ' ' + totalPrice.getAmount() / 100,
-                    start: moment(wayOffer.date).toDate(),
-                    end: moment(wayOffer.date).toDate(),
-                    meta: {
-                      way: wayOffer,
-                      return: returnOffer,
-                      totalPriceAmount: totalPrice,
-                      adultPrice: fullOffer['adultPrice'],
-                      childrenPrice: fullOffer['childrenPrice'],
-                      startDate: metaStartDate,
-                      returnDate: metaReturnDate
-                    }
-                  };
-
-                  this.activeDayIsOpen = true;
-                  this.viewDate = event.start;
-
-                  console.log('creating event', event);
-                  this.events.push(event);
-                  console.log('events', this.events);
-                  this.triggerChangesOnEventSelection(this.events);
-
-                  this.activeDayIsOpen = true;
-                  this.viewDate = this.accummulations['eventSelected']['start'];
-
-                  this.refresh.next();
-
-                  this.accummulations['events'] = {
-                    'nights': this.numberOfNights,
-                    'airport': this.currentAirport,
-                    'list': this.events
-                  };
-
-                  this.accummulations['loading'] = false;
-
-                }, 1000);
-
-              }, 1000);
-            }
-          }
-
-          return;
-        });
-      });
-
-      console.log('completeOffers', this.completeOffers);
-    }, 2000);
-
+    this.findAsyncEvents();
   }
 
-  private differenceInDays(returnDate: string, wayDate: string) {
-    return moment(returnDate).diff(moment(wayDate), 'days');
+  findAsyncEvents(airport?, night?, currentEvent?) {
+    this.identifier = {};
+
+    this.cheapestEvent = null;
+
+    if (!airport) {
+      airport = this.currentAirport;
+    }
+
+    if (!night) {
+      night = this.numberOfNights;
+    }
+
+    const areWeFindingCheapestEventOfAll = !airport && !night;
+
+    console.log('findAsyncEvents');
+    console.log('airport', airport, 'night', night);
+    console.log('deal', this.deal);
+    const dealMerchantId = this.deal.merchant[0].id;
+
+    const flightOffers$ = this.getFlightOffers(dealMerchantId);
+    const roomOffers$ = this.getRoomOffers(dealMerchantId);
+
+    const combined$ = combineLatest([flightOffers$, roomOffers$]);
+
+    this.events$ = combined$.pipe(
+      scan((events: Array<any>, current) => {
+        console.log('current', current);
+        this.allOffers.way.map(wayOffer => {
+          this.allOffers.return.map(returnOffer => {
+
+            this.deal.numberOfNights.map(nightNumber => {
+
+              if (!areWeFindingCheapestEventOfAll && nightNumber.id !== night) {
+                return;
+              }
+
+              nightNumber = nightNumber.id;
+              const returnDate = moment(returnOffer.date.toDate());
+              const wayDate = moment(wayOffer.date.toDate());
+
+              const differenceInDays = returnDate.diff(wayDate, 'days');
+              if (differenceInDays !== nightNumber) {
+                return;
+              }
+
+              console.log('!!We have way and return offers separated by the number of Nights we want!!');
+              const fullOffer = {
+                'way': wayOffer,
+                'return': returnOffer,
+                'totalPrice': wayOffer.totalPrice.add(returnOffer.totalPrice),
+                'adultPrice': wayOffer.adultPrice.add(returnOffer.adultPrice),
+                'childrenPrice': wayOffer.childrenPrice.add(returnOffer.childrenPrice),
+                'flightAndHotelPrice': wayOffer.totalPrice.add(returnOffer.totalPrice),
+              };
+
+              console.log('fullOffer', fullOffer);
+              if (this.checkIfThereAreRoomOffersInTheInterval(wayDate.toDate(), nightNumber)) {
+                const roomPrice = this.computeRoomOfferTotalPrice(wayDate.toDate(), nightNumber);
+                fullOffer['roomOffers'] = roomPrice['roomOffers'];
+
+                fullOffer.adultPrice = fullOffer.adultPrice.add(roomPrice['adultPrice']);
+                fullOffer.childrenPrice = fullOffer.childrenPrice.add(roomPrice['childrenPrice']);
+                fullOffer.totalPrice = fullOffer.totalPrice.add(roomPrice['totalPrice']);
+
+                fullOffer.flightAndHotelPrice = fullOffer.totalPrice;
+
+                if (this.accummulations.bookingFee) {
+                  fullOffer.totalPrice = fullOffer.totalPrice.add(this.accummulations.bookingFee);
+                }
+
+                const totalPrice = fullOffer['totalPrice'];
+                console.log('event total price', totalPrice, fullOffer);
+                const metaStartDate = moment(wayOffer.date.toDate());
+                metaStartDate.hour(wayOffer.flightDepartureHour.hours());
+                metaStartDate.minute(wayOffer.flightDepartureHour.minutes());
+                const metaReturnDate = moment(returnOffer.date.toDate());
+                metaReturnDate.hour(returnOffer.flightArrivalHour.hours());
+                metaReturnDate.minute(returnOffer.flightArrivalHour.minutes());
+
+                const title = totalPrice.currency + ' ' + totalPrice.getAmount() / 100;
+                const identifier = title + '-' + wayDate.toString() + '-' + nightNumber + '-' +
+                  wayOffer.flight.origin[0].id + '-' + wayOffer.flight.destination[0].id;
+                console.log('identifier', identifier);
+
+                const event = {
+                  title: title,
+                  start: wayDate.toDate(),
+                  end: wayDate.toDate(),
+                  meta: {
+                    id: identifier,
+                    way: wayOffer,
+                    return: returnOffer,
+                    totalPriceAmount: totalPrice,
+                    adultPrice: fullOffer['adultPrice'],
+                    childrenPrice: fullOffer['childrenPrice'],
+                    startDate: metaStartDate,
+                    returnDate: metaReturnDate,
+                    numberOfNights: nightNumber,
+                    roomOffers: fullOffer['roomOffers'],
+                    merchantId: dealMerchantId,
+                    flightAndHotelPrice: fullOffer.flightAndHotelPrice
+                  } as Travel
+                } as CalendarEvent;
+
+                this.refresh.next();
+                console.log('creating event', event);
+
+                if (!this.identifier[identifier]) {
+                  events.push(event);
+                  this.identifier[identifier] = true;
+                } else {
+                  console.log('identifier already exists', identifier);
+                }
+
+                if (!this.cheapestEvent) {
+                  this.cheapestEvent = event;
+                  if (!currentEvent) {
+                    this.accummulations.event = event;
+                  }
+                }
+
+                if (event.meta.totalPriceAmount.amount < this.cheapestEvent.meta.totalPriceAmount.amount) {
+                  this.cheapestEvent = event;
+                  if (!currentEvent) {
+                    this.accummulations.event = event;
+                  }
+                }
+
+                return returnOffer;
+              }
+
+            });
+          });
+          return wayOffer;
+        });
+
+        console.log('all events', events);
+        console.log('cheapest', this.cheapestEvent);
+
+        if (!this.cheapestEvent || events.length === 0) {
+          this.toastr.error('"Das Datum ist nicht korrekt eingefühlt"', 'Ehm...');
+          return [];
+        }
+
+        let filtered;
+
+        if (areWeFindingCheapestEventOfAll) {
+          this.activeDayIsOpen = true;
+
+          if (!currentEvent) {
+            this.viewDate = this.cheapestEvent.start;
+            this.propagateEventInformation(this.cheapestEvent);
+          } else {
+            this.viewDate = currentEvent.start;
+            this.propagateEventInformation(currentEvent);
+          }
+
+          filtered = events.filter(event =>
+            event.meta.way.flight.origin[0].id === this.currentAirport &&
+            event.meta.return.flight.destination[0].id === this.currentAirport &&
+            event.meta.numberOfNights === this.numberOfNights
+          );
+        } else {
+          filtered = events.filter(event =>
+            event.meta.way.flight.origin[0].id === airport &&
+            event.meta.return.flight.destination[0].id === airport &&
+            event.meta.numberOfNights === night
+          ).sort((event1, event2) => event1.meta.totalPriceAmount - event2.meta.totalPriceAmount);
+
+          if (filtered.length > 0) {
+            this.activeDayIsOpen = true;
+            const event = filtered[0];
+            this.viewDate = event.start;
+
+            this.propagateEventInformation(event);
+          }
+        }
+
+        console.log('filtered events', filtered);
+
+        return filtered;
+      }, [])
+    );
   }
 
   dayClicked({
     date,
     events
   }: {
-      date: Date;
-      events: Array<CalendarEvent>;
-    }): void {
+    date: Date;
+    events: Array<CalendarEvent>;
+  }): void {
     console.log('day clicked', events, date);
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-        this.viewDate = date;
 
-        this.triggerChangesOnEventSelection(events);
+    if (!events.length) {
+      this.toastr.error('Es gibt kein Angebot an dem Tag', 'Ehm...');
+      return;
+    }
+    const event = events[0];
+    this.activeDayIsOpen = true;
+    this.viewDate = event.start;
 
-        this.accummulations['events'] = {
-          'nights': this.numberOfNights,
-          'airport': this.currentAirport,
-          'list': this.events
-        };
+    this.propagateEventInformation(event);
+  }
 
+  private propagateEventInformation(event: CalendarEvent<any>) {
+    this.currentAirport = event.meta.way.flight.origin[0].id;
+    this.numberOfNights = event.meta.numberOfNights;
+
+    this.accummulations.event = event;
+
+    this.accummulations.adultPrice = event.meta.adultPrice;
+    this.accummulations.childrenPrice = event.meta.childrenPrice;
+    this.accummulations.totalPriceAmount = event.meta.totalPriceAmount;
+    this.accummulations.flightAccommodationPrice = event.meta.flightAndHotelPrice;
+    this.accummulations.startDate = event.meta.startDate;
+    this.accummulations.endDate = event.meta.returnDate;
+    this.accummulations.numberOfNights = event.meta.numberOfNights;
+    this.accummulations.hasFlightAccommodation = true;
+  }
+
+  selectedAirportChange(airport) {
+    console.log('airport changed to', airport);
+    this.currentAirport = airport;
+    this.findAsyncEvents(airport);
+  }
+
+  selectedNightChange(night) {
+    console.log('number of nights changed to', night);
+
+    this.numberOfNights = night;
+    this.findAsyncEvents(null, +night);
+  }
+
+  private computeRoomOfferTotalPrice(startDate: moment.MomentInput, nightNumber: number): any {
+    console.log('computeRoomOfferTotalPrice - startDate', startDate);
+
+    const toReturn = {
+      'totalPrice': new Money(0, Currencies.CHF),
+      'adultPrice': new Money(0, Currencies.CHF),
+      'childrenPrice': new Money(0, Currencies.CHF),
+      'roomOffers': []
+    };
+
+    for (let index = 0; index < nightNumber; index++) {
+      const currentDate = moment(startDate).add(index, 'days').toDate().getTime();
+      console.log('computeRoomOfferTotalPrice - currentDate', currentDate, 'index', index);
+      const roomOffer = this.roomOffers.get(currentDate);
+
+      toReturn.roomOffers.push(roomOffer);
+
+      console.log('roomOffer', roomOffer);
+
+      toReturn.adultPrice = toReturn.adultPrice.add(roomOffer['adultPrice']);
+
+      if (this.accummulations.children) {
+        toReturn.childrenPrice = toReturn.childrenPrice.add(roomOffer['childrenPrice']);
       }
+
+      // console.log('total price for night ', index, fullOffer['totalPrice']);
+
+      // fullOffer['adultPrice'].add(roomOffer['adultPrice']);
+      // console.log('adultPrice price for night ', index, fullOffer['adultPrice']);
+
+
+      // fullOffer['childrenPrice'].add(roomOffer['childrenPrice']);
+      // console.log('childrenPrice price for night ', index, fullOffer['childrenPrice']);
     }
+
+    toReturn.totalPrice = toReturn.totalPrice.add(toReturn.adultPrice).add(toReturn.childrenPrice);
+
+    return toReturn;
   }
 
-  triggerChangesOnEventSelection(events): void {
-    if (events.length) {
-      const sortedEvents = events.sort((n1, n2) => {
-        return n1.meta.totalPriceAmount.amount - n2.meta.totalPriceAmount.amount;
-      });
-
-      const event = sortedEvents[0];
-
-      this.hasFlightAccommodation = true;
-      this.hasFlightAccommodationChange.emit(this.hasFlightAccommodation);
-
-      this.flightAccommodationPrice = event.meta.totalPriceAmount;
-      this.adultPrice = event.meta.adultPrice;
-      this.childrenPrice = event.meta.childrenPrice;
-
-      this.flightAccommodationPriceChange.emit(this.flightAccommodationPrice);
-      this.adultPriceChange.emit(this.adultPrice);
-      this.childrenPriceChange.emit(this.childrenPrice);
-
-      this.accummulations['startDate'] = event.meta.startDate;
-      this.accummulations['endDate'] = event.meta.returnDate;
-
-      const differenceInDays = this.differenceInDays(this.accummulations['endDate'], this.accummulations['startDate']);
-      this.accummulations['numberOfNights'] = differenceInDays;
-
-      this.accummulations['eventSelected'] = event;
-
-      console.log('accummulations', this.accummulations);
-    }
-  }
-
-  findAccommodationOffers(dealMerchantId) {
-    this.accommodationOffers.subscribe(collection => {
-      collection.forEach(accommodationOffer => {
-        console.log('accommodationOffer: ', accommodationOffer);
-
-        const accommodationOfferId = accommodationOffer.id;
-
-        if (!accommodationOffer.merchant) {
-          return;
-        }
-
-        // merchant of the accommodationOffer offer must be the same as the one of the deal
-        if (dealMerchantId !== accommodationOffer.merchant[0].id) {
-          return;
-        }
-
-        // TODO: verificar que accommodationOffer.room.accommodation.city == city do deal
-
-        this.db.colWithIds$<Offer>('accommodationOffer/' + accommodationOfferId + '/offers',
-          ref => ref.where('date', '>', new Date())).subscribe(col => {
-          col.forEach(offer => {
-            console.log('roomOffer', offer);
-
-            this.roomOffers.set(offer.date.getTime(), offer);
-            console.log('roomOffers', this.roomOffers);
-            console.log('roomOffers[date]', this.roomOffers.get(offer.date));
-          });
-        });
-      });
-    });
-  }
-
-  findFlightOffers(dealMerchantId) {
-    const dealFlights = this.collectionUtils.getCollection<Flight>(this.deal.flights);
-    console.log('deal flights', dealFlights);
-
-    // TODO: read this value from the deal
-    const amsterdamAirport = 'JFAnSriEs0g7XS2MlxVk';
-
-    this.flightOffers.subscribe(collection => {
-      collection.forEach(flightOffer => {
-        console.log('offer: ', flightOffer);
-        console.log('offer.flight', flightOffer.flight);
-
-        const flightOfferId = flightOffer.id;
-        console.log('offerId: ', flightOfferId);
-        const dealFlightIds = this.getIds(dealFlights);
-
-        if (!flightOffer.flight) {
-          return;
-        }
-
-        if (!flightOffer.merchant) {
-          return;
-        }
-
-        const flightOfferFlight = flightOffer.flight[0];
-        // (offer flight must be part of the list of flights of the deal)
-        if (!dealFlightIds.includes(flightOfferFlight.id)) {
-          return;
-        }
-
-        // merchant of the flight offer must be the same as the one of the deal
-        if (dealMerchantId !== flightOffer.merchant[0].id) {
-          return;
-        }
-
-        console.log('flightOffer.flight[0]', flightOfferFlight);
-
-        let flightFromOffer;
-
-        let isReturn = false;
-        this.db.doc$('flight/' + flightOfferFlight.id).subscribe(flight => {
-          console.log('flight.origin', flight['origin']);
-          if (flight['origin'][0].id === amsterdamAirport && flight['destination'][0].id === this.currentAirport.value) {
-            isReturn = true;
-          }
-          flightFromOffer = flight;
-        });
-
-        this.db.colWithIds$<Offer>('flightOffer/' + flightOfferId + '/offers',
-          ref => ref.where('date', '>', new Date())).subscribe(col => {
-          console.log('inneroffers: ', col);
-          col.forEach(offer => {
-            offer['flightOfferId'] = flightOfferId;
-            if (isReturn) {
-              offer['flightArrivalHour'] = moment(flightFromOffer.arrival);
-
-              this.returnOffers.push(offer);
-            } else {
-              offer['flightDepartureHour'] = moment(flightFromOffer.departure);
-
-              this.wayOffers.push(offer);
-            }
-
-            console.log('inner offer', offer);
-          });
-          console.log('events', this.events);
-          console.log('wayOffers', this.wayOffers);
-          console.log('returnOffers', this.returnOffers);
-        });
-
-        console.log('wayOffers2', this.wayOffers);
-        console.log('returnOffers2', this.returnOffers);
-
-      });
-
-    });
-  }
-
-  checkIfThereAreRoomOffersInTheInterval(startDate): boolean {
-    console.log('checkIfThereAreRoomOffersInTheInterval');
-    for (let index = 0; index < this.numberOfNights; index++) {
-      const currentDate = moment(startDate).add(index, 'days').valueOf();
-
-      console.log('currentDate', currentDate, this.roomOffers);
-      console.log('roomOfferFordate', this.roomOffers.get(currentDate));
+  private checkIfThereAreRoomOffersInTheInterval(startDate: moment.MomentInput, numberOfNights: number): boolean {
+    console.log('checkIfThereAreRoomOffersInTheInterval - startDate', startDate);
+    // console.log('checkIfThereAreRoomOffersInTheInterval');
+    for (let index = 0; index < numberOfNights; index++) {
+      const currentDate = moment(startDate).add(index, 'days').toDate().getTime();
+      console.log('checkIfThereAreRoomOffersInTheInterval - currentDate', currentDate, 'index', index);
+      // console.log('currentDate', currentDate, roomOffers);
+      // console.log('roomOfferFordate', roomOffers.get(currentDate));
 
       if (!this.roomOffers.has(currentDate)) {
         return false;
       }
     }
 
+    console.log('there are roomOffers for ' + numberOfNights + ' starting on ' + startDate);
+
     return true;
   }
 
-  computeRoomOfferTotalPrice(startDate, fullOffer): void {
-    for (let index = 0; index < this.numberOfNights; index++) {
-      const currentDate = moment(startDate).add(index, 'days').valueOf();
-      const roomOffer = this.roomOffers.get(currentDate);
+  private getFlightOffers(dealMerchantId: string) {
+    this.allOffers = {
+      'way': [],
+      'return': []
+    };
 
-      roomOffer.prices.forEach(element => {
-        this.db.doc$<Segment>('accommodationSegment/' + element.ref.id).subscribe(accommodationSegment => {
-          if (accommodationSegment.name.en_GB === 'Adult') {
-            const adultPrice = new Money(this.accummulations['adults'] * element.amount * 100, Currencies.CHF);
+    const flightOfferCollectionRef = this.db.collection<FlightOffer>('flightOffer');
 
-            fullOffer['totalPrice'] = fullOffer['totalPrice'].add(adultPrice);
-            fullOffer['adultPrice'] = fullOffer['adultPrice'].add(adultPrice);
-            console.log('adult room price for night ', index, adultPrice, fullOffer['totalPrice']);
-          } else if (accommodationSegment.name.en_GB === 'Child') {
-            const childrenPrice = new Money(this.accummulations['children'] * element.amount * 100, Currencies.CHF);
+    return flightOfferCollectionRef.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as FlightOffer;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    ).pipe(
+      switchMap(flightOffers => {
+        const arrivalAirportId = this.deal.arrivalAirport.id;
 
-            fullOffer['totalPrice'] = fullOffer['totalPrice'].add(childrenPrice);
-            fullOffer['adultPrice'] = fullOffer['adultPrice'].add(childrenPrice);
-            console.log('child room price for night ', index, childrenPrice, fullOffer['totalPrice']);
+        const dealFlightIds = this.deal.flights.map(dealFlight => dealFlight.id);
+
+        const offers$ = flightOffers.filter((flightOffer: FlightOffer) => {
+          if (!flightOffer.flight) {
+            return false;
           }
+
+          if (!flightOffer.merchant) {
+            return false;
+          }
+
+          const flightOfferFlight = flightOffer.flight[0];
+          // (offer flight must be part of the list of flights of the deal)
+          if (!dealFlightIds.includes(flightOfferFlight.id)) {
+            return false;
+          }
+
+          // merchant of the flight offer must be the same as the one of the deal
+          if (dealMerchantId !== flightOffer.merchant[0].id) {
+            return false;
+          }
+
+          return true;
+        }).map((flightOffer: FlightOffer) => {
+          const flightOfferId = flightOffer.id;
+
+          const flightOfferFlight = flightOffer.flight[0];
+
+          let isReturn = false;
+          return this.db.doc<Flight>('flight/' + flightOfferFlight.id).valueChanges().pipe(
+            switchMap((flight: Flight) => {
+
+              const off$ = this.deal.departureAirports.map(airportRef => {
+                const currentAirportId = airportRef.id;
+
+                let flightFromOffer;
+                if (flight['origin'][0].id === arrivalAirportId && flight['destination'][0].id === currentAirportId) {
+                  isReturn = true;
+                } else if (flight['origin'][0].id === currentAirportId && flight['destination'][0].id === arrivalAirportId) {
+                  isReturn = false;
+                } else {
+                  return of(airportRef);
+                }
+                flightFromOffer = flight;
+
+                const flightOffers$ = this.db.collection<Offer>(
+                  'flightOffer/' + flightOfferId + '/offers',
+                  ref => ref.where('date', '>', new Date())
+                ).snapshotChanges().pipe(
+                  map(actions => actions.map(a => {
+                    const data = a.payload.doc.data() as Offer;
+                    const id = a.payload.doc.id;
+                    return { id, ...data };
+                  }))
+                ).pipe(
+                  switchMap(offers => {
+                    const innerOffers$ = [];
+
+                    offers.filter(offer => offer.stock > 0).map(offer => {
+                      offer['flight'] = flightFromOffer;
+                      offer['flightOfferId'] = flightOfferId;
+
+                      if (!offer['totalPrice']) {
+                        offer['totalPrice'] = new Money(0, Currencies.CHF);
+                      }
+                      if (!offer['adultPrice']) {
+                        offer['adultPrice'] = new Money(0, Currencies.CHF);
+                      }
+                      if (!offer['childrenPrice']) {
+                        offer['childrenPrice'] = new Money(0, Currencies.CHF);
+                      }
+
+                      offer.prices.map(element => {
+                        const segment$ = this.db.doc<Segment>('flightSegment/' + element.ref.id).valueChanges().pipe(
+                          map(flightSegment => {
+                            if (flightSegment.name.en_GB === 'Adult') {
+                              const adultPrice = new Money(
+                                this.accummulations['adults'] * element.amount * 100, Currencies.CHF
+                              );
+
+                              offer['totalPrice'] = offer['totalPrice'].add(adultPrice);
+                              offer['adultPrice'] = offer['adultPrice'].add(adultPrice);
+                            } else if (flightSegment.name.en_GB === 'Child') {
+                              const childrenPrice = new Money(
+                                this.accummulations['children'] * element.amount * 100, Currencies.CHF
+                              );
+
+                              offer['totalPrice'] = offer['totalPrice'].add(childrenPrice);
+                              offer['childrenPrice'] = offer['childrenPrice'].add(childrenPrice);
+                            }
+
+                            return flightSegment;
+                          })
+                        );
+                        innerOffers$.push(segment$);
+                      });
+
+                      if (isReturn) {
+                        offer['flightArrivalHour'] = moment(flightFromOffer.arrival);
+                        this.allOffers.return.push(offer);
+                      } else {
+                        offer['flightDepartureHour'] = moment(flightFromOffer.departure);
+                        this.allOffers.way.push(offer);
+                      }
+
+                      return offer;
+                    });
+
+                    return combineLatest(innerOffers$);
+                  })
+                );
+
+                return combineLatest(flightOffers$);
+              });
+
+              return combineLatest(off$);
+
+            })
+          );
+
         });
-      });
-    }
+
+        return combineLatest(offers$);
+      })
+    );
   }
 
-  computeFlightOffersTotalPrice(offer1, offer2, fullOffer) {
-    offer1.prices.forEach(element => {
-      this.db.doc$<Segment>('flightSegment/' + element.ref.id).subscribe(flightSegment => {
-        if (flightSegment.name.en_GB === 'Adult') {
-          const adultPrice = new Money(this.accummulations['adults'] * element.amount * 100, Currencies.CHF);
+  private getRoomOffers(dealMerchantId: any) {
+    const accommodationOfferCollectionRef = this.db.collection<AccommodationOffer>('accommodationOffer');
 
-          fullOffer['totalPrice'] = fullOffer['totalPrice'].add(adultPrice);
-          fullOffer['adultPrice'] = fullOffer['adultPrice'].add(adultPrice);
-          console.log('adult flight price going ', adultPrice, fullOffer['totalPrice']);
-        } else if (flightSegment.name.en_GB === 'Child') {
-          const childrenPrice = new Money(this.accummulations['children'] * element.amount * 100, Currencies.CHF);
+    return accommodationOfferCollectionRef.snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as AccommodationOffer;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    ).pipe(
+      switchMap(accommodationOffers => {
+        const offers$ = accommodationOffers.filter(accommodationOffer => {
+          if (!accommodationOffer.merchant) {
+            return false;
+          }
 
-          fullOffer['totalPrice'] = fullOffer['totalPrice'].add(childrenPrice);
-          fullOffer['adultPrice'] = fullOffer['adultPrice'].add(childrenPrice);
-          console.log('children flight price going ', childrenPrice, fullOffer['totalPrice']);
-        }
+          // merchant of the accommodationOffer offer must be the same as the one of the deal
+          if (dealMerchantId !== accommodationOffer.merchant[0].id) {
+            return false;
+          }
 
-      });
+          return true;
+        }).map(accommodationOffer => {
+          const accommodationOfferId = accommodationOffer.id;
 
-    });
+          const accOffers$ = this.db.collection<Offer>('accommodationOffer/' + accommodationOfferId + '/offers',
+            ref => ref.where('date', '>', new Date())
+          ).snapshotChanges().pipe(
+            map(actions => actions.map(a => {
+              const data = a.payload.doc.data() as Offer;
+              const id = a.payload.doc.id;
+              return { id, ...data };
+            }))
+          ).pipe(
+            switchMap(offers => {
 
-    offer2.prices.forEach(element => {
-      this.db.doc$<Segment>('flightSegment/' + element.ref.id).subscribe(flightSegment => {
-        if (flightSegment.name.en_GB === 'Adult') {
-          const adultPrice = new Money(this.accummulations['adults'] * element.amount * 100, Currencies.CHF);
+              const innerOffers$ = [];
 
-          fullOffer['totalPrice'] = fullOffer['totalPrice'].add(adultPrice);
-          fullOffer['adultPrice'] = fullOffer['adultPrice'].add(adultPrice);
-          console.log('adult flight price return ', adultPrice, fullOffer['totalPrice']);
-        } else if (flightSegment.name.en_GB === 'Child') {
-          const childrenPrice = new Money(this.accummulations['children'] * element.amount * 100, Currencies.CHF);
+              offers.map(roomOffer => {
+                roomOffer['accommodationOfferId'] = accommodationOfferId;
 
-          fullOffer['totalPrice'] = fullOffer['totalPrice'].add(childrenPrice);
-          fullOffer['adultPrice'] = fullOffer['adultPrice'].add(childrenPrice);
-          console.log('children flight price return ', childrenPrice, fullOffer['totalPrice']);
-        }
-      });
-    });
+                if (!roomOffer['adultPrice']) {
+                  roomOffer['adultPrice'] = new Money(0, Currencies.CHF);
+                }
+                if (!roomOffer['childrenPrice']) {
+                  roomOffer['childrenPrice'] = new Money(0, Currencies.CHF);
+                }
 
-    if (this.accummulations['bookingFee'].amount > 0) {
-      fullOffer['totalPrice'] = fullOffer['totalPrice'].add(this.accummulations['bookingFee']);
-    }
+                roomOffer.prices.map(element => {
+                  const segment$ = this.db.doc<Segment>('accommodationSegment/' + element.ref.id).valueChanges().pipe(
+                    map(accommodationSegment => {
+                      if (accommodationSegment.name.en_GB === 'Adult') {
+                        // TODO: need to consider when there are more than 2 people, how to multiply
+                        const adultPrice = new Money(
+                          element.amount * 100, Currencies.CHF
+                        );
+                        // .multiply(this.accummulations.adults);
+
+                        roomOffer['adultPrice'] = roomOffer['adultPrice'].add(adultPrice);
+                      } else if (accommodationSegment.name.en_GB === 'Child') {
+                        // TODO: need to consider when there are more than 2 people, how to multiply
+                        const childrenPrice = new Money(
+                          element.amount * 100, Currencies.CHF
+                        );
+                        // .multiply(this.accummulations.children);
+
+                        roomOffer['childrenPrice'] = roomOffer['childrenPrice'].add(childrenPrice);
+                      }
+                      this.roomOffers.set(roomOffer.date.toDate().getTime(), roomOffer);
+
+                      return accommodationSegment;
+                    })
+                  );
+
+                  innerOffers$.push(segment$);
+
+                });
+              });
+
+              return combineLatest(innerOffers$);
+
+            }));
+
+          return combineLatest(accOffers$);
+        });
+
+        return combineLatest(offers$);
+      })
+    );
   }
 
-  getIds(list: Array<any>) {
-    return list.map(item => item.id);
-  }
 
-  selectedNightChange(night) {
-    console.log('number of nights changed to', night);
-    this.numberOfNights = +night;
-
-    this.updateCalendarEvents();
-  }
-
-  selectedAirportChange(airport) {
-    this.updateCalendarEvents();
-
-    this.currentAirport = airport;
-  }
 }

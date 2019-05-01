@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { User } from '../models/user';
-import { FirestoreService } from '../services/firestore.service';
-import { AuthService } from '../services/auth.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UserContact } from '../models/user-contact';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { UserInfo } from '../models/user-info';
 
 @Component({
   selector: 'app-user-data',
@@ -9,24 +10,29 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./user-data.component.css']
 })
 export class UserDataComponent implements OnInit {
-  @Input() user: User;
-  @Output() userContactChange: EventEmitter<User> = new EventEmitter();
+  @Input() user: UserContact;
+  @Output() userContactChange: EventEmitter<UserContact> = new EventEmitter();
 
   constructor(
-    protected db: FirestoreService,
-    private authService: AuthService
+    private db: AngularFirestore,
+    private afAuth: AngularFireAuth,
   ) { }
 
   ngOnInit() {
-    this.authService.getLoggedUser().subscribe(innerUser => {
-      this.user.email = innerUser.email;
-      this.db.doc$('users/' + innerUser.uid).subscribe(fullUser => {
 
-        this.user = Object.assign({}, fullUser['contact']);
+    this.afAuth.user.subscribe(user => {
+      this.user.email = user.email;
 
-        this.userContactChange.emit(this.user);
+      this.db.doc<UserInfo>(`users/${user.uid}`).valueChanges().subscribe(userInfo => {
+        if (userInfo.name) {
+          this.user.firstName = userInfo.name.first;
+          this.user.lastName = userInfo.name.last;
+        }
+
+        if (userInfo.contact && userInfo.contact.phone) {
+          this.user.phoneNumber = userInfo.contact.phone.home;
+        }
       });
     });
   }
-
 }

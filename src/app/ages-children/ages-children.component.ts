@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
+import { Component, OnChanges, Input, Output, EventEmitter, SimpleChanges, SimpleChange } from '@angular/core';
+
 import { Birthday } from '../models/birthday';
 
 @Component({
@@ -34,5 +35,4 @@ export class AgesChildrenComponent implements OnChanges {
       elementToFocus.focus();
     }
   }
-
 }

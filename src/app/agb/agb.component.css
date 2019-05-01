@@ -4,6 +4,7 @@
   padding-top: 2.5rem;
   height:75vh;
   overflow: scroll;
+  letter-spacing: .05rem;
 }
 
 .section-agb:after {
@@ -13,12 +14,7 @@
   width: 100%;
 }
 
-.section-agb ul {
-  padding-left: 1rem;
-}
-
 .section-agb p {
-  letter-spacing: .05rem;
 }
 
 @media only screen and (min-width: 1200px) {

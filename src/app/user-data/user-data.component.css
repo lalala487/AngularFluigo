@@ -42,3 +42,8 @@
 .pdp-user-data-block .user-data-form .row:last-child .form-group:last-child {
   margin-bottom: 0rem;
 }
+
+.pdp-user-data-block .form-control:disabled, .form-control[readonly] {
+    background-color: inherit;
+    cursor: not-allowed;
+}

@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, SimpleChange, OnChanges } from '@angular/core';
 import { Review } from '../models/review';
 import { SafeUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 import { ImageService } from '../services/image.service';
-import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-review',
@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
   styleUrls: ['./review.component.css']
 })
 export class ReviewComponent implements OnChanges {
+
   @Input() review: Review;
   imageUrl: SafeUrl;
   locale = environment.locale;
@@ -30,4 +31,5 @@ export class ReviewComponent implements OnChanges {
       );
     }
   }
+
 }

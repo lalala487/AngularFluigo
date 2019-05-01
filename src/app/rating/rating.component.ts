@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, SimpleChanges, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'app-rating',

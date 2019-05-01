@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-date-countdown-circle',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./date-countdown-circle.component.css']
 })
 export class DateCountdownCircleComponent implements OnInit {
-  @Input() endDate: Date;
+  @Input() endDate: firestore.Timestamp;
   wasReached = false;
 
   maxDaysDealIsValid = 14;
@@ -36,7 +37,7 @@ export class DateCountdownCircleComponent implements OnInit {
   units = ['days', 'hours', 'minutes', 'seconds'];
 
   constructor() {
-    setInterval(() => this.updateCountdown(this.left), 100);
+    setInterval(() => this.updateCountdown(this.left), 1000);
   }
 
   updateCountdown(counter): void {
@@ -45,7 +46,7 @@ export class DateCountdownCircleComponent implements OnInit {
     }
 
     const now: any = new Date();
-    const givenDate: any = new Date(this.endDate);
+    const givenDate: any = new Date(this.endDate.toDate());
 
     const dateDifference: any = givenDate - now;
 

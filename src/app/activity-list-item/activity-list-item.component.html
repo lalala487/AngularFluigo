@@ -1,0 +1,32 @@
+<div class="activity-row">
+  <div class="col-xl-12 activity-col" [style.background-image]="imageUrl">
+    <div class="activity-card">
+      <div class="row first-row">
+        <div class="col-md-6">
+          <div class="activity-card-title">
+            <h2>{{ activityItem?.name[locale] }}</h2>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <!-- This div with the class "service", is only displayed when the service "Skip the line" is active on the activity. -->
+          <div class="service" *ngIf="hasSkipLine">
+            <img src="assets/icon/icon-no-waiting.svg" width="20" alt="No Waiting Icon" class="icon">
+            <p>Ohne Anstehen</p>
+          </div>
+        </div>
+      </div>
+      <div class="row second-row">
+        <div class="col-md-6">
+          <div class="activity-card-description">
+            <p>{{ activityItem?.description[locale] }}</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="activity-card-button">
+            <button class="btn btn-full btn-primary" (click)="chooseActivity()" type="next">Anschauen</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

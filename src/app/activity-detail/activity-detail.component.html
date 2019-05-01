@@ -1,47 +1,50 @@
 <div class="pdp-activity-detail-block col-xl-12">
-  <div class="col-xl-12 pdp-activity-detail-block-title" style="background-image: url(assets/img/300001_1.jpg);">
-    <div class="pdp-activity-detail-block-gradient">
-      <div class="text-block">
-        <h2>Buckingham Palace</h2>
-        <hr/>
-        <p>Staatsgemächer</p>
-      </div>
-    </div>
-  </div>
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-6 pdp-icons-block gradient">
-      <div class="text-block">
-        <p>Perfekt für</p>
-        <div class="icon-block-one">
-          <img src="assets/icon/icon-chef.svg" width="35" height="35" alt="Chef Icon" placement="top" ngbTooltip="Gutes Essen">
-          <span></span>
-          <img src="assets/icon/icon-spa.svg" width="35" height="35" alt="Spa Icon" placement="top" ngbTooltip="Spa">
-          <span></span>
-          <img src="assets/icon/icon-cocktail.svg" width="35" height="35" alt="Cocktail Icon" placement="top" ngbTooltip="Bars">
-        </div>
-        <div class="icon-block-two">
-          <img src="assets/icon/icon-route.svg" width="35" height="35" alt="Route Icon" placement="top" ngbTooltip="City Tours">
-          <span></span>
-          <img src="assets/icon/icon-camera.svg" width="35" height="35" alt="Camera Icon" placement="top" ngbTooltip="Schöne Gebäuden">
+    <div class="col-xl-12 pdp-activity-detail-block-title" [style.background-image]="imageUrl">
+      <div class="pdp-activity-detail-block-gradient">
+        <div class="text-block">
+          <h2>{{ activity?.name[locale] }}</h2>
+          <hr/>
+          <p>{{ activity?.description[locale] }}</p>
         </div>
       </div>
     </div>
-    <div class="col-xl-6 pdp-review-block gradient">
-      <div class="text-block">
-        <p>"Die Stadt bietet einfach alles! Shopping und Sightseeing"</p>
-        <div class="avatar-block">
-          <img src="assets/img/avatar.jpg" width="75" height="75" alt="Review Avatar" class="avatar gradient">
-          <p class="avatar-name">John Doe</p>
+
+    <div class="row" style="margin-left:0rem; margin-right:0rem;">
+      <div class="col-xl-6 pdp-icons-block gradient">
+        <div class="text-block">
+          <!-- Only the "CHF xx.xx" part is dynamic, the rest of the text ist static.
+          This is the price that is based on the selection of the user in the third step. -->
+          <p i18n="perfect for">ab {{ price.currency }} {{ price.toDecimal() }} für<br>
+            {{ adults }} Erwachsene
+            <ng-container *ngIf="children > 0">
+              und {{ children }} Kind
+            </ng-container>
+          </p>
+          <button class="btn btn-small btn-primary" type="next" (click)="moveToDateSelection()">Datum wählen</button>
+        </div>
+      </div>
+      <div class="col-xl-6" style="padding-left:0; padding-right:0;">
+        <app-rating [rating]="activity?.rating"></app-rating>
+      </div>
+    </div>
+
+    <div class="row" style="margin-left:0rem; margin-right:0rem;">
+      <div class="col-xl-12 pdp-activity-detail-description-block" style="background-image: url(assets/img/200001_1.jpg);">
+        <div class="pdp-activity-detail-description-block-gradient">
+          <div class="text-block">
+            <p>{{ activity?.overview[locale] }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-left:0rem; margin-right:0rem;">
+      <div class="col-xl-12 pdp-activity-detail-description-block gradient">
+        <div>
+          <div class="text-block">
+            <p>{{ activity?.overview[locale] }}</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-xl-12 pdp-block-one gradient">
-  </div>
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-6 pdp-block-one gradient">
-    </div>
-    <div class="col-xl-6 pdp-block-one gradient">
-    </div>
-  </div>
-</div>

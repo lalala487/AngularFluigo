@@ -1,7 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { User } from '../models/user';
-import { FirestoreService } from '../services/firestore.service';
-import { AuthService } from '../services/auth.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { UserContact } from '../models/user-contact';
 
 @Component({
   selector: 'app-account-profile',
@@ -9,24 +7,16 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./account-profile.component.css']
 })
 export class AccountProfileComponent implements OnInit {
-  @Input() user: User;
-  @Output() userContactChange: EventEmitter<User> = new EventEmitter();
+  @Input() userContact: UserContact;
+  @Output() userContactChange: EventEmitter<UserContact> = new EventEmitter();
 
-  constructor(
-    protected db: FirestoreService,
-    private authService: AuthService
-  ) { }
+  constructor() { }
 
   ngOnInit() {
-    this.authService.getLoggedUser().subscribe(innerUser => {
-      this.user.email = innerUser.email;
-      this.db.doc$('users/' + innerUser.uid).subscribe(fullUser => {
+  }
 
-        this.user = Object.assign({}, fullUser['contact']);
-
-        this.userContactChange.emit(this.user);
-      });
-    });
+  updateUser() {
+    this.userContactChange.emit(this.userContact);
   }
 
 }

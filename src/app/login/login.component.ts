@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { FirestoreService } from '../services/firestore.service';
-import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  private readonly defaultRedirectUrl = '/home';
 
   constructor(
-    protected angularFireAuth: AngularFireAuth,
+    private angularFireAuth: AngularFireAuth,
     private router: Router,
-    private afs: AngularFirestore,
+    private db: AngularFirestore
   ) { }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     this.confirmSignIn(url);
   }
 
-  async confirmSignIn(url) {
+  async confirmSignIn(url: string) {
     try {
       if (this.angularFireAuth.auth.isSignInWithEmailLink(url)) {
         let email = window.localStorage.getItem('emailForSignIn');
@@ -39,25 +39,34 @@ export class LoginComponent implements OnInit {
         window.localStorage.removeItem('emailForSignIn');
 
         // Adds or updates user
-        const user = result['user'];
-        const userId = result['user']['uid'];
-        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${userId}`);
+        const user = result.user;
+        const userId = user.uid;
+        console.log('adds or updates user', userId);
+        const userRef: AngularFirestoreDocument<any> = this.db.doc(`users/${userId}`);
 
         const data = {
           uid: user.uid,
-          email: user.email || null,
-          displayName: user.displayName || null,
-          photoURL: user.photoURL || null
+          contact: {
+            email: user.email,
+          },
+          photoURL: user.photoURL
         };
         userRef.set(data, { merge: true });
+        console.log('adds or updates users with:', data);
 
         this.redirect();
+      } else {
+        console.log('wrong url to signin');
+
+        this.router.navigate([this.defaultRedirectUrl]);
       }
+
     } catch (error) {
       console.log('error', error);
+
+      this.router.navigate(['/home']);
     }
   }
-
   private redirect(): void {
     const redirectUrl = window.localStorage.getItem('redirectUrl');
     if (redirectUrl) {

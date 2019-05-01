@@ -1,7 +1,8 @@
-import { Component, Input, ViewChild, ElementRef, AfterViewInit, OnDestroy, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Money } from 'ts-money';
-import { PaymentService } from '../payments/payment.service';
-import { Charge, Source } from './models';
+import { Source, StripeService, SourceResult } from 'ngx-stripe';
+import { Charge } from './payment-models';
+import { PaymentService } from '../services/payment.service';
 
 @Component({
   selector: 'app-payment-form',
@@ -26,68 +27,76 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
 
   // Result used locacally to display status.
   result: Charge | Source;
+  error: SourceResult;
 
   // State of async activity
   loading = false;
 
   constructor(
     private paymentService: PaymentService,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private stripeService: StripeService
   ) { }
 
   ngAfterViewInit(): void {
     const style = {
-    base: {
-      lineHeight: '24px',
-      fontFamily: '"Roboto", "Helvetica Neue", "Helvetica", sans-serif',
-      fontSmoothing: 'antialiased',
-      fontSize: '16px',
-      letterSpacing: '1.12px',
-      iconColor: 'rgba(235, 235, 235, 1)',
-      color: 'rgba(235, 235, 235, 1)',
-      '::placeholder': {
-        color: 'rgba(235, 235, 235, .5)'
+      base: {
+        lineHeight: '24px',
+        fontFamily: '"Roboto", "Helvetica Neue", "Helvetica", sans-serif',
+        fontSmoothing: 'antialiased',
+        fontSize: '16px',
+        letterSpacing: '1.12px',
+        iconColor: 'rgba(235, 235, 235, 1)',
+        color: 'rgba(235, 235, 235, 1)',
+        '::placeholder': {
+          color: 'rgba(235, 235, 235, .5)'
+        }
+      },
+      invalid: {
+        color: 'rgba(235, 235, 235, .5)',
       }
-    },
-    invalid: {
-      color: 'rgba(235, 235, 235, .5)',
-    }
     };
 
-    this.card = this.paymentService.elements.create('cardNumber', { style });
-    this.card.mount(this.cardElement.nativeElement);
+    this.stripeService.elements({ 'locale': 'de' }).subscribe(elements => {
+      if (this.card) {
+        return;
+      }
 
-    const cardExpiryElement = this.paymentService.elements.create('cardExpiry', {
-      style: style
+      this.card = elements.create('cardNumber', { style });
+      this.card.mount(this.cardElement.nativeElement);
+      const cardExpiryElement = elements.create('cardExpiry', {
+        style: style
+      });
+      cardExpiryElement.mount('#card-expiry-element');
+
+      const cardCvcElement = elements.create('cardCvc', {
+        style: style
+      });
+      cardCvcElement.mount('#card-cvc-element');
+
+      console.log('this.card', this.card);
+      console.log('this.amount', this.amount);
+
+      // Listens to change event on the card for validation errors
+      this.card.on('change', (event) => {
+        this.formError = event.error ? event.error.message : null;
+        this.cardNumberComplete = event.complete;
+        this.cd.detectChanges();
+      });
+
+      cardExpiryElement.on('change', (event) => {
+        this.formError = event.error ? event.error.message : null;
+        this.cardExpiryComplete = event.complete;
+        this.cd.detectChanges();
+      });
+
+      cardCvcElement.on('change', (event) => {
+        this.formError = event.error ? event.error.message : null;
+        this.cardCvcComplete = event.complete;
+        this.cd.detectChanges();
+      });
     });
-    cardExpiryElement.mount('#card-expiry-element');
 
-    const cardCvcElement = this.paymentService.elements.create('cardCvc', {
-      style: style
-    });
-    cardCvcElement.mount('#card-cvc-element');
-
-    console.log('this.card', this.card);
-    console.log('this.amount', this.amount);
-
-    // Listens to change event on the card for validation errors
-    this.card.on('change', (evt) => {
-      this.formError = evt.error ? evt.error.message : null;
-      this.cardNumberComplete = evt.complete;
-      this.cd.detectChanges();
-    });
-
-    cardExpiryElement.on('change', (evt) => {
-      this.formError = evt.error ? evt.error.message : null;
-      this.cardExpiryComplete = evt.complete;
-      this.cd.detectChanges();
-    });
-
-    cardCvcElement.on('change', (evt) => {
-      this.formError = evt.error ? evt.error.message : null;
-      this.cardCvcComplete = evt.complete;
-      this.cd.detectChanges();
-    });
   }
 
   formHandler(): void {
@@ -96,7 +105,7 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
 
     console.log('card', this.card);
 
-    const action = this.paymentService.createCharge(this.card, this.amount);
+    const action = this.paymentService.createCharge$(this.card, this.amount);
 
     action.subscribe(
       data => {
@@ -105,14 +114,18 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
         this.loading = false;
       },
       err => {
-        this.result = err;
+        const result = err as SourceResult;
+
+        this.error = result;
+        this.result = result.source;
         this.errorStripe.emit(err);
         this.loading = false;
       }
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.card.destroy();
   }
+
 }

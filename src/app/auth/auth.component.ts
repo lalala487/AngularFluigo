@@ -1,9 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../services/auth.service';
-import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-auth',
@@ -11,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  user: Observable<any>;
   email: string;
+
   isLoggedIn = false;
   emailSent = false;
 
@@ -22,24 +21,16 @@ export class AuthComponent implements OnInit {
 
   constructor(
     protected angularFireAuth: AngularFireAuth,
-    public auth: AuthService,
+    public authService: AuthService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    this.user = this.angularFireAuth.authState;
+    this.authService.user.subscribe(user => {
+      const loginStatus: boolean = user && user.uid !== undefined;
 
-    this.auth.isAuthenticated().subscribe(
-      loginStatus => {
-        this.isLoggedIn = loginStatus;
-        console.log('loginStatus', loginStatus);
-        if (!loginStatus) {
-          this.isLoggedInChange.emit(false);
-        } else {
-          this.isLoggedInChange.emit(true);
-        }
-      }
-    );
+      this.isLoggedInChange.emit(loginStatus);
+    });
   }
 
   async sendEmailLink() {

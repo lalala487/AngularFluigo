@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { fromPromise } from 'rxjs/observable/fromPromise';
+import { UserContact } from '../models/user-contact';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class SendgridService {
   readonly api = environment.functionsURL;
 
@@ -12,13 +13,14 @@ export class SendgridService {
     private http: HttpClient
   ) { }
 
-  updateSendGridContact(contact: User) {
-    console.log('updating sendgrid contact', contact);
+  updateSendGridContact(email: string, oldEmail?: string) {
     const url = `${this.api}/updateSendGridContact`;
 
     console.log('url', url);
 
-    return this.http.post<User>(url, {});
+    return this.http.post<UserContact>(url, {
+      newEmail: email,
+      oldEmail: oldEmail,
+    });
   }
-
 }

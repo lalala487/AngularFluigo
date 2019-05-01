@@ -12,25 +12,28 @@
 <div class="col-lg-12">
   <form #loginForm="ngForm">
     <div class="form-group">
-      <input type="email" name="email" autocomplete="email" class="form-control modal-input-email" placeholder="E-Mail" [(ngModel)]="email" email>
-      <button class="btn btn-primary modal-input-button-email" type="next" (click)="sendEmailLink()" [disabled]="!loginForm.form.valid">Weiter</button>
+      <input type="email" name="email" autocomplete="email" class="form-control modal-input-email" placeholder="E-Mail"
+        [(ngModel)]="email" email>
+      <button class="btn btn-primary modal-input-button-email" type="next" (click)="sendEmailLink()"
+        [disabled]="!loginForm.form.valid">Weiter</button>
     </div>
   </form>
 </div>
 <!-- <div class="col-lg-12 modal-hr">
-  <div class="strike">
-    <span>oder</span>
-  </div>
-</div> -->
+    <div class="strike">
+      <span>oder</span>
+    </div>
+  </div> -->
 <!-- <div class="col-lg-12">
-  <form>
-    <div class="form-group">
-      <button class="btn btn-primary modal-input-button-facebook" type="next">Weiter mit Facebook</button>
-    </div>
-  </form>
-</div> -->
+    <form>
+      <div class="form-group">
+        <button class="btn btn-primary modal-input-button-facebook" type="next">Weiter mit Facebook</button>
+      </div>
+    </form>
+  </div> -->
 <div class="col-lg-12">
-    <div class="form-group">
-      <p class="modal-legal-text">Mit dem Klick auf "Weiter" stimmen Sie unseren <a href="/agb">AGB</a>, Einsatz von <a href="/agb">Cookies</a> und <a href="/data-protection">Datenschutzbestimmungen</a> zu</p>
-    </div>
+  <div class="form-group">
+    <p class="modal-legal-text">Mit dem Klick auf "Weiter" stimmen Sie unseren <a href="/agb">AGB</a>, Einsatz von <a
+        href="/agb">Cookies</a> und <a href="/data-protection">Datenschutzbestimmungen</a> zu</p>
+  </div>
 </div>

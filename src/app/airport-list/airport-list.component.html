@@ -1,10 +1,10 @@
 <form>
   <div class="form-group airport" include="form-input-select()">
-    <select [compareWith]="compareFn" [ngModel]="selectedAirport" (ngModelChange)="onChange($event)" name="selectAirport">
+    <select [ngModel]="selectedAirport" (ngModelChange)="onChange($event)" name="selectAirport">
       <!-- Placeholder -->
       <option value="" hidden>Flughafen</option>
       <!-- Options -->
-      <option [ngValue]="airport" *ngFor="let airport of airports">{{airport.name}}</option>
+      <option [ngValue]="(airport | async)?.id" *ngFor="let airport of airports">{{ (airport | async)?.label.de_CH }}</option>
     </select>
   </div>
 </form>

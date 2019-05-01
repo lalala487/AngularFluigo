@@ -34,3 +34,9 @@
 .btn-round-sm:focus {
   outline: none;
 }
+
+@media only screen and (min-width: 1200px)  {
+  .spinner-container {
+    margin-top: 30vh;
+  }
+}

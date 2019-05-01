@@ -7,6 +7,7 @@ export interface Accommodation {
     name: TranslatableField;
     description: TranslatableField;
     secrets: TranslatableField;
+    overview: TranslatableField;
     image: ImageField;
     location: Object;
     address: Object;

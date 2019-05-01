@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { AngularFireStorage } from 'angularfire2/storage';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+import { AngularFireStorage } from '@angular/fire/storage';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ImageService {
+
   constructor(protected storage: AngularFireStorage, protected sanitizer: DomSanitizer) { }
 
   getImageDownloadUrl$(image: string): any {
@@ -12,12 +15,11 @@ export class ImageService {
     return ref.getDownloadURL();
   }
 
-  sanitizeImage(img) {
-    return this.sanitizer.bypassSecurityTrustStyle('url(' + img + ')');
+  sanitizeImage(image: string) {
+    return this.sanitizer.bypassSecurityTrustStyle('url(' + image + ')');
   }
 
-  sanitizeUrl(img) {
-    return this.sanitizer.bypassSecurityTrustUrl(img);
+  sanitizeUrl(image: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(image);
   }
-
 }

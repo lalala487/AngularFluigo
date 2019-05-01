@@ -1,33 +1,35 @@
 <div class="pdp-accommodation-block col-xl-12">
-  <div class="col-xl-12 pdp-accommodation-block-title" [style.background-image]="imageUrl">
-    <div class="pdp-accommodation-block-gradient">
-      <div class="text-block">
-        <h2>{{ accommodation?.name[locale] }}</h2>
-        <hr/>
-        <p>{{ accommodation?.description[locale]}}</p>
+    <div class="col-xl-12 pdp-accommodation-block-title" [style.background-image]="imageUrl">
+      <div class="pdp-accommodation-block-gradient">
+        <div class="text-block">
+          <h2>{{ accommodation?.name[locale] }}</h2>
+          <hr/>
+          <p>{{ accommodation?.description[locale]}}</p>
+        </div>
       </div>
     </div>
-  </div>
-  
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div *ngIf="featuredList" class="col-xl-6 pdp-icons-block gradient">
-      <div class="text-block">
-        <p i18n="perfect for">Perfekt für</p>
-        <app-featured-icon [featured]="featured" *ngFor="let featured of featuredList"></app-featured-icon>
-      </div>
-    </div>
-    <div class="col-xl-6 pdp-review-block gradient">
-      <app-review [review]="accommodation?.review" style="width:100%;"></app-review>
-    </div>
-  </div>
 
-  <div class="col-xl-12 pdp-accommodation-description-block" style="background-image: url(assets/img/200001_1.jpg);">
-    <div class="pdp-accommodation-description-block-gradient">
-      <div class="text-block">
-        <p>{{ accommodation?.secrets[locale] }} </p>
+    <div class="row" style="margin-left:0rem; margin-right:0rem;">
+      <div *ngIf="interestList" class="col-xl-6 pdp-icons-block gradient">
+        <div class="text-block">
+          <p i18n="perfect for">Perfekt für</p>
+          <app-interest [interest]="interest" *ngFor="let interest of interestList"></app-interest>
+        </div>
+      </div>
+      <div class="col-xl-6 pdp-review-block gradient">
+        <app-review [review]="accommodation?.review" style="width:100%;"></app-review>
       </div>
     </div>
-  </div>
 
-  <app-rating [rating]="accommodation?.rating"></app-rating>
-</div>
+    <div class="col-xl-12 pdp-accommodation-description-block" style="background-image: url(assets/img/200001_1.jpg);">
+      <div class="pdp-accommodation-description-block-gradient">
+        <div class="text-block">
+          <p>{{ accommodation?.overview[locale] }} </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-12">
+      <app-rating [rating]="accommodation?.rating"></app-rating>
+    </div>
+  </div>

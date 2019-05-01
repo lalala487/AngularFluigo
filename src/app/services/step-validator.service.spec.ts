@@ -1,15 +1,12 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { StepValidatorService } from './step-validator.service';
 
 describe('StepValidatorService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [StepValidatorService]
-    });
-  });
+  beforeEach(() => TestBed.configureTestingModule({}));
 
-  it('should be created', inject([StepValidatorService], (service: StepValidatorService) => {
+  it('should be created', () => {
+    const service: StepValidatorService = TestBed.get(StepValidatorService);
     expect(service).toBeTruthy();
-  }));
+  });
 });

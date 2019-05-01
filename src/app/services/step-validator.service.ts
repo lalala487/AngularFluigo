@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Birthday } from '../models/birthday';
-
 import * as moment from 'moment';
-import { User } from '../models/user';
+import { UserContact } from '../models/user-contact';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class StepValidatorService {
 
   constructor() { }
@@ -20,7 +21,7 @@ export class StepValidatorService {
     return true;
   }
 
-  validateUserContact(user: User) {
+  validateUserContact(user: UserContact) {
     if (!(user.firstName || user.lastName)) {
       return false;
     }
@@ -73,5 +74,4 @@ export class StepValidatorService {
 
     return true;
   }
-
 }

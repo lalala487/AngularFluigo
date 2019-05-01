@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-nights',
@@ -6,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./nights.component.css']
 })
 export class NightsComponent {
-  @Input() numberOfNights = 3;
+  @Input() numberOfNights;
   @Input() listOfNights: any;
 
   @Output() selectedNightChange: EventEmitter<any> = new EventEmitter();

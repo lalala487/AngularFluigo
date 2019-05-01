@@ -4,6 +4,7 @@
   padding-top: 2.5rem;
   height:75vh;
   overflow: scroll;
+  letter-spacing: .05rem;
 }
 
 .section-data-protection:after {
@@ -15,10 +16,6 @@
 
 .section-data-protection ul {
   padding-left: 1rem;
-}
-
-.section-data-protection p {
-  letter-spacing: .05rem;
 }
 
 @media only screen and (min-width: 1200px) {

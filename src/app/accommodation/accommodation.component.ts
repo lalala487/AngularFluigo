@@ -1,16 +1,16 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { Accommodation } from '../models/accommodation';
-import { ImageService } from '../services/image.service';
 import { SafeStyle } from '@angular/platform-browser';
-import { Amenity } from '../models/amenity';
-import { CollectionsService } from '../services/collections.service';
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment';
+import { ImageService } from '../services/image.service';
+import { Interest } from '../models/interest';
+import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-accommodation',
   templateUrl: './accommodation.component.html',
-  styleUrls: ['./accommodation.component.css'],
-  providers: [CollectionsService]
+  styleUrls: ['./accommodation.component.css']
 })
 export class AccommodationComponent implements OnInit, OnChanges {
   @Input() accommodation: Accommodation;
@@ -18,11 +18,11 @@ export class AccommodationComponent implements OnInit, OnChanges {
 
   locale = environment.locale;
 
-  featuredList: Array<Amenity> = [];
+  interestList: Array<Observable<Interest>> = [];
 
   constructor(
     private imageService: ImageService,
-    private collectionUtils: CollectionsService,
+    private db: AngularFirestore,
   ) { }
 
   ngOnInit() {
@@ -35,12 +35,27 @@ export class AccommodationComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     const accommodation: SimpleChange = changes.accommodation;
 
-    if (accommodation) {
-      this.accommodation = accommodation.currentValue as Accommodation;
-      this.featuredList = this.accommodation ? this.collectionUtils.getCollection<Amenity>(this.accommodation.featured) : [];
+    if (!accommodation.currentValue) {
+      return;
     }
+
+    this.accommodation = accommodation.currentValue as Accommodation;
+
+    if (this.accommodation && this.accommodation.image['main']) {
+      const image = this.accommodation.image['main'];
+
+      this.imageService.getImageDownloadUrl$(image).subscribe(
+        url => this.imageUrl = this.imageService.sanitizeImage(url)
+      );
+    }
+
+    const list = this.accommodation.featured.map(interest => {
+      return this.db.doc<Interest>(interest.path).valueChanges();
+    });
+    this.interestList = list;
   }
+
 }

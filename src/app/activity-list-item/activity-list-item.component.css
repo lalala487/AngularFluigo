@@ -1,0 +1,123 @@
+.activity-col {
+  background-size: cover;
+  background-position: center;
+  border-radius: 1.5rem;
+}
+
+.activity-card::before {
+  content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.4) 100%);
+    border-radius: 1.5rem;
+}
+
+.activity-card-title {
+  font-size: 1.4rem;
+  letter-spacing: .07rem;
+  z-index: 3;
+  float: left;
+}
+
+.activity-card .icon {
+  opacity: 1;
+}
+
+.activity-card-description {
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  font-weight: 400;
+  z-index: 3;
+}
+
+.activity-card .first-row {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1.75rem;
+  color: rgba(235, 235, 235, 1);
+  z-index: 2;
+  position: relative;
+  margin-bottom: 10rem;
+}
+
+.activity-card .second-row {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 2rem;
+  color: rgba(235, 235, 235, 1);
+  z-index: 2;
+  position: relative;
+}
+
+@media only screen and (min-width: 768px)  {
+  .activity-card-description {
+    position: absolute;
+    bottom: 0rem;
+    left: 1rem;
+  }
+
+  .activity-card-description p {
+    margin-bottom: -.425rem;
+  }
+
+  .activity-card-button {
+    position: absolute;
+    bottom: 0rem;
+    right: 1rem;
+  }
+
+  .activity-card {
+    height: 40vh;
+  }
+
+  .activity-card .service {
+    float: right;
+  }
+
+  .activity-card .service p {
+    float: right;
+  }
+
+  .activity-card .first-row {
+    height: 50%;
+    margin-bottom: 0rem;
+  }
+
+  .activity-card .second-row {
+    height: 50%;
+    padding-bottom: 2rem;
+  }
+
+  .activity-row  {
+    margin-bottom: 2.5rem !important;
+  }
+}
+
+.activity-card .service {
+  color: rgba(235, 235, 235, 1);
+  letter-spacing: .07rem;
+}
+
+.activity-card .service img {
+  margin-right: .75rem;
+  float: left;
+}
+
+.activity-card .service p {
+  line-height: 1.75rem;
+  float: left;
+}
+
+.activity-card .btn-primary {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.activity-row  {
+  margin-bottom: 2rem;
+}

@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FirestoreService } from '../services/firestore.service';
-import { AuthService } from '../services/auth.service';
-import { User } from '../models/user';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { Money } from 'ts-money';
+import { CalendarEvent } from 'calendar-utils';
+import { Accummulation } from '../models/fields/accummulation';
 import { SendgridService } from '../services/sendgrid.service';
+import { firestore } from 'firebase';
 
 @Component({
   selector: 'app-success',
@@ -11,73 +13,186 @@ import { SendgridService } from '../services/sendgrid.service';
   styleUrls: ['./success.component.css']
 })
 export class SuccessComponent implements OnInit {
-  @Input() accummulations: Object;
+  @Input() event: CalendarEvent;
+  @Input() payment: DocumentReference;
+  @Input() accummulations: Accummulation;
 
   order: Order;
 
   constructor(
-    private db: FirestoreService,
-    private authService: AuthService,
+    private angularFireAuth: AngularFireAuth,
+    private db: AngularFirestore,
     private sendGridService: SendgridService
   ) { }
 
   ngOnInit() {
+
     console.log('accummulations', this.accummulations);
 
-    this.authService.getLoggedUser().subscribe(innerUser => {
+    this.angularFireAuth.user.subscribe(innerUser => {
+
+      const event = this.accummulations.event;
+      const payment = this.accummulations.payment;
+
       this.order = {
-        startDate: this.accummulations['startDate'].valueOf(),
-        endDate: this.accummulations['endDate'].valueOf(),
-        merchantId: this.accummulations['merchantId'],
+        startDate: event.meta.startDate.toDate(),
+        endDate: event.meta.returnDate.toDate(),
+        merchantId: event.meta.merchantId,
         userId: innerUser.uid,
-        contact: this.accummulations['contact']['email'],
-        totalPrice: this.accummulations['totalPriceAmount'].toJSON(),
-        payment: this.accummulations['payment']
+        totalPrice: event.meta.totalPriceAmount.toJSON(),
+        payment: payment,
+        adults: this.accummulations.adults,
+        children: this.accummulations.children,
+        contact: this.accummulations.contact,
       } as Order;
+
+      if (this.accummulations.activityOffer) {
+        const activityOffer: OrderOffer = {
+          stock: this.accummulations.activityOffer.stock,
+          date: this.accummulations.activityOffer.date,
+          price: this.accummulations.activityOffer.price.toJSON(),
+        };
+
+        this.order.activityOffers = [activityOffer];
+      }
+
+      const accommodationOffers: OrderOffer[] = this.accummulations.event.meta.roomOffers.map(roomOffer => {
+        const price: Money = roomOffer.adultPrice.multiply(this.accummulations.adults);
+        price.add(roomOffer.childrenPrice.multiply(this.accummulations.children));
+
+        return {
+          stock: roomOffer.stock,
+          date: roomOffer.date,
+          price: price.toJSON()
+        } as OrderOffer;
+      });
+      this.order.accommodationOffers = accommodationOffers;
+
+      const departureOffer: OrderFlightOffer = {
+        stock: this.accummulations.event.meta.way.stock,
+        date: this.accummulations.event.meta.way.date,
+
+        price: this.accummulations.event.meta.way['totalPrice'].toJSON(),
+        flightNumber: this.accummulations.event.meta.way['flight']['number'],
+      };
+
+      const returnOffer: OrderFlightOffer = {
+        stock: this.accummulations.event.meta.return.stock,
+        date: this.accummulations.event.meta.return.date,
+
+        price: this.accummulations.event.meta.return['totalPrice'].toJSON(),
+        flightNumber: this.accummulations.event.meta.return['flight']['number'],
+      };
+
+      this.order.flightOffers = {
+        returnFlightOffer: returnOffer,
+        departureFlightOffer: departureOffer
+      };
+
+
+      console.log('order', this.order);
+
+      this.db.collection('order').add(this.order);
 
       this.updateContact(innerUser);
 
-      const wayOfferId = this.accummulations['eventSelected']['meta']['way']['id'];
-      const wayFlightOfferId = this.accummulations['eventSelected']['meta']['way']['flightOfferId'];
-      this.reduceFlightOfferStock(wayFlightOfferId, wayOfferId);
+      this.reduceOffersStock();
 
-      const returnOfferId = this.accummulations['eventSelected']['meta']['return']['id'];
-      const returnFlightOfferId = this.accummulations['eventSelected']['meta']['return']['flightOfferId'];
-      this.reduceFlightOfferStock(returnFlightOfferId, returnOfferId);
-
-      this.db.add('order', this.order);
-    });
-
-  }
-
-  private reduceFlightOfferStock(flightOfferId: any, offerId: any) {
-    this.db.doc$('flightOffer/' + flightOfferId + '/offers/' + offerId).take(1).subscribe(offer => {
-      console.log('offer', offer);
-      offer['stock'] = offer['stock'] - 1;
-      this.db.update('flightOffer/' + flightOfferId + '/offers/' + offerId, offer);
-      return offer['stock'];
     });
   }
 
-  private updateContact(innerUser: User) {
-    const contact = Object.assign({}, this.accummulations['contact']);
-    this.sendGridService.updateSendGridContact(contact).subscribe((data) => {
+  private reduceOffersStock() {
+    const departureOfferId = this.accummulations['event']['meta']['way']['id'];
+    const departureFlightOfferId = this.accummulations['event']['meta']['way']['flightOfferId'];
+    const wayStock = this.accummulations.event.meta.way.stock;
+    this.reduceOfferStock('flightOffer/', departureFlightOfferId, departureOfferId, wayStock);
+
+    const returnOfferId = this.accummulations['event']['meta']['return']['id'];
+    const returnFlightOfferId = this.accummulations['event']['meta']['return']['flightOfferId'];
+    const returnStock = this.accummulations.event.meta.return.stock;
+    this.reduceOfferStock('flightOffer/', returnFlightOfferId, returnOfferId, returnStock);
+
+    if (this.accummulations.activityOffer) {
+      this.reduceOfferStock(
+        'activityOffer/',
+        this.accummulations.activity.activityOfferId,
+        this.accummulations.activityOffer.id,
+        this.accummulations.activityOffer.stock
+      );
+    }
+
+    this.accummulations.event.meta.roomOffers.map(roomOffer => {
+      this.reduceOfferStock('accommodationOffer/', roomOffer.accommodationOfferId, roomOffer.id, roomOffer.stock);
+    });
+  }
+
+  private reduceOfferStock(collectionName: string, baseOfferId: string, offerId: string, stock: number) {
+    const ref = this.db.doc(
+      collectionName + baseOfferId + '/offers/' + offerId
+    );
+
+    console.log('decreasing stock to ', stock, 'from ', ref.ref.path);
+
+    ref.set(
+      { 'stock': stock - 1 },
+      { merge: true }
+    );
+  }
+
+  private updateContact(innerUser: any) {
+    const contact = Object.assign({}, this.accummulations.contact);
+
+    this.sendGridService.updateSendGridContact(contact.email).subscribe((data) => {
       console.log('sendgrid response', data);
     });
 
-    this.db.update('users/' + innerUser.uid, { 'contact': contact });
+    const user = {
+      name: {
+        first: contact.firstName,
+        last: contact.lastName,
+      },
+      contact: {
+        // email: contact.email,
+        phone: {
+          home: contact.phoneNumber
+        }
+      }
+    };
 
+    this.db.doc('users/' + innerUser.uid).set(user, {merge: true});
   }
+
 }
 
 interface Order {
   userId: string;
   merchantId: string;
-  // accommodations: [];
-  // flights: [];
-  // activities: [];
   startDate: Date;
   endDate: Date;
-  contact: User;
-  totalPrice: Money;
+  contact: any;
+  totalPrice: object;
+  payment: DocumentReference;
+  activityOffers: OrderOffer[];
+  accommodationOffers: OrderOffer[];
+  adults: number;
+  children: number;
+  flightOffers: {
+    departureFlightOffer: OrderFlightOffer;
+    returnFlightOffer: OrderFlightOffer;
+  };
+}
+
+export interface OrderOffer {
+  stock: number;
+  date: firestore.Timestamp;
+
+  price: object;
+}
+
+export interface OrderFlightOffer {
+  stock: number;
+  date: firestore.Timestamp;
+
+  price: object;
+  flightNumber: string;
 }

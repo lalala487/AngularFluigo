@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FirestoreService } from '../services/firestore.service';
-import { TranslatableField } from '../models/fields/translatable';
-import { Money, Currencies } from 'ts-money';
-
+import { Money } from 'ts-money';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Insurance } from '../models/insurance';
+import { Insurer } from '../models/insurer';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-insurance',
@@ -10,31 +11,28 @@ import { Money, Currencies } from 'ts-money';
   styleUrls: ['./insurance.component.css']
 })
 export class InsuranceComponent implements OnInit {
-  @Input() accummulations: Object;
-
   @Input() hasInsurance: boolean;
   @Input() insurancePrice: Money;
+  @Input() totalPrice: Money;
 
   @Output() hasInsuranceChange: EventEmitter<boolean> = new EventEmitter();
   @Output() insurancePriceChange: EventEmitter<Money> = new EventEmitter();
 
   insurance: Insurance;
   insuranceMessage: string;
+  locale = environment.locale;
 
   constructor(
-    protected db: FirestoreService
-  ) {
+    private db: AngularFirestore,
+  ) { }
 
-  }
-
-  ngOnInit(): void {
-    this.db.colWithIds$('insurance').subscribe(collection => {
+  ngOnInit() {
+    this.db.collection<Insurance>('insurance').valueChanges().subscribe(collection => {
       this.insurance = collection[0];
 
-      const name = this.insurance.name.de_CH;
+      const name = this.insurance.name[this.locale];
 
-      this.db.doc$('insurer/' + this.insurance.insurer.id).subscribe(
-        insurer => {
+      this.db.doc<Insurer>(this.insurance.insurer.path).valueChanges().subscribe(insurer => {
           let price: Money = this.insurancePrice;
           console.log('insurer', insurer);
 
@@ -42,19 +40,17 @@ export class InsuranceComponent implements OnInit {
           if (this.insurancePrice.amount === 0) {
             const rate = insurer['commission'] / 100;
             console.log('rate', rate);
-            console.log('totalPriceAmount', this.accummulations['totalPriceAmount']);
+            console.log('totalPriceAmount', this.totalPrice);
 
-            price = this.accummulations['totalPriceAmount'].multiply(rate, Math.ceil);
-            console.log('price money', price, this.accummulations['totalPriceAmount']);
+            price = this.totalPrice.multiply(rate, Math.ceil);
+            console.log('price money', price, this.totalPrice);
             this.insurancePrice = price;
             console.log('insurance price', price);
             this.insurancePriceChange.emit(this.insurancePrice);
           }
 
           this.insuranceMessage = name.replace('xxx', price.currency + ' ' + price.toString());
-        }
-      );
-
+      });
     });
   }
 
@@ -67,13 +63,5 @@ export class InsuranceComponent implements OnInit {
     this.hasInsurance = false;
     this.hasInsuranceChange.emit(this.hasInsurance);
   }
-}
 
-interface Insurance {
-  active: boolean;
-  name: TranslatableField;
-  description: TranslatableField;
-  currency: string;
-  amount: number;
-  insurer: any;
 }

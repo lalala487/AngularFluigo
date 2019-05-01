@@ -1,3 +1,12 @@
 export interface Flight {
-    id: String;
+    active: boolean;
+    number: string;
+    departure: any;
+    arrival: any;
+    classes: any;
+    origin: any;
+    destination: any;
+    airline: any;
+    distance: string;
+    duration: number;
 }

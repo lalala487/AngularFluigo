@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FirestoreService } from '../services/firestore.service';
-import { TranslatableField } from '../models/fields/translatable';
 import { Money, Currencies } from 'ts-money';
 import { Deal } from '../models/deal';
+import { Ride } from '../models/ride';
+import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-transportation',
@@ -21,24 +22,23 @@ export class TransportationComponent implements OnInit {
   transportation: Ride;
   transportationMessage: string;
 
+  locale = environment.locale;
+
   constructor(
-    protected db: FirestoreService
-  ) {
+    private db: AngularFirestore,
+  ) { }
 
-  }
+  ngOnInit() {
+    const dealRide: DocumentReference = this.deal.ride;
+    console.log('ride', dealRide);
 
-  ngOnInit(): void {
-
-    const dealRride = this.deal.ride;
-    console.log('ride', dealRride);
-
-    this.db.doc$<Ride>('/ride/' + dealRride.id).subscribe(ride => {
-      this.transportation = ride as Ride;
+    this.db.doc<Ride>(dealRide.path).valueChanges().subscribe(ride => {
+      this.transportation = ride;
 
       this.transportationPrice = Money.fromDecimal(this.transportation.amount, Currencies.CHF, Math.ceil);
       this.transportationPriceChange.emit(this.transportationPrice);
 
-      this.transportationMessage = ride.name.de_CH.replace(
+      this.transportationMessage = ride.name[this.locale].replace(
         'xxx',
         this.transportationPrice.currency + ' ' + this.transportationPrice.toString()
       );
@@ -59,12 +59,4 @@ export class TransportationComponent implements OnInit {
     this.hasTransportationChange.emit(this.hasTransportation);
   }
 
-}
-
-interface Ride {
-  active: boolean;
-  name: TranslatableField;
-  description: TranslatableField;
-  currency: string;
-  amount: number;
 }

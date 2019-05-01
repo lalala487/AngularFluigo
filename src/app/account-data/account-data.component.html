@@ -1,26 +1,27 @@
 <div class="row account-remove" style="margin-right: 0px !important; margin-left: 0px !important;">
-  <div class="col-sm-3">
-  </div>
-  <div class="col-lg-6">
-    <!-- Content Page Start -->
-    <div class="col-lg-12">
-      <div class="col-lg-12" style="padding-left:0px; padding-right:0px;">
-        <div class="butler-container">
-          <div class="butler-image"><img src="assets/img/avatar-round-notification@2x.png" alt="Butler Flugio"></div>
-          <div class="butler-text"><span>Wünschen Sie Ihr Konto entfernen? Schreib dann "flugio" unten im Feld und drucken Sie auf "Entfernen"</span></div>
+    <div class="col-sm-3">
+    </div>
+    <div class="col-lg-6">
+      <!-- Content Page Start -->
+      <div class="col-lg-12">
+        <div class="col-lg-12" style="padding-left:0px; padding-right:0px;">
+          <div class="butler-container">
+            <div class="butler-image"><img src="assets/img/avatar-round-notification@2x.png" alt="Butler Flugio"></div>
+            <div class="butler-text"><span>Wünschen Sie Ihr Konto entfernen? Schreib dann Ihre e-mail unten im Feld und drucken Sie auf "Entfernen"</span></div>
+          </div>
+        </div>
+        <div class="col-lg-12" style="padding-left:0px; padding-right:0px;">
+          <form #userDeleteForm="ngForm" class="contact-data-form">
+            <div class="form-group">
+              <input autocomplete="off" name="email" required="required" type="text" [(ngModel)]="email" class="form-control" placeholder="Verifizierung">
+            </div>
+            <button class="btn btn-primary" type="next" (click)="deleteUser()" [disabled]="!userDeleteForm.form.valid">Entfernen</button>
+          </form>
         </div>
       </div>
-      <div class="col-lg-12" style="padding-left:0px; padding-right:0px;">
-        <form class="contact-data-form">
-          <div class="form-group">
-            <input autocomplete="off" type="text" class="form-control" placeholder="Verifizierung">
-          </div>
-          <button class="btn btn-primary" type="next">Entfernen</button>
-        </form>
-      </div>
+      <!-- Content Page End -->
     </div>
-    <!-- Content Page End -->
+    <div class="col-sm-3">
+    </div>
   </div>
-  <div class="col-sm-3">
-  </div>
-</div>
+  

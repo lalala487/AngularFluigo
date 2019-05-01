@@ -1,19 +1,24 @@
-import { Component, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
-import { FirestoreService } from '../services/firestore.service';
+import { Component, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Deal } from '../models/deal';
 import { SafeStyle } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { City } from '../models/city';
 
 @Component({
   selector: 'app-deal-card',
   templateUrl: './deal-card.component.html',
-  styleUrls: ['./deal-card.component.css'],
+  styleUrls: ['./deal-card.component.css']
 })
 export class DealCardComponent implements OnChanges {
-  @Input() deal: any;
+  @Input() deal: Deal;
 
   imageUrl: SafeStyle;
 
-  constructor(protected db: FirestoreService, protected imageService: ImageService) {
+  constructor(
+    private db: AngularFirestore,
+    protected imageService: ImageService
+  ) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -21,14 +26,14 @@ export class DealCardComponent implements OnChanges {
 
     if (deal) {
       const newValue = deal.currentValue;
-      const city = newValue.city[0];
+      const cityRef = newValue.city[0];
 
-      if (city) {
-        this.db.doc$('city/' + city.id).subscribe(innerCity => {
-          const image = innerCity['image'].main;
+      if (cityRef) {
+        this.db.doc<City>('city/' + cityRef.id).valueChanges().subscribe(city => {
+          const image = city.image.main;
 
           this.imageService.getImageDownloadUrl$(image).subscribe(
-            url => this.imageUrl = this.imageService.sanitizeImage(url)
+            (url: string) => this.imageUrl = this.imageService.sanitizeImage(url)
           );
         });
       }

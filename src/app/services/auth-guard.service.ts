@@ -1,37 +1,39 @@
 import { Injectable } from '@angular/core';
+import { Router, ActivatedRouteSnapshot } from '@angular/router';
+import { CanActivate } from '@angular/router/src/utils/preactivation';
+import { Observable } from 'rxjs';
+import { reduce, take } from 'rxjs/operators';
+import { User } from 'firebase';
+import { AngularFireAuth } from '@angular/fire/auth';
 
-import {
-  CanActivate, Router,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot
-} from '@angular/router';
-
-import { AuthService } from './auth.service';
-import { Observable } from 'rxjs/Observable';
-
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
-
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuardService implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) { }
+  path: ActivatedRouteSnapshot[];
+  route: ActivatedRouteSnapshot;
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.authService.isAuthenticated().map(allow => {
-      if (allow) {
-        return true;
-      } else {
-        this.authService.redirectUrl = state.url;
+  constructor(
+    private router: Router,
+    private afAuth: AngularFireAuth
+  ) { }
+
+  canActivate(): Observable<boolean> {
+    const result = this.afAuth.user
+    .pipe(take(1))
+    .pipe(
+      reduce((acc: boolean, user: User) => {
+
+        if (user) {
+           return true;
+        }
 
         this.router.navigate(['/home']);
+
         return false;
-      }
-    }).catch(() => {
-      this.authService.redirectUrl = state.url;
+      }, false)
+    );
 
-      this.router.navigate(['/home']);
-      return Observable.of(false);
-    });
+    return result;
   }
-
 }

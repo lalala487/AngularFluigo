@@ -16,7 +16,37 @@
 }
 
 @media only screen and (max-width: 767.98px)  {
+  .pdp-activity-date-block .btn-icon-press{
+    margin-bottom: 2rem;
+  }
+
   .pdp-activity-date-block {
     margin-top: -1rem;
+  }
+}
+
+@media only screen and (max-width: 575.98px)  {
+  .pdp-activity-date-block {
+    margin-top: 1.95rem;
+    margin-bottom: 8rem;
+  }
+}
+
+.pdp-activity-date-block .btn-option-press p {
+  margin-bottom: 0rem;
+  margin-top: 0rem;
+}
+
+.pdp-activity-date-block .date-option {
+  margin-bottom: 1.5rem;
+}
+
+.pdp-activity-date-block .date-options .col-lg-12:last-of-type {
+  margin-bottom: 2.5rem !important;
+}
+
+@media only screen and (max-width: 767.98px)  {
+  .pdp-activity-date-block .btn-next{
+    
   }
 }

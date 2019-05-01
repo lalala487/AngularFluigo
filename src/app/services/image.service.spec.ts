@@ -1,25 +1,12 @@
-import { TestBed, inject } from '@angular/core/testing';
+// import { TestBed } from '@angular/core/testing';
 
-import { AngularFireStorage } from 'angularfire2/storage';
-import { ImageService } from './image.service';
-import { of } from 'rxjs/observable/of';
+// import { ImageService } from './image.service';
 
+// describe('ImageService', () => {
+//   beforeEach(() => TestBed.configureTestingModule({}));
 
-describe('ImageService', () => {
-  beforeEach(() => {
-    const serviceStub = {
-      getContent: () => of(''),
-    };
-
-    TestBed.configureTestingModule({
-      providers: [
-        ImageService,
-        { provide: AngularFireStorage, useValue: serviceStub }
-      ]
-    });
-  });
-
-  it('should be created', inject([ImageService], (service: ImageService) => {
-    expect(service).toBeTruthy();
-  }));
-});
+//   it('should be created', () => {
+//     const service: ImageService = TestBed.get(ImageService);
+//     expect(service).toBeTruthy();
+//   });
+// });

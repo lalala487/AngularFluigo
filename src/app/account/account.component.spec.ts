@@ -1,12 +1,6 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { AccountComponent } from './deal-detail.component';
-// import { RouterTestingModule } from '@angular/router/testing';
-// import { FirestoreService } from '../services/firestore.service';
-// import { firestoreServiceStub } from '../services/firestore.service.stub';
-// import { SidebarJSModule } from 'ng-sidebarjs';
-// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-// import { SidebarService } from 'sidebarjs';
+// import { AccountComponent } from './account.component';
 
 // describe('AccountComponent', () => {
 //   let component: AccountComponent;
@@ -14,14 +8,9 @@
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       imports: [RouterTestingModule, SidebarJSModule, NgbModule],
-//       declarations: [AccountComponent],
-//       providers: [
-//         { provide: FirestoreService, useValue: firestoreServiceStub },
-//         { provide: SidebarService, useValue: firestoreServiceStub },
-//       ]
+//       declarations: [ AccountComponent ]
 //     })
-//       .compileComponents();
+//     .compileComponents();
 //   }));
 
 //   beforeEach(() => {

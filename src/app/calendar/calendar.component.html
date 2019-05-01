@@ -2,14 +2,14 @@
   <div class="center-wrap">
     <div class="col-xl-12">
       <div class="row filters">
-        <div class="col-xl-4">
-          <app-airport-list [selectedAirport]="currentAirport" (selectedAirportChange)="selectedAirportChange($event)"></app-airport-list>
+        <div class="col-xl-4" *ngIf="currentAirport">
+          <app-airport-list [selectedAirport]="currentAirport" (selectedAirportChange)="selectedAirportChange($event)" [dbAirports]="deal.departureAirports"></app-airport-list>
         </div>
-        <div class="col-xl-4">
+        <div class="col-xl-4" *ngIf="numberOfNights">
           <app-nights [numberOfNights]="numberOfNights" [listOfNights]="deal.numberOfNights" (selectedNightChange)="selectedNightChange($event)"></app-nights>
         </div>
         <div class="col-xl-4">
-          <button class="btn btn-full btn-secondary" type="next"><img class="icon-dot-light-blue" src="assets/icon/icon-dot-light-blue.svg" height="10"> Besten Preis</button>
+          <button (click)="bestPrice()" class="btn btn-full btn-secondary" type="next"><img class="icon-dot-light-blue" src="assets/icon/icon-dot-light-blue.svg" height="10"> Bester Preis</button>
         </div>
       </div>
       <div class="row">
@@ -26,7 +26,7 @@
               </div>
 
               <div class="col-xs-4 col-month-title">
-                <p class="calendar-month-title">{{ viewDate | calendarDate:(view + 'ViewTitle'): 'de' }}</p>
+                <p class="calendar-month-title">{{ viewDate | calendarDate:(view + 'ViewTitle'): locale }}</p>
               </div>
 
               <div class="col-xs-4 col-button-next">
@@ -49,15 +49,26 @@
             </small>
           </ng-template>
 
-          <mwl-calendar-month-view
-           [viewDate]="viewDate"
-           [events]="events"
-           [refresh]="refresh"
-           [activeDayIsOpen]="activeDayIsOpen"
-           (dayClicked)="dayClicked($event.day)"
-           [locale]="locale"
-           [cellTemplate]="customCellTemplate">
-          </mwl-calendar-month-view>
+          <ng-template #loading>
+            <div class="text-center spinner-container">
+              <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Laden...</span>
+              </div>
+            </div>
+          </ng-template>
+
+          <div *ngIf="events$ | async; else loading; let events">
+            <mwl-calendar-month-view
+              [viewDate]="viewDate"
+              [events]="events"
+              [refresh]="refresh"
+              [activeDayIsOpen]="activeDayIsOpen"
+              (dayClicked)="dayClicked($event.day)"
+              [locale]="locale"
+              [cellTemplate]="customCellTemplate">
+            </mwl-calendar-month-view>
+          </div>
+
         </div>
       </div>
     </div>

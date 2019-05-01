@@ -6,7 +6,7 @@
       <div class="col-xs-6 mid-col logo-container">
         <img src="assets/img/logo.svg" width="110" alt="Flugio Logo">
       </div>
-      <div class="col-xs-3 right-col">
+      <div class="col-xs-3 right-col" *ngIf="afAuth.user | async as user">
         <div class="account-container">
           <p class="label-account"><a href="/account">Konto</a></p>
           <a href="/account"><img src="assets/icon/icon-finger-print.svg" class="icon-account" height="35" alt="Icon Finger Print"></a>
@@ -20,7 +20,7 @@
           <span> Städtereisen bis zu </span>{{ maxDiscount }}%
           <span> günstiger</span>
         </p>
-        <p class="header-subtitle" i18n="home header subtitle"><span>Immer </span>Flug<span>, </span>Hotel<span> und Optional Tickets für lokale</span> Aktivitäten</p>
+        <p class="header-subtitle" i18n="home header subtitle"><span>Immer </span>Flug<span>, </span>Hotel<span> und Tickets für lokale</span> Aktivitäten</p>
       </div>
     </div>
   </div>

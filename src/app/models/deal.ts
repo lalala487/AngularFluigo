@@ -1,9 +1,12 @@
 import { MarketingField } from './fields/marketing';
+import { DocumentReference } from '@angular/fire/firestore';
+import { TranslatableField } from './fields/translatable';
+import { AvailableService } from './fields/available-service';
 
 export interface Deal {
     active: boolean;
-    name: object;
-    description: object;
+    name: TranslatableField;
+    description: TranslatableField;
     slug: string;
     merchant: any;
     ride: any;
@@ -13,9 +16,11 @@ export interface Deal {
     endDate: Date;
     flights: any;
     activities: any;
-    availableServices: object;
+    availableServices: AvailableService;
     rating: number;
     marketing: MarketingField;
     bookingFee: number;
     numberOfNights: any;
+    arrivalAirport: any;
+    departureAirports: Array<DocumentReference>;
 }

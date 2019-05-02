@@ -1,6 +1,7 @@
 import { TranslatableField } from './fields/translatable';
 import { ImageField } from './fields/image';
 import { Review } from './review';
+import { DocumentReference } from '@angular/fire/firestore';
 
 export interface Accommodation {
     active: boolean;
@@ -18,4 +19,5 @@ export interface Accommodation {
     review: Review;
     featured: any;
     rating: number;
+    rooms: DocumentReference[];
 }

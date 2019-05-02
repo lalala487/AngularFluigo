@@ -98,3 +98,8 @@
 {
   text-align: center;
 }
+
+.sidebarjs-center-container-content .link
+{
+  cursor: pointer;
+}

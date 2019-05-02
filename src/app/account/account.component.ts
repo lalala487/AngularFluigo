@@ -180,7 +180,7 @@ export class AccountComponent implements OnInit {
       const userRef = this.db.doc(`users/${this.userContact.uid}`);
       userRef.set(data, { merge: true });
 
-      this.toastr.success('User data updated');
+      this.toastr.success('Wir haben die Daten bei uns angepasst');
 
       this.sendGridService.updateSendGridContact(this.email).subscribe(dat => {
         console.log('data', dat);
@@ -193,14 +193,14 @@ export class AccountComponent implements OnInit {
       console.log('delete account');
 
       this.toastr.info(
-        'You need to re-authenticate to delete your email. An email was sent to you in order to do that.'
+        'Du hast eine E-Mail bekommen'
       );
 
       window.localStorage.setItem('isDeletion', '1');
       this.sendEmailLink(environment.reAuthSettingForData);
     } else {
       this.toastr.error(
-        'You supplied a wrong email address. Account will not be deleted'
+        'Ist die E-Mail richtig geschrieben?'
       );
     }
   }

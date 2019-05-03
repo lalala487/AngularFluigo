@@ -15,11 +15,11 @@ describe('workspace-project App', () => {
     expect(page.getTitle()).toEqual('Flugio');
   });
 
-  // afterEach(async () => {
-  //   // Assert that there are no errors emitted from the browser
-  //   const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-  //   expect(logs).not.toContain(jasmine.objectContaining({
-  //     level: logging.Level.SEVERE,
-  //   }));
-  // });
+  afterEach(async () => {
+    // Assert that there are no errors emitted from the browser
+    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+    expect(logs).not.toContain(jasmine.objectContaining({
+      level: logging.Level.SEVERE,
+    }));
+  });
 });

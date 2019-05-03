@@ -6,9 +6,9 @@ import { UserInfo } from '../models/user-info';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { Router, ActivatedRoute } from '@angular/router';
-import * as firebase from 'firebase';
 import { SendgridService } from '../services/sendgrid.service';
 import { StripeCustomerService } from '../services/stripe-customer.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-account',

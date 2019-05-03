@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
@@ -21,12 +20,11 @@ export class AuthComponent implements OnInit {
 
   constructor(
     protected angularFireAuth: AngularFireAuth,
-    public authService: AuthService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    this.authService.user.subscribe(user => {
+    this.angularFireAuth.authState.subscribe(user => {
       const loginStatus: boolean = user && user.uid !== undefined;
 
       this.isLoggedInChange.emit(loginStatus);

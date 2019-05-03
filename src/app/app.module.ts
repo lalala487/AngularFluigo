@@ -63,6 +63,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AccountDataComponent } from './account-data/account-data.component';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
+import { FirestoreSettingsToken } from '@angular/fire/firestore';
+
 
 registerLocaleData(localeDe);
 
@@ -129,7 +131,8 @@ registerLocaleData(localeDe);
     NgxSmartModalModule.forRoot()
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: FirestoreSettingsToken, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })

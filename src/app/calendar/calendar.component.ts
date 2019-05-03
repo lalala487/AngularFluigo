@@ -85,9 +85,6 @@ export class CalendarComponent implements OnInit {
 
     const areWeFindingCheapestEventOfAll = !airport && !night;
 
-    console.log('findAsyncEvents');
-    console.log('airport', airport, 'night', night);
-    console.log('deal', this.deal);
     const dealMerchantId = this.deal.merchant[0].id;
 
     const flightOffers$ = this.getFlightOffers(dealMerchantId);
@@ -97,7 +94,6 @@ export class CalendarComponent implements OnInit {
 
     this.events$ = combined$.pipe(
       scan((events: Array<any>, current) => {
-        console.log('current', current);
         this.allOffers.way.map(wayOffer => {
           this.allOffers.return.map(returnOffer => {
 
@@ -116,7 +112,6 @@ export class CalendarComponent implements OnInit {
                 return;
               }
 
-              console.log('!!We have way and return offers separated by the number of Nights we want!!');
               const fullOffer = {
                 'way': wayOffer,
                 'return': returnOffer,
@@ -126,7 +121,6 @@ export class CalendarComponent implements OnInit {
                 'flightAndHotelPrice': wayOffer.totalPrice.add(returnOffer.totalPrice),
               };
 
-              console.log('fullOffer', fullOffer);
               if (this.checkIfThereAreRoomOffersInTheInterval(wayDate.toDate(), nightNumber)) {
                 const roomPrice = this.computeRoomOfferTotalPrice(wayDate.toDate(), nightNumber);
                 fullOffer['roomOffers'] = roomPrice['roomOffers'];
@@ -142,7 +136,6 @@ export class CalendarComponent implements OnInit {
                 }
 
                 const totalPrice = fullOffer['totalPrice'];
-                console.log('event total price', totalPrice, fullOffer);
                 const metaStartDate = moment(wayOffer.date.toDate());
                 metaStartDate.hour(wayOffer.flightDepartureHour.hours());
                 metaStartDate.minute(wayOffer.flightDepartureHour.minutes());
@@ -153,7 +146,6 @@ export class CalendarComponent implements OnInit {
                 const title = totalPrice.currency + ' ' + totalPrice.getAmount() / 100;
                 const identifier = title + '-' + wayDate.toString() + '-' + nightNumber + '-' +
                   wayOffer.flight.origin[0].id + '-' + wayOffer.flight.destination[0].id;
-                console.log('identifier', identifier);
 
                 const event = {
                   title: title,
@@ -176,15 +168,11 @@ export class CalendarComponent implements OnInit {
                 } as CalendarEvent;
 
                 this.refresh.next();
-                console.log('creating event', event);
 
                 if (!this.identifier[identifier]) {
                   events.push(event);
                   this.identifier[identifier] = true;
-                } else {
-                  console.log('identifier already exists', identifier);
                 }
-
                 if (!this.cheapestEvent) {
                   this.cheapestEvent = event;
                   if (!currentEvent) {
@@ -206,9 +194,6 @@ export class CalendarComponent implements OnInit {
           });
           return wayOffer;
         });
-
-        console.log('all events', events);
-        console.log('cheapest', this.cheapestEvent);
 
         if (!this.cheapestEvent || events.length === 0) {
           this.toastr.error('"Das Datum ist nicht korrekt eingefühlt"', 'Ehm...');
@@ -249,8 +234,6 @@ export class CalendarComponent implements OnInit {
           }
         }
 
-        console.log('filtered events', filtered);
-
         return filtered;
       }, [])
     );
@@ -263,8 +246,6 @@ export class CalendarComponent implements OnInit {
     date: Date;
     events: Array<CalendarEvent>;
   }): void {
-    console.log('day clicked', events, date);
-
     if (!events.length) {
       this.toastr.error('Es gibt kein Angebot an dem Tag', 'Ehm...');
       return;
@@ -293,21 +274,16 @@ export class CalendarComponent implements OnInit {
   }
 
   selectedAirportChange(airport) {
-    console.log('airport changed to', airport);
     this.currentAirport = airport;
     this.findAsyncEvents(airport);
   }
 
   selectedNightChange(night) {
-    console.log('number of nights changed to', night);
-
     this.numberOfNights = night;
     this.findAsyncEvents(null, +night);
   }
 
   private computeRoomOfferTotalPrice(startDate: moment.MomentInput, nightNumber: number): any {
-    console.log('computeRoomOfferTotalPrice - startDate', startDate);
-
     const toReturn = {
       'totalPrice': new Money(0, Currencies.CHF),
       'adultPrice': new Money(0, Currencies.CHF),
@@ -317,27 +293,15 @@ export class CalendarComponent implements OnInit {
 
     for (let index = 0; index < nightNumber; index++) {
       const currentDate = moment(startDate).add(index, 'days').toDate().getTime();
-      console.log('computeRoomOfferTotalPrice - currentDate', currentDate, 'index', index);
       const roomOffer = this.roomOffers.get(currentDate);
 
       toReturn.roomOffers.push(roomOffer);
-
-      console.log('roomOffer', roomOffer);
 
       toReturn.adultPrice = toReturn.adultPrice.add(roomOffer['adultPrice']);
 
       if (this.accummulations.children) {
         toReturn.childrenPrice = toReturn.childrenPrice.add(roomOffer['childrenPrice']);
       }
-
-      // console.log('total price for night ', index, fullOffer['totalPrice']);
-
-      // fullOffer['adultPrice'].add(roomOffer['adultPrice']);
-      // console.log('adultPrice price for night ', index, fullOffer['adultPrice']);
-
-
-      // fullOffer['childrenPrice'].add(roomOffer['childrenPrice']);
-      // console.log('childrenPrice price for night ', index, fullOffer['childrenPrice']);
     }
 
     toReturn.totalPrice = toReturn.totalPrice.add(toReturn.adultPrice).add(toReturn.childrenPrice);
@@ -346,20 +310,13 @@ export class CalendarComponent implements OnInit {
   }
 
   private checkIfThereAreRoomOffersInTheInterval(startDate: moment.MomentInput, numberOfNights: number): boolean {
-    console.log('checkIfThereAreRoomOffersInTheInterval - startDate', startDate);
-    // console.log('checkIfThereAreRoomOffersInTheInterval');
     for (let index = 0; index < numberOfNights; index++) {
       const currentDate = moment(startDate).add(index, 'days').toDate().getTime();
-      console.log('checkIfThereAreRoomOffersInTheInterval - currentDate', currentDate, 'index', index);
-      // console.log('currentDate', currentDate, roomOffers);
-      // console.log('roomOfferFordate', roomOffers.get(currentDate));
 
       if (!this.roomOffers.has(currentDate)) {
         return false;
       }
     }
-
-    console.log('there are roomOffers for ' + numberOfNights + ' starting on ' + startDate);
 
     return true;
   }

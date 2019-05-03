@@ -33,7 +33,6 @@ export class PaymentService implements OnInit {
           'sourceId': data.source.id
         };
 
-        console.log('toSend', toSend);
         return this.http.post<Charge>(url, toSend);
       })
     );
@@ -51,8 +50,6 @@ export class PaymentService implements OnInit {
       'currency': charge.currency,
       'customer': charge.customer
     };
-
-    console.log('will write payment to db', payment);
 
     const payments = this.db.collection('payment');
 

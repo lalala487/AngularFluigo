@@ -24,8 +24,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     const twoWeeksFromNow = moment().add(14, 'days').toDate();
 
-    console.log('twoWeeksFromNow', twoWeeksFromNow);
-
     this.deals = this.db.collection<Deal>(
       'deal', ref => ref
         .where('endDate', '>', new Date())

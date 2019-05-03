@@ -28,10 +28,6 @@ export class ActivitiesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // const activityReferences: Array<DocumentReference> = this.deal.activities;
-
-    console.log('startDate', this.startDate, 'endDate', this.endDate);
-
     const dealActivitiesIds = this.deal.activities.map(activity => activity.id);
 
     const activityOfferCollectionRef = this.db.collection<ActivityOffer>(
@@ -48,10 +44,6 @@ export class ActivitiesComponent implements OnInit {
     ).pipe(
       switchMap(activityOffers => {
         return activityOffers.filter(activityOffer => {
-          console.log('deal activities', this.deal.activities);
-          console.log('dealActivitiesIds', dealActivitiesIds);
-          console.log('activityOffer activity', activityOffer.activity);
-
           if (!dealActivitiesIds.includes(activityOffer.activity[0].id)) {
             return false;
           }

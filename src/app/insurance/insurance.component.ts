@@ -34,18 +34,12 @@ export class InsuranceComponent implements OnInit {
 
       this.db.doc<Insurer>(this.insurance.insurer.path).valueChanges().subscribe(insurer => {
           let price: Money = this.insurancePrice;
-          console.log('insurer', insurer);
 
-          console.log('this.insurance.price', this.insurancePrice);
           if (this.insurancePrice.amount === 0) {
             const rate = insurer['commission'] / 100;
-            console.log('rate', rate);
-            console.log('totalPriceAmount', this.totalPrice);
 
             price = this.totalPrice.multiply(rate, Math.ceil);
-            console.log('price money', price, this.totalPrice);
             this.insurancePrice = price;
-            console.log('insurance price', price);
             this.insurancePriceChange.emit(this.insurancePrice);
           }
 

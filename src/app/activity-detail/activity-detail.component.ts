@@ -49,7 +49,6 @@ export class ActivityDetailComponent implements OnInit {
   }
 
   calculatePrice(offerId) {
-    console.log('calculate price for activityOffer', offerId);
     this.db.collection<Offer>(
       'activityOffer/' + offerId + '/offers',
       ref => ref.where('active', '==', true).
@@ -61,9 +60,6 @@ export class ActivityDetailComponent implements OnInit {
         return offer.prices.map(element => {
           this.db.doc<Segment>('activitySegment/' + element.ref.id).valueChanges().pipe(
             map(activitySegment => {
-
-              console.log('activitySegment', activitySegment);
-
               if (activitySegment.name.en_GB === 'Adults') {
                 this.price = this.price.add(new Money(this.adults * element.amount * 100, Currencies.CHF));
               }
@@ -71,8 +67,6 @@ export class ActivityDetailComponent implements OnInit {
               if (activitySegment.name.en_GB === 'Children') {
                 this.price = this.price.add(new Money(this.children * element.amount * 100, Currencies.CHF));
               }
-
-              console.log('price', this.price, this.price.toDecimal());
 
               return activitySegment;
             })

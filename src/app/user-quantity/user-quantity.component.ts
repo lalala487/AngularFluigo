@@ -52,8 +52,6 @@ export class UserQuantityComponent implements OnInit, OnChanges {
 
     const room = this.accommodation ? this.accommodation.rooms[0] : undefined;
 
-    console.log('accommodation', this.accommodation, 'room', room);
-
     if (room) {
       this.room$ = this.db.doc<Room>(room.path).valueChanges();
     }

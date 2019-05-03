@@ -85,10 +85,7 @@ export class DealDetailComponent implements OnInit {
     selectedDeal$.subscribe((deals: Deal[]) => {
       this.deal = deals[0];
 
-      console.log('deal', this.deal);
-
       if (this.deal.endDate.toDate() < new Date()) {
-
         this.toastr.error('Deal is expired!', 'Error');
 
         this.router.navigate(['/home']);
@@ -133,9 +130,6 @@ export class DealDetailComponent implements OnInit {
       if (merchantRef) {
         this.accummulations['merchantId'] = merchantRef.id;
       }
-
-      console.log('acc', this.accummulations);
-
     });
   }
 
@@ -150,7 +144,6 @@ export class DealDetailComponent implements OnInit {
       this.currentStep = this.currentStep + 2;
     } else if (this.currentStep === 3 && this.accummulations.children > 0) {
       // when adding children, but add valid dates for them
-      console.log('struct', this.accummulations);
 
       const dates: Array<Birthday> = Array(this.accummulations.children);
       let currentNumber = 0;
@@ -225,25 +218,21 @@ export class DealDetailComponent implements OnInit {
   hasTransportationChange(hasTransportation: boolean) {
     this.accummulations.hasTransportation = hasTransportation;
     this.calculatePrice();
-    console.log('hasTransportationChange', hasTransportation, this.accummulations);
   }
 
   transportationPriceChange(transportationPrice: Money) {
     this.accummulations.transportationPrice = transportationPrice;
     this.calculatePrice();
-    console.log('transportationPriceChange', transportationPrice, this.accummulations);
   }
 
   hasInsuranceChange(hasInsurance: boolean) {
     this.accummulations.hasInsurance = hasInsurance;
     this.calculatePrice();
-    console.log('hasInsuranceChange', hasInsurance, this.accummulations);
   }
 
   insurancePriceChange(insurancePrice: Money) {
     this.accummulations.insurancePrice = insurancePrice;
     this.calculatePrice();
-    console.log('insurancePriceChange', insurancePrice, this.accummulations);
   }
 
   userContactChange(contact: UserContact) {
@@ -251,10 +240,7 @@ export class DealDetailComponent implements OnInit {
   }
 
   stripeResult(charge: Charge): void {
-    console.log('stripeResult', charge);
-
     this.paymentService.writePaymentToDb(charge).then(result => {
-      console.log('write to payment result', result);
       this.accummulations['payed'] = true;
       this.accummulations['payment'] = result;
       this.moveToNextStep();
@@ -263,14 +249,11 @@ export class DealDetailComponent implements OnInit {
   }
 
   errorStripe(error): void {
-    console.log('stripeError', error);
-
     this.toastr.error(error, 'Error');
   }
 
   calculatePrice() {
     let price = new Money(0, Currencies.CHF);
-    console.log('calculate price', this.accummulations);
 
     if (this.accummulations['hasFlightAccommodation']) {
       price = price.add(this.accummulations['childrenPrice']).add(this.accummulations['adultPrice']);
@@ -278,17 +261,14 @@ export class DealDetailComponent implements OnInit {
 
     if (this.accummulations['hasUpsell']) {
       price = price.add(this.accummulations['upsellPrice']);
-      console.log('upsellPrice', this.accummulations['upsellPrice'], 'totalPrice', price);
     }
 
     if (this.accummulations['hasTransportation']) {
       price = price.add(this.accummulations['transportationPrice']);
-      console.log('transportationPrice', this.accummulations['transportationPrice'], 'totalPrice', price);
     }
 
     if (this.accummulations['hasInsurance']) {
       price = price.add(this.accummulations['insurancePrice']);
-      console.log('insurancePrice', this.accummulations['insurancePrice'], 'totalPrice', price);
     }
 
     if (this.accummulations.activityOffer) {
@@ -310,7 +290,6 @@ export class DealDetailComponent implements OnInit {
 
   emailSentChanged(emailSent: boolean): void {
     this.emailSent = emailSent;
-    console.log('email.sent', emailSent);
   }
 
   moveToDateSelectionEvent(moving: boolean): void {
@@ -324,7 +303,6 @@ export class DealDetailComponent implements OnInit {
 
   selectedActivityOfferChange(activityOffer: Offer) {
     this.accummulations.activityOffer = activityOffer;
-    console.log('selectedActivityOfferChange', this.accummulations);
     this.calculatePrice();
   }
 }

@@ -42,7 +42,6 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const page = params.get('page') || this.defaultPage;
-      console.log('page', page);
 
       if (this.availablePages[page]) {
         this.currentPage = page;
@@ -50,10 +49,7 @@ export class AccountComponent implements OnInit {
         this.router.navigate(['/account']);
       }
 
-      console.log('page', page, 'currentPage', this.currentPage);
-
       this.afAuth.user.subscribe(user => {
-        console.log('user', user);
         if (!user) {
           return;
         }
@@ -73,10 +69,7 @@ export class AccountComponent implements OnInit {
             this.userContact.phoneNumber = userInfo.contact.phone.home;
           }
 
-          console.log('init user contact', userInfo);
-
           const url = this.router.url;
-          console.log('url', url);
           if (this.afAuth.auth.isSignInWithEmailLink(url)) {
             this.confirmSignIn(url);
           }
@@ -87,18 +80,14 @@ export class AccountComponent implements OnInit {
 
   changeTo(page) {
     this.currentPage = page;
-    console.log('current Page', this.currentPage);
   }
 
   confirmSignIn(url) {
     const oldEmail = window.localStorage.getItem('userOldEmail');
 
-    console.log('confirmSignIn');
     const credential = firebase.auth.EmailAuthProvider.credentialWithLink(
       oldEmail, url
     );
-
-    console.log('credential', credential);
 
     this.afAuth.auth.currentUser.reauthenticateAndRetrieveDataWithCredential(credential).then((userCred) => {
       const newEmail = window.localStorage.getItem('userNewEmail');
@@ -116,7 +105,6 @@ export class AccountComponent implements OnInit {
           this.router.navigate(['/home']);
 
         }).catch(err => {
-          console.log('couldnt delete user', err);
           this.toastr.error('Coult not delete user');
         });
       }
@@ -125,9 +113,7 @@ export class AccountComponent implements OnInit {
 
   private updateEmail(newEmail: string, oldEmail: string) {
     this.afAuth.auth.currentUser.updateEmail(newEmail).then(() => {
-      console.log('email updated to ', newEmail);
       this.sendGridService.updateSendGridContact(newEmail, oldEmail).subscribe(data => {
-        console.log('data', data);
       });
       this.userContact.email = newEmail;
       const userRef = this.db.doc(`users/${this.userContact.uid}`);
@@ -137,7 +123,6 @@ export class AccountComponent implements OnInit {
         }
       }, { merge: true });
       this.stripeCustomerService.updateStripeContact(newEmail).subscribe(data => {
-        console.log('output from stripe customer service');
       });
       const redirectUrl = window.localStorage.getItem('redirectUrl');
       this.router.navigate([redirectUrl]);
@@ -147,13 +132,11 @@ export class AccountComponent implements OnInit {
       window.localStorage.removeItem('userNewEmail');
       window.localStorage.removeItem('userOldEmail');
     }).catch(err => {
-      console.log('couldnt update email', err);
       this.emailChangedError = true;
     });
   }
 
   userContactChange(userContact: UserContact) {
-    console.log('userContactChange');
     const data = {
       name: {
         first: userContact.firstName,
@@ -183,15 +166,12 @@ export class AccountComponent implements OnInit {
       this.toastr.success('Wir haben die Daten bei uns angepasst');
 
       this.sendGridService.updateSendGridContact(this.email).subscribe(dat => {
-        console.log('data', dat);
       });
     }
   }
 
   deleteUserChange(email: string) {
     if (email === this.email) {
-      console.log('delete account');
-
       this.toastr.info(
         'Du hast eine E-Mail bekommen'
       );
@@ -213,14 +193,10 @@ export class AccountComponent implements OnInit {
       );
 
       const url = this.router.url;
-      console.log('url', url);
       window.localStorage.setItem('emailForSignIn', this.email);
       window.localStorage.setItem('redirectUrl', url);
-
-      console.log('emitting email sent');
-
     } catch (error) {
-      console.log('error', error);
+      this.toastr.error('Coult not send auth email, please try again');
     }
   }
 

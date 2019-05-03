@@ -73,10 +73,6 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
         style: style
       });
       cardCvcElement.mount('#card-cvc-element');
-
-      console.log('this.card', this.card);
-      console.log('this.amount', this.amount);
-
       // Listens to change event on the card for validation errors
       this.card.on('change', (event) => {
         this.formError = event.error ? event.error.message : null;
@@ -100,10 +96,7 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
   }
 
   formHandler(): void {
-    console.log('submit', this.amount.amount);
     this.loading = true;
-
-    console.log('card', this.card);
 
     const action = this.paymentService.createCharge$(this.card, this.amount);
 
@@ -115,8 +108,6 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
       },
       err => {
         const result = err;
-
-        console.log('err', err);
 
         this.error = result.error;
         this.result = result;

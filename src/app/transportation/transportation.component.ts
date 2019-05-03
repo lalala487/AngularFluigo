@@ -30,7 +30,6 @@ export class TransportationComponent implements OnInit {
 
   ngOnInit() {
     const dealRide: DocumentReference = this.deal.ride;
-    console.log('ride', dealRide);
 
     this.db.doc<Ride>(dealRide.path).valueChanges().subscribe(ride => {
       this.transportation = ride;

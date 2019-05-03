@@ -26,9 +26,6 @@ export class SuccessComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
-    console.log('accummulations', this.accummulations);
-
     this.angularFireAuth.user.subscribe(innerUser => {
 
       const event = this.accummulations.event;
@@ -89,9 +86,6 @@ export class SuccessComponent implements OnInit {
         departureFlightOffer: departureOffer
       };
 
-
-      console.log('order', this.order);
-
       this.db.collection('order').add(this.order);
 
       this.updateContact(innerUser);
@@ -131,8 +125,6 @@ export class SuccessComponent implements OnInit {
       collectionName + baseOfferId + '/offers/' + offerId
     );
 
-    console.log('decreasing stock to ', stock, 'from ', ref.ref.path);
-
     ref.set(
       { 'stock': stock - 1 },
       { merge: true }
@@ -143,7 +135,6 @@ export class SuccessComponent implements OnInit {
     const contact = Object.assign({}, this.accummulations.contact);
 
     this.sendGridService.updateSendGridContact(contact.email).subscribe((data) => {
-      console.log('sendgrid response', data);
     });
 
     const user = {

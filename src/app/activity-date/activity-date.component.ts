@@ -48,16 +48,11 @@ export class ActivityDateComponent implements OnInit {
     ).pipe(
       map(offers => {
         return offers.map(offer => {
-          console.log('offer', offer);
-
           offer.price = new Money(0, Currencies.CHF);
 
           offer.prices.map(element => {
             this.db.doc<Segment>('activitySegment/' + element.ref.id).valueChanges().pipe(
               map(activitySegment => {
-
-                console.log('activitySegment', activitySegment);
-
                 if (activitySegment.name.en_GB === 'Adults') {
                   offer.price = offer.price.add(new Money(this.adults * element.amount * 100, Currencies.CHF));
                 }
@@ -65,8 +60,6 @@ export class ActivityDateComponent implements OnInit {
                 if (activitySegment.name.en_GB === 'Children') {
                   offer.price = offer.price.add(new Money(this.children * element.amount * 100, Currencies.CHF));
                 }
-
-                console.log('price', offer.price, offer.price.toDecimal());
 
                 return activitySegment;
               })

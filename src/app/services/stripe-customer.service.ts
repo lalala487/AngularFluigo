@@ -14,7 +14,6 @@ export class StripeCustomerService {
 
   updateStripeContact(newEmail: string) {
     const url = `${this.api}/updateStripeContact`;
-    console.log('updateStripeContact', newEmail);
 
     return this.http.post(url, {
       email: newEmail

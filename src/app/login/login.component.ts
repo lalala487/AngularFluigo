@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
     try {
       if (this.angularFireAuth.auth.isSignInWithEmailLink(url)) {
         let email = window.localStorage.getItem('emailForSignIn');
-        console.log('email', email);
 
         // If missing email, prompt user for it
         if (!email) {
@@ -35,13 +34,11 @@ export class LoginComponent implements OnInit {
 
         // Signin user and remove the email localStorage
         const result = await this.angularFireAuth.auth.signInWithEmailLink(email, url);
-        console.log('result', result);
         window.localStorage.removeItem('emailForSignIn');
 
         // Adds or updates user
         const user = result.user;
         const userId = user.uid;
-        console.log('adds or updates user', userId);
         const userRef: AngularFirestoreDocument<any> = this.db.doc(`users/${userId}`);
 
         const data = {
@@ -52,18 +49,13 @@ export class LoginComponent implements OnInit {
           photoURL: user.photoURL
         };
         userRef.set(data, { merge: true });
-        console.log('adds or updates users with:', data);
 
         this.redirect();
       } else {
-        console.log('wrong url to signin');
-
         this.router.navigate([this.defaultRedirectUrl]);
       }
 
     } catch (error) {
-      console.log('error', error);
-
       this.router.navigate(['/home']);
     }
   }

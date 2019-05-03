@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-auth',
@@ -21,6 +22,7 @@ export class AuthComponent implements OnInit {
   constructor(
     protected angularFireAuth: AngularFireAuth,
     private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -39,17 +41,15 @@ export class AuthComponent implements OnInit {
       );
 
       const url = this.router.url;
-      console.log('url', url);
       window.localStorage.setItem('emailForSignIn', this.email);
       window.localStorage.setItem('redirectUrl', url);
 
       this.emailSent = true;
 
-      console.log('emitting email sent');
       this.emailSentChanged.emit(true);
 
     } catch (error) {
-      console.log('error', error);
+      this.toastr.error('Coult not send auth email, please try again');
     }
   }
 

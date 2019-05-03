@@ -16,8 +16,6 @@ export class SendgridService {
   updateSendGridContact(email: string, oldEmail?: string) {
     const url = `${this.api}/updateSendGridContact`;
 
-    console.log('url', url);
-
     return this.http.post<UserContact>(url, {
       newEmail: email,
       oldEmail: oldEmail,

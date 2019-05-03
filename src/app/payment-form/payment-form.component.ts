@@ -114,11 +114,13 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
         this.loading = false;
       },
       err => {
-        const result = err as SourceResult;
+        const result = err;
 
-        this.error = result;
-        this.result = result.source;
-        this.errorStripe.emit(err);
+        console.log('err', err);
+
+        this.error = result.error;
+        this.result = result;
+        this.errorStripe.emit(result.error.message);
         this.loading = false;
       }
     );

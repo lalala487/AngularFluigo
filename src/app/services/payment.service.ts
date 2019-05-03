@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
-import { StripeService, Elements, ElementsOptions, Source, SourceResult } from 'ngx-stripe';
+import { StripeService, SourceResult } from 'ngx-stripe';
 import { environment } from 'src/environments/environment';
-import { Observable, of, from } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { Money } from 'ts-money';
 import { switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';

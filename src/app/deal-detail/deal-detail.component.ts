@@ -258,7 +258,7 @@ export class DealDetailComponent implements OnInit {
   errorStripe(error): void {
     console.log('stripeError', error);
 
-    this.toastr.error(error.statusText, 'Error');
+    this.toastr.error(error, 'Error');
   }
 
   calculatePrice() {

@@ -87,6 +87,13 @@ export class DealDetailComponent implements OnInit {
 
       console.log('deal', this.deal);
 
+      if (this.deal.endDate.toDate() < new Date()) {
+
+        this.toastr.error('Deal is expired!', 'Error');
+
+        this.router.navigate(['/home']);
+      }
+
       if (this.deal.marketing) {
         this.accummulations.startDate = this.deal.marketing.departingFlight;
         this.accummulations.endDate = this.deal.marketing.returningFlight;

@@ -33,6 +33,10 @@ export class CityComponent implements OnChanges {
         return;
       }
 
+      if (!this.city.interests) {
+        return;
+      }
+
       const list = this.city.interests.map(interest => {
         return this.db.doc<Interest>(interest.path).valueChanges();
         });

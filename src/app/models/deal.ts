@@ -2,6 +2,7 @@ import { MarketingField } from './fields/marketing';
 import { DocumentReference } from '@angular/fire/firestore';
 import { TranslatableField } from './fields/translatable';
 import { AvailableService } from './fields/available-service';
+import { firestore } from 'firebase';
 
 export interface Deal {
     active: boolean;
@@ -13,7 +14,7 @@ export interface Deal {
     city: any;
     accommodation: any;
     startDate: Date;
-    endDate: Date;
+    endDate: firestore.Timestamp;
     flights: any;
     activities: any;
     availableServices: AvailableService;

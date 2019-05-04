@@ -26,6 +26,7 @@ export class AccountComponent implements OnInit {
 
   availablePages = {
     profile: 1,
+    orders: 1,
     data: 1
   };
 

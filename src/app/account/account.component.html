@@ -12,7 +12,7 @@
         </div>
 
         <div class="content-block menu-option">
-          <p i18n="account sidebar orders">Bestellungen</p>
+          <p class="link" i18n="account sidebar orders" (click)="changeTo('orders')">Bestellungen</p>
           <hr class="price-hr"/>
         </div>
 
@@ -55,7 +55,7 @@
     </header>
 
     <app-account-profile *ngIf="currentPage === 'profile' && userContact" [userContact]="userContact" (userContactChange)="userContactChange($event)"></app-account-profile>
-
+    <app-account-orders *ngIf="currentPage === 'orders'"></app-account-orders>
     <app-account-data *ngIf="currentPage === 'data' && userContact" (deleteUserChange)="deleteUserChange($event)"></app-account-data>
 
   </div>

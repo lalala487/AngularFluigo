@@ -64,6 +64,7 @@ import { AccountComponent } from './account/account.component';
 import { AccountDataComponent } from './account-data/account-data.component';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { FirestoreSettingsToken } from '@angular/fire/firestore';
+import { AccountOrdersComponent } from './account-orders/account-orders.component';
 
 
 registerLocaleData(localeDe);
@@ -108,6 +109,7 @@ registerLocaleData(localeDe);
     AccountComponent,
     AccountDataComponent,
     AccountProfileComponent,
+    AccountOrdersComponent,
   ],
   imports: [
     BrowserModule,

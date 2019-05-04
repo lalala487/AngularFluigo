@@ -3,8 +3,6 @@ export interface UserContact {
     lastName: string;
     email: string;
     phoneNumber: string;
-    displayName: string;
-    photoURL: string;
     stripeCustomerId: string;
     sendGridId: string;
     uid: string;

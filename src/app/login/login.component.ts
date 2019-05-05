@@ -46,7 +46,6 @@ export class LoginComponent implements OnInit {
           contact: {
             email: user.email,
           },
-          photoURL: user.photoURL
         };
         userRef.set(data, { merge: true });
 

@@ -12,5 +12,12 @@
     </div>
   </div>
   <div class="col-sm-3">
+
+    <div *ngFor="let order of orders$ | async">
+      {{ order.endDate }}
+
+      Price: {{ order.totalPrice.currency }} {{ order.totalPrice.amount / 100 }}
+    </div>
+
   </div>
 </div>

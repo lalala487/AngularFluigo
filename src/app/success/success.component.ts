@@ -5,7 +5,7 @@ import { Money } from 'ts-money';
 import { CalendarEvent } from 'calendar-utils';
 import { Accummulation } from '../models/fields/accummulation';
 import { SendgridService } from '../services/sendgrid.service';
-import { firestore } from 'firebase';
+import { Order, OrderOffer, OrderFlightOffer } from '../models/order';
 
 @Component({
   selector: 'app-success',
@@ -152,38 +152,4 @@ export class SuccessComponent implements OnInit {
 
     this.db.doc('users/' + innerUser.uid).set(user, {merge: true});
   }
-
-}
-
-interface Order {
-  userId: string;
-  merchantId: string;
-  startDate: Date;
-  endDate: Date;
-  contact: any;
-  totalPrice: object;
-  payment: DocumentReference;
-  activityOffers: OrderOffer[];
-  accommodationOffers: OrderOffer[];
-  adults: number;
-  children: number;
-  flightOffers: {
-    departureFlightOffer: OrderFlightOffer;
-    returnFlightOffer: OrderFlightOffer;
-  };
-}
-
-export interface OrderOffer {
-  stock: number;
-  date: firestore.Timestamp;
-
-  price: object;
-}
-
-export interface OrderFlightOffer {
-  stock: number;
-  date: firestore.Timestamp;
-
-  price: object;
-  flightNumber: string;
 }

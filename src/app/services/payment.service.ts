@@ -42,13 +42,14 @@ export class PaymentService implements OnInit {
   ngOnInit(): void {
   }
 
-  writePaymentToDb(charge: Charge) {
+  writePaymentToDb(charge: Charge, userId: string) {
     const payment = {
       'id': charge.id,
       'charge': charge,
       'amount': charge.amount,
       'currency': charge.currency,
-      'customer': charge.customer
+      'customer': charge.customer,
+      'userId': userId
     };
 
     const payments = this.db.collection('payment');

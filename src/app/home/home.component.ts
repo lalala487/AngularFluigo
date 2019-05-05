@@ -31,7 +31,9 @@ export class HomeComponent implements OnInit {
     ).valueChanges();
 
     this.deals.subscribe(collection => {
-      this.maxDiscount = this.findMaxDiscount(collection);
+      if (collection.length > 0) {
+        this.maxDiscount = this.findMaxDiscount(collection);
+      }
     });
   }
 

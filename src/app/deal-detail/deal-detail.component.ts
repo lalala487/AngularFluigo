@@ -21,6 +21,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import { PaymentService } from '../services/payment.service';
 import { Activity } from '../models/activity';
 import { Offer } from '../models/offer';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -71,6 +72,7 @@ export class DealDetailComponent implements OnInit {
     private toastr: ToastrService,
     public ngxSmartModalService: NgxSmartModalService,
     private paymentService: PaymentService,
+    private afAuth: AngularFireAuth,
   ) { }
 
   ngOnInit() {
@@ -240,10 +242,18 @@ export class DealDetailComponent implements OnInit {
   }
 
   stripeResult(charge: Charge): void {
-    this.paymentService.writePaymentToDb(charge).then(result => {
-      this.accummulations['payed'] = true;
-      this.accummulations['payment'] = result;
-      this.moveToNextStep();
+    this.afAuth.user.subscribe(user => {
+      if (!user) {
+        return;
+      }
+
+
+      this.paymentService.writePaymentToDb(charge, user.uid).then(result => {
+        this.accummulations['payed'] = true;
+        this.accummulations['payment'] = result;
+        this.moveToNextStep();
+      });
+
     });
 
   }

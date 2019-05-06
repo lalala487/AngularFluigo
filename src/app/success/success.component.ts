@@ -41,6 +41,8 @@ export class SuccessComponent implements OnInit {
         adults: this.accummulations.adults,
         children: this.accummulations.children,
         contact: this.accummulations.contact,
+        city: this.accummulations.city,
+        accommodation: this.accummulations.accommodation
       } as Order;
 
       if (this.accummulations.activityOffer) {

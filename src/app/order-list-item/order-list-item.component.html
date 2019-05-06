@@ -1,18 +1,18 @@
 <div class="order-row">
   <!-- This is the "image" that belongs to the "City" that is in the deal. You use the [style.background-image]="imageUrl" for this in other components. -->
-  <div class="col-xl-12 order-col">
+  <div class="col-xl-12 order-col" [style.background-image]="imageUrl">
     <div class="order-card">
       <div class="row first-row">
         <div class="col-md-6">
           <div class="order-card-title">
             <!-- This is the "name" that belongs to the "City" that is in the deal -->
-            <h2>Amsterdam</h2>
+            <h2>{{ cityName }}</h2>
           </div>
         </div>
         <div class="col-md-6">
           <div class="service">
             <!-- This is the "date" of the flight that goes to the "City" that is in the deal -->
-            <p>27. Juni 2019</p>
+            <p>{{ order.endDate.toDate() | date:'MMMM d, y':'':locale }}</p>
           </div>
         </div>
       </div>
@@ -20,7 +20,7 @@
         <div class="col-md-6">
           <div class="order-card-description">
             <!-- This is the "name" that belongs to the "Accommodation" that is in the deal -->
-            <p>Waldorf Astoria Amsterdam</p>
+            <p>{{ accommodationName }}</p>
           </div>
         </div>
         <div class="col-md-6">

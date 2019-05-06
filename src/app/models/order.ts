@@ -9,6 +9,28 @@ export interface Order {
   contact: any;
   totalPrice: object;
   payment: DocumentReference;
+  city: DocumentReference;
+  accommodation: DocumentReference;
+  activityOffers: OrderOffer[];
+  accommodationOffers: OrderOffer[];
+  adults: number;
+  children: number;
+  flightOffers: {
+    departureFlightOffer: OrderFlightOffer;
+    returnFlightOffer: OrderFlightOffer;
+  };
+}
+
+export interface OrderTimestamps {
+  userId: string;
+  merchantId: string;
+  startDate: firestore.Timestamp;
+  endDate: firestore.Timestamp;
+  contact: any;
+  totalPrice: object;
+  payment: DocumentReference;
+  city: DocumentReference;
+  accommodation: DocumentReference;
   activityOffers: OrderOffer[];
   accommodationOffers: OrderOffer[];
   adults: number;

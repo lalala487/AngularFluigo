@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Order } from '../models/order';
+import { OrderTimestamps } from '../models/order';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AccountOrdersComponent implements OnInit {
 
-  orders$: Observable<Order[]>;
+  orders$: Observable<OrderTimestamps[]>;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
@@ -26,14 +26,9 @@ export class AccountOrdersComponent implements OnInit {
 
       const userId = innerUser.uid;
 
-      this.db.collection<Order>(
+      this.orders$ = this.db.collection<OrderTimestamps>(
         'order',
-      ).valueChanges().subscribe(orders => {
-        console.log('orders', orders);
-      });
-
-      this.orders$ = this.db.collection<Order>(
-        'order',
+        ref => ref.where('userId', '==', userId)
       ).valueChanges();
     });
   }

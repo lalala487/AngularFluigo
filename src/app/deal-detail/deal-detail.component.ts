@@ -111,6 +111,7 @@ export class DealDetailComponent implements OnInit {
       const cityRef: DocumentReference = this.deal.city ? this.deal.city[0] : undefined;
 
       if (cityRef) {
+        this.accummulations.city = cityRef;
         this.db.doc(cityRef.path).valueChanges().subscribe(innerCity => {
           this.city = innerCity as City;
 
@@ -125,6 +126,7 @@ export class DealDetailComponent implements OnInit {
 
       const accommodationDoc = this.deal.accommodation ? this.deal.accommodation[0] : undefined;
       if (accommodationDoc) {
+        this.accummulations.accommodation = accommodationDoc;
         this.accommodation$ = this.db.doc<Accommodation>(accommodationDoc.path).valueChanges();
       }
 

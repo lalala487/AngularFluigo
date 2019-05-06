@@ -34,4 +34,6 @@ export interface Accummulation {
     activityOffer: Offer;
     payed: boolean;
     payment: DocumentReference;
+    city: DocumentReference;
+    accommodation: DocumentReference;
 }

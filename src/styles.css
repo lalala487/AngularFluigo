@@ -140,12 +140,22 @@ hr {
   }
 }
 
-.pdp-accommodation-review-block {
+.pdp-activity-detail-block .pdp-accommodation-review-block {
   background-color: rgba(77, 131, 132, 1);
   align-items: center;
   display: flex;
   align-items: center;
   height: 20rem;
+}
+
+.pdp-accommodation-block .pdp-accommodation-review-block {
+  background-color: rgba(77, 131, 132, 1);
+  align-items: center;
+  display: flex;
+  align-items: center;
+  height: 20rem;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 .pdp-accommodation-review-block .text-block {

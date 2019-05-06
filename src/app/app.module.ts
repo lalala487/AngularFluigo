@@ -1,18 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-
 import { HomeComponent } from './home/home.component';
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule, registerLocaleData } from '@angular/common';
@@ -32,7 +28,6 @@ import { ReviewComponent } from './review/review.component';
 import { InterestComponent } from './interest/interest.component';
 import { AccommodationComponent } from './accommodation/accommodation.component';
 import { RatingComponent } from './rating/rating.component';
-
 import { SidebarJSModule } from 'ng-sidebarjs';
 import { UserQuantityComponent } from './user-quantity/user-quantity.component';
 import { NumberPickerComponent } from './number-picker/number-picker.component';
@@ -44,7 +39,6 @@ import { NgxStripeModule } from 'ngx-stripe';
 import { PaymentFormComponent } from './payment-form/payment-form.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthComponent } from './auth/auth.component';
-
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { EmailSentComponent } from './email-sent/email-sent.component';
 import { LoginComponent } from './login/login.component';
@@ -66,7 +60,7 @@ import { AccountProfileComponent } from './account-profile/account-profile.compo
 import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AccountOrdersComponent } from './account-orders/account-orders.component';
 import { OrderComponent } from './order/order.component';
-
+import { OrderListItemComponent } from './order-list-item/order-list-item.component';
 
 registerLocaleData(localeDe);
 
@@ -112,6 +106,7 @@ registerLocaleData(localeDe);
     AccountProfileComponent,
     AccountOrdersComponent,
     OrderComponent,
+    OrderListItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,11 +5,11 @@ import { Order } from '../models/order';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-account-orders',
-  templateUrl: './account-orders.component.html',
-  styleUrls: ['./account-orders.component.css']
+  selector: 'app-order-list-item',
+  templateUrl: './order-list-item.component.html',
+  styleUrls: ['./order-list-item.component.css']
 })
-export class AccountOrdersComponent implements OnInit {
+export class OrderListItemComponent implements OnInit {
 
   orders$: Observable<Order[]>;
 

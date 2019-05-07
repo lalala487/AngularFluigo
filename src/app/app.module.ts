@@ -61,6 +61,7 @@ import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AccountOrdersComponent } from './account-orders/account-orders.component';
 import { OrderComponent } from './order/order.component';
 import { OrderListItemComponent } from './order-list-item/order-list-item.component';
+import { AccountOrderDocumentListComponent } from './account-order-document-list/account-order-document-list.component';
 
 registerLocaleData(localeDe);
 
@@ -107,6 +108,7 @@ registerLocaleData(localeDe);
     AccountOrdersComponent,
     OrderComponent,
     OrderListItemComponent,
+    AccountOrderDocumentListComponent,
   ],
   imports: [
     BrowserModule,

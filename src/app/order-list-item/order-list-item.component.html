@@ -1,28 +1,26 @@
-<div class="order-row">
-  <div class="col-xl-12 order-col" [style.background-image]="imageUrl">
-    <div class="order-card">
-      <div class="row first-row">
-        <div class="col-md-6">
-          <div class="order-card-title">
-            <h2>{{ cityName }}</h2>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="service">
-            <p>{{ order.endDate.toDate() | date:'MMMM d, y':'':locale }}</p>
-          </div>
+<div class="col-xl-12 order-col" [style.background-image]="imageUrl">
+  <div class="order-card">
+    <div class="row first-row">
+      <div class="col-md-6">
+        <div class="order-card-title">
+          <h2>{{ cityName }}</h2>
         </div>
       </div>
-      <div class="row second-row">
-        <div class="col-md-6">
-          <div class="order-card-description">
-            <p>{{ accommodationName }}</p>
-          </div>
+      <div class="col-md-6">
+        <div class="service">
+          <p>{{ order.endDate.toDate() | date:'MMMM d, y':'':locale }}</p>
         </div>
-        <div class="col-md-6">
-          <div class="order-card-button">
-            <button class="btn btn-full btn-primary" type="next">Dokumenten</button>
-          </div>
+      </div>
+    </div>
+    <div class="row second-row">
+      <div class="col-md-6">
+        <div class="order-card-description">
+          <p>{{ accommodationName }}</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="order-card-button">
+          <button class="btn btn-full btn-primary" type="next">Dokumenten</button>
         </div>
       </div>
     </div>

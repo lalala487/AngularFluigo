@@ -62,6 +62,7 @@ import { AccountOrdersComponent } from './account-orders/account-orders.componen
 import { OrderComponent } from './order/order.component';
 import { OrderListItemComponent } from './order-list-item/order-list-item.component';
 import { AccountOrderDocumentListComponent } from './account-order-document-list/account-order-document-list.component';
+import { AccountOrderDocumentListItemComponent } from './account-order-document-list-item/account-order-document-list-item.component';
 
 registerLocaleData(localeDe);
 
@@ -109,6 +110,7 @@ registerLocaleData(localeDe);
     OrderComponent,
     OrderListItemComponent,
     AccountOrderDocumentListComponent,
+    AccountOrderDocumentListItemComponent,
   ],
   imports: [
     BrowserModule,

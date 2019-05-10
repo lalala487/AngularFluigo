@@ -99,14 +99,14 @@ export class AccountComponent implements OnInit {
       const isDeletion = window.localStorage.getItem('isDeletion');
       if (isDeletion) {
         this.afAuth.auth.currentUser.delete().then(() => {
-          this.toastr.success('User delete successfully');
+          this.toastr.success('Benutzer erfolgreich entfernt');
 
           window.localStorage.removeItem('idDeletion');
 
           this.router.navigate(['/home']);
 
         }).catch(err => {
-          this.toastr.error('Coult not delete user');
+          this.toastr.error('Unmöglich Benutzer zu entfernen');
         });
       }
     });
@@ -127,7 +127,7 @@ export class AccountComponent implements OnInit {
       });
       const redirectUrl = window.localStorage.getItem('redirectUrl');
       this.router.navigate([redirectUrl]);
-      this.toastr.success('Email updated to ' + newEmail);
+      this.toastr.success('E-Mail verändert in ' + newEmail);
 
       window.localStorage.removeItem('redirectUrl');
       window.localStorage.removeItem('userNewEmail');
@@ -155,7 +155,7 @@ export class AccountComponent implements OnInit {
       window.localStorage.setItem('userNewEmail', this.userContact.email);
       window.localStorage.setItem('userOldEmail', this.email);
       this.sendEmailLink(environment.reAuthSettings);
-      this.toastr.info('You need to re-authenticate to change your email. An email was sent to you in order to do that.');
+      this.toastr.info('Sie müssen sich erneut authentifizieren');
 
       data.contact.email = this.email;
     }
@@ -173,16 +173,11 @@ export class AccountComponent implements OnInit {
 
   deleteUserChange(email: string) {
     if (email === this.email) {
-      this.toastr.info(
-        'Du hast eine E-Mail bekommen'
-      );
-
+      this.toastr.info('Du hast eine E-Mail bekommen');
       window.localStorage.setItem('isDeletion', '1');
       this.sendEmailLink(environment.reAuthSettingForData);
     } else {
-      this.toastr.error(
-        'Ist die E-Mail richtig geschrieben?'
-      );
+      this.toastr.error('Ist die E-Mail richtig geschrieben?');
     }
   }
 
@@ -197,7 +192,7 @@ export class AccountComponent implements OnInit {
       window.localStorage.setItem('emailForSignIn', this.email);
       window.localStorage.setItem('redirectUrl', url);
     } catch (error) {
-      this.toastr.error('Coult not send auth email, please try again');
+      this.toastr.error('Konnte E-Mail nicht schicken');
     }
   }
 

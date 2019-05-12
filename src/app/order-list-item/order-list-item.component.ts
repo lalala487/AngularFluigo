@@ -7,6 +7,7 @@ import { Accommodation } from '../models/accommodation';
 import { SafeStyle } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
 import { firestore } from 'firebase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-list-item',
@@ -27,6 +28,7 @@ export class OrderListItemComponent implements OnInit {
   constructor(
     private db: AngularFirestore,
     private imageService: ImageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -49,6 +51,10 @@ export class OrderListItemComponent implements OnInit {
         this.accommodationName = accommodation.name[this.locale];
       });
     }
+  }
+
+  goToOrder() {
+    this.router.navigate(['/account/orders/' + this.order.id]);
   }
 
 }

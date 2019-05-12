@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { OrderTimestamps } from '../models/order';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-account-orders',
@@ -29,7 +30,13 @@ export class AccountOrdersComponent implements OnInit {
       this.orders$ = this.db.collection<OrderTimestamps>(
         'order',
         ref => ref.where('userId', '==', userId)
-      ).valueChanges();
+      ).snapshotChanges().pipe(
+        map(actions => actions.map(a => {
+          const data = a.payload.doc.data() as OrderTimestamps;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        }))
+      );
     });
   }
 

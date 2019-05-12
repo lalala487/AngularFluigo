@@ -22,6 +22,7 @@ export interface Order {
 }
 
 export interface OrderTimestamps {
+  id: string;
   userId: string;
   merchantId: string;
   startDate: firestore.Timestamp;

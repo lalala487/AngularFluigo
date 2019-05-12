@@ -55,7 +55,9 @@
     </header>
 
     <app-account-profile *ngIf="currentPage === 'profile' && userContact" [userContact]="userContact" (userContactChange)="userContactChange($event)"></app-account-profile>
-    <app-account-orders *ngIf="currentPage === 'orders'"></app-account-orders>
+    <app-account-orders *ngIf="currentPage === 'orders'" (orderDocumentSelected)=orderDocumentSelected($event)></app-account-orders>
     <app-account-data *ngIf="currentPage === 'data' && userContact" (deleteUserChange)="deleteUserChange($event)"></app-account-data>
+
+    <app-order *ngIf="selectedOrder && currentPage === 'documents'"  [order]="selectedOrder"></app-order>
 
   </div>

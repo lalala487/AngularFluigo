@@ -1,13 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Order, OrderTimestamps } from '../models/order';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { OrderTimestamps } from '../models/order';
 import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { City } from '../models/city';
 import { Accommodation } from '../models/accommodation';
 import { SafeStyle } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
-import { firestore } from 'firebase';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order-list-item',
@@ -17,6 +15,8 @@ import { Router } from '@angular/router';
 export class OrderListItemComponent implements OnInit {
   @Input() order: OrderTimestamps;
   locale = environment.locale;
+
+  @Output() selectedOrderChange: EventEmitter<OrderTimestamps> = new EventEmitter();
 
   date: Date;
 
@@ -28,7 +28,6 @@ export class OrderListItemComponent implements OnInit {
   constructor(
     private db: AngularFirestore,
     private imageService: ImageService,
-    private router: Router
   ) { }
 
   ngOnInit() {
@@ -54,7 +53,7 @@ export class OrderListItemComponent implements OnInit {
   }
 
   goToOrder() {
-    this.router.navigate(['/account/orders/' + this.order.id]);
+    this.selectedOrderChange.emit(this.order);
   }
 
 }

@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SendgridService } from '../services/sendgrid.service';
 import { StripeCustomerService } from '../services/stripe-customer.service';
 import * as firebase from 'firebase/app';
+import { OrderTimestamps } from '../models/order';
 
 @Component({
   selector: 'app-account',
@@ -17,6 +18,7 @@ import * as firebase from 'firebase/app';
 })
 export class AccountComponent implements OnInit {
   userContact: UserContact;
+  selectedOrder: OrderTimestamps;
 
   email: string;
   emailChangedError = false;
@@ -27,7 +29,8 @@ export class AccountComponent implements OnInit {
   availablePages = {
     profile: 1,
     orders: 1,
-    data: 1
+    data: 1,
+    documents: 1
   };
 
   constructor(
@@ -194,6 +197,11 @@ export class AccountComponent implements OnInit {
     } catch (error) {
       this.toastr.error('Konnte E-Mail nicht schicken');
     }
+  }
+
+  orderDocumentSelected(order: OrderTimestamps) {
+    this.selectedOrder = order;
+    this.currentPage = 'documents';
   }
 
 }

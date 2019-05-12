@@ -59,10 +59,10 @@ import { AccountDataComponent } from './account-data/account-data.component';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AccountOrdersComponent } from './account-orders/account-orders.component';
-import { OrderComponent } from './order/order.component';
 import { OrderListItemComponent } from './order-list-item/order-list-item.component';
 import { AccountOrderDocumentListComponent } from './account-order-document-list/account-order-document-list.component';
 import { AccountOrderDocumentListItemComponent } from './account-order-document-list-item/account-order-document-list-item.component';
+import { AccountOrderDocumentsComponent } from './account-order-documents/account-order-documents.component';
 
 registerLocaleData(localeDe);
 
@@ -107,7 +107,7 @@ registerLocaleData(localeDe);
     AccountDataComponent,
     AccountProfileComponent,
     AccountOrdersComponent,
-    OrderComponent,
+    AccountOrderDocumentsComponent,
     OrderListItemComponent,
     AccountOrderDocumentListComponent,
     AccountOrderDocumentListItemComponent,

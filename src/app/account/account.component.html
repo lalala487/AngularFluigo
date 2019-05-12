@@ -58,6 +58,6 @@
     <app-account-orders *ngIf="currentPage === 'orders'" (orderDocumentSelected)=orderDocumentSelected($event)></app-account-orders>
     <app-account-data *ngIf="currentPage === 'data' && userContact" (deleteUserChange)="deleteUserChange($event)"></app-account-data>
 
-    <app-order *ngIf="selectedOrder && currentPage === 'documents'"  [order]="selectedOrder"></app-order>
+    <app-order-documents *ngIf="selectedOrder && currentPage === 'documents'"  [order]="selectedOrder"></app-order-documents>
 
   </div>

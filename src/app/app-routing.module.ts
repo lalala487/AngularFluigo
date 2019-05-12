@@ -10,8 +10,6 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { AccountOrderDocumentListComponent } from './account-order-document-list/account-order-document-list.component';
-import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   { path: 'deal/:slug', component: DealDetailComponent },
@@ -21,7 +19,6 @@ const routes: Routes = [
   { path: 'data-protection', component: DataProtectionComponent },
   { path: 'customer-service', component: CustomerServiceComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardService] },
-  { path: 'account/orders/:orderId', component: OrderComponent, canActivate: [AuthGuardService]},
   { path: 'account/:page', component: AccountComponent, canActivate: [AuthGuardService]},
   { path: 'agb', component: AgbComponent },
   { path: 'team', component: TeamComponent },

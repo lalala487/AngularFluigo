@@ -1,38 +1,31 @@
-.pdp-order-block {
-  width: 100%;
-}
-
-.pdp-order-block .center-wrap {
-  width: 100%;
-}
-
-@media only screen and (min-width: 1200px)  {
-  .pdp-order-block {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 100vh;
-  }
-}
-
 @media only screen and (max-width: 767.98px)  {
-  .pdp-order-block .btn-icon-press{
+  .account-order-documents .btn-icon-press{
     margin-bottom: 2rem;
   }
-
-  .pdp-order-block {
-    margin-top: -1rem;
-  }
 }
 
-@media (max-width: 575.98px) {
-  .pdp-order-block {
-    margin-top: 1.95rem;
-    margin-bottom: 8rem;
-  }
-}
-
-.pdp-order-block .btn-icon-press p {
+.account-order-documents .btn-icon-press p {
   margin-bottom: 0rem;
   margin-top: 1rem;
+}
+
+.account-order-documents {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.account-order-documents .buttons-first-row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.account-order-documents .buttons-second-row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+@media (min-width: 768px) {
+  .account-order-documents .buttons-first-row {
+    margin-bottom: 2rem;
+  }
 }

@@ -10,9 +10,9 @@
           </div>
         </div>
         <div class="col-lg-12" style="padding-left:0px; padding-right:0px;">
-          <!-- <div *ngFor="let order of orders$ | async">
-            <app-account-order-document-list-item [order]="order"></app-account-order-document-list-item>
-          </div> -->
+          <div *ngFor="let document of documents">
+            <app-account-order-document-list-item [document]="document"></app-account-order-document-list-item>
+          </div>
         </div>
       </div>
     </div>

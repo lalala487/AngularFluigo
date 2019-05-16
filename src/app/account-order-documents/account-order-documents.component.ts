@@ -8,8 +8,16 @@ import { OrderTimestamps } from '../models/order';
 export class AccountOrderDocumentsComponent implements OnInit {
   @Input() order: OrderTimestamps;
 
+  documents = [];
+
+  selectedDocument;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  chooseDocuments(documentType: string) {
+    this.documents = this.order.documents[documentType];
   }
 }

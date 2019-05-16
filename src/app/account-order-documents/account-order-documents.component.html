@@ -1,4 +1,4 @@
-<div class="row account-order-documents">
+<div *ngIf="documents.length == 0" class="row account-order-documents">
   <div class="col-sm-3">
   </div>
     <div class="col-lg-6">
@@ -13,13 +13,13 @@
       </div>
       <div class="row buttons-first-row">
         <div class="col-md-6">
-          <button class="btn-icon-press fade-in-out" type="next">
+          <button class="btn-icon-press fade-in-out" type="next" (click)="chooseDocuments('accommodation')">
             <img src="assets/icon/icon-accommodations.svg" height="55" alt="Icon Hotel">
             <p>Hotel</p>
           </button>
         </div>
         <div class="col-md-6">
-          <button class="btn-icon-press fade-in-out" type="next">
+          <button class="btn-icon-press fade-in-out" type="next" (click)="chooseDocuments('flight')">
             <img src="assets/icon/icon-flights.svg" height="55" alt="Icon Flug">
             <p>Flug</p>
           </button>
@@ -27,13 +27,13 @@
       </div>
       <div class="row buttons-second-row">
         <div class="col-md-6">
-          <button class="btn-icon-press fade-in-out" type="next">
+          <button class="btn-icon-press fade-in-out" type="next" (click)="chooseDocuments('activity')">
             <img src="assets/icon/icon-activities.svg" height="55" alt="Icon Aktivität">
             <p>Aktivität</p>
           </button>
         </div>
         <div class="col-md-6">
-          <button class="btn-icon-press fade-in-out" type="next">
+          <button class="btn-icon-press fade-in-out" type="next" (click)="chooseDocuments('various')">
             <img src="assets/icon/icon-others.svg" height="55" alt="Icon Andere">
             <p>Andere</p>
           </button>
@@ -44,3 +44,5 @@
   <div class="col-sm-3">
   </div>
 </div>
+
+<app-account-order-document-list *ngIf="documents.length > 0" [documents]="documents"></app-account-order-document-list>

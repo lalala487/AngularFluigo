@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-account-order-document-list-item',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-order-document-list-item.component.css']
 })
 export class AccountOrderDocumentListItemComponent implements OnInit {
+  @Input() document: string;
 
   constructor() { }
 

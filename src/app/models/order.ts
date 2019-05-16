@@ -40,6 +40,12 @@ export interface OrderTimestamps {
     departureFlightOffer: OrderFlightOffer;
     returnFlightOffer: OrderFlightOffer;
   };
+  documents: {
+    accommodation: Array<string>;
+    activity: Array<string>;
+    flight: Array<string>;
+    various: Array<string>;
+  };
 }
 
 export interface OrderOffer {

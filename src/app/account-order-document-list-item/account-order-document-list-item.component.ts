@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
   selector: 'app-account-order-document-list-item',
@@ -8,9 +9,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class AccountOrderDocumentListItemComponent implements OnInit {
   @Input() document: string;
 
-  constructor() { }
+  url;
+
+  constructor(
+    private storage: AngularFireStorage
+  ) { }
 
   ngOnInit() {
+    const ref = this.storage.ref(this.document);
+
+    this.url = ref.getDownloadURL();
   }
 
 }

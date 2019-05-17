@@ -1,0 +1,10 @@
+.order-document-data-line .document-label p {
+  white-space: nowrap;
+  line-height: 2.55;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.order-document-data-line .document-button a {
+  line-height: 1.75;
+}

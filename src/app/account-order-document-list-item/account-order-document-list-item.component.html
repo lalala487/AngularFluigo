@@ -1,8 +1,8 @@
-<div class="col-xl-12">
-  <!-- Name of the document how it is in the database -->
-  <p style="float:left;">{{ document }}</p>
-  <!-- The link destination of this button is directly to the document  -->
-  <!-- <button href="{{ url }}" style="float:right;" class="btn btn-full btn-primary" type="next">Anschauen</button> -->
-
-  <a href="{{ url }}" download="{{ document }}" tyle="float:right;" class="btn btn-full btn-primary" type="next">Anschauen</a>
+<div class="row order-document-data-line">
+  <div class="col-lg-8 document-label">
+    <p class="data-line-label" contentEditable=false>{{ document }}</p>
+  </div>
+  <div class="col-lg-4 document-button">
+    <a href="{{ url }}" download="{{ document }}" class="btn btn-full btn-primary" type="next">Anschauen</a>
+  </div>
 </div>

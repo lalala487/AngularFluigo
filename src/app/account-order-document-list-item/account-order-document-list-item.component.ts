@@ -18,7 +18,7 @@ export class AccountOrderDocumentListItemComponent implements OnInit {
   ngOnInit() {
     const ref = this.storage.ref(this.document);
 
-    this.url = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(url => this.url = url);
   }
 
 }

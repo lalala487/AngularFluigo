@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { OrderTimestamps } from '../models/order';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-account-order-documents',
   templateUrl: './account-order-documents.component.html',
@@ -13,13 +14,16 @@ export class AccountOrderDocumentsComponent implements OnInit {
 
   selectedDocument;
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   ngOnInit() {
   }
 
   chooseDocuments(documentType: string) {
     this.documents = this.order.documents[documentType];
+    if (this.documents.length === 0) {
+      this.toastr.error('No documents for ' + documentType);
+    }
   }
 
   goBackEmitter(goBack: boolean) {

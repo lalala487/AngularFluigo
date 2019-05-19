@@ -204,4 +204,10 @@ export class AccountComponent implements OnInit {
     this.currentPage = 'documents';
   }
 
+  goBackToMainEmitter(event) {
+    this.selectedOrder = null;
+
+    this.currentPage = 'orders';
+  }
+
 }

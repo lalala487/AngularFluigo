@@ -9,7 +9,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class AccountOrderDocumentListItemComponent implements OnInit {
   @Input() document: string;
 
-  url;
+  url: string;
 
   constructor(
     private storage: AngularFireStorage

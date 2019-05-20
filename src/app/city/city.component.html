@@ -1,71 +1,81 @@
 <div class="pdp-city-block col-xl-12">
 
-    <div class="col-xl-12 pdp-city-block-title" [style.background-image]="imageUrl">
-      <div class="pdp-city-block-gradient">
-        <div class="text-block">
-          <h2>{{ city?.name[locale] }}</h2>
-          <hr/>
-          <p>{{ city?.description[locale] }}</p>
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-12 pdp-city-butler-block gradient">
+      <div class="butler-container">
+        <div class="butler-image"><img src="assets/img/avatar-round-notification@2x.png" alt="Butler Flugio">
         </div>
+        <div class="butler-text"><span>Großartig! Du reist nach ...</span></div>
       </div>
     </div>
-
-    <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-6 pdp-icons-block gradient">
-        <div class="text-block">
-          <p i18n="perfect for">Perfekt für</p>
-          <app-interest [interest]="interest" *ngFor="let interest of interestList"></app-interest>
-        </div>
-      </div>
-      <div class="col-xl-6 pdp-review-block gradient">
-        <app-review [review]="city?.review" style="width:100%;"></app-review>
-      </div>
-    </div>
-
-    <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-12 pdp-city-description-block" style="background-image: url(assets/img/200001_1.jpg);">
-        <div class="pdp-city-description-block-gradient">
-          <div class="text-block">
-            <p>Amsterdam ist berühmt für seine gezelligheid, ein niederländisches Lebensgefühl, das man nicht erklären und nur verstehen kann, wenn man es erlebt. Gezelligheid ist eine Stimmung, in der die Zeit stillzustehen scheint und die Sorgen verschwinden – zumindest bis zum nächsten Morgen. Sie lässt sich am besten in einem traditionellen bruin café erleben. Hier, wo Generationen von Rauchern die Wände bräunlich verfärbt haben, tropft gezelligheid quasi aus dem Zapfhahn. Auch nach dem Abendessen, wenn man bei Kerzenschein noch etwas die Zeit verquatscht, kann es gezellig werden.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-12 pdp-city-activities-block gradient">
-        <div>
-          <div class="text-block">
-            <p>{{ city?.secrets[locale] }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-12 pdp-city-climate-block gradient">
-
-        <p>Climate Block</p>
-
-      </div>
-    </div>
-
-    <!-- <div class="row pdp-city-activities-detail-block" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-lg-6">
-        <app-city-activity [activity]="city.activity1"></app-city-activity>
-      </div>
-      <div class="col-lg-6">
-        <app-city-activity [activity]="city?.activity2"></app-city-activity>
-      </div>
-    </div>
-
-    <div class="row pdp-city-activities-detail-block" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-lg-6">
-        <app-city-activity [activity]="city.activity3"></app-city-activity>
-      </div>
-      <div class="col-lg-6">
-        <app-city-activity [activity]="city?.activity4"></app-city-activity>
-      </div>
-    </div> -->
-
   </div>
+
+  <div class="col-xl-12 pdp-city-block-title" [style.background-image]="imageUrl">
+    <div class="pdp-city-block-gradient">
+      <div class="text-block">
+        <h2>{{ city?.name[locale] }}</h2>
+        <hr/>
+        <p>{{ city?.description[locale] }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-6 pdp-icons-block gradient">
+      <div class="text-block">
+        <p i18n="perfect for">Perfekt für</p>
+        <app-interest [interest]="interest" *ngFor="let interest of interestList"></app-interest>
+      </div>
+    </div>
+    <div class="col-xl-6 pdp-review-block gradient">
+      <app-review [review]="city?.review" style="width:100%;"></app-review>
+    </div>
+  </div>
+
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-12 pdp-city-description-block" style="background-image: url(assets/img/200001_1.jpg);">
+      <div class="pdp-city-description-block-gradient">
+        <div class="text-block">
+          <p>Amsterdam ist berühmt für seine gezelligheid, ein niederländisches Lebensgefühl, das man nicht erklären und nur verstehen kann, wenn man es erlebt. Gezelligheid ist eine Stimmung, in der die Zeit stillzustehen scheint und die Sorgen verschwinden – zumindest bis zum nächsten Morgen. Sie lässt sich am besten in einem traditionellen bruin café erleben. Hier, wo Generationen von Rauchern die Wände bräunlich verfärbt haben, tropft gezelligheid quasi aus dem Zapfhahn. Auch nach dem Abendessen, wenn man bei Kerzenschein noch etwas die Zeit verquatscht, kann es gezellig werden.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-12 pdp-city-activities-block gradient">
+      <div>
+        <div class="text-block">
+          <p>{{ city?.secrets[locale] }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-12 pdp-city-climate-block gradient">
+
+      <p>Climate Block</p>
+
+    </div>
+  </div>
+
+  <!-- <div class="row pdp-city-activities-detail-block" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-lg-6">
+      <app-city-activity [activity]="city.activity1"></app-city-activity>
+    </div>
+    <div class="col-lg-6">
+      <app-city-activity [activity]="city?.activity2"></app-city-activity>
+    </div>
+  </div>
+
+  <div class="row pdp-city-activities-detail-block" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-lg-6">
+      <app-city-activity [activity]="city.activity3"></app-city-activity>
+    </div>
+    <div class="col-lg-6">
+      <app-city-activity [activity]="city?.activity4"></app-city-activity>
+    </div>
+  </div> -->
+
+</div>

@@ -64,6 +64,7 @@ import { AccountOrderDocumentListComponent } from './account-order-document-list
 import { AccountOrderDocumentListItemComponent } from './account-order-document-list-item/account-order-document-list-item.component';
 import { AccountOrderDocumentsComponent } from './account-order-documents/account-order-documents.component';
 import { TemperatureComponent } from './temperature/temperature.component';
+import { ChartsModule } from 'ng2-charts';
 
 registerLocaleData(localeDe);
 
@@ -117,6 +118,7 @@ registerLocaleData(localeDe);
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ChartsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,

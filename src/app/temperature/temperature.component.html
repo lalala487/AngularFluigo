@@ -1,3 +1,11 @@
 <div class="temperature-block gradient">
-  <p>temperature works!</p>
+  <div style="display: block">
+    <canvas baseChart
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType">
+    </canvas>
+  </div>
 </div>

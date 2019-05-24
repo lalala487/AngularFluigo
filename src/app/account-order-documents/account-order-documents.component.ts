@@ -22,7 +22,7 @@ export class AccountOrderDocumentsComponent implements OnInit {
   chooseDocuments(documentType: string) {
     this.documents = this.order.documents[documentType];
     if (this.documents.length === 0) {
-      this.toastr.error('No documents for ' + documentType);
+      this.toastr.error('Es gibt noch keine Unterlagen');
     }
   }
 

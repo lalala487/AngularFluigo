@@ -23,7 +23,7 @@
   <div class="row" style="margin-left:0rem; margin-right:0rem;">
     <div class="col-xl-6 pdp-icons-block gradient">
       <div class="text-block">
-        <p i18n="perfect for">Perfekt für</p>
+        <p i18n="perfect for">Beliebt für</p>
         <app-interest [interest]="interest" *ngFor="let interest of interestList"></app-interest>
       </div>
     </div>
@@ -52,11 +52,9 @@
     </div>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-city-climate-block gradient">
-
-      <p>Climate Block</p>
-
+  <div class="row">
+    <div class="col-xl-12">
+      <app-temperature></app-temperature>
     </div>
   </div>
 

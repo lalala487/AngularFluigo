@@ -1,11 +1,27 @@
 <div class="temperature-block gradient">
-  <div style="display: block">
-    <canvas baseChart
-            [datasets]="lineChartData"
-            [labels]="lineChartLabels"
-            [options]="lineChartOptions"
-            [legend]="lineChartLegend"
-            [chartType]="lineChartType">
-    </canvas>
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-12 pdp-temperature-butler-block">
+      <div class="butler-container">
+        <div class="butler-image"><img src="assets/img/avatar-round-notification@2x.png" alt="Butler Flugio"></div>
+        <div class="butler-text"><span>Holland mit seiner langen Küstenlinie entlang der Nordsee, hat ein typisch gemäßigtes Meeresklima. Und dieser Einfluss des Meeres sorgt dafür, dass es im Winter nicht allzu kalt ist, im Sommer nicht allzu warm, und dass die Luft stets mit ausreichender Feuchtigkeit für einen Regenschauer angereichert ist.</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div style="display: block" class="canvas-wrapper">
+      <canvas baseChart
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType">
+      </canvas>
+    </div>
+  </div>
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-12 temperature-data">
+      <p style="float:left;">Januar</p>
+      <p style="float:right;">Dezember</p>
+    </div>
   </div>
 </div>

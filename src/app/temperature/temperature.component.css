@@ -1,8 +1,60 @@
 .temperature-block {
   height: auto;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-  padding-top: 2.5rem;
+  padding-top: 5rem;
   padding-bottom: 2.5rem;
   background-color: rgba(77, 131, 132, 1);
+}
+
+.temperature-block .canvas-wrapper {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.temperature-block canvas{
+  width:100% !important;
+}
+
+.temperature-block .temperature-description p{
+  padding-left: 5rem;
+  padding-right: 5rem;
+  letter-spacing: .07rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.temperature-block .temperature-data p{
+  letter-spacing: .07rem;
+}
+
+.temperature-block .temperature-data {
+  margin-bottom: 2.5rem;
+  padding-left: 5.5rem;
+  padding-right: 5rem;
+}
+
+.temperature-block .pdp-temperature-butler-block {
+  padding-left: 7.5rem;
+  padding-right: 7.5rem;
+}
+
+@media only screen and (max-width: 768px)  {
+  .temperature-block .pdp-temperature-butler-block {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .temperature-block .canvas-wrapper {
+    padding-left: 2rem;
+    padding-right: 2.5rem;
+  }
+
+  .temperature-block canvas{
+    width:100% !important;
+  }
+
+  .temperature-block .temperature-data {
+    margin-bottom: 2.5rem;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
 }

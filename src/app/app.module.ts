@@ -65,6 +65,7 @@ import { AccountOrderDocumentListItemComponent } from './account-order-document-
 import { AccountOrderDocumentsComponent } from './account-order-documents/account-order-documents.component';
 import { TemperatureComponent } from './temperature/temperature.component';
 import { ChartsModule } from 'ng2-charts';
+import { OfflineComponent } from './offline/offline.component';
 
 registerLocaleData(localeDe);
 
@@ -114,6 +115,7 @@ registerLocaleData(localeDe);
     AccountOrderDocumentListComponent,
     AccountOrderDocumentListItemComponent,
     TemperatureComponent,
+    OfflineComponent,
   ],
   imports: [
     BrowserModule,

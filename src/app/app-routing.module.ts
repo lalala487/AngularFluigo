@@ -10,18 +10,21 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { OfflineComponent } from './offline/offline.component';
+import { OfflineGuardService } from './services/offline-guard.service';
 
 const routes: Routes = [
-  { path: 'deal/:slug', component: DealDetailComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent },
-  { path: 'data-protection', component: DataProtectionComponent },
-  { path: 'customer-service', component: CustomerServiceComponent },
-  { path: 'account', component: AccountComponent, canActivate: [AuthGuardService] },
-  { path: 'account/:page', component: AccountComponent, canActivate: [AuthGuardService]},
-  { path: 'agb', component: AgbComponent },
-  { path: 'team', component: TeamComponent },
+  { path: 'deal/:slug', component: DealDetailComponent, canActivate: [OfflineGuardService] },
+  { path: 'home', component: HomeComponent, canActivate: [OfflineGuardService] },
+  { path: 'login', component: LoginComponent, canActivate: [OfflineGuardService]  },
+  { path: 'logout', component: LogoutComponent, canActivate: [OfflineGuardService]  },
+  { path: 'data-protection', component: DataProtectionComponent, canActivate: [OfflineGuardService]  },
+  { path: 'customer-service', component: CustomerServiceComponent, canActivate: [OfflineGuardService]  },
+  { path: 'account', component: AccountComponent, canActivate: [AuthGuardService, OfflineGuardService] },
+  { path: 'account/:page', component: AccountComponent, canActivate: [AuthGuardService, OfflineGuardService]},
+  { path: 'agb', component: AgbComponent, canActivate: [OfflineGuardService]  },
+  { path: 'team', component: TeamComponent, canActivate: [OfflineGuardService]  },
+  { path: 'offline', component: OfflineComponent, canActivate: [OfflineGuardService]  },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];

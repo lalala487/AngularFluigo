@@ -16,12 +16,17 @@ export class HomeComponent implements OnInit {
 
   deals: Observable<Deal[]>;
 
+  isOffline;
+
   constructor(
     private db: AngularFirestore,
     public afAuth: AngularFireAuth) {
   }
 
   ngOnInit() {
+    this.isOffline = window.localStorage.getItem('isOffline');
+    console.log('isOffline home', this.isOffline);
+
     const twoWeeksFromNow = moment().add(14, 'days').toDate();
 
     this.deals = this.db.collection<Deal>(

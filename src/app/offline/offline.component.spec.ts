@@ -1,20 +1,20 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { TemperatureComponent } from './temperature.component';
+// import { OfflineComponent } from './offline.component';
 
-// describe('TemperatureComponent', () => {
-//   let component: TemperatureComponent;
-//   let fixture: ComponentFixture<TemperatureComponent>;
+// describe('OfflineComponent', () => {
+//   let component: OfflineComponent;
+//   let fixture: ComponentFixture<OfflineComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ TemperatureComponent ]
+//       declarations: [ OfflineComponent ]
 //     })
 //     .compileComponents();
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(TemperatureComponent);
+//     fixture = TestBed.createComponent(OfflineComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

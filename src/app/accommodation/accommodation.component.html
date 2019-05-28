@@ -32,7 +32,7 @@
     </div>
   </div>
 
-  <div class="col-xl-12 pdp-accommodation-description-block" style="background-image: url(assets/img/200001_1.jpg);">
+  <div class="col-xl-12 pdp-accommodation-description-block" [style.background-image]="imageUrl">
     <div class="pdp-accommodation-description-block-gradient">
       <div class="text-block">
         <p>{{ accommodation?.overview[locale] }} </p>

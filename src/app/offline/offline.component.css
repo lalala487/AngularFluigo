@@ -1,0 +1,142 @@
+.offline-lp .right-col {
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offline-lp .left-col {
+  padding-left: 0rem;
+  padding-right: 0rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offline-lp .left-col {
+  background:url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fbg-lp.jpg?alt=media&token=60ca919d-7e22-4996-b7bd-c8f9b6026a9e') no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.offline-lp .right-col {
+  background-color: rgba(77, 131, 132, 1);
+  position: relative;
+}
+
+.offline-lp .left-col::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image:
+    linear-gradient(to bottom right, rgba(19, 78, 94, .6) 0%, rgba(77, 131, 132, .6) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,.35) 40%,rgba(0,0,0,.35) 60%,rgba(0,0,0,0) 100%);
+}
+
+.offline-lp .left-col-wrapper {
+	z-index: 1;
+  padding-left: 7.5rem;
+  padding-right: 7.5rem;
+}
+
+.offline-lp .right-col-wrapper {
+	z-index: 1;
+  padding-left: 7.5rem;
+  padding-right: 7.5rem;
+}
+
+.offline-lp .right-col-wrapper .logo-container {
+  margin-bottom: 5rem;
+}
+
+.offline-lp .right-col-wrapper .logo-container img {
+  display: block;
+  margin: 0 auto;
+}
+
+.offline-lp .right-col-wrapper .title-container {
+  font-size: 1.4rem;
+  letter-spacing: .07rem;
+  font-weight: 600;
+  opacity: 1;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.offline-lp .right-col-wrapper .title-container span {
+  font-weight: 400 !important;
+  opacity: .75 !important;
+}
+
+.offline-lp .left-col-wrapper .review-container p{
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  text-align: center;
+}
+
+.offline-lp .left-col-wrapper .review-container .text-review{
+  margin-bottom: 2.5rem;
+}
+
+.offline-lp .left-col-wrapper .review-container img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+}
+
+.offline-lp .left-col-wrapper .review-container .text-name{
+  font-size: .8rem;
+  letter-spacing: .07rem;
+  text-align: center;
+  margin-bottom: 0rem;
+}
+
+.offline-lp .right-col-wrapper .subtitle-container p{
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.offline-lp .right-col-wrapper .email-form-container input{
+  margin-bottom: 1rem;
+}
+
+.offline-lp .right-col-wrapper .email-form-container button{
+  margin-bottom: 1rem;
+}
+
+.offline-lp .right-col-wrapper .legal-text{
+  font-size: .8rem;
+  letter-spacing: .07rem;
+  text-align: center;
+}
+
+.offline-lp .right-col-wrapper .legal-text p{
+  margin-bottom: 0rem;
+}
+
+@media only screen and (max-width: 767.98px) {
+  .offline-lp .left-col-wrapper,
+  .offline-lp .right-col-wrapper {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .offline-lp .left-col,
+  .offline-lp .right-col {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    min-height: 100vh;
+  }
+}

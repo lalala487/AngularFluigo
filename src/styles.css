@@ -1178,7 +1178,6 @@ a:hover {
 }
 .pdp-column-left-bar {
 	height: 100%;
-	/* background-color: rgba(77, 131, 132, 1); */
 }
 @media only screen and (max-width: 1199.98px) {
 	.pdp-column-left-bar {

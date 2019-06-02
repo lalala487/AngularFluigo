@@ -2,7 +2,9 @@
   <div class="col-lg-5 left-col order-2 gradient">
     <div class="left-col-wrapper">
       <div class="review-container">
-        <p class="text-review">"Jedes Angebot ist inklusiv Flug und Hotel. Lust auf eine Erlegniss? Dann kannst du ganz einfach lokale Aktivitäten hinzufügen. Brauchst du auch noch ein Taxi um zum Hotel zu gehen? Auch möglich! Alles ist so einfach..."</p>
+        <p class="text-review">"Jedes Angebot ist inklusiv Flug und Hotel. Lust auf eine Erlegniss? Dann kannst du ganz
+          einfach lokale Aktivitäten hinzufügen. Brauchst du auch noch ein Taxi um zum Hotel zu gehen? Auch möglich!
+          Alles ist so einfach..."</p>
         <img src="assets/img/avatar-round-notification@2x.png" width="75" height="75" alt="Butler Flugio">
         <p class="text-name">Bastiaan Harmsen</p>
       </div>
@@ -19,14 +21,14 @@
         </p>
       </div>
       <div class="subtitle-container">
-        <p>Bald ist es soweit! Dann fangen wir an mit unseren einzigartigen Städtereisen, und wir geben dir gerne ein spezielle Rabatt für die erste 500 Kunden wenn es soweit ist! Also, sag uns doch an welche Addresse wir diese Rabatt verschicken können.</p>
+        <p>Bald ist es soweit! Dann fangen wir an mit unseren einzigartigen Städtereisen, und wir geben dir gerne ein
+          spezielle Rabatt für die erste 500 Kunden wenn es soweit ist! Also, sag uns doch an welche Addresse wir diese
+          Rabatt verschicken können.</p>
       </div>
       <div class="email-form-container">
-        <input required="required" autocomplete="off" name="email" type="email" class="form-control" placeholder="E-Mail">
-        <button type="submit" class="btn btn-primary btn-full">Weiter</button>
-      </div>
-      <div class="legal-text">
-        <p>Mit dem Klick auf „Weiter" stimmst du unseren AGB sowie dem Einsatz von Cookies zu und nimmst unsere Datenschutzbestimmungen zur Kenntnis.</p>
+        <app-auth [showTitle]="false" (emailSentChanged)="emailSentChanged($event)" (isLoggedInChange)="isLoggedInChange($event)"
+          *ngIf="!emailSent"></app-auth>
+        <app-email-sent *ngIf="emailSent"></app-email-sent>
       </div>
     </div>
   </div>

@@ -1,14 +1,17 @@
-<div class="logo-container">
-  <a href="/">
-    <img src="assets/img/logo.svg" width="110" alt="Flugio Logo" style="margin: 0 auto; display: block;">
-  </a>
+<div *ngIf="showTitle">
+  <div class="logo-container">
+    <a href="/">
+      <img src="assets/img/logo.svg" width="110" alt="Flugio Logo" style="margin: 0 auto; display: block;">
+    </a>
+  </div>
+  <div class="col-lg-12">
+    <p class="modal-header-one">Exklusive Städtereisen bis zu 67% günstiger</p>
+  </div>
+  <div class="col-lg-12">
+    <p class="modal-header-two">Kostenloser Zugang zu Exclusive Angeboten nur mit Ihrer E-Mail</p>
+  </div>
 </div>
-<div class="col-lg-12">
-  <p class="modal-header-one">Exklusive Städtereisen bis zu 67% günstiger</p>
-</div>
-<div class="col-lg-12">
-  <p class="modal-header-two">Kostenloser Zugang zu Exclusive Angeboten nur mit Ihrer E-Mail</p>
-</div>
+
 <div class="col-lg-12">
   <form #loginForm="ngForm">
     <div class="form-group">

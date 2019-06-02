@@ -327,14 +327,10 @@ body.dialog-open {
 	font-size: .8rem;
 	letter-spacing: .07rem;
 	text-align: center;
-	/* Below is for when Facebook is implemented */
-	/* margin-top: 2rem; */
 	margin-top: 3rem;
 	margin-bottom: 2rem;
 }
 .modal-input-email {
-	/* Below is for when Facebook is implemented */
-	/* margin-top: 3rem; */
 	margin-top: 2rem;
 }
 .modal-verify-text {
@@ -607,6 +603,12 @@ button.toast-close-button {
 .toast-error {
 	background-color: rgba(19, 78, 94, 1);
 }
+.toast-info {
+	background-color: rgba(19, 78, 94, 1);
+}
+.toast-warning {
+	background-color: rgba(19, 78, 94, 1);
+}
 @media only screen and (min-width: 1200px) {
 	.toast-error {
 		background-color: rgba(19, 78, 94, .6);
@@ -614,12 +616,12 @@ button.toast-close-button {
 	.toast-success {
 		background-color: rgba(19, 78, 94, .6);
 	}
-}
-.toast-info {
-	background-color: #2f96b4;
-}
-.toast-warning {
-	background-color: #f89406;
+	.toast-info {
+		background-color: rgba(19, 78, 94, .6);
+	}
+	.toast-warning {
+		background-color: rgba(19, 78, 94, .6);
+	}
 }
 .toast-progress {
 	position: absolute;

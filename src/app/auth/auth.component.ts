@@ -15,7 +15,7 @@ export class AuthComponent implements OnInit {
   isLoggedIn = false;
   emailSent = false;
 
-  @Input() showTitle = true;
+  @Input() showContentLanding = false;
 
   @Output() isLoggedInChange: EventEmitter<boolean> = new EventEmitter();
   @Output() emailSentChanged: EventEmitter<boolean> = new EventEmitter();
@@ -51,7 +51,7 @@ export class AuthComponent implements OnInit {
       this.emailSentChanged.emit(true);
 
     } catch (error) {
-      this.toastr.error('Coult not send auth email, please try again');
+      this.toastr.error('Versuch es bitte nochmal', 'Ehm...');
     }
   }
 

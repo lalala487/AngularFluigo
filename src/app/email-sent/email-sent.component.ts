@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-email-sent',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./email-sent.component.css']
 })
 export class EmailSentComponent implements OnInit {
+  @Input() showContentLanding = false;
 
   constructor() { }
 

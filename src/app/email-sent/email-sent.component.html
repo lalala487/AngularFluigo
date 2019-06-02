@@ -1,4 +1,5 @@
-<div class="logo-container">
+<div *ngIf="!showContentLanding">
+  <div class="logo-container">
     <a href="/">
       <img src="assets/img/logo.svg" width="110" alt="Flugio Logo" style="margin: 0 auto; display: block;">
     </a>
@@ -11,7 +12,13 @@
   </div>
   <div class="col-lg-12">
       <div class="form-group">
-        <p class="modal-verify-text">Bitte bestätigen Sie Ihre Anmeldung mit einem Klick in die E-Mail, die wir Ihnen gerade geschickt haben. Schauen Sie bitte auch im Spamfolder nach, falls Sie nichts von uns hören sollten.</p>
+        <p class="modal-verify-text">Bitte bestätig deine Anmeldung mit einem Klick in die E-Mail, die wir dir gerade geschickt haben. Schau auch im Spamfolder nach, falls du nichts von uns hören sollst.</p>
       </div>
   </div>
-  
+</div>
+
+<div *ngIf="showContentLanding">
+  <div class="col-lg-12">
+    <p class="text-container">Bitte bestätig deine Anmeldung mit einem Klick in die E-Mail, die wir dir gerade geschickt haben. Schau auch im Spamfolder nach, falls du nichts von uns hören sollst.</p>
+  </div>
+</div>

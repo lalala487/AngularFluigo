@@ -1,42 +1,38 @@
-<div *ngIf="showTitle">
+<div>
   <div class="logo-container">
     <a href="/">
       <img src="assets/img/logo.svg" width="110" alt="Flugio Logo" style="margin: 0 auto; display: block;">
     </a>
   </div>
-  <div class="col-lg-12">
-    <p class="modal-header-one">Exklusive Städtereisen bis zu 67% günstiger</p>
+
+  <div class="title-container">
+    <p>
+      Exklusive<span> Städtereisen bis zu </span>69%<span> günstiger</span>
+    </p>
   </div>
-  <div class="col-lg-12">
+
+  <div *ngIf="showContentLanding" class="subtitle-container">
+    <p>Bald ist es soweit! Einzigartige Städtereisen warten auf dich! Wir feiern den Start von Flugio mit einem
+      einzigartigen Rabatt für dich. Sag uns nur noch an welche E-Mail wir deinen Rabatt senden können.</p>
+  </div>
+
+  <div *ngIf="!showContentLanding" class="col-lg-12">
     <p class="modal-header-two">Kostenloser Zugang zu Exclusive Angeboten nur mit Ihrer E-Mail</p>
   </div>
-</div>
 
-<div class="col-lg-12">
-  <form #loginForm="ngForm">
-    <div class="form-group">
-      <input type="email" name="email" autocomplete="email" class="form-control modal-input-email" placeholder="E-Mail"
-        [(ngModel)]="email" email>
-      <button class="btn btn-primary modal-input-button-email" type="next" (click)="sendEmailLink()"
-        [disabled]="!loginForm.form.valid">Weiter</button>
-    </div>
-  </form>
-</div>
-<!-- <div class="col-lg-12 modal-hr">
-    <div class="strike">
-      <span>oder</span>
-    </div>
-  </div> -->
-<!-- <div class="col-lg-12">
-    <form>
+  <div class="col-lg-12">
+    <form #loginForm="ngForm">
       <div class="form-group">
-        <button class="btn btn-primary modal-input-button-facebook" type="next">Weiter mit Facebook</button>
+        <input type="email" name="email" autocomplete="email" class="form-control modal-input-email"
+          placeholder="E-Mail" [(ngModel)]="email" email>
+        <button class="btn btn-primary modal-input-button-email" type="next" (click)="sendEmailLink()"
+          [disabled]="!loginForm.form.valid">Weiter</button>
       </div>
     </form>
-  </div> -->
-<div class="col-lg-12">
-  <div class="form-group">
-    <p class="modal-legal-text">Mit dem Klick auf "Weiter" stimmen Sie unseren <a href="/agb">AGB</a>, Einsatz von <a
+  </div>
+
+  <div class="col-lg-12">
+    <p class="modal-legal-text-lp">Mit dem Klick auf "Weiter" stimmen Sie unseren <a href="/agb">AGB</a>, Einsatz von <a
         href="/agb">Cookies</a> und <a href="/data-protection">Datenschutzbestimmungen</a> zu</p>
   </div>
 </div>

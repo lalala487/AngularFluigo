@@ -88,7 +88,7 @@ export class DealDetailComponent implements OnInit {
       this.deal = deals[0];
 
       if (this.deal.endDate.toDate() < new Date()) {
-        this.toastr.error('Deal is expired!', 'Error');
+        this.toastr.error('Das Angebot ist beendet', 'Ehm...');
 
         this.router.navigate(['/home']);
       }

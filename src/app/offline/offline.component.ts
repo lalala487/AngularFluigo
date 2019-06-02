@@ -18,13 +18,11 @@ export class OfflineComponent implements OnInit {
 
   isLoggedInChange(isLoggedIn: boolean): void {
     console.log('loggedIn changed', isLoggedIn);
-    console.log('loggedIn changed', isLoggedIn);
-    this.toastr.info('loggedIn changed');
   }
 
   emailSentChanged(emailSent: boolean): void {
     this.emailSent = emailSent;
-    this.toastr.info('emailSent');
+    this.toastr.info('Du bekommst jetzt ein E-Mail', 'Perfekt');
   }
 
 }

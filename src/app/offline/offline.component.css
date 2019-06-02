@@ -2,7 +2,7 @@
   padding-left: 0rem;
   padding-right: 0rem;
   padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,26 +54,12 @@
 }
 
 .offline-lp .right-col-wrapper .logo-container {
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
 }
 
 .offline-lp .right-col-wrapper .logo-container img {
   display: block;
   margin: 0 auto;
-}
-
-.offline-lp .right-col-wrapper .title-container {
-  font-size: 1.4rem;
-  letter-spacing: .07rem;
-  font-weight: 600;
-  opacity: 1;
-  text-align: center;
-  margin-bottom: 5rem;
-}
-
-.offline-lp .right-col-wrapper .title-container span {
-  font-weight: 400 !important;
-  opacity: .75 !important;
 }
 
 .offline-lp .left-col-wrapper .review-container p{
@@ -96,31 +82,6 @@
   font-size: .8rem;
   letter-spacing: .07rem;
   text-align: center;
-  margin-bottom: 0rem;
-}
-
-.offline-lp .right-col-wrapper .subtitle-container p{
-  font-size: 1rem;
-  letter-spacing: .07rem;
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.offline-lp .right-col-wrapper .email-form-container input{
-  margin-bottom: 1rem;
-}
-
-.offline-lp .right-col-wrapper .email-form-container button{
-  margin-bottom: 1rem;
-}
-
-.offline-lp .right-col-wrapper .legal-text{
-  font-size: .8rem;
-  letter-spacing: .07rem;
-  text-align: center;
-}
-
-.offline-lp .right-col-wrapper .legal-text p{
   margin-bottom: 0rem;
 }
 

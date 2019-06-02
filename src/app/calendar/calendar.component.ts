@@ -196,7 +196,7 @@ export class CalendarComponent implements OnInit {
         });
 
         if (!this.cheapestEvent || events.length === 0) {
-          this.toastr.error('"Das Datum ist nicht korrekt eingefühlt"', 'Ehm...');
+          this.toastr.error('Das Datum ist nicht korrekt eingefühlt', 'Ehm...');
           return [];
         }
 

@@ -10,9 +10,6 @@
   </div>
   <div class="col-lg-7 right-col order-1 gradient">
     <div class="right-col-wrapper">
-      <!-- <div class="logo-container">
-        <img src="assets/img/logo.svg" width="110" alt="Flugio Logo">
-      </div> -->
       <div class="email-form-container">
         <app-auth [showContentLanding]="true" (emailSentChanged)="emailSentChanged($event)" (isLoggedInChange)="isLoggedInChange($event)"
           *ngIf="!emailSent"></app-auth>

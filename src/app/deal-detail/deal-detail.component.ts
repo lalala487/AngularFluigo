@@ -139,11 +139,14 @@ export class DealDetailComponent implements OnInit {
 
   goToStep(step: number) {
     if (step < this.currentStep) {
+      this.scrollToTopOfTheSection();
       this.currentStep = step;
     }
   }
 
   moveToNextStep(): void {
+    this.scrollToTopOfTheSection();
+
     if (this.currentStep === 2 && this.accummulations.children === 0) {
       this.currentStep = this.currentStep + 2;
     } else if (this.currentStep === 3 && this.accummulations.children > 0) {
@@ -199,12 +202,20 @@ export class DealDetailComponent implements OnInit {
     }
   }
 
+  private scrollToTopOfTheSection() {
+    const top = document.getElementById('top');
+    if (top !== null) {
+      top.scroll(0, 0);
+    }
+  }
+
   moveToPreviousStep(): void {
     if (this.currentStep === 0) {
       this.router.navigate(['/']);
       return;
     }
 
+    this.scrollToTopOfTheSection();
     if (this.currentStep === 4 && this.accummulations.children === 0) {
       this.currentStep = this.currentStep - 2;
     } else if (this.currentStep === 8 && !this.accummulations.activity) {

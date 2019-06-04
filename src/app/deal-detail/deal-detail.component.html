@@ -88,7 +88,7 @@
             The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
             <p class="price-amount">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}
             </p>
-            <button sidebarjsOpen class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
+            <button [attr.disabled]="!accummulations.event ? true : null" sidebarjsOpen class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@
                 The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
                 <p class="price-amount">{{ accummulations.totalPriceAmount.currency }}
                   {{ accummulations.totalPriceAmount }}</p>
-                <button sidebarjsOpen class="btn btn-small btn-primary" type="next"
+                  <button [attr.disabled]="!accummulations.event ? true : null" sidebarjsOpen class="btn btn-small btn-primary" type="next"
                   i18n="sidebar details">Details</button>
               </div>
             </div>

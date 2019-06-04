@@ -6,6 +6,7 @@ import { User } from '../models/user';
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AppConfig } from '../models/app-config';
 import { Config } from 'protractor';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,11 @@ export class OfflineGuardService {
       .pipe(take(1))
       .pipe(
         reduce((acc: boolean, configs: AppConfig[]) => {
+          if (!environment.production) {
+            window.localStorage.setItem('isOffline', '0');
+            return true;
+          }
+
           console.log('configs', configs);
           console.log('url', state.url);
           if (!configs.length) {

@@ -12,8 +12,9 @@
   </div>
 
   <div *ngIf="showContentLanding" class="subtitle-container">
-    <p>Bald ist es soweit! Einzigartige Städtereisen warten auf dich! Wir feiern den Start von Flugio mit einem
-      einzigartigen Rabatt für dich. Sag uns nur noch an welche E-Mail wir deinen Rabatt senden können.</p>
+    <app-date-countdown-circle [endDate]="1560621600"></app-date-countdown-circle>
+    <p>Bald ist es soweit! Wir feiern den Start von Flugio mit einem
+      einzigartigen Rabatt für dich. Wohin sollen wir der senden?</p>
   </div>
 
   <div *ngIf="!showContentLanding" class="col-lg-12">
@@ -32,7 +33,7 @@
   </div>
 
   <div class="col-lg-12">
-    <p class="modal-legal-text-lp">Mit dem Klick auf "Weiter" stimmen Sie unseren <a href="/agb">AGB</a>, Einsatz von <a
+      <p class="modal-legal-text-lp">Mit dem Klick auf "Weiter" stimmst du unseren <a href="/agb">AGB</a>, Einsatz von <a
         href="/agb">Cookies</a> und <a href="/data-protection">Datenschutzbestimmungen</a> zu</p>
   </div>
 </div>

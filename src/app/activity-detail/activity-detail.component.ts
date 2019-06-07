@@ -4,10 +4,12 @@ import { SafeStyle } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';
 import { ImageService } from '../services/image.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { switchMap, map, filter } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 import { ActivityOffer } from '../models/activity-offer';
 import { Offer } from '../models/offer';
+import { Language } from '../models/language';
 import { Money, Currencies } from 'ts-money';
+import { Observable } from 'rxjs';
 import * as moment from 'moment';
 import { Segment } from '../models/segment';
 
@@ -31,6 +33,8 @@ export class ActivityDetailComponent implements OnInit {
 
   price: Money = new Money(0, Currencies.CHF);
 
+  languageList: Array<Observable<Language>> = [];
+
   constructor(
     private imageService: ImageService,
     private db: AngularFirestore,
@@ -46,6 +50,11 @@ export class ActivityDetailComponent implements OnInit {
     }
 
     this.calculatePrice(this.activity.activityOfferId);
+
+    const list = this.activity.audioGuideLanguages.map(language => {
+      return this.db.doc<Language>(language.path).valueChanges();
+    });
+    this.languageList = list;
   }
 
   calculatePrice(offerId) {
@@ -80,5 +89,4 @@ export class ActivityDetailComponent implements OnInit {
   moveToDateSelection() {
     this.moveToDateSelectionEvent.emit(true);
   }
-
 }

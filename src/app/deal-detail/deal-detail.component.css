@@ -1,6 +1,4 @@
 .sidebarjs-container {
     width: 100% !important;
     max-width: 100vw !important;
-    background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .93) 0%, rgba(77, 131, 132, .93) 100%) !important;
-    background-color: inherit !important;
 }

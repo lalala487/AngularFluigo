@@ -1,0 +1,17 @@
+.inline-pill {
+  display: inline-block;
+}
+
+.pill {
+  letter-spacing: .07rem;
+  font-size: .8rem;
+  padding: .375rem 0.75rem;
+  background: rgba(235, 235, 235, .25);
+  border-radius: 2rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.pill p {
+  margin-bottom: 0rem;
+}

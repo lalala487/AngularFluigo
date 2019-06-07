@@ -11,4 +11,5 @@ export interface Activity {
     services: Array<any>;
     activityOfferId: string;
     rating: number;
+    audioGuideLanguages: any[];
 }

@@ -12,8 +12,6 @@
     <div class="row" style="margin-left:0rem; margin-right:0rem;">
       <div class="col-xl-6 pdp-icons-block gradient">
         <div class="text-block">
-          <!-- Only the "CHF xx.xx" part is dynamic, the rest of the text ist static.
-          This is the price that is based on the selection of the user in the third step. -->
           <p i18n="perfect for">ab {{ price.currency }} {{ price.toDecimal() }} für<br>
             {{ adults }} Erwachsene
             <ng-container *ngIf="children > 0">
@@ -39,10 +37,11 @@
     </div>
 
     <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-12 pdp-activity-detail-description-block gradient">
+      <div class="col-xl-12 pdp-activity-detail-languages-block gradient">
         <div>
-          <div class="text-block">
-            <p>{{ activity?.overview[locale] }}</p>
+          <div *ngIf="languageList" class="text-block">
+            <p class="label">Lass dich von einem der Audioguides führen</p>
+            <app-language [language]="language" *ngFor="let language of languageList"></app-language>
           </div>
         </div>
       </div>

@@ -51,7 +51,7 @@ export class AuthComponent implements OnInit {
       this.emailSentChanged.emit(true);
 
     } catch (error) {
-      this.toastr.error('Versuch es bitte nochmal', 'Ehm...');
+      this.toastr.error('Versuche es bitte nochmal', 'Ehm...');
     }
   }
 

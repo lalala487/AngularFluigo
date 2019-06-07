@@ -23,10 +23,15 @@ export class OfflineGuardService {
       .pipe(take(1))
       .pipe(
         reduce((acc: boolean, configs: AppConfig[]) => {
+
+          // Comment the next part out for local testing
+
           if (!environment.production) {
             window.localStorage.setItem('isOffline', '0');
             return true;
           }
+
+          //
 
           console.log('configs', configs);
           console.log('url', state.url);

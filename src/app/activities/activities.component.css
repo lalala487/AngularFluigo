@@ -20,3 +20,29 @@
     margin-top: 2.5rem;
   }
 }
+
+.pdp-activity-block .butler-row {
+  margin-left:0rem;
+  margin-right:0rem;
+  margin-bottom: 2.5rem;
+}
+
+.pdp-activity-block .pdp-activity-butler-block {
+  height: auto;
+  padding-left: 7.5rem;
+  padding-right: 7.5rem;
+  background-color: rgba(77, 131, 132, 1);
+  border-radius: 1rem;
+}
+
+.pdp-activity-block .pdp-activity-butler-block .butler-container{
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+@media only screen and (max-width: 768px)  {
+  .pdp-activity-block .pdp-activity-butler-block {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}

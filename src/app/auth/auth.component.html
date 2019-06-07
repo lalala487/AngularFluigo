@@ -1,4 +1,4 @@
-<div>
+<div class="landing-container">
   <div class="logo-container">
     <a href="/">
       <img src="assets/img/logo.svg" width="110" alt="Flugio Logo" style="margin: 0 auto; display: block;">
@@ -12,7 +12,7 @@
   </div>
 
   <div *ngIf="showContentLanding" class="subtitle-container">
-    <app-date-countdown-circle [endDate]="1560621600"></app-date-countdown-circle>
+    <app-date-countdown-circle class="countdown-lp" [endDate]="endDate"></app-date-countdown-circle>
     <p>Bald ist es soweit! Wir feiern den Start von Flugio mit einem
       einzigartigen Rabatt für dich. Wohin sollen wir der senden?</p>
   </div>

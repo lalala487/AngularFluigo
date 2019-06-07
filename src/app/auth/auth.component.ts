@@ -3,6 +3,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { firestore } from 'firebase';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-auth',
@@ -14,6 +16,8 @@ export class AuthComponent implements OnInit {
 
   isLoggedIn = false;
   emailSent = false;
+
+  endDate: firestore.Timestamp;
 
   @Input() showContentLanding = false;
 
@@ -28,10 +32,15 @@ export class AuthComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const date = moment('2019-08-01').toDate();
+
+    this.endDate = firestore.Timestamp.fromDate(date);
+
     this.angularFireAuth.authState.subscribe(user => {
       const loginStatus: boolean = user && user.uid !== undefined;
 
-      this.isLoggedInChange.emit(loginStatus);
+    this.isLoggedInChange.emit(loginStatus);
+
     });
   }
 

@@ -26,10 +26,10 @@ export class OfflineGuardService {
 
           // Comment the next part out for local testing
 
-          // if (!environment.production) {
-          //   window.localStorage.setItem('isOffline', '0');
-          //   return true;
-          // }
+            if (!environment.production) {
+              window.localStorage.setItem('isOffline', '0');
+              return true;
+            }
 
           //
 

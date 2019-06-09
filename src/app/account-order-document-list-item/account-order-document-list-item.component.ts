@@ -9,6 +9,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class AccountOrderDocumentListItemComponent implements OnInit {
   @Input() document: string;
 
+  name: string;
+
   url: string;
 
   constructor(
@@ -17,6 +19,8 @@ export class AccountOrderDocumentListItemComponent implements OnInit {
 
   ngOnInit() {
     const ref = this.storage.ref(this.document);
+
+    ref.getMetadata().subscribe(meta => this.name = meta.name);
 
     ref.getDownloadURL().subscribe(url => this.url = url);
   }

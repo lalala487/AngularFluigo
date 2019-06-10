@@ -17,7 +17,6 @@ export class OfflineComponent implements OnInit {
   }
 
   isLoggedInChange(isLoggedIn: boolean): void {
-    console.log('loggedIn changed', isLoggedIn);
   }
 
   emailSentChanged(emailSent: boolean): void {

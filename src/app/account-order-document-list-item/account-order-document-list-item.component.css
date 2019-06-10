@@ -3,6 +3,7 @@
   line-height: 2.55;
   overflow: hidden;
   text-overflow: ellipsis;
+  letter-spacing: .07rem;
 }
 
 .order-document-data-line .document-button a {

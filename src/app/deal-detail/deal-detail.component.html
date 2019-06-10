@@ -5,7 +5,7 @@
     <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
       <div class="content-block price-title">
         <p i18n="sidebar overview" class="overview-label">Übersicht</p>
-        <p class="user-quantity">Preis für {{ accummulations.adults }} Erwachsene<ng-container *ngIf="accummulations.adults > 1">n</ng-container><br />{{ accummulations.children }} Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container></p>
+        <p class="user-quantity">Preis für {{ accummulations.adults }} Erwachsene<ng-container *ngIf="accummulations.adults == 1">r</ng-container><br />und {{ accummulations.children }} Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container></p>
         <hr class="total-hr" />
       </div>
 
@@ -45,7 +45,7 @@
 
       <div class="content-block price-total">
         <hr class="total-hr" />
-        <p class="price-label">Insgesamt</p>
+        <p class="price-label">Gesamtbetrag</p>
         <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
           This changes throughout the checkout process because the customer can change all the time certain options.
           The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
@@ -145,8 +145,8 @@
                       {{ accummulations?.startDate.toDate() | date:'MMM d, y': '': localeSimple }}<br />Check-out:
                       {{ accummulations?.endDate.toDate() | date:'MMM d, y': '': localeSimple }}</ng-template>
                     <!-- Below is the amount of people that will be staying at the accommodation -->
-                    <ng-template #tipPeople>{{ accummulations.adults }} Erwachsene<ng-container *ngIf="accummulations.adults > 1">n</ng-container><br />{{ accummulations.children }}
-                      Kind<ng-container *ngIf="accummulations.children != 1">er</ng-container></ng-template>
+                    <ng-template #tipPeople>{{ accummulations.adults }} Erwachsene<ng-container *ngIf="accummulations.adults == 1">r</ng-container><br />{{ accummulations.children }}
+                      Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container></ng-template>
                     <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
                     <p class="nights">{{ accummulations?.numberOfNights}} <img src="assets/icon/icon-moon.svg"
                         height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>

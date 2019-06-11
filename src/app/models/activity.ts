@@ -1,5 +1,5 @@
 import { TranslatableField } from './fields/translatable';
-
+import { Review } from './review';
 import { ImageField } from './fields/image';
 
 export interface Activity {
@@ -12,4 +12,5 @@ export interface Activity {
     activityOfferId: string;
     rating: number;
     audioGuideLanguages: any[];
+    review: Review;
 }

@@ -13,4 +13,5 @@ export interface Activity {
     rating: number;
     audioGuideLanguages: any[];
     review: Review;
+    advice: TranslatableField;
 }

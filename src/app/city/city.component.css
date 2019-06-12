@@ -158,3 +158,75 @@ hr {
     padding-right: 2.5rem;
   }
 }
+
+.pdp-city-activities-block {
+  height: auto;
+  background-size: cover;
+  background-position: center;
+  padding-left: 0rem;
+  padding-right: 0rem;
+  background-color: rgba(77, 131, 132, 1);
+}
+
+.pdp-city-activities-block p {
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-bottom: 0rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.pdp-city-activities-block .text-block {
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1200px)  {
+  .pdp-city-activities-block p {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+
+
+
+.pdp-city-activities-detail-block-title {
+  height: 20rem;
+  background-size: cover;
+  background-position: center;
+}
+
+.pdp-city-activities-detail-block-gradient {
+  content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.5) 0%, rgba(77,131,132,.5) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,.4) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,0) 65%,rgba(0,0,0,.4) 100%);
+}
+
+.pdp-city-activities-detail-block-gradient h2 {
+  font-size: 1.4rem;
+  letter-spacing: .07rem;
+  margin-bottom: .8rem;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  padding-right: 2rem;
+}
+
+.pdp-city-activities-detail-block-gradient p {
+  font-size: 1rem;
+  letter-spacing: .07rem;
+  margin-bottom: 0rem;
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  padding-right: 2rem;
+}

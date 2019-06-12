@@ -53,13 +53,9 @@
       </div>
       <div class="col-xl-6 pdp-icons-block gradient">
         <div class="text-block">
-          <p i18n="perfect for">ab {{ price.currency }} {{ price.toDecimal() }} für<br>
-            {{ adults }} Erwachsene<ng-container *ngIf="adults == 1">r</ng-container>
-            <ng-container *ngIf="children > 0">
-              und {{ children }} Kind<ng-container *ngIf="children !== 1">er</ng-container>
-            </ng-container>
-          </p>
-          <button class="btn btn-small btn-primary" type="next" (click)="moveToDateSelection()">Datum wählen</button>
+            <p class="label-activity-duration" i18n="activity duration">Für diese Aktivität benötigst du ungefähr</p>
+            <p class="activity-duration">{{ activity?.duration }}</p>
+            <p i18n="activity minutes">Minuten</p>
         </div>
       </div>
     </div>

@@ -11,6 +11,7 @@ export interface Activity {
     services: Array<any>;
     activityOfferId: string;
     rating: number;
+    duration: number;
     audioGuideLanguages: any[];
     review: Review;
     advice: TranslatableField;

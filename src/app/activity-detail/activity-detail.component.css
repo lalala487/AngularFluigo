@@ -148,3 +148,12 @@ hr {
     padding-right: 2.5rem;
   }
 }
+
+.pdp-activity-detail-block .activity-duration {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.pdp-activity-detail-block .label-activity-duration {
+  margin-bottom: 2rem;
+}

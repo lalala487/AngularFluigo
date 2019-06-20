@@ -8,13 +8,13 @@
         <div class="col-xl-4" *ngIf="numberOfNights">
           <app-nights [numberOfNights]="numberOfNights" [listOfNights]="deal.numberOfNights" (selectedNightChange)="selectedNightChange($event)"></app-nights>
         </div>
-        <div class="col-xl-4">
+        <div class="col-xl-4" *ngIf="currentAirport" >
           <button (click)="bestPrice()" class="btn btn-full btn-secondary" type="next"><img class="icon-dot-light-blue" src="assets/icon/icon-dot-light-blue.svg" height="10"> Bester Preis</button>
         </div>
       </div>
       <div class="row">
         <div class="calendar-wrapper">
-            <div class="row next-back-buttons">
+            <div class="row next-back-buttons" *ngIf="currentAirport">
               <div class="col-xs-4 col-button-back">
                 <button
                   class="btn-round-sm btn-back"

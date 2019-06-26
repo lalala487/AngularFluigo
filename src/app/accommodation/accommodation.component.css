@@ -15,9 +15,18 @@
 }
 
 .pdp-accommodation-block-title {
-  height: 20rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   background-size: cover;
   background-position: center;
+}
+
+.pdp-accommodation-block-property {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(77, 131, 132, 1);
 }
 
 .pdp-accommodation-block-gradient {
@@ -128,4 +137,44 @@ hr {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
+
+  .pdp-accommodation-block .property-about {
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+  }
+}
+
+.pdp-accommodation-block .property-wrapper {
+  width:calc(100% / 3);
+  max-width:calc(100% / 3);
+  display: inline-flex;
+  align-items: center;
+}
+
+.pdp-accommodation-block .property-data {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pdp-accommodation-block .property-data .data {
+  margin-bottom: 0rem;
+}
+
+.pdp-accommodation-block .property-data .label {
+  margin-bottom: 0rem;
+  font-size: .8rem;
+  opacity: .5;
+}
+
+.pdp-accommodation-block .property-about {
+  padding-left: 5rem;
+  padding-right: 5rem;
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.pdp-accommodation-block-property hr {
+  width: 2.5rem;
+  margin-bottom: .25rem;
+  margin-top: .5rem;
 }

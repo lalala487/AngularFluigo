@@ -10,7 +10,8 @@
 }
 
 .pdp-city-block-title{
-  height: 20rem;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
   background-size: cover;
   background-position: center;
 }

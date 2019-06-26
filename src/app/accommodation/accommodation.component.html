@@ -21,6 +21,39 @@
   </div>
 
   <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-12 pdp-accommodation-block-property gradient">
+      <div class="text-block">
+        <div>
+          <div class="property-wrapper">
+            <div class="property-data">
+              <p class="label">Stil</p>
+              <hr/>
+              <p class="data">{{ accommodation?.property.style[locale]}}</p>
+            </div>
+          </div>
+          <div class="property-wrapper">
+            <div class="property-data">
+              <p class="label">Zimmer</p>
+              <hr/>
+              <p class="data">{{ accommodation?.property.rooms}}</p>
+            </div>
+          </div>
+          <div class="property-wrapper">
+            <div class="property-data">
+              <p class="label">Setting</p>
+              <hr/>
+              <p class="data">{{ accommodation?.property.setting[locale]}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="property-about">
+          <p>{{ accommodation?.property.about[locale]}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
     <div *ngIf="interestList" class="col-xl-6 pdp-icons-block gradient">
       <div class="text-block">
         <p i18n="perfect for">Perfekt für</p>

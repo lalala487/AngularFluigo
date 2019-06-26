@@ -272,7 +272,7 @@ export class DealDetailComponent implements OnInit {
   }
 
   errorStripe(error): void {
-    this.toastr.error(error, 'Error');
+    this.toastr.error(error);
   }
 
   calculatePrice() {

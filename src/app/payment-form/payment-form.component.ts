@@ -3,6 +3,7 @@ import { Money } from 'ts-money';
 import { Source, StripeService, SourceResult } from 'ngx-stripe';
 import { Charge } from './payment-models';
 import { PaymentService } from '../services/payment.service';
+import { paymentErrorMessages, defaultErrorMessage } from './payment-messages';
 
 @Component({
   selector: 'app-payment-form',
@@ -109,9 +110,16 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
       err => {
         const result = err;
 
+        const code = result.error.raw.decline_code;
+
+        if (paymentErrorMessages[code]) {
+          this.errorStripe.emit(paymentErrorMessages[code]);
+        } else {
+          this.errorStripe.emit(defaultErrorMessage);
+        }
+
         this.error = result.error;
         this.result = result;
-        this.errorStripe.emit(result.error.message);
         this.loading = false;
       }
     );

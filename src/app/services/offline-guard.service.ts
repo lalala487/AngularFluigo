@@ -33,22 +33,21 @@ export class OfflineGuardService {
 
           //
 
-          console.log('configs', configs);
-          console.log('url', state.url);
           if (!configs.length) {
             window.localStorage.setItem('isOffline', '0');
             return true;
           }
 
           const config = configs[0];
+          const currentUrl = state.url;
 
-          if (!config.isOffline) {
-            window.localStorage.setItem('isOffline', '0');
-          } else {
+          if (config.isOffline && !config.exceptions.includes(currentUrl)) {
             window.localStorage.setItem('isOffline', '1');
             if (state.url !== '/home') {
               this.router.navigate(['/home']);
             }
+          } else {
+            window.localStorage.setItem('isOffline', '0');
           }
 
           return true;

@@ -7,6 +7,7 @@ import { map, switchMap } from 'rxjs/operators';
 import { ActivityOffer } from '../models/activity-offer';
 import { Offer } from '../models/offer';
 import * as moment from 'moment';
+import { City } from '../models/city';
 
 @Component({
   selector: 'app-activities',
@@ -15,6 +16,7 @@ import * as moment from 'moment';
 })
 export class ActivitiesComponent implements OnInit {
   @Input() deal: Deal;
+  @Input() city: City;
   @Input() startDate: moment.Moment;
   @Input() endDate: moment.Moment;
 

@@ -196,6 +196,7 @@
 
         <app-activities *ngIf="currentStep == 5" style="width:100%;" [deal]="deal"
           [startDate]="accummulations.startDate" [endDate]="accummulations.endDate"
+          [city]="city"
           (selectedActivityChange)="selectedActivityChange($event)"></app-activities>
 
         <app-activity-detail *ngIf="currentStep == 6" style="width:100%;" [activity]="accummulations.activity"

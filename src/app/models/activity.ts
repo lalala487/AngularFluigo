@@ -1,6 +1,8 @@
 import { TranslatableField } from './fields/translatable';
 import { Review } from './review';
 import { ImageField } from './fields/image';
+import { SafeStyle } from '@angular/platform-browser';
+import { Observable } from 'rxjs';
 
 export interface Activity {
     id: string;
@@ -15,4 +17,5 @@ export interface Activity {
     audioGuideLanguages: any[];
     review: Review;
     advice: TranslatableField;
+    imageUrl: Observable<SafeStyle>;
 }

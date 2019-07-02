@@ -53,34 +53,16 @@
   </div>
 
   <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-lg-6 pdp-city-activities-detail-block-title" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2F300004_1.jpg?alt=media&token=bd188901-6495-4485-b6f1-d53080e03410');">
+  <ng-container *ngFor="let activity of activityList; let i = index">
+    <div class="col-lg-6 pdp-city-activities-detail-block-title" [style.background-image]="(activity | async)?.imageUrl | async">
       <div class="pdp-city-activities-detail-block-gradient">
-        <h2>Rijksmuseum</h2>
-        <p>Das niederländische Nationalmuseum mit feinster Kunst</p>
+        <h2>{{ (activity | async)?.name[locale] }}</h2>
+        <p>{{ (activity | async)?.description[locale] }}</p>
       </div>
     </div>
-    <div class="col-lg-6 pdp-city-activities-detail-block-title" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2F300005_1.jpg?alt=media&token=ecd2c44f-87cc-4e8c-b897-89a69494f2db');">
-      <div class="pdp-city-activities-detail-block-gradient">
-        <h2>Van Gogh Museum</h2>
-        <p>Vincent van Gogh und seine Zeitgenossen</p>
-      </div>
-    </div>
+  </ng-container>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-lg-6 pdp-city-activities-detail-block-title" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2F300007_1.jpg?alt=media&token=b19c3b96-a9d3-403b-b464-036e667162a5');">
-      <div class="pdp-city-activities-detail-block-gradient">
-        <h2>Anne Frank Huis</h2>
-        <p>Das erstaunliche Haus und die Geschichte von Anne Frank</p>
-      </div>
-    </div>
-    <div class="col-lg-6 pdp-city-activities-detail-block-title" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2F300006_1.jpg?alt=media&token=6c7cf4cc-1907-4851-8039-56d3246a699d');">
-      <div class="pdp-city-activities-detail-block-gradient">
-        <h2>Heineken Experience</h2>
-        <p>Hinter den Türen der ehemaligen Heineken-Brauerei</p>
-      </div>
-    </div>
-  </div>
 
   <div class="row" style="margin-left:0rem; margin-right:0rem;">
     <div class="col-xl-12" style="padding-left:0rem; padding-right:0rem;">

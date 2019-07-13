@@ -16,7 +16,7 @@ export class TemperatureComponent implements OnInit {
       bodyFontStyle: 'normal',
       bodyFontColor: 'rgba(19, 78, 94, 1)',
       bodyFontFamily: '\'Roboto\', \'Helvetica Neue\', \'Helvetica\', \'Arial\', sans-serif',
-      bodyFontSize: 14,
+      bodyFontSize: 16,
       xPadding: 14,
       yPadding: 14,
       callbacks: {

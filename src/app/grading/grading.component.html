@@ -1,0 +1,27 @@
+<div class="grading-block gradient" *ngIf="grading">
+
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div class="col-xl-12 pdp-grading-butler-block">
+      <div class="butler-container">
+        <div class="butler-image"><img src="assets/img/avatar-round-notification@2x.png" alt="Butler Flugio"></div>
+        <div class="butler-text">
+          <!-- The "9.4" is the average of all the grades given -->
+          <span>Ich bewerte das Hotel mit einer...<br><br><div style="font-size:1.4rem;">9.4</div></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-left:0rem; margin-right:0rem;">
+    <div style="display: block" class="canvas-wrapper">
+      <canvas baseChart
+              [datasets]="radarChartData"
+              [labels]="radarChartLabels"
+              [options]="radarChartOptions"
+              [legend]="radarChartLegend"
+              [chartType]="radarChartType">
+      </canvas>
+    </div>
+  </div>
+
+</div>

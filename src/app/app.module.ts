@@ -69,6 +69,7 @@ import { OfflineComponent } from './offline/offline.component';
 import { LanguageComponent } from './language/language.component';
 import { TravelGuideComponent } from './travel-guide/travel-guide.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { GradingComponent } from './grading/grading.component';
 
 registerLocaleData(localeDe);
 
@@ -122,6 +123,7 @@ registerLocaleData(localeDe);
     LanguageComponent,
     TravelGuideComponent,
     CarouselComponent,
+    GradingComponent,
   ],
   imports: [
     BrowserModule,

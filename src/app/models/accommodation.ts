@@ -2,6 +2,7 @@ import { TranslatableField } from './fields/translatable';
 import { ImageField } from './fields/image';
 import { Review } from './review';
 import { Property } from './property';
+import { Grading } from './grading';
 import { DocumentReference } from '@angular/fire/firestore';
 
 export interface Accommodation {
@@ -14,6 +15,7 @@ export interface Accommodation {
     image: ImageField;
     carouselImage: ImageField;
     location: Object;
+    grading: Grading;
     address: Object;
     contact: Object;
     amenities: any;

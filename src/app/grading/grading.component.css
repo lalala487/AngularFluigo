@@ -1,0 +1,38 @@
+.grading-block {
+  height: auto;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: rgba(77, 131, 132, 1);
+}
+
+.grading-block .canvas-wrapper {
+  padding-left: 5rem;
+  padding-right: 5rem;
+}
+
+.grading-block canvas{
+  width:100% !important;
+  letter-spacing: .07rem !important;
+  margin-top: 2rem;
+}
+
+.grading-block .pdp-grading-butler-block {
+  padding-left: 7.5rem;
+  padding-right: 7.5rem;
+}
+
+@media only screen and (max-width: 768px)  {
+  .grading-block .pdp-grading-butler-block {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .grading-block .canvas-wrapper {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+
+  .grading-block canvas{
+    width:100% !important;
+  }
+}

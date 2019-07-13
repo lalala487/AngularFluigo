@@ -110,16 +110,16 @@ hr {
 
 @media only screen and (min-width: 1200px) {
 	.pdp-accommodation-review-block .icon-block-one img:first-child {
-		margin-right: 15px !important;
+		margin-right: .75rem !important;
 	}
 	.pdp-accommodation-review-block .icon-block-one .full-star-rating {
-		margin-right: 10px !important;
+		margin-right: .75rem !important;
 	}
 	.pdp-accommodation-review-block .icon-block-one .empty-star-rating {
-		margin-right: 15px !important;
+		margin-right: .75rem !important;
 	}
 	.pdp-accommodation-review-block .icon-block-one .part-star-rating {
-		margin-right: 10px !important;
+		margin-right: .75rem !important;
 	}
 	.pdp-accommodation-review-block .icon-block-one img:last-child {
 		margin-right: 0rem !important;

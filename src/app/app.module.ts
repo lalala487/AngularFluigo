@@ -67,6 +67,7 @@ import { TemperatureComponent } from './temperature/temperature.component';
 import { ChartsModule } from 'ng2-charts';
 import { OfflineComponent } from './offline/offline.component';
 import { LanguageComponent } from './language/language.component';
+import { TravelGuideComponent } from './travel-guide/travel-guide.component';
 import { CarouselComponent } from './carousel/carousel.component';
 
 registerLocaleData(localeDe);
@@ -119,6 +120,7 @@ registerLocaleData(localeDe);
     TemperatureComponent,
     OfflineComponent,
     LanguageComponent,
+    TravelGuideComponent,
     CarouselComponent,
   ],
   imports: [

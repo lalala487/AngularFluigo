@@ -1,0 +1,239 @@
+/**********************************************************************/
+/***********************   Travel Guide General   *********************/
+/**********************************************************************/
+
+.travel-guide-gradient {
+	content: '';
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+/**********************************************************************/
+/************************   Travel Guide Title   **********************/
+/**********************************************************************/
+
+.travel-guide-title .logo {
+	margin-top: 2.5rem;
+}
+.travel-guide-title .logo img {
+	display: block;
+	margin: 0 auto;
+}
+.travel-guide-title .text-block {
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 7.5rem;
+  margin-bottom: 7.5rem;
+}
+.travel-guide-title .text-block h2 {
+	font-size: 1.8rem;
+	margin-bottom: .8rem;
+}
+.travel-guide-title .text-block hr {
+	width: 2.5rem;
+	margin: 0 auto;
+	margin-bottom: .55rem;
+}
+.travel-guide-title .text-block p {
+	font-size: 1rem;
+	margin-bottom: 0rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
+}
+
+/**********************************************************************/
+/************************   Travel Guide Icons   **********************/
+/**********************************************************************/
+
+.travel-guide-icons .col-lg-4 {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+	padding: 7.5rem 5rem 7.5rem 5rem;
+}
+@media only screen and (max-width: 992px)  {
+	.travel-guide-icons .col-lg-4 {
+	  padding: 2.5rem 5rem 2.5rem 5rem;
+	}
+	.travel-guide-icons .col-lg-4:first-of-type {
+	  padding: 5rem 5rem 2.5rem 5rem;
+	}
+	.travel-guide-icons .col-lg-4:last-of-type {
+	  padding: 2.5rem 5rem 5rem 5rem;
+	}
+}
+.travel-guide-icons .icon {
+	float: left;
+  opacity: .5;
+}
+.travel-guide-icons .text {
+	float: left;
+  margin-left: 2.5rem;
+}
+.travel-guide-icons .text .description {
+	margin-bottom: 0rem;
+}
+
+/**********************************************************************/
+/**********************   Travel Guide Overview   *********************/
+/**********************************************************************/
+
+.travel-guide-overview .content-col {
+  padding-left: 0rem;
+	padding-right: 0rem;
+}
+.travel-guide-overview .content-col p {
+  margin-bottom: 0rem;
+}
+.travel-guide-overview .image-col {
+  background-position: center;
+	background-size: cover;
+}
+.travel-guide-overview-gradient {
+  content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%);
+}
+.travel-guide-overview .content-col .content-block {
+  text-align: center;
+	padding: 7.5rem 10rem 7.5rem 10rem;
+}
+@media only screen and (max-width: 768px)  {
+	.travel-guide-overview .content-col .content-block {
+		padding: 7.5rem 5rem 7.5rem 5rem;
+	}
+}
+@media only screen and (max-width: 576px)  {
+	.travel-guide-overview .content-col .content-block {
+		padding: 5rem 2.5rem 5rem 2.5rem;
+	}
+}
+
+/**********************************************************************/
+/**********************   Travel Guide Overview   *********************/
+/**********************************************************************/
+
+.travel-guide-agenda .image-col {
+  background-position: center;
+	background-size: cover;
+}
+.travel-guide-agenda .content-block {
+	text-align: center;
+	padding: 7.5rem 2.5rem 7.5rem 2.5rem;
+}
+.travel-guide-agenda .content-block .day {
+	opacity: .5;
+	margin-bottom: 1.5rem;
+}
+.travel-guide-agenda .content-block .title {
+	margin-bottom: 1.5rem;
+	font-size: 1.4rem;
+}
+.travel-guide-agenda .content-block .description {
+	margin-bottom: 0rem;
+}
+
+/**********************************************************************/
+/********************   Travel Guide Restaurants   ********************/
+/**********************************************************************/
+
+.travel-guide-restaurants .image-col {
+  background-position: center;
+	background-size: cover;
+}
+@media only screen and (max-width: 992px)  {
+	.travel-guide-restaurants .image-col {
+	  min-height: 20rem;
+	}
+}
+.travel-guide-restaurants-gradient {
+  content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%);
+}
+.travel-guide-restaurants .content-col-one,
+.travel-guide-restaurants .content-col-two {
+  padding-top: 7.5rem;
+	padding-bottom: 7.5rem;
+	text-align: center;
+}
+@media only screen and (max-width: 992px)  {
+	.travel-guide-restaurants .content-col-one {
+		padding-bottom: 0rem;
+	}
+	.travel-guide-restaurants .content-col-two {
+	  padding-top: 5rem;
+	}
+}
+.travel-guide-restaurants .content-block {
+  margin-bottom: 5rem;
+}
+.travel-guide-restaurants .content-col-one .content-block:last-of-type,
+.travel-guide-restaurants .content-col-two .content-block:last-of-type,
+.travel-guide-restaurants .content-col-one .content-block:last-of-type .price,
+.travel-guide-restaurants .content-col-two .content-block:last-of-type .price {
+  margin-bottom: 0rem;
+}
+.travel-guide-restaurants .content-block .title {
+  margin-bottom: .25rem;
+}
+.travel-guide-restaurants .content-block .description {
+  margin-bottom: .65rem;
+	opacity: .5;
+}
+.travel-guide-restaurants .content-block .price {
+  margin-bottom: 0rem;
+}
+.travel-guide-restaurants .content-block .price img {
+  margin-right: .5rem;
+}
+
+/**********************************************************************/
+/***********************   Travel Guide Cities   **********************/
+/**********************************************************************/
+
+.travel-guide-cities .image-col {
+	height: 20rem;
+	background-position: center;
+	background-size: cover;
+}
+.travel-guide-cities-gradient {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%);
+}
+.travel-guide-cities .image-col .title {
+	margin-bottom: 0rem;
+	font-size: 1.4rem;
+	text-align: center;
+}
+.travel-guide-cities .image-col .number {
+	margin-bottom: .8rem;
+	font-size: 1.4rem;
+	text-align: center;
+}
+.travel-guide-cities .image-col hr {
+	width: 2.5rem;
+	margin: 0 auto;
+	margin-bottom: .55rem;
+}

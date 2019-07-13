@@ -23,6 +23,7 @@ hr {
 	border-top: .12rem solid rgba(235, 235, 235, .5);
 	padding: 0;
 }
+
 /**********************************************************************/
 
 /*****************************   Stripe   *****************************/
@@ -1484,6 +1485,10 @@ a:hover {
 	font-size: .8rem;
 	text-align: right;
 }
+
+.cal-month-view {
+	background-color: inherit;
+}
 /*********************************************************************/
 
 /*****************************   Forms   *****************************/
@@ -2028,7 +2033,11 @@ a:hover {
 }
 
 
+/**********************************************************************/
 
+/*************************   Timer Homepage   *************************/
+
+/**********************************************************************/
 
 
 .number-weeks,
@@ -2234,4 +2243,52 @@ a:hover {
   .timer-container .countdown-circle:first-of-type{
     margin-right: .8rem !important;
   }
+}
+
+/**********************************************************************/
+
+/****************************   Carousel   ****************************/
+
+/**********************************************************************/
+
+.carousel {
+  max-height: 25rem;
+}
+
+.carousel-item::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	background-image: linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%);
+}
+
+.carousel-indicators li {
+    background-color: rgb(235, 235, 235, 1);
+    opacity: .5;
+}
+
+.carousel-control-next-icon {
+    background-image: url(assets/icon/next.svg);
+}
+
+.carousel-control-prev-icon {
+    background-image: url(assets/icon/back.svg);
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    cursor:pointer;
+}
+
+.carousel-item img {
+	max-width: 100%;
+}
+
+.carousel-inner {
+	display: flex; align-items: center;
 }

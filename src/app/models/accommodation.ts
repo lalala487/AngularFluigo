@@ -12,6 +12,7 @@ export interface Accommodation {
     overview: TranslatableField;
     advice: TranslatableField;
     image: ImageField;
+    carouselImage: ImageField;
     location: Object;
     address: Object;
     contact: Object;

@@ -28,6 +28,9 @@ export const environment = {
     url: 'http://localhost:4200/account/data',
     handleCodeInApp: true
   },
+  dialogflow: {
+    projectId: 'project-flugio'
+  }
 };
 
 /*

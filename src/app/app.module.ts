@@ -56,6 +56,7 @@ import { DateCountdownCircleComponent } from './date-countdown-circle/date-count
 import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AccountDataComponent } from './account-data/account-data.component';
+import { AccountAssistantComponent } from './account-assistant/account-assistant.component';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
 import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AccountOrdersComponent } from './account-orders/account-orders.component';
@@ -70,6 +71,7 @@ import { LanguageComponent } from './language/language.component';
 import { TravelGuideComponent } from './travel-guide/travel-guide.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { GradingComponent } from './grading/grading.component';
+import { ChatBotComponent } from './chat-bot/chat-bot.component';
 
 registerLocaleData(localeDe);
 
@@ -112,6 +114,7 @@ registerLocaleData(localeDe);
     LogoutComponent,
     AccountComponent,
     AccountDataComponent,
+    AccountAssistantComponent,
     AccountProfileComponent,
     AccountOrdersComponent,
     AccountOrderDocumentsComponent,
@@ -124,6 +127,7 @@ registerLocaleData(localeDe);
     TravelGuideComponent,
     CarouselComponent,
     GradingComponent,
+    ChatBotComponent,
   ],
   imports: [
     BrowserModule,

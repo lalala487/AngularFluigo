@@ -1,26 +1,90 @@
-.section-customer-service-intro {
-  padding-left: 15px;
-  padding-right: 15px;
-  text-align: center;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+.customer-service-row {
+  margin-right: 0px !important;
+  margin-left: 0px !important;
 }
 
-.section-customer-service-intro p {
-  margin-bottom: 0rem;
+.customer-service-bg-container {
+  background: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%), rgba(77, 131, 132, 1);
+  background-attachment: fixed;
+  margin-left: -15px;
+  margin-right: -15px;
+  min-height: 100vh;
+  height:100vh;
+  max-height:100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-service-header-row .logo img {
+  display: block;
+  margin: 0 auto;
+}
+
+.customer-service-header-row {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  flex: 0 1 auto;
+}
+
+.customer-service-content {
+  flex: 1 1 auto;
+  overflow-y: scroll;
+}
+
+.customer-service-header-row .logo-container {
+  margin-top: 0rem;
+}
+
+.customer-service-header-row .logo .left-col,
+.customer-service-header-row .logo .mid-col,
+.customer-service-header-row .logo .right-col {
+  width: calc(100%/3);
+}
+
+.customer-service-header-row .logo .right-col {
+  padding-right: 2rem;
+}
+
+.customer-service-header-row .logo .left-col {
+  padding-left: 2rem;
+}
+
+.customer-service-header-row .logo .right-col .icon-account,
+.customer-service-header-row .logo .right-col .label-account {
+  float: right;
+}
+
+.customer-service-header-row .logo .left-col .icon-menu-small,
+.customer-service-header-row .logo .left-col .label-menu-small {
+  float: left;
+}
+
+.customer-service-header-row .logo .right-col .label-account {
+  margin-left: .5rem;
+  margin-top: .3rem;
   letter-spacing: .07rem;
+  font-size: 1rem;
+  margin-bottom: 0rem;
 }
 
-@media only screen and (min-width: 576px) {
-  .section-customer-service-intro {
-    padding-top: 7.5rem;
-    padding-bottom: 7.5rem;
+.customer-service-header-row .logo .left-col .label-menu-small {
+  margin-left: .5rem;
+  margin-top: .3rem;
+  letter-spacing: .07rem;
+  font-size: 1rem;
+  margin-bottom: 0rem;
+}
+
+@media (max-width: 575.98px) {
+  .customer-service-header-row .logo .right-col .label-account {
+    display: none;
+  }
+
+  .customer-service-header-row .logo .left-col .label-menu-small {
+    display: none;
   }
 }
 
-@media only screen and (min-width: 768px) {
-  .section-customer-service-intro {
-    padding-left: 15rem;
-    padding-right: 15rem;
-  }
+.customer-service-header-row .logo .right-col .icon-account {
+  margin-top: -.1rem;
 }

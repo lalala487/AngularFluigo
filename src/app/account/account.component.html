@@ -1,63 +1,83 @@
 <sidebar-js [sidebarjsConfig]="{position: 'left', backdropOpacity: 0}">
-    <div class="sidebarjs-center-container" style="display: flex; align-items: center; flex-wrap: wrap; height: 100%;">
-      <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
-        <div class="content-block menu-option">
-          <a href="/"><p i18n="account sidebar home">Home</p></a>
-          <hr class="price-hr"/>
-        </div>
+  <div class="sidebarjs-center-container" style="display: flex; align-items: center; flex-wrap: wrap; height: 100%;">
+    <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
+      <div class="content-block menu-option">
+        <a href="/">
+          <p i18n="account sidebar home">Home</p>
+        </a>
+        <hr class="price-hr" />
+      </div>
 
-        <div class="content-block menu-option">
-          <p class="link" i18n="account sidebar settings" (click)="changeTo('profile')">Profil</p>
-          <hr class="price-hr"/>
-        </div>
+      <div class="content-block menu-option">
+        <p class="link" i18n="account sidebar settings" (click)="changeTo('profile')">Profil</p>
+        <hr class="price-hr" />
+      </div>
 
-        <div class="content-block menu-option">
-          <p class="link" i18n="account sidebar orders" (click)="changeTo('orders')">Bestellungen</p>
-          <hr class="price-hr"/>
-        </div>
+      <div class="content-block menu-option">
+        <p class="link" i18n="account sidebar orders" (click)="changeTo('orders')">Bestellungen</p>
+        <hr class="price-hr" />
+      </div>
 
-        <div class="content-block menu-option">
-          <p class="link" i18n="account sidebar data" (click)="changeTo('data')">Daten</p>
-          <hr class="price-hr"/>
-        </div>
+      <div class="content-block menu-option">
+        <p class="link" i18n="account sidebar data" (click)="changeTo('data')">Daten</p>
+        <hr class="price-hr" />
+      </div>
 
-        <div class="content-block menu-option">
-          <a href="/logout"><p i18n="account sidebar home">Logout</p></a>
-        </div>
+      <div class="content-block menu-option">
+        <p class="link" i18n="account sidebar assistant" (click)="changeTo('assistant')">Assistent</p>
+        <hr class="price-hr" />
+      </div>
 
-        <div class="content-block sidebarjs-close-button">
-          <button sidebarjsClose class="btn btn-small btn-primary" type="next" i18n="close sidebar">Schliessen</button>
+      <div class="content-block menu-option">
+        <a href="/logout">
+          <p i18n="account sidebar home">Logout</p>
+        </a>
+      </div>
+
+      <div class="content-block sidebarjs-close-button">
+        <button sidebarjsClose class="btn btn-small btn-primary" type="next" i18n="close sidebar">Schliessen</button>
+      </div>
+    </div>
+  </div>
+</sidebar-js>
+
+<div class="account-bg-container">
+
+  <header class="row account-header-row" style="margin-right: 0px !important; margin-left: 0px !important;">
+    <div class="col-lg-12">
+      <div class="row logo">
+        <div class="col-xs-3 left-col">
+          <img sidebarjsOpen src="assets/icon/icon-menu-small.svg" class="icon-menu-small" height="35"
+            alt="Icon Menu Small">
+          <p sidebarjsOpen class="label-menu-small">Menu</p>
+        </div>
+        <div class="col-xs-6 mid-col logo-container">
+          <a href="/"><img src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
+        </div>
+        <div class="col-xs-3 right-col">
+          <div class="account-container">
+            <p class="label-account"><a href="/account">Konto</a></p>
+            <a href="/account"><img src="assets/icon/icon-finger-print.svg" class="icon-account" height="35"
+                alt="Icon Finger Print"></a>
+          </div>
         </div>
       </div>
     </div>
-  </sidebar-js>
+  </header>
 
-  <div class="account-bg-container">
+  <div class="account-content-row">
 
-    <header class="row account-header-row" style="margin-right: 0px !important; margin-left: 0px !important;">
-      <div class="col-lg-12">
-        <div class="row logo">
-          <div class="col-xs-3 left-col">
-            <img sidebarjsOpen src="assets/icon/icon-menu-small.svg" class="icon-menu-small" height="35" alt="Icon Menu Small">
-            <p sidebarjsOpen class="label-menu-small">Menu</p>
-          </div>
-          <div class="col-xs-6 mid-col logo-container">
-            <a href="/"><img src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
-          </div>
-          <div class="col-xs-3 right-col">
-            <div class="account-container">
-              <p class="label-account"><a href="/account">Konto</a></p>
-              <a href="/account"><img src="assets/icon/icon-finger-print.svg" class="icon-account" height="35" alt="Icon Finger Print"></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <app-account-profile *ngIf="currentPage === 'profile' && userContact" [userContact]="userContact" (userContactChange)="userContactChange($event)"></app-account-profile>
-    <app-account-orders *ngIf="currentPage === 'orders'" (orderDocumentSelected)=orderDocumentSelected($event)></app-account-orders>
-    <app-account-data *ngIf="currentPage === 'data' && userContact" (deleteUserChange)="deleteUserChange($event)"></app-account-data>
-
-    <app-account-order-documents *ngIf="selectedOrder && currentPage === 'documents'" (goBackToMainEmitter)="goBackToMainEmitter(event)" [order]="selectedOrder"></app-account-order-documents>
+    <app-account-profile *ngIf="currentPage === 'profile' && userContact" [userContact]="userContact"
+      (userContactChange)="userContactChange($event)"></app-account-profile>
+    <app-account-orders *ngIf="currentPage === 'orders'" (orderDocumentSelected)=orderDocumentSelected($event)>
+    </app-account-orders>
+    <app-account-data *ngIf="currentPage === 'data' && userContact" (deleteUserChange)="deleteUserChange($event)">
+    </app-account-data>
+    <app-account-assistant *ngIf="currentPage === 'assistant'">
+    </app-account-assistant>
+    <app-account-order-documents *ngIf="selectedOrder && currentPage === 'documents'"
+      (goBackToMainEmitter)="goBackToMainEmitter(event)" [order]="selectedOrder"></app-account-order-documents>
 
   </div>
+
+</div>

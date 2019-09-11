@@ -4,9 +4,11 @@
   background-attachment: fixed;
   margin-left: -15px;
   margin-right: -15px;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
   min-height: 100vh;
+  height:100vh;
+  max-height:100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ============== Header ============== */
@@ -17,7 +19,14 @@
 }
 
 .account-header-row {
-  padding-bottom: 5rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  flex: 0 1 auto;
+}
+
+.account-content-row {
+  flex: 1 1 auto;
+  overflow-y: scroll;
 }
 
 .account-header-row .logo-container {
@@ -53,6 +62,7 @@
   margin-top: .3rem;
   letter-spacing: .07rem;
   font-size: 1rem;
+  margin-bottom: 0rem;
 }
 
 .account-header-row .logo .left-col .label-menu-small {
@@ -60,6 +70,7 @@
   margin-top: .3rem;
   letter-spacing: .07rem;
   font-size: 1rem;
+  margin-bottom: 0rem;
 }
 
 @media (max-width: 575.98px) {
@@ -74,22 +85,6 @@
 
 .account-header-row .logo .right-col .icon-account {
   margin-top: -.1rem;
-}
-
-@media only screen and (max-width: 575.98px) {
-  .account-header-row {
-    height: auto;
-    padding-top: 0rem;
-    padding-bottom: 2.5rem;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767.98px) {
-  .account-header-row {
-    height: auto;
-    padding-top: 0rem;
-    padding-bottom: 2.5rem;
-  }
 }
 
 /* ============== Sidebar ============== */

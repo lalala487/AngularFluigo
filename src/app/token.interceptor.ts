@@ -20,6 +20,11 @@ export class TokenInterceptor implements HttpInterceptor {
         // inject the authservice manually (see https://github.com/angular/angular/issues/18224)
         this.auth = this.inj.get(AuthService);
 
+        // don't inject bearer token if not authenticated
+        if (!this.auth.user) {
+            return next.handle(request);
+        }
+
         return this.auth.getUserIdToken().pipe(
             switchMap(token => {
                 request = request.clone({

@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { StripeService, SourceResult } from 'ngx-stripe';
 import { environment } from 'src/environments/environment';
-import { Observable, from } from 'rxjs';
+import { from } from 'rxjs';
 import { Money } from 'ts-money';
 import { switchMap } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -22,15 +22,15 @@ export class PaymentService implements OnInit {
   ) {
   }
 
-  createCharge$(card: any, amount: Money): Observable<any> {
+  createCharge$(card: any, amount: Money): any {
     const url = `${this.api}/charge`;
 
-    return from<SourceResult>(this.stripeService.createSource(card)).pipe(
+    return from(this.stripeService.createSource(card)).pipe(
       switchMap(data => {
         const toSend = {
           'amount': amount.amount,
           'currency': amount.currency,
-          'sourceId': data.source.id
+          'sourceId': data['source'].id
         };
 
         return this.http.post<Charge>(url, toSend);

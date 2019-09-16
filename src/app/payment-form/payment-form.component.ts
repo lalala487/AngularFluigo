@@ -17,7 +17,7 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
   @Output() errorStripe = new EventEmitter;
 
   // The Stripe Elements Card
-  @ViewChild('cardElement') cardElement: ElementRef;
+  @ViewChild('cardElement', { static: true }) cardElement: ElementRef;
   card: any;
   formError: string;
   formComplete = false;

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot } from '@angular/router';
-import { CanActivate } from '@angular/router/src/utils/preactivation';
+import { Router, ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs';
 import { reduce, take } from 'rxjs/operators';
 import { User } from 'firebase';

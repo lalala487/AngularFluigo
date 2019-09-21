@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, SimpleChange, OnChanges } from '@angular/core';
+import { Temperature } from '../models/temperature';
+import { ChartDataSets } from 'chart.js';
 
 @Component({
   selector: 'app-temperature',
   templateUrl: './temperature.component.html',
   styleUrls: ['./temperature.component.css']
 })
-export class TemperatureComponent implements OnInit {
+export class TemperatureComponent implements OnChanges {
+  @Input() temperature: Array<Temperature>;
 
   constructor() { }
   public lineChartOptions = {
@@ -55,13 +58,12 @@ export class TemperatureComponent implements OnInit {
       }]
     },
     responsive: true,
-
   };
   public lineChartLabels = ['Januar', '', '', '', '', '', '', '', '', '', '', 'Dezember'];
   public lineChartType = 'line';
-  public lineChartData = [
+  public lineChartData: ChartDataSets[] = [
     {
-      data: [8, 12, 13, 16, 18, 24, 25, 20, 15, 11, 5, 4],
+      data: [],
       label: 'Temperature',
       borderColor: 'rgba(235, 235, 235, .75)',
       backgroundColor: 'rgba(235, 235, 235, .2)',
@@ -70,12 +72,27 @@ export class TemperatureComponent implements OnInit {
       pointBorderWidth: 0,
       pointHoverBorderColor: 'rgba(235, 235, 235, 1)',
       pointHoverRadius: 2
-    },
-
+    }
   ];
   public lineChartLegend = false;
 
-  ngOnInit() {
+  ngOnChanges(changes: SimpleChanges) {
+    const temperature: SimpleChange = changes.temperature;
+
+    if (temperature) {
+      this.temperature = temperature.currentValue as Temperature[];
+
+      if (!this.temperature) {
+        return;
+      }
+
+      const months = this.temperature.map(temp => temp.month);
+      const temperatures = this.temperature.map(temp => temp.temperature);
+
+      this.lineChartLabels = months;
+      this.lineChartData[0].data = temperatures;
+
+    }
   }
 
 }

@@ -7,7 +7,7 @@ branches:
     - master
 
 sudo: required
-dist: trusty
+dist: bionic
 
 cache:
   directories:

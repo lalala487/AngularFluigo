@@ -17,8 +17,8 @@ export class ImageService {
     return ref.getDownloadURL();
   }
 
-  sanitizeImage(image: string): SafeStyle {
-    return this.sanitizer.bypassSecurityTrustStyle('url(' + image + ')');
+  sanitizeImage(image: string, prefix = ''): SafeStyle {
+    return this.sanitizer.bypassSecurityTrustStyle(prefix + 'url(' + image + ')');
   }
 
   sanitizeUrl(image: string): SafeUrl {

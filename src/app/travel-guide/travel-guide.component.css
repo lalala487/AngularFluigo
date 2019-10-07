@@ -8,6 +8,9 @@
 	right: 0;
 	bottom: 0;
 	left: 0;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
 }
 
 /**********************************************************************/
@@ -76,68 +79,14 @@
 	margin-bottom: 0rem;
 }
 
+
 /**********************************************************************/
-/**********************   Travel Guide Overview   *********************/
+/**********************   Travel Guide Schedule   *********************/
 /**********************************************************************/
 
-.travel-guide-overview .content-col {
+.travel-guide-agenda .col-lg-12{
   padding-left: 0rem;
 	padding-right: 0rem;
-}
-.travel-guide-overview .content-col p {
-  margin-bottom: 0rem;
-}
-.travel-guide-overview .image-col {
-  background-position: center;
-	background-size: cover;
-}
-.travel-guide-overview-gradient {
-  content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-image:
-    linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%);
-}
-.travel-guide-overview .content-col .content-block {
-  text-align: center;
-	padding: 7.5rem 10rem 7.5rem 10rem;
-}
-@media only screen and (max-width: 768px)  {
-	.travel-guide-overview .content-col .content-block {
-		padding: 7.5rem 5rem 7.5rem 5rem;
-	}
-}
-@media only screen and (max-width: 576px)  {
-	.travel-guide-overview .content-col .content-block {
-		padding: 5rem 2.5rem 5rem 2.5rem;
-	}
-}
-
-/**********************************************************************/
-/**********************   Travel Guide Overview   *********************/
-/**********************************************************************/
-
-.travel-guide-agenda .image-col {
-  background-position: center;
-	background-size: cover;
-}
-.travel-guide-agenda .content-block {
-	text-align: center;
-	padding: 7.5rem 2.5rem 7.5rem 2.5rem;
-}
-.travel-guide-agenda .content-block .day {
-	opacity: .5;
-	margin-bottom: 1.5rem;
-}
-.travel-guide-agenda .content-block .title {
-	margin-bottom: 1.5rem;
-	font-size: 1.4rem;
-}
-.travel-guide-agenda .content-block .description {
-	margin-bottom: 0rem;
 }
 
 /**********************************************************************/
@@ -163,41 +112,10 @@
 	background-image:
     linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%);
 }
-.travel-guide-restaurants .content-col-one,
-.travel-guide-restaurants .content-col-two {
-  padding-top: 7.5rem;
-	padding-bottom: 7.5rem;
+.travel-guide-restaurants .content-col {
+  padding-top: 5rem;
+	padding-bottom: 5rem;
 	text-align: center;
-}
-@media only screen and (max-width: 992px)  {
-	.travel-guide-restaurants .content-col-one {
-		padding-bottom: 0rem;
-	}
-	.travel-guide-restaurants .content-col-two {
-	  padding-top: 5rem;
-	}
-}
-.travel-guide-restaurants .content-block {
-  margin-bottom: 5rem;
-}
-.travel-guide-restaurants .content-col-one .content-block:last-of-type,
-.travel-guide-restaurants .content-col-two .content-block:last-of-type,
-.travel-guide-restaurants .content-col-one .content-block:last-of-type .price,
-.travel-guide-restaurants .content-col-two .content-block:last-of-type .price {
-  margin-bottom: 0rem;
-}
-.travel-guide-restaurants .content-block .title {
-  margin-bottom: .25rem;
-}
-.travel-guide-restaurants .content-block .description {
-  margin-bottom: .65rem;
-	opacity: .5;
-}
-.travel-guide-restaurants .content-block .price {
-  margin-bottom: 0rem;
-}
-.travel-guide-restaurants .content-block .price img {
-  margin-right: .5rem;
 }
 
 /**********************************************************************/

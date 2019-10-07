@@ -1,12 +1,5 @@
-<div class="pdp-accommodation-review-block gradient">
+<div class="rating-block gradient">
   <div class="text-block">
     <p>Bewertung Tripadvisor</p>
-    <div class="icon-block-one">
-      <img *ngFor="let full of fullStars" src="assets/icon/icon-heart-10.png" width="32" class="full-star-rating">
-      <img *ngIf="fullStars?.length !== 5" src="assets/icon/icon-heart-{{starFillingPercentage}}.png" width="32"
-        class="part-star-rating" />
-      <img *ngFor="let empty of emptyStars" src="assets/icon/icon-heart-0.png" width="32" class="empty-star-rating" />
-    </div>
-    <p class="rating-number">{{ rating }} <ng-container i18n="rating of">aus</ng-container> {{ maxRating }}</p>
-  </div>
+    <app-heart-list [rating]="rating"></app-heart-list>
 </div>

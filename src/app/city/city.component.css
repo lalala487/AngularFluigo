@@ -145,6 +145,8 @@ hr {
   height: auto;
   padding-left: 7.5rem;
   padding-right: 7.5rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
   background-color: rgba(77, 131, 132, 1);
 }
 
@@ -190,9 +192,6 @@ hr {
     padding-right: 5rem;
   }
 }
-
-
-
 
 .pdp-city-activities-detail-block-title {
   height: 20rem;

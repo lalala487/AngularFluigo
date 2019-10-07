@@ -1,0 +1,40 @@
+
+/**********************************************************************/
+/**********************   Travel Guide Overview   *********************/
+/**********************************************************************/
+
+.travel-guide-overview .content-col {
+  padding-left: 0rem;
+	padding-right: 0rem;
+}
+.travel-guide-overview .content-col p {
+  margin-bottom: 0rem;
+}
+.travel-guide-overview .image-col {
+  background-position: center;
+	background-size: cover;
+}
+.travel-guide-overview-gradient {
+  content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%);
+}
+.travel-guide-overview .content-col .content-block {
+  text-align: center;
+	padding: 7.5rem 10rem 7.5rem 10rem;
+}
+@media only screen and (max-width: 768px)  {
+	.travel-guide-overview .content-col .content-block {
+		padding: 7.5rem 5rem 7.5rem 5rem;
+	}
+}
+@media only screen and (max-width: 576px)  {
+	.travel-guide-overview .content-col .content-block {
+		padding: 5rem 2.5rem 5rem 2.5rem;
+	}
+}

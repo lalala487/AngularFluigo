@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges, Input, SimpleChanges, SimpleChange } from '@angular/core';
+import { StarServiceService } from '../services/star-service.service';
 
 @Component({
   selector: 'app-rating',
@@ -10,6 +11,8 @@ export class RatingComponent implements OnChanges {
 
   maxRating = 5;
 
+  constructor(private starService: StarServiceService) { }
+
   starFillingPercentage: number;
   fullStars: Array<number> = [];
   emptyStars: Array<number> = [];
@@ -20,20 +23,8 @@ export class RatingComponent implements OnChanges {
     if (rating !== undefined) {
       this.rating = rating.currentValue as number;
 
-      this.starFillingPercentage = this.getStarFillingPercentage(this.rating);
-
-      if (this.rating >= 1) {
-        this.fullStars = Array(Math.floor(this.rating));
-      }
-
-      if (this.fullStars.length !== 5) {
-        this.emptyStars = Array(Math.floor(this.maxRating - (this.fullStars.length + 1)));
-      }
+      [this.starFillingPercentage, this.fullStars, this.emptyStars] = this.starService.getStarInformation(this.rating, this.maxRating);
     }
-  }
-
-  getStarFillingPercentage(rating: number): number {
-    return Number(((rating - Math.floor(rating)) * 10).toFixed(0));
   }
 
 }

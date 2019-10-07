@@ -1,0 +1,50 @@
+.image-block {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom right, rgba(19,78,94,.4) 0%, rgba(77,131,132,.4) 100%);
+}
+.image-col {
+  background-position: center;
+	background-size: cover;
+  position: relative;
+}
+.content-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.image-col,
+.content-col {
+  width: 100%;
+	max-width: 100%;
+	float: left;
+  height: 25rem;
+}
+@media (min-width: 992px) {
+  .image-col,
+  .content-col {
+    width: calc(100% / 3);
+  	max-width: calc(100% / 3);
+  	float: left;
+  }
+}
+.content-block {
+	text-align: center;
+	padding-right: 2.5rem;
+  padding-left: 2.5rem;
+}
+.content-block .day {
+	opacity: .5;
+	margin-bottom: 1.5rem;
+}
+.content-block .title {
+	margin-bottom: 1.5rem;
+	font-size: 1.4rem;
+}
+.content-block .description {
+	margin-bottom: 0rem;
+}

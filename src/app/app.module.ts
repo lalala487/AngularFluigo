@@ -72,6 +72,14 @@ import { TravelGuideComponent } from './travel-guide/travel-guide.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { GradingComponent } from './grading/grading.component';
 import { ChatBotComponent } from './chat-bot/chat-bot.component';
+import { TravelGuideListComponent } from './travel-guide-list/travel-guide-list.component';
+import { RestaurantComponent } from './restaurant/restaurant.component';
+import { PriceLevelComponent } from './price-level/price-level.component';
+import { HeartListComponent } from './heart-list/heart-list.component';
+import { GuideDayScheduleComponent } from './guide-day-schedule/guide-day-schedule.component';
+import { TravelGuideHistoryComponent } from './travel-guide-history/travel-guide-history.component';
+import { TravelGuideCultureComponent } from './travel-guide-culture/travel-guide-culture.component';
+import { TravelGuideCtaComponent } from './travel-guide-cta/travel-guide-cta.component';
 
 registerLocaleData(localeDe);
 
@@ -128,6 +136,14 @@ registerLocaleData(localeDe);
     CarouselComponent,
     GradingComponent,
     ChatBotComponent,
+    TravelGuideListComponent,
+    RestaurantComponent,
+    PriceLevelComponent,
+    HeartListComponent,
+    GuideDayScheduleComponent,
+    TravelGuideHistoryComponent,
+    TravelGuideCultureComponent,
+    TravelGuideCtaComponent,
   ],
   imports: [
     BrowserModule,

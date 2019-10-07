@@ -1,0 +1,25 @@
+.restaurant {
+	width: 100%;
+	max-width: 100%;
+	float: left;
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+}
+.restaurant p {
+	margin-bottom: 0rem;
+}
+.restaurant .title {
+	margin-bottom: .75rem;
+}
+.restaurant .description {
+	opacity: .5;
+	margin-bottom: 1rem;
+}
+
+@media (min-width: 992px) {
+	.restaurant {
+		width: 50%;
+		max-width: 50%;
+		float: left;
+	}
+}

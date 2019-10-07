@@ -1,0 +1,62 @@
+.section-travel-guide {
+  text-align: center;
+  padding-top: 7.5rem;
+  padding-bottom: 7.5rem;
+}
+
+.section-travel-guide .text-block h2 {
+    font-size: 1.8rem;
+    margin-bottom: .8rem;
+}
+
+.section-travel-guide .text-block hr {
+    width: 2.5rem;
+    margin: 0 auto;
+    margin-bottom: .55rem;
+}
+
+.section-travel-guide .text-block p {
+  margin-bottom: 0rem;
+}
+
+.travel-guide-amsterdam {
+  background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
+    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F4_00002_1.jpg?alt=media&token=75447f74-500b-4f58-b0b9-61c3afa47a81');
+  background-position: center;
+  background-size: cover;
+}
+
+.travel-guide-london {
+  background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
+    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F4_00001_1.jpg?alt=media&token=36559f11-56ce-4d92-b73c-01fd641b7a98');
+  background-position: center;
+  background-size: cover;
+}
+
+.cms-butler-block {
+  height: auto;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  background-color: rgba(77, 131, 132, 1);
+}
+
+.cms-butler-block .butler-container{
+  margin-top: 7.5rem;
+  margin-bottom: 7.5rem;
+}
+
+@media only screen and (min-width: 768px)  {
+  .cms-butler-block {
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+}
+
+@media only screen and (min-width: 1200px)  {
+  .cms-butler-block {
+    padding-left: 17.5rem;
+    padding-right: 17.5rem;
+  }
+}

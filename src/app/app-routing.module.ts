@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AgbComponent } from './agb/agb.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 import { TeamComponent } from './team/team.component';
 import { DataProtectionComponent } from './data-protection/data-protection.component';
 import { CustomerServiceComponent } from './customer-service/customer-service.component';
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'customer-service', component: CustomerServiceComponent, canActivate: [OfflineGuardService]  },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardService, OfflineGuardService] },
   { path: 'account/:page', component: AccountComponent, canActivate: [AuthGuardService, OfflineGuardService]},
-  { path: 'agb', component: AgbComponent, canActivate: [OfflineGuardService]  },
+  { path: 'terms-conditions', component: TermsConditionsComponent, canActivate: [OfflineGuardService]  },
   { path: 'team', component: TeamComponent, canActivate: [OfflineGuardService]  },
   { path: 'offline', component: OfflineComponent, canActivate: [OfflineGuardService]  },
   { path: 'travel-guide', component: TravelGuideListComponent, canActivate: [OfflineGuardService]  },

@@ -1,4 +1,4 @@
-.section-agb {
+.section-terms-conditions {
   padding-left: 15px;
   padding-right: 15px;
   padding-top: 2.5rem;
@@ -7,24 +7,24 @@
   letter-spacing: .05rem;
 }
 
-.section-agb:after {
+.section-terms-conditions:after {
   content: "";
   display: block;
   height: 2.5rem;
   width: 100%;
 }
 
-.section-agb p {
+.section-terms-conditions p {
 }
 
 @media only screen and (min-width: 1200px) {
-  .section-agb {
+  .section-terms-conditions {
     padding-left: 15rem;
     padding-right: 15rem;
     padding-top: 5rem;
   }
 
-  .section-agb:after {
+  .section-terms-conditions:after {
   content: "";
   display: block;
   height: 5rem;

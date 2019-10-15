@@ -43,7 +43,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { EmailSentComponent } from './email-sent/email-sent.component';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from './token.interceptor';
-import { AgbComponent } from './agb/agb.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 import { TeamComponent } from './team/team.component';
 import { DataProtectionComponent } from './data-protection/data-protection.component';
 import { CustomerServiceComponent } from './customer-service/customer-service.component';
@@ -110,7 +110,7 @@ registerLocaleData(localeDe);
     AuthComponent,
     EmailSentComponent,
     LoginComponent,
-    AgbComponent,
+    TermsConditionsComponent,
     TeamComponent,
     DataProtectionComponent,
     CustomerServiceComponent,

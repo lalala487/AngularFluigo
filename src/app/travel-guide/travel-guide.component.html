@@ -48,11 +48,31 @@
 
 <app-travel-guide-cta></app-travel-guide-cta>
 
+<div class="row">
+  <div class="col-xl-12 cms-butler-block gradient">
+    <div class="butler-container">
+      <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      </div>
+      <div class="butler-text"><span>Eine Reise nach {{ travelGuide?.name[locale]}} könnte zum Beispiel so aussehen...</span></div>
+    </div>
+  </div>
+</div>
+
 <div class="row travel-guide-agenda">
   <div class="col-lg-12">
     <app-guide-day-schedule day="Tag 1" [guideScheduleDay]="travelGuide?.schedule.dayOne"></app-guide-day-schedule>
     <app-guide-day-schedule day="Tag 2" [guideScheduleDay]="travelGuide?.schedule.dayTwo"></app-guide-day-schedule>
     <app-guide-day-schedule day="Tag 3" [guideScheduleDay]="travelGuide?.schedule.dayThree"></app-guide-day-schedule>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-12 cms-butler-block gradient">
+    <div class="butler-container">
+      <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      </div>
+      <div class="butler-text"><span>Und zum Abschluss des Tages ein erstklassiges Abendessen! Ich empfehle...</span></div>
+    </div>
   </div>
 </div>
 
@@ -70,6 +90,16 @@
 </div>
 
 <app-travel-guide-cta></app-travel-guide-cta>
+
+<div class="row">
+  <div class="col-xl-12 cms-butler-block gradient">
+    <div class="butler-container">
+      <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      </div>
+      <div class="butler-text"><span>Darf ich dir noch ein paar andere Grossartige Orte vorschlagen?</span></div>
+    </div>
+  </div>
+</div>
 
 <div class="row travel-guide-cities">
   <div *ngFor="let guide of guides$ | async; index as i;" class="col-md-3 image-col"

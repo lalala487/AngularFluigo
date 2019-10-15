@@ -47,11 +47,12 @@
 .footer-row .instagram-icon {
   margin-right: 1rem;
   opacity: .5;
+  margin-top: 2.25rem;
 }
 
 .footer-row .facebook-icon {
-  margin-right: 1rem;
   opacity: .5;
+  margin-top: 2.25rem;
 }
 
 @media only screen and (min-width: 768px)  {

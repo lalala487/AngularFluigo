@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { SafeStyle } from '@angular/platform-browser';
 import { ImageService } from '../services/image.service';
 import { Observable } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-travel-guide',
@@ -24,8 +25,10 @@ export class TravelGuideComponent implements OnInit, OnChanges {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private db: AngularFirestore,
     private imageService: ImageService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit() {
@@ -38,6 +41,13 @@ export class TravelGuideComponent implements OnInit, OnChanges {
     );
 
     selectedTravelGuide$.subscribe((guides: TravelGuide[]) => {
+
+      if (guides.length === 0) {
+        this.toastr.error('No guide found for the slug supplied', 'Ehm...');
+
+        this.router.navigate(['/home']);
+      }
+
       this.travelGuide = guides[0];
 
       this.updateImage();
@@ -46,14 +56,16 @@ export class TravelGuideComponent implements OnInit, OnChanges {
     this.guides$ = this.db.collection<TravelGuide>(
       'guide',
       ref => ref.where('active', '==', true).limit(this.MAX_NUMBER_GUIDES)
-      ).valueChanges().pipe(
+    ).valueChanges().pipe(
       map(guides => guides.map(guide => {
 
-        guide.imageUrl = this.imageService.getImageDownloadUrl$(guide.image.main).pipe(
-          map(url => {
-            return this.imageService.sanitizeImage(url);
-          })
-        );
+        if (guide.image.main) {
+          guide.imageUrl = this.imageService.getImageDownloadUrl$(guide.image.main).pipe(
+            map(url => {
+              return this.imageService.sanitizeImage(url);
+            })
+          );
+        }
 
         return guide;
       }))
@@ -75,6 +87,7 @@ export class TravelGuideComponent implements OnInit, OnChanges {
 
   private updateImage(): void {
     const image = this.travelGuide ? this.travelGuide.image.main : undefined;
+
     if (image) {
       this.imageService.getImageDownloadUrl$(image).subscribe(url => {
         this.imageUrl = this.imageService.sanitizeImage(url, 'linear-gradient(to bottom right, rgba(19, 78, 94, .5) 0%, rgba(77, 131, 132, .5) 100%), ');

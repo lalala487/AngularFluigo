@@ -85,6 +85,12 @@ export class DealDetailComponent implements OnInit {
     );
 
     selectedDeal$.subscribe((deals: Deal[]) => {
+      if (deals.length === 0) {
+        this.toastr.error('No deal found for the slug supplied', 'Ehm...');
+
+        this.router.navigate(['/home']);
+      }
+
       this.deal = deals[0];
 
       if (this.deal.endDate.toDate() < new Date()) {

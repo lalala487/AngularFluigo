@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgbComponent } from './agb.component';
+import { TermsConditionsComponent } from './terms-conditions.component';
 import { FooterComponent } from '../footer/footer.component';
 
-describe('AgbComponent', () => {
-  let component: AgbComponent;
-  let fixture: ComponentFixture<AgbComponent>;
+describe('TermsConditionsComponent', () => {
+  let component: TermsConditionsComponent;
+  let fixture: ComponentFixture<TermsConditionsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AgbComponent, FooterComponent ]
+      declarations: [ TermsConditionsComponent, FooterComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AgbComponent);
+    fixture = TestBed.createComponent(TermsConditionsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

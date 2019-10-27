@@ -451,7 +451,7 @@ export class CalendarComponent implements OnInit {
                   })
                 );
 
-                return combineLatest(flightOffers$);
+                return combineLatest([flightOffers$]);
               });
 
               return combineLatest(off$);
@@ -549,7 +549,7 @@ export class CalendarComponent implements OnInit {
 
             }));
 
-          return combineLatest(accOffers$);
+          return combineLatest([accOffers$]);
         });
 
         return combineLatest(offers$);

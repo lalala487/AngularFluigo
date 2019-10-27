@@ -1,39 +1,31 @@
 language: node_js
 node_js:
-  - "11.8.0"
-
-branches:
-  only:
-    - master
-
+  - 11.8.0
 sudo: required
 dist: bionic
-
 cache:
   directories:
-  - node_modules
-
+    - node_modules
 addons:
-    chrome: stable
-
+  chrome: stable
 before_script:
-  - "sudo chown root /opt/google/chrome/chrome-sandbox"
-  - "sudo chmod 4755 /opt/google/chrome/chrome-sandbox"
-
+  - sudo chown root /opt/google/chrome/chrome-sandbox
+  - sudo chmod 4755 /opt/google/chrome/chrome-sandbox
 before_install:
   - npm install -g firebase-tools
   - npm install -g @angular/cli
-
 install:
   - npm install
 
 script:
   - npm run all_tests
-  - ng build --prod --i18n-file src/locale/de/messages.de.xlf --i18n-format xlf --i18n-locale de
+  - npm run build_de_prod
 
-after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
-
+deploy:
+  skip_cleanup: true
+  provider: firebase
+  token:
+    secure: 4UemIMYrdppzYXy0ZgMkS+MRVS1a4mdD1ejrwdygxxKJBLN+gsfxgZknqjMSeKJhG5U3hdj4cTvAPz463YXOT5eqwg47UvSCtS9ibp7dCNtIEbTOsl/K+BbL5znmCJwEtyGdrsTj2JvdpIR/xbUdLO03VkY7VLp0dKMP4Xew53uTbFUJnaxvSM3ubA1VI5N0ZXw3uw9o72aAfSUWykIjjHQk3izV8kv/Kx4t4b1ldqwVKotugLK3qRrkON491sdN/FvWdoERZ8pyitDGPnEDVSq7lEu6ma/QEymsUsEqSyaJt3wczrL5IUjFsUzscQ6iQpCg718kwdNhdqL7T4ofEUr4fAZuiXAc6UaZpVdrf1l8RwcvzVlAIcmMOnkG4Mo5zW+QPzJnQru2Fk5ZXMK7bTi5B1yTAjWoLooekXlvTYLltSWiVbpdNZxbyI8ahJLBI264qaA+N6D/ydFNqjJb5KUNh7w1ZMdMvnZxvshXyYIAoypvU0FvIMTNqQ8BTfSEN7Jsmqb1fYsBjGpncZdSdwQ8i6B/EpsvRDSLni1J8XcnKLzR3BeZ7VCijDxalBmBp3UZxH6OlsGYUep0Scq4SzdsjpwDxXItGEL8JyXdN8su7pVwb8ORpiMfq5knxEbqBnVRZX7Nf66tadzOGw6P0OxcONBrWmPp44wNe54pyw0=
 notifications:
   email:
     on_failure: change

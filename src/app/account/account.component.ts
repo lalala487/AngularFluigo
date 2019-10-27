@@ -93,7 +93,7 @@ export class AccountComponent implements OnInit {
       oldEmail, url
     );
 
-    this.afAuth.auth.currentUser.reauthenticateAndRetrieveDataWithCredential(credential).then((userCred) => {
+    this.afAuth.auth.currentUser.reauthenticateWithCredential(credential).then((userCred) => {
       const newEmail = window.localStorage.getItem('userNewEmail');
       if (newEmail) {
         this.updateEmail(newEmail, oldEmail);

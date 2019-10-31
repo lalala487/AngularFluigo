@@ -18,6 +18,7 @@ install:
   - npm install
 
 script:
+  - npm run webdriver
   - npm run all_tests
   - npm run build_de_prod
 

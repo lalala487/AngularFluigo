@@ -69,6 +69,7 @@
     position: absolute;
     bottom: 0rem;
     right: 1rem;
+    min-width: 12rem;
   }
 
   .activity-card {

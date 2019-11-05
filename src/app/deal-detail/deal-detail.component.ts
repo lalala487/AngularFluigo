@@ -224,6 +224,9 @@ export class DealDetailComponent implements OnInit {
     this.scrollToTopOfTheSection();
     if (this.currentStep === 4 && this.accummulations.children === 0) {
       this.currentStep = this.currentStep - 2;
+    } else if (this.currentStep === 6) {
+      this.accummulations.activity = null;
+      this.currentStep = this.currentStep - 1;
     } else if (this.currentStep === 8 && !this.accummulations.activity) {
       // when we don't have activities, we jump back by 3 steps
       this.currentStep = this.currentStep - 3;
@@ -265,7 +268,6 @@ export class DealDetailComponent implements OnInit {
       if (!user) {
         return;
       }
-
 
       this.paymentService.writePaymentToDb(charge, user.uid).then(result => {
         this.accummulations['payed'] = true;
@@ -327,7 +329,9 @@ export class DealDetailComponent implements OnInit {
 
   selectedActivityChange(activity: Activity) {
     this.accummulations.activity = activity;
-    this.moveToNextStep();
+    if (activity) {
+      this.moveToNextStep();
+    }
   }
 
   selectedActivityOfferChange(activityOffer: Offer) {

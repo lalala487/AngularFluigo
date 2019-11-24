@@ -1,6 +1,7 @@
 import { Money } from 'ts-money';
 import { UserContact } from '../user-contact';
 import { Activity } from '../activity';
+import { ActivityPack } from '../activity-pack';
 import { Offer } from '../offer';
 import { DocumentReference } from '@angular/fire/firestore';
 import { CalendarEvent } from 'calendar-utils';
@@ -30,6 +31,7 @@ export interface Accummulation {
     birthday5: any;
     contact: UserContact;
     event: CalendarEvent<Travel>;
+    activities: Map<string, ActivityPack>;
     activity: Activity;
     activityOffer: Offer;
     payed: boolean;

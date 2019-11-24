@@ -6,6 +6,8 @@ import { CalendarEvent } from 'calendar-utils';
 import { Accummulation } from '../models/fields/accummulation';
 import { SendgridService } from '../services/sendgrid.service';
 import { Order, OrderOffer, OrderFlightOffer } from '../models/order';
+import { Offer } from '../models/offer';
+import { Activity } from '../models/activity';
 
 @Component({
   selector: 'app-success',
@@ -42,18 +44,23 @@ export class SuccessComponent implements OnInit {
         children: this.accummulations.children,
         contact: this.accummulations.contact,
         city: this.accummulations.city,
-        accommodation: this.accummulations.accommodation
+        accommodation: this.accummulations.accommodation,
+        activityOffers: [],
       } as Order;
 
-      if (this.accummulations.activityOffer) {
+
+      for (const [key, value] of this.accummulations.activities.entries()) {
+        const offer: Offer = value.offer;
+
         const activityOffer: OrderOffer = {
-          stock: this.accummulations.activityOffer.stock,
-          date: this.accummulations.activityOffer.date,
-          price: this.accummulations.activityOffer.price.toJSON(),
+          stock: offer.stock,
+          date: offer.date,
+          price: offer.price.toJSON(),
         };
 
-        this.order.activityOffers = [activityOffer];
+        this.order.activityOffers.push(activityOffer);
       }
+
 
       const accommodationOffers: OrderOffer[] = this.accummulations.event.meta.roomOffers.map(roomOffer => {
         const price: Money = roomOffer.adultPrice.multiply(this.accummulations.adults);
@@ -108,13 +115,17 @@ export class SuccessComponent implements OnInit {
     const returnStock = this.accummulations.event.meta.return.stock;
     this.reduceOfferStock('flightOffer/', returnFlightOfferId, returnOfferId, returnStock);
 
-    if (this.accummulations.activityOffer) {
+    for (const [activityId, value] of this.accummulations.activities.entries()) {
+      const offer: Offer = value.offer;
+      const activity: Activity = value.activity;
+
       this.reduceOfferStock(
         'activityOffer/',
-        this.accummulations.activity.activityOfferId,
-        this.accummulations.activityOffer.id,
-        this.accummulations.activityOffer.stock
+        activity.activityOfferId,
+        offer.id,
+        offer.stock
       );
+
     }
 
     this.accummulations.event.meta.roomOffers.map(roomOffer => {
@@ -152,6 +163,6 @@ export class SuccessComponent implements OnInit {
       }
     };
 
-    this.db.doc('users/' + innerUser.uid).set(user, {merge: true});
+    this.db.doc('users/' + innerUser.uid).set(user, { merge: true });
   }
 }

@@ -22,8 +22,12 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="activity-card-button">
-            <button class="btn btn-full btn-primary" (click)="chooseActivity()" type="next">Hinzufügen</button>
+          <div class="activity-card-button" *ngIf="activityItem?.selected == false">
+            <button class="btn btn-full btn-primary" (click)="clickActivity(true)" type="next">Hinzufügen</button>
+          </div>
+
+          <div class="activity-card-button" *ngIf="activityItem?.selected == true">
+            <button class="btn btn-full btn-secondary" (click)="clickActivity(false)" type="next">Entfernen</button>
           </div>
         </div>
       </div>

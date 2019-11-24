@@ -54,7 +54,9 @@ export class ActivityListItemComponent implements OnInit {
     });
   }
 
-  chooseActivity() {
+  clickActivity(select: boolean) {
+    this.activityItem.selected = select;
+
     this.activitySelected.emit(this.activityItem);
   }
 

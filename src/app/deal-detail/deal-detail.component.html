@@ -14,10 +14,13 @@
           {{ accummulations.flightAccommodationPrice }}</p>
       </div>
 
-      <div class="content-block" *ngIf="accummulations.activityOffer">
-        <p class="price-label">{{ accummulations.activity.name[locale] }}</p>
-        <p class="price-amount">{{ accummulations.activityOffer.price.currency }}
-          {{ accummulations.activityOffer.price }}</p>
+      <div class="content-block" *ngIf="accummulations.activities.values">
+        <div *ngFor="let pack of accummulations.activities | keyvalue">
+          <p class="price-label" *ngIf="pack.value.activity">{{ pack.value.activity?.name[locale] }}</p>
+          <p class="price-amount" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }}
+            {{ pack.value.offer?.price }}
+          </p>
+        </div>
       </div>
 
       <!-- The block below is only displayed when the customer has chosen for a transportation
@@ -196,6 +199,7 @@
         <app-activities *ngIf="currentStep == 5" style="width:100%;" [deal]="deal"
           [startDate]="accummulations.startDate" [endDate]="accummulations.endDate"
           [city]="city"
+          [currentActivities]="accummulations.activities"
           (selectedActivityChange)="selectedActivityChange($event)"></app-activities>
 
         <app-activity-detail *ngIf="currentStep == 6" style="width:100%;" [activity]="accummulations.activity"

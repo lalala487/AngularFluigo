@@ -22,6 +22,7 @@ import { PaymentService } from '../services/payment.service';
 import { Activity } from '../models/activity';
 import { Offer } from '../models/offer';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ActivityPack } from '../models/activity-pack';
 
 
 @Component({
@@ -59,6 +60,7 @@ export class DealDetailComponent implements OnInit {
     'birthday4': { 'day': '', 'month': '', 'year': '' } as Birthday,
     'birthday5': { 'day': '', 'month': '', 'year': '' } as Birthday,
     'contact': {} as UserContact,
+    'activities': new Map(),
   } as Accummulation;
 
   currentStep = 0;
@@ -302,9 +304,9 @@ export class DealDetailComponent implements OnInit {
       price = price.add(this.accummulations['insurancePrice']);
     }
 
-    if (this.accummulations.activityOffer) {
-      price = price.add(this.accummulations.activityOffer.price);
-    }
+    this.accummulations.activities.forEach((value: ActivityPack, key: string) => {
+      price = price.add(value.offer.price);
+    });
 
     price = price.add(this.accummulations['bookingFee']);
 
@@ -328,14 +330,34 @@ export class DealDetailComponent implements OnInit {
   }
 
   selectedActivityChange(activity: Activity) {
+    const pack = {
+      activity: activity,
+      offer: null
+    } as ActivityPack;
+
+    if (activity.selected) {
+      this.accummulations.activities.set(activity.id, pack);
+    } else if (this.accummulations.activities.has(activity.id)) {
+      this.accummulations.activities.delete(activity.id);
+
+      this.accummulations.activity = null;
+      this.accummulations.activityOffer = null;
+
+      this.calculatePrice();
+    }
+
     this.accummulations.activity = activity;
-    if (activity) {
+
+    if (activity.selected) {
       this.moveToNextStep();
     }
   }
 
-  selectedActivityOfferChange(activityOffer: Offer) {
-    this.accummulations.activityOffer = activityOffer;
+  selectedActivityOfferChange(activityPack: ActivityPack) {
+    this.accummulations.activities.set(activityPack.activity.id, activityPack);
+
+    this.accummulations.activityOffer = activityPack.offer;
+
     this.calculatePrice();
   }
 }

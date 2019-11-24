@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { Money, Currencies } from 'ts-money';
 import { Segment } from '../models/segment';
 import { environment } from 'src/environments/environment';
+import { ActivityPack } from '../models/activity-pack';
 
 @Component({
   selector: 'app-activity-date',
@@ -22,10 +23,9 @@ export class ActivityDateComponent implements OnInit {
   @Input() endDate: moment.Moment;
   @Input() selectedOffer: Offer;
 
-  @Output() selectedActivityOfferChange: EventEmitter<Offer> = new EventEmitter();
+  @Output() selectedActivityOfferChange: EventEmitter<ActivityPack> = new EventEmitter();
 
   locale = environment.localeSimple;
-
 
   offers$: Observable<Offer[]>;
 
@@ -77,10 +77,13 @@ export class ActivityDateComponent implements OnInit {
   }
 
   chooseOffer(offer: Offer) {
+    const pack = {
+      activity: this.activity,
+      offer: offer
+    } as ActivityPack;
+
+    this.selectedActivityOfferChange.emit(pack);
     this.selectedOffer = offer;
-
-    this.selectedActivityOfferChange.emit(this.selectedOffer);
   }
-
 
 }

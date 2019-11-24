@@ -8,6 +8,7 @@ import { ActivityOffer } from '../models/activity-offer';
 import { Offer } from '../models/offer';
 import * as moment from 'moment';
 import { City } from '../models/city';
+import { ActivityPack } from '../models/activity-pack';
 
 @Component({
   selector: 'app-activities',
@@ -19,6 +20,7 @@ export class ActivitiesComponent implements OnInit {
   @Input() city: City;
   @Input() startDate: moment.Moment;
   @Input() endDate: moment.Moment;
+  @Input() currentActivities: Map<string, ActivityPack>;
 
   @Output() selectedActivityChange: EventEmitter<Activity> = new EventEmitter();
 
@@ -53,8 +55,8 @@ export class ActivitiesComponent implements OnInit {
           this.db.collection<Offer>(
             'activityOffer/' + activityOffer.id + '/offers',
             ref => ref.where('active', '==', true).
-            where('date', '>', this.startDate.toDate()).
-            where('date', '<=', this.endDate.toDate())
+              where('date', '>', this.startDate.toDate()).
+              where('date', '<=', this.endDate.toDate())
           ).snapshotChanges().pipe(
             map(actions => actions.map(a => {
               const data = a.payload.doc.data() as Offer;
@@ -71,6 +73,13 @@ export class ActivitiesComponent implements OnInit {
                     map(activity => {
                       activity.activityOfferId = activityOffer.id;
                       activity.id = activityOffer.activity[0].id;
+
+                      if (this.currentActivities.has(activity.id)) {
+                        activity.selected = this.currentActivities.get(activity.id).activity.selected;
+                      } else {
+                        activity.selected = false;
+                      }
+
                       return activity;
                     })
                   ));

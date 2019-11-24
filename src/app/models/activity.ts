@@ -18,4 +18,6 @@ export interface Activity {
     review: Review;
     advice: TranslatableField;
     imageUrl: Observable<SafeStyle>;
+
+    selected: boolean;
 }

@@ -672,14 +672,7 @@ button.toast-close-button {
 	text-align: center;
 	color: rgba(235, 235, 235, 1);
 	font-size: .8rem;
-}
-.sidebarjs-center-container .price-label {
-	float: left;
-	display: inline-block;
-	width: 60%;
-	text-align: left;
-	color: rgba(235, 235, 235, 1);
-	font-size: .8rem;
+	margin-bottom: 1.5rem;
 }
 .sidebarjs-center-container .price-title {
 	float: left;
@@ -690,7 +683,7 @@ button.toast-close-button {
 	color: rgba(235, 235, 235, 1);
 }
 .sidebarjs-center-container .overview-label {
-	margin-bottom: .5rem;
+	margin-bottom: 1rem;
 }
 .sidebarjs-center-container .price-total {
 	float: left;
@@ -707,12 +700,43 @@ button.toast-close-button {
 	text-align: right;
 	font-size: .8rem;
 }
+.sidebarjs-center-container .price-label {
+	float: left;
+	display: inline-block;
+	width: 60%;
+	text-align: left;
+	color: rgba(235, 235, 235, 1);
+	font-size: .8rem;
+}
+.sidebarjs-center-container .date-data {
+	float: right;
+	display: inline-block;
+	width: 75%;
+	text-align: right;
+	font-size: .8rem;
+	opacity: .5;
+}
+.sidebarjs-center-container .date-label {
+	float: left;
+	display: inline-block;
+	width: 25%;
+	text-align: left;
+	color: rgba(235, 235, 235, 1);
+	font-size: .8rem;
+	opacity: .5;
+}
 .sidebarjs-center-container .content-block {
 	width: 100%;
 	float: left;
 	clear: both;
 	padding-left: 3rem;
 	padding-right: 3rem;
+}
+.bottom-margin-xs {
+	margin-bottom: 0.25rem !important;
+}
+.bottom-margin-l {
+	margin-bottom: 1.5rem !important;
 }
 .sidebarjs-center-container .content-block button {
 	margin: 0 auto;
@@ -729,7 +753,7 @@ button.toast-close-button {
 }
 .sidebarjs-center-container .content-block .total-hr {
 	margin: 0 auto;
-	margin-bottom: 1rem;
+	margin-bottom: 1.5rem;
 }
 @media only screen and (max-width: 575.98px) {
 	.sidebarjs-center-container .content-block button {}

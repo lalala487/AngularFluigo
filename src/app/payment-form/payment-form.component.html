@@ -11,7 +11,7 @@
                   <img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
                 </div>
                   <div class="butler-text">
-                    <span>Jetzt nur noch bezahlen. Unten kannst du die Kreditkartendaten ausfüllen und dann bist du fertig! Zahlungen sind sicher und verschlüsselt. <img src="assets/icon/tooltip.svg" height="15" alt="Icon Tooltip" placement="top" ngbTooltip="Stripe ist ein «PCI Service Provider Level 1», das ist der höchste Grad an Sicherheit bei der Zahlungsabwicklung. Du kannst sicher sein, dass deine Daten sicher und geschützt sind."></span>
+                    <span>Das Abenteuer kann nach deiner Kreditkartenzahlung beginnen! Du kannst die Details deiner Reise überprüfen, indem du auf "Details" klickst.</span>
                   </div>
               </div>
             </div>
@@ -49,12 +49,15 @@
                       <button type="submit" class="button is-info btn btn-primary btn-full payment-btn"
                         [disabled]="!cardNumberComplete || !cardExpiryComplete || !cardCvcComplete || loading"
                         [class.is-loading]="loading">
-                        {{ amount.currency }} {{ amount }} bezahlen
+                        Bezahlen
                       </button>
                     </div>
                   </div>
                 </form>
               </fieldset>
+            </div>
+            <div class="col-lg-12">
+              <p class="pay-secure"><span>Sicher bezahlen </span><img src="assets/icon/tooltip.svg" height="15" alt="Icon Tooltip" placement="top" ngbTooltip="Stripe ist ein «PCI Service Provider Level 1», das ist der höchste Grad an Sicherheit bei der Zahlungsabwicklung. Du kannst sicher sein, dass deine Daten sicher und geschützt sind."></p>
             </div>
           </div>
         </div>

@@ -3,22 +3,35 @@
     style="display: flex; align-items: center; flex-wrap: wrap; height: 100%; letter-spacing: .07rem; background-color: rgba(77, 131, 132, 1); background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);">
     <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
       <div class="content-block price-title">
-        <p i18n="sidebar overview" class="overview-label">Übersicht</p>
         <p class="user-quantity">Preis für {{ accummulations.adults }} Erwachsene<ng-container *ngIf="accummulations.adults == 1">r</ng-container><br />und {{ accummulations.children }} Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container></p>
         <hr class="total-hr" />
       </div>
 
       <div class="content-block" *ngIf="accummulations.flightAccommodationPrice">
-        <p class="price-label">Flug & Hotel</p>
-        <p class="price-amount">{{ accummulations.flightAccommodationPrice.currency }}
-          {{ accummulations.flightAccommodationPrice }}</p>
+        <p class="price-label bottom-margin-xs">Flug & Hotel</p>
+        <p class="price-amount bottom-margin-xs">
+          {{ accummulations.flightAccommodationPrice.currency }}
+          {{ accummulations.flightAccommodationPrice }}
+        </p>
+        <p class="date-label bottom-margin-xs">Abflug</p>
+        <p class="date-data bottom-margin-xs">
+          {{ accummulations.startDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}
+        </p>
+        <p class="date-label bottom-margin-l">Hinflug</p>
+        <p class="date-data bottom-margin-l">
+          {{ accummulations.endDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}
+        </p>
       </div>
 
       <div class="content-block" *ngIf="accummulations.activities.values">
         <div *ngFor="let pack of accummulations.activities | keyvalue">
-          <p class="price-label" *ngIf="pack.value.activity">{{ pack.value.activity?.name[locale] }}</p>
-          <p class="price-amount" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }}
+          <p class="price-label bottom-margin-xs" *ngIf="pack.value.activity">{{ pack.value.activity?.name[locale] }}</p>
+          <p class="price-amount bottom-margin-xs" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }}
             {{ pack.value.offer?.price }}
+          </p>
+          <p class="date-label bottom-margin-l">Datum</p>
+          <p class="date-data bottom-margin-l">
+            {{ pack.value.offer?.date.toDate() | date:'E d MMM' : '': localeSimple}}
           </p>
         </div>
       </div>
@@ -27,16 +40,16 @@
         Otherwise, this block is not being displayed. -->
       <div class="content-block"
         *ngIf="accummulations.transportationPrice.amount > 0 && accummulations.hasTransportation">
-        <p class="price-label">Transport</p>
-        <p class="price-amount">{{ accummulations.transportationPrice.currency }}
+        <p class="price-label bottom-margin-l">Transport</p>
+        <p class="price-amount bottom-margin-l">{{ accummulations.transportationPrice.currency }}
           {{ accummulations.transportationPrice }}</p>
       </div>
 
       <!-- The block below is only displayed when the customer has chosen for an insurance.
         Otherwise, this block is not being displayed. -->
       <div class="content-block" *ngIf="accummulations.insurancePrice.amount > 0 && accummulations.hasInsurance">
-        <p class="price-label">Annullierungskosten-Versicherung</p>
-        <p class="price-amount">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</p>
+        <p class="price-label bottom-margin-l">Versicherung</p>
+        <p class="price-amount bottom-margin-l">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</p>
       </div>
 
       <!-- The block below is only displayed when the component in the deal detail view is active and filled in. -->

@@ -78,3 +78,15 @@
   padding: 0.5rem 1rem;
   color: rgba(235,235,235,1);
 }
+
+.pay-secure {
+  text-align: center;
+  margin-top: 2rem;
+}
+.pay-secure span {
+  opacity: .5;
+}
+.pay-secure img {
+  opacity: .5;
+  margin-top: -.25rem;
+}

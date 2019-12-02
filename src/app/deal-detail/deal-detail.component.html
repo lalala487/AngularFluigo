@@ -9,30 +9,21 @@
 
       <div class="content-block" *ngIf="accummulations.flightAccommodationPrice">
         <p class="price-label bottom-margin-xs">Flug & Hotel</p>
-        <p class="price-amount bottom-margin-xs">
-          {{ accummulations.flightAccommodationPrice.currency }}
-          {{ accummulations.flightAccommodationPrice }}
-        </p>
+        <p class="price-amount bottom-margin-xs">{{ accummulations.flightAccommodationPrice.currency }} {{ accummulations.flightAccommodationPrice }}</p>
         <p class="date-label bottom-margin-xs">Abflug</p>
-        <p class="date-data bottom-margin-xs">
-          {{ accummulations.startDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}
-        </p>
-        <p class="date-label bottom-margin-l">Hinflug</p>
-        <p class="date-data bottom-margin-l">
-          {{ accummulations.endDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}
-        </p>
+        <p class="date-data bottom-margin-xs">{{ accummulations.startDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</p>
+        <p class="date-label bottom-margin-xs">Hinflug</p>
+        <p class="date-data bottom-margin-xs">{{ accummulations.endDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</p>
+        <p class="edit-label bottom-margin-l" (click)="goToStep(4)">Anpassen</p>
       </div>
 
       <div class="content-block" *ngIf="accummulations.activities.values">
         <div *ngFor="let pack of accummulations.activities | keyvalue">
           <p class="price-label bottom-margin-xs" *ngIf="pack.value.activity">{{ pack.value.activity?.name[locale] }}</p>
-          <p class="price-amount bottom-margin-xs" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }}
-            {{ pack.value.offer?.price }}
-          </p>
-          <p class="date-label bottom-margin-l">Datum</p>
-          <p class="date-data bottom-margin-l">
-            {{ pack.value.offer?.date.toDate() | date:'E d MMM' : '': localeSimple}}
-          </p>
+          <p class="price-amount bottom-margin-xs" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }} {{ pack.value.offer?.price }}</p>
+          <p class="date-label bottom-margin-xs">Datum</p>
+          <p class="date-data bottom-margin-xs">{{ pack.value.offer?.date.toDate() | date:'E d MMM' : '': localeSimple}}</p>
+          <p class="edit-label bottom-margin-l" (click)="goToStep(5)">Anpassen</p>
         </div>
       </div>
 
@@ -40,16 +31,17 @@
         Otherwise, this block is not being displayed. -->
       <div class="content-block"
         *ngIf="accummulations.transportationPrice.amount > 0 && accummulations.hasTransportation">
-        <p class="price-label bottom-margin-l">Transport</p>
-        <p class="price-amount bottom-margin-l">{{ accummulations.transportationPrice.currency }}
-          {{ accummulations.transportationPrice }}</p>
+        <p class="price-label bottom-margin-xs">Transport</p>
+        <p class="price-amount bottom-margin-xs">{{ accummulations.transportationPrice.currency }} {{ accummulations.transportationPrice }}</p>
+        <p class="edit-label bottom-margin-l" (click)="goToStep(8)">Anpassen</p>
       </div>
 
       <!-- The block below is only displayed when the customer has chosen for an insurance.
         Otherwise, this block is not being displayed. -->
       <div class="content-block" *ngIf="accummulations.insurancePrice.amount > 0 && accummulations.hasInsurance">
-        <p class="price-label bottom-margin-l">Versicherung</p>
-        <p class="price-amount bottom-margin-l">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</p>
+        <p class="price-label bottom-margin-xs">Versicherung</p>
+        <p class="price-amount bottom-margin-xs">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</p>
+        <p class="edit-label bottom-margin-l" (click)="goToStep(9)">Anpassen</p>
       </div>
 
       <!-- The block below is only displayed when the component in the deal detail view is active and filled in. -->
@@ -61,9 +53,6 @@
       <div class="content-block price-total">
         <hr class="total-hr" />
         <p class="price-label">Gesamtbetrag</p>
-        <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
-          This changes throughout the checkout process because the customer can change all the time certain options.
-          The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
         <p class="price-amount">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
       </div>
 

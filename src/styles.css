@@ -725,6 +725,17 @@ button.toast-close-button {
 	font-size: .8rem;
 	opacity: .5;
 }
+.sidebarjs-center-container .edit-label {
+	float: left;
+	display: inline-block;
+	width: 50%;
+	text-align: left;
+	color: rgba(235, 235, 235, 1);
+	font-size: .8rem;
+	opacity: .5;
+	text-decoration: underline;
+	cursor: pointer;
+}
 .sidebarjs-center-container .content-block {
 	width: 100%;
 	float: left;

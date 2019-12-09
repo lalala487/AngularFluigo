@@ -15,7 +15,7 @@ export interface Accommodation {
     image: ImageField;
     carouselImage: ImageField;
     location: Object;
-    grading: Grading;
+    grading: Array<Grading>;
     address: Object;
     contact: Object;
     amenities: any;

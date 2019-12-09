@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, SimpleChanges, SimpleChange } from '@angul
 import { ChartDataSets, ChartType, RadialChartOptions } from 'chart.js';
 import { Label } from 'ng2-charts';
 import { Grading } from '../models/grading';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-grading',
@@ -10,7 +11,9 @@ import { Grading } from '../models/grading';
 })
 
 export class GradingComponent implements OnChanges {
-  @Input() grading: Grading;
+  @Input() grading: Array<Grading>;
+
+  locale = environment.locale;
 
   // Radar
   public radarChartOptions: RadialChartOptions = {
@@ -76,14 +79,14 @@ export class GradingComponent implements OnChanges {
       return;
     }
 
-    const grading: Grading = change.currentValue;
+    const gradings: Array<Grading> = change.currentValue;
 
     const data = [];
-    Object.keys(grading).map(gradingLabel => {
-      this.radarChartLabels.push(gradingLabel);
+    for (const grading of gradings) {
+      this.radarChartLabels.push(grading.name[this.locale]);
+      data.push(grading.rating);
+    }
 
-      data.push(this.grading[gradingLabel]);
-    });
     this.radarChartData = [
       {
         data: data,

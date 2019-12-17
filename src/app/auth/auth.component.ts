@@ -32,7 +32,7 @@ export class AuthComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const date = moment('2019-12-01').toDate();
+    const date = moment('2020-03-26').toDate();
 
     this.endDate = firestore.Timestamp.fromDate(date);
 

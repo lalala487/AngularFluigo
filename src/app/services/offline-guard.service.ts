@@ -41,6 +41,8 @@ export class OfflineGuardService {
           const config = configs[0];
           const currentUrl = state.url;
 
+          console.log('currentUrl', currentUrl);
+
           if (config.isOffline && !config.exceptions.includes(currentUrl)) {
             window.localStorage.setItem('isOffline', '1');
             if (state.url !== '/home' && !currentUrl.startsWith('/login') ) {

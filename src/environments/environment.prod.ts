@@ -12,15 +12,15 @@ export const environment = {
   locale: 'de_CH',
   localeSimple: 'de',
   passwordlessAuthSettings: {
-    url: 'https://flugio-frontend.firebaseapp.com/login',
+    url: 'https://flugio.ch/login',
     handleCodeInApp: true
   },
   reAuthSettings: {
-    url: 'https://flugio-frontend.firebaseapp.com/account',
+    url: 'https://flugio.ch/account',
     handleCodeInApp: true
   },
   reAuthSettingForData: {
-    url: 'https://flugio-frontend.firebaseapp.com/account/data',
+    url: 'https://flugio.ch/account/data',
     handleCodeInApp: true
   },
 };

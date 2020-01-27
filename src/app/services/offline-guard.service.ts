@@ -43,7 +43,7 @@ export class OfflineGuardService {
 
           if (config.isOffline && !config.exceptions.includes(currentUrl)) {
             window.localStorage.setItem('isOffline', '1');
-            if (state.url !== '/home') {
+            if (state.url !== '/home' && !currentUrl.startsWith('/login') ) {
               this.router.navigate(['/home']);
             }
           } else {

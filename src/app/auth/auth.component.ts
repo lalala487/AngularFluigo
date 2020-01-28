@@ -61,6 +61,7 @@ export class AuthComponent implements OnInit {
 
     } catch (error) {
       this.toastr.error('Versuche es bitte nochmal', 'Ehm...');
+      console.log('error', error);
     }
   }
 

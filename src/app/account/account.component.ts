@@ -101,16 +101,7 @@ export class AccountComponent implements OnInit {
 
       const isDeletion = window.localStorage.getItem('isDeletion');
       if (isDeletion) {
-        this.afAuth.auth.currentUser.delete().then(() => {
-          this.toastr.success('Benutzer erfolgreich entfernt');
-
-          window.localStorage.removeItem('idDeletion');
-
-          this.router.navigate(['/home']);
-
-        }).catch(err => {
-          this.toastr.error('Unmöglich Benutzer zu entfernen');
-        });
+        this.deleteUser();
       }
     });
   }
@@ -176,12 +167,24 @@ export class AccountComponent implements OnInit {
 
   deleteUserChange(email: string) {
     if (email === this.email) {
-      this.toastr.info('Du hast eine E-Mail bekommen');
-      window.localStorage.setItem('isDeletion', '1');
-      this.sendEmailLink(environment.reAuthSettingForData);
+      this.deleteUser();
     } else {
       this.toastr.error('Ist die E-Mail richtig geschrieben?');
     }
+  }
+
+  private deleteUser() {
+    this.afAuth.auth.currentUser.delete().then(() => {
+      this.toastr.success('Benutzer erfolgreich entfernt');
+      this.router.navigate(['/home']);
+    }).catch(err => {
+      console.log('err', err);
+      this.toastr.error('Das Löschen des Benutzers erfordert eine kürzlich erfolgte Anmeldung. Melden Sie sich daher erneut über den Link in der E-Mail an, die wir Ihnen gesendet haben.');
+
+      window.localStorage.setItem('isDeletion', '1');
+      window.localStorage.setItem('userOldEmail', this.email);
+      this.sendEmailLink(environment.reAuthSettingForData);
+    });
   }
 
   async sendEmailLink(settings) {

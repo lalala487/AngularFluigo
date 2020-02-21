@@ -13,6 +13,9 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 	transition: background-color 9999s ease-in-out 0s;
 	-webkit-text-fill-color: rgba(235, 235, 235, 1) !important;
 }
+:focus {
+	outline: none;
+}
 select:focus {
 	outline: none;
 }
@@ -196,22 +199,8 @@ body.dialog-open {
 	flex: 1 1 auto;
 }
 .modal-header {
-	display: -ms-flexbox;
-	display: -webkit-box;
-	display: flex;
-	-ms-flex-align: start;
-	-webkit-box-align: start;
-	align-items: flex-start;
-	-ms-flex-pack: justify;
-	-webkit-box-pack: justify;
-	justify-content: space-between;
 	padding-top: 1rem;
-	padding-bottom: 0rem;
-	padding-right: 1rem;
-	padding-left: 1rem;
-	border-bottom: none !important;
-	border-top-left-radius: 0.3rem;
-	border-top-right-radius: 0.3rem;
+	border-bottom: none;
 	margin-top: 1rem;
 }
 .modal-header .close {
@@ -251,6 +240,11 @@ body.dialog-open {
 	margin-top: 0rem;
 	font-weight: 400;
 	opacity: .5;
+}
+.modal-footer {
+	padding-bottom: 1rem;
+	border-top: none;
+	margin-bottom: 1rem;
 }
 .modal-input-button-email {
 	margin-top: 1rem;
@@ -1655,6 +1649,9 @@ a:hover {
 .btn-primary:focus {
 	-webkit-box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
 	box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);
+	background-color: rgba(86, 138, 144, 1);
+	border-color: inherit;
+	color: rgba(235, 235, 235, 1);
 }
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus, .show>.btn-primary.dropdown-toggle:focus {
 	-webkit-box-shadow: 0 0 0 2px rgba(85, 144, 151, .5);

@@ -65,13 +65,13 @@
 
 <ngx-smart-modal #loginModal identifier="loginModal" [closable]="false" customClass="nsm-centered" [dismissable]="false"
   [escapable]="false">
-  <div class="modal-header">
-  </div>
+  <div class="modal-header"></div>
   <div class="modal-body">
     <app-auth (emailSentChanged)="emailSentChanged($event)" (isLoggedInChange)="isLoggedInChange($event)"
       *ngIf="!emailSent"></app-auth>
     <app-email-sent *ngIf="emailSent"></app-email-sent>
   </div>
+  <div class="modal-footer"></div>
 </ngx-smart-modal>
 
 <div class="row nav-container">

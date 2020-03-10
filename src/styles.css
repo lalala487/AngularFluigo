@@ -802,6 +802,15 @@ a:hover {
 .gradient {
 	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
 }
+.gradient-reverse {
+	background-image: linear-gradient(to top left, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
+}
+.gradient-bottom {
+	background-image: linear-gradient(to top, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
+}
+.gradient-top {
+	background-image: linear-gradient(to bottom, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
+}
 .gradient-full {
 	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(77, 131, 132, 1) 100%);
 }

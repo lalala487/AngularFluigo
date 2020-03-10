@@ -1,0 +1,41 @@
+.featured-block {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.featured-container {
+  text-align: center;
+}
+
+.featured-text {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 767.98px) {
+  .featured-two {
+    display: none !important;
+  }
+}
+
+.featured-container .featured-element:first-of-type {
+  margin-left: 0rem;
+}
+
+.featured-container .featured-element {
+  display: inline-block;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.featured-container .featured-element:last-of-type {
+  margin-right: 0rem;
+}
+
+.featured-container img {
+  max-height: 5rem;
+  opacity: .5;
+  min-height: 5rem;
+  min-width: 5rem;
+  max-width: 5rem;
+}

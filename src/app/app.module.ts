@@ -80,6 +80,7 @@ import { GuideDayScheduleComponent } from './guide-day-schedule/guide-day-schedu
 import { TravelGuideHistoryComponent } from './travel-guide-history/travel-guide-history.component';
 import { TravelGuideCultureComponent } from './travel-guide-culture/travel-guide-culture.component';
 import { TravelGuideCtaComponent } from './travel-guide-cta/travel-guide-cta.component';
+import { FeaturedComponent } from './featured/featured.component';
 
 registerLocaleData(localeDe);
 
@@ -144,6 +145,7 @@ registerLocaleData(localeDe);
     TravelGuideHistoryComponent,
     TravelGuideCultureComponent,
     TravelGuideCtaComponent,
+    FeaturedComponent,
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@
 .travel-guide-amsterdam {
   background-image:
     linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
-    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F4_00002_1.jpg?alt=media&token=75447f74-500b-4f58-b0b9-61c3afa47a81');
+    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F1-00001-6.jpg?alt=media&token=7429e631-d90e-4f6d-b944-5e917d809ee2');
   background-position: center;
   background-size: cover;
 }
@@ -30,7 +30,39 @@
 .travel-guide-london {
   background-image:
     linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
-    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F4_00001_1.jpg?alt=media&token=36559f11-56ce-4d92-b73c-01fd641b7a98');
+    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F1-00004-2.jpg?alt=media&token=79a59976-7873-448e-a623-7afd0bd99908');
+  background-position: center;
+  background-size: cover;
+}
+
+.travel-guide-paris {
+  background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
+    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F1-00002-13.jpg?alt=media&token=6d11d9f2-1258-43e0-b787-df79b3e7a1f6');
+  background-position: center;
+  background-size: cover;
+}
+
+.travel-guide-barcelona {
+  background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
+    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F1-00003-4.jpg?alt=media&token=480e0424-30c3-4b45-8aaf-7a9d5d59befd');
+  background-position: center;
+  background-size: cover;
+}
+
+.travel-guide-prague {
+  background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
+    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F1-00005-5.jpg?alt=media&token=b0477f97-437b-4a21-9a6c-61788c69868f');
+  background-position: center;
+  background-size: cover;
+}
+
+.travel-guide-dublin {
+  background-image:
+    linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%),
+    url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/cities%2F1-00007-1.jpg?alt=media&token=98d24485-aa21-4e13-9f7f-36c63b296136');
   background-position: center;
   background-size: cover;
 }

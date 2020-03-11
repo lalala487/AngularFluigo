@@ -90,7 +90,7 @@ export class DealDetailComponent implements OnInit {
       if (deals.length === 0) {
         this.toastr.error('No deal found for the slug supplied', 'Ehm...');
 
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       }
 
       this.deal = deals[0];
@@ -98,7 +98,7 @@ export class DealDetailComponent implements OnInit {
       if (this.deal.endDate.toDate() < new Date()) {
         this.toastr.error('Das Angebot ist beendet', 'Ehm...');
 
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       }
 
       if (this.deal.marketing) {

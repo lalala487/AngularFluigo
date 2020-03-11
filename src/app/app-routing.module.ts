@@ -18,7 +18,7 @@ import { OfflineGuardService } from './services/offline-guard.service';
 const routes: Routes = [
   { path: 'deal/:slug', component: DealDetailComponent, canActivate: [OfflineGuardService] },
   { path: 'travel-guide/:slug', component: TravelGuideComponent, canActivate: [OfflineGuardService] },
-  { path: 'home', component: HomeComponent, canActivate: [OfflineGuardService] },
+  { path: '', component: HomeComponent, canActivate: [OfflineGuardService] },
   { path: 'login', component: LoginComponent, canActivate: [OfflineGuardService]  },
   { path: 'logout', component: LogoutComponent, canActivate: [OfflineGuardService]  },
   { path: 'data-protection', component: DataProtectionComponent, canActivate: [OfflineGuardService]  },
@@ -29,8 +29,7 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent, canActivate: [OfflineGuardService]  },
   { path: 'offline', component: OfflineComponent, canActivate: [OfflineGuardService]  },
   { path: 'travel-guide', component: TravelGuideListComponent, canActivate: [OfflineGuardService]  },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
 @NgModule({

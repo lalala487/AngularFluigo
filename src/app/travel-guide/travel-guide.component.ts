@@ -45,7 +45,7 @@ export class TravelGuideComponent implements OnInit, OnChanges {
       if (guides.length === 0) {
         this.toastr.error('No guide found for the slug supplied', 'Ehm...');
 
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       }
 
       this.travelGuide = guides[0];

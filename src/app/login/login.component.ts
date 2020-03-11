@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
       }
 
     } catch (error) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     }
   }
   private redirect(): void {
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
     if (redirectUrl) {
       this.router.navigate([redirectUrl]);
     } else {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     }
   }
 }

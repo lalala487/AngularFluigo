@@ -176,7 +176,7 @@ export class AccountComponent implements OnInit {
   private deleteUser() {
     this.afAuth.auth.currentUser.delete().then(() => {
       this.toastr.success('Benutzer erfolgreich entfernt');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
     }).catch(err => {
       console.log('err', err);
       this.toastr.error('Das Löschen des Benutzers erfordert eine kürzlich erfolgte Anmeldung. Melden Sie sich daher erneut über den Link in der E-Mail an, die wir Ihnen gesendet haben.');

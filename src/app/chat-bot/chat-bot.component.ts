@@ -33,6 +33,7 @@ export class ChatBotComponent implements OnInit {
     }
 
     const numberOfMessages = this.messages.length;
+
     if (numberOfMessages === 0 || (this.messages.length > 0 && this.messages[numberOfMessages - 1].message !== this.currentText)) {
       const message = {
         author: Author.User,
@@ -54,6 +55,5 @@ export class ChatBotComponent implements OnInit {
 
     this.currentText = '';
   }
-
 }
 

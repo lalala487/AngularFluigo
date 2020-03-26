@@ -51,7 +51,7 @@
     gtag('js', new Date());
     gtag('config', 'UA-118366344-1');
   </script>
-  <script src="https://cdnjs.com/libraries/Chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.1/Chart.js"></script>
   <script async src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
   <script>
   window.addEventListener("load", function(){
@@ -78,17 +78,5 @@
   </noscript>
 
 </body>
-
-<script>
- if ('serviceWorker' in navigator) {
-    console.log("Will the service worker register?");
-    navigator.serviceWorker.register('service-worker.js')
-      .then(function(reg){
-        console.log("Yes, it did.");
-     }).catch(function(err) {
-        console.log("No it didn't. This happened:", err)
-    });
- }
-</script>
 
 </html>

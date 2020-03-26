@@ -1,9 +1,6 @@
 {
   "hosting": {
     "public": "dist/flugio-frontend",
-    "headers": [
-      { "source":"/ngsw-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}] }
-    ],
     "ignore": [
       "firebase.json",
       "**/.*",

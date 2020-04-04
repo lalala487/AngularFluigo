@@ -29,6 +29,8 @@ export class ActivitiesComponent implements OnInit {
 
   doWeHaveActivities = false;
 
+  showNoActivities = false;
+
   constructor(
     private db: AngularFirestore,
   ) { }
@@ -38,7 +40,8 @@ export class ActivitiesComponent implements OnInit {
     const dealActivitiesIds = this.deal.activities.map(activity => activity.id);
 
     if (dealActivitiesIds === 0) {
-      this.selectedActivityChange.emit(null);
+      this.showNoActivities = true;
+      return;
     }
 
     const activityOfferCollectionRef = this.db.collection<ActivityOffer>(
@@ -55,7 +58,8 @@ export class ActivitiesComponent implements OnInit {
     ).pipe(
       switchMap(activityOffers => {
         if (!activityOffers) {
-          this.selectedActivityChange.emit(null);
+          this.showNoActivities = true;
+          return;
         }
 
         return activityOffers.filter(activityOffer => {
@@ -108,10 +112,9 @@ export class ActivitiesComponent implements OnInit {
 
       setTimeout(() => {
         if (!this.doWeHaveActivities) {
-          this.selectedActivityChange.emit(null);
+          this.showNoActivities = true;
         }
-
-      }, 2000);
+      }, 1500);
   }
 
   activitySelected(activity: Activity) {

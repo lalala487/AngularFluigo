@@ -81,6 +81,7 @@ import { TravelGuideHistoryComponent } from './travel-guide-history/travel-guide
 import { TravelGuideCultureComponent } from './travel-guide-culture/travel-guide-culture.component';
 import { TravelGuideCtaComponent } from './travel-guide-cta/travel-guide-cta.component';
 import { FeaturedComponent } from './featured/featured.component';
+import { NoActivitiesComponent } from './no-activities/no-activities.component';
 
 registerLocaleData(localeDe);
 
@@ -146,6 +147,7 @@ registerLocaleData(localeDe);
     TravelGuideCultureComponent,
     TravelGuideCtaComponent,
     FeaturedComponent,
+    NoActivitiesComponent,
   ],
   imports: [
     BrowserModule,

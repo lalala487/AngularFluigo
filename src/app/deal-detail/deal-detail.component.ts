@@ -330,6 +330,12 @@ export class DealDetailComponent implements OnInit {
   }
 
   selectedActivityChange(activity: Activity) {
+    if (activity === null) {
+      this.moveToNextStep();
+
+      return;
+    }
+
     const pack = {
       activity: activity,
       offer: null

@@ -27,12 +27,19 @@ export class ActivitiesComponent implements OnInit {
   activities: Array<Observable<Activity>> = [];
   activityOffers: Array<string> = [];
 
+  doWeHaveActivities = false;
+
   constructor(
     private db: AngularFirestore,
   ) { }
 
   ngOnInit() {
+
     const dealActivitiesIds = this.deal.activities.map(activity => activity.id);
+
+    if (dealActivitiesIds === 0) {
+      this.selectedActivityChange.emit(null);
+    }
 
     const activityOfferCollectionRef = this.db.collection<ActivityOffer>(
       'activityOffer',
@@ -47,6 +54,10 @@ export class ActivitiesComponent implements OnInit {
       }))
     ).pipe(
       switchMap(activityOffers => {
+        if (!activityOffers) {
+          this.selectedActivityChange.emit(null);
+        }
+
         return activityOffers.filter(activityOffer => {
           if (!dealActivitiesIds.includes(activityOffer.activity[0].id)) {
             return false;
@@ -74,6 +85,8 @@ export class ActivitiesComponent implements OnInit {
                       activity.activityOfferId = activityOffer.id;
                       activity.id = activityOffer.activity[0].id;
 
+                      this.doWeHaveActivities = true;
+
                       if (this.currentActivities.has(activity.id)) {
                         activity.selected = this.currentActivities.get(activity.id).activity.selected;
                       } else {
@@ -91,6 +104,14 @@ export class ActivitiesComponent implements OnInit {
         });
 
       })).subscribe(s => s);
+
+
+      setTimeout(() => {
+        if (!this.doWeHaveActivities) {
+          this.selectedActivityChange.emit(null);
+        }
+
+      }, 2000);
   }
 
   activitySelected(activity: Activity) {

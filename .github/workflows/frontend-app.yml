@@ -1,0 +1,32 @@
+name: Flugio Frontend
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    strategy:
+      matrix:
+        node-version: [11.8.0]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Prepare with Node.js ${{ matrix.node-version }}
+        run: npm install -g firebase-tools && npm install -g @angular/cli && npm install
+      - name: Build with Node.js ${{ matrix.node-version }}
+        run: npm run build_de_prod
+      - name: Lint with Node.js ${{ matrix.node-version }}
+        run: ng lint
+      - name: Test with Node.js ${{ matrix.node-version }}
+        run: npm run test_headless
+      - name: deploy to prod on master with Node.js ${{ matrix.node-version }}
+        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }} --except functions
+        if: github.ref == 'refs/heads/master'

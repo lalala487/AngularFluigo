@@ -1,3 +1,5 @@
+![Flugio Frontend](https://github.com/ProjectFlugio/frontend-web-application/workflows/Flugio%20Frontend/badge.svg)
+
 # Flugio Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.3.

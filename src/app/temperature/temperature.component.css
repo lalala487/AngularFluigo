@@ -3,6 +3,8 @@
   padding-top: 5rem;
   padding-bottom: 5rem;
   background-color: rgba(77, 131, 132, 1);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 .temperature-block .canvas-wrapper {

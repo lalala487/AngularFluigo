@@ -28,6 +28,60 @@ hr {
 }
 
 /**********************************************************************/
+/*****************************   General   ****************************/
+/**********************************************************************/
+
+.relative {
+	position: relative;
+}
+
+.toggle-radius-left {
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 0rem;
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 0rem;
+}
+
+.toggle-radius-right {
+	border-bottom-left-radius: 0rem;
+	border-bottom-right-radius: 1rem;
+	border-top-left-radius: 0rem;
+	border-top-right-radius: 1rem;
+}
+
+.toggle-split-left {
+	padding-left: 0rem;
+}
+
+.toggle-split-right {
+	padding-right: 0rem;
+}
+
+@media only screen and (max-width: 576px) {
+	.toggle-split-left {
+		padding-left: 15px;
+	}
+	
+	.toggle-split-right {
+		padding-right: 15px;
+	}
+
+	.toggle-radius-left {
+		border-bottom-left-radius: 0rem;
+		border-bottom-right-radius: 0rem;
+		border-top-left-radius: 1rem;
+		border-top-right-radius: 1rem;
+	}
+	
+	.toggle-radius-right {
+		border-bottom-left-radius: 1rem;
+		border-bottom-right-radius: 1rem;
+		border-top-left-radius: 0rem;
+		border-top-right-radius: 0rem;
+	}
+}
+
+/**********************************************************************/
 /*****************************   Stripe   *****************************/
 /**********************************************************************/
 
@@ -1359,6 +1413,11 @@ a:hover {
 }
 .cal-days {
 	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .6) 0%, rgba(77, 131, 132, .6) 100%);
+	border-top-left-radius: 1rem;
+	border-top-right-radius: 1rem;
+	border-bottom-left-radius: 1rem;
+	border-bottom-right-radius: 1rem;
+	overflow: hidden;
 }
 @media only screen and (max-width: 575.98px) {
 	.cal-month-view .cal-day-number {
@@ -1754,71 +1813,101 @@ a:hover {
 	padding-bottom: 2rem;
 	font-size: 1rem;
 	letter-spacing: .07rem;
-	-moz-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
 	border-radius: 0;
 	opacity: .5;
 }
 .btn-icon-press {
 	color: rgba(235, 235, 235, 1);
-	background-color: inherit;
-	border-width: 0.1rem;
-	border-color: rgba(235, 235, 235, 1);
-	border-style: solid;
+	background-color: rgba(235, 235, 235, 0.15);
+	border-width: 0rem;
 	width: 100%;
 	padding-top: 2.2rem;
 	padding-bottom: 2rem;
 	font-size: 1rem;
 	letter-spacing: .07rem;
-	-moz-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-	border-radius: 0;
-	opacity: .5;
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
 }
 .btn-option-press {
 	color: rgba(235, 235, 235, 1);
-	background-color: inherit;
-	border-width: 0.1rem;
-	border-color: rgba(235, 235, 235, 1);
-	border-style: solid;
+	background-color: rgba(235, 235, 235, 0.15);
+	border-width: 0rem;
 	width: 100%;
 	padding-top: 1.2rem;
 	padding-bottom: 1rem;
 	font-size: 1rem;
 	letter-spacing: .07rem;
-	-moz-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-	border-radius: 0;
-	opacity: .5;
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
+	border-radius: 1rem;
 }
 .pdp-user-age-block .active, .pdp-onboard-block .active, .pdp-transportation-block .active, .pdp-insurance-block .active, .pdp-activity-date-block .active, .pdp-user-quantity-block .active {
-	opacity: 1;
-	background-color: rgba(235, 235, 235, .15);
+	background-color: rgba(235, 235, 235, .45);
 }
+
 .btn-press:hover, .btn-option-press:hover, .btn-icon-press:hover {
 	opacity: 1;
-	-moz-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
 	cursor: pointer;
 }
+
+.btn-icon-press.active p,
+.btn-icon-press.active img {
+	opacity: 1;
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
+}
+
+.btn-icon-press p,
+.btn-icon-press img {
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
+	opacity: .35;
+}
+
 .btn-press:focus, .btn-option-press:focus, .btn-icon-press:focus {
 	outline: none;
 }
 .cal-open-day-events {
 	display: none;
 }
+
+.toggle-split {
+	z-index: 1;
+	display: block;
+	top: calc(50% - 1rem);
+	left: calc(50% - 2rem);
+	font-size: .8rem;
+	padding: .5rem;
+	border-radius: .5rem;
+	background-color: rgba(235, 235, 235, 1);
+	width: 4rem; color: rgba(0, 0, 0, .75);
+	text-align: center;
+	position: absolute;
+	height: auto;
+}
+
 /**********************************************************************/
 
 /*****************************   Select   *****************************/

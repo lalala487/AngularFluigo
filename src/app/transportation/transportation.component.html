@@ -13,15 +13,16 @@
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-6">
-              <button class="btn-icon-press fade-in-out" [class.active]="hasTransportation" type="next" (click)="yes()">
+          <div class="row relative">
+            <div class="toggle-split">ODER</div>
+            <div class="col-md-6 toggle-split-right">
+              <button class="btn-icon-press toggle-radius-left fade-in-out" [class.active]="hasTransportation" type="next" (click)="yes()">
                 <img src="assets/icon/icon-ride.svg" height="55" alt="Icon Ride">
                 <p>Mit</p>
               </button>
             </div>
-            <div class="col-md-6">
-              <button class="btn-icon-press fade-in-out" type="next" [class.active]="!hasTransportation" (click)="no()">
+            <div class="col-md-6 toggle-split-left">
+              <button class="btn-icon-press toggle-radius-right fade-in-out" type="next" [class.active]="!hasTransportation" (click)="no()">
                 <img src="assets/icon/icon-walk.svg" height="55" alt="Icon Walk">
                 <p>Ohne</p>
               </button>

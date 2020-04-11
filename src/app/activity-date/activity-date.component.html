@@ -11,11 +11,10 @@
                 </div>
                 <!-- The part of "2 Erwachsene und 1 Kind" is dynamic, based on the selection made in the step "user-quantity".  -->
                 <div class="butler-text"><span>
-                  Für
-                  {{ adults }} Erwachsene
-                  <ng-container *ngIf="children > 0">
-                    und {{ children }} Kind
-                  </ng-container>, gibt es folgende Optionen. Der Preis ist für alle Personen zusammen.</span></div>
+                  Großartig! Wann möchtest du {{ activity?.name[locale] }} besuchen? Der Preis ist für
+                  {{ adults }} Erwachsene<ng-container *ngIf="children > 0"> und {{ children }} Kind</ng-container>.
+                  </span>
+                </div>
               </div>
             </div>
           </div>

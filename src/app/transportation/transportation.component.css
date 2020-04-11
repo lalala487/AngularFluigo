@@ -23,11 +23,7 @@
 }
 
 @media only screen and (max-width: 767.98px)  {
-  .pdp-transportation-block .btn-icon-press{
-    margin-bottom: 2rem;
-  }
-
-  .pdp-transportation-block {
+.pdp-transportation-block {
     margin-top: -1rem;
   }
 }

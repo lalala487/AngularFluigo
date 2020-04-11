@@ -7,6 +7,8 @@
   height: 20rem;
   background-size: cover;
   background-position: center;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
 }
 
 .pdp-activity-detail-block-gradient {
@@ -135,6 +137,8 @@ hr {
   padding-left: 7.5rem;
   padding-right: 7.5rem;
   background-color: rgba(77, 131, 132, 1);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 }
 
 .pdp-activity-detail-block .pdp-activity-detail-butler-block .butler-container{

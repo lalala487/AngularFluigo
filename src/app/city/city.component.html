@@ -23,26 +23,18 @@
   <div class="row" style="margin-left:0rem; margin-right:0rem;">
     <div class="col-xl-12 pdp-city-fc-block gradient">
       <div class="content">
+        <ng-container *ngFor="let activity of activityList; let i = index">
         <a class="card">
-          <div class="front" [style.background-image]="imageUrl">
-            <p>Wie viele Nationalitäten zählt Amsterdam?</p>
+          <div class="front" [style.background-image]="(activity | async)?.imageUrl | async">
+            <p>{{ (activity | async)?.name[locale] }}</p>
           </div>
           <div class="back">
             <div>
-              <p>176 Nationalitäten</p>
+              <p>{{ (activity | async)?.description[locale] }}</p>
             </div>
           </div>
         </a>
-        <a class="card">
-          <div class="front" [style.background-image]="imageUrl">
-            <p>Wie viele Fahrräder gibt es in Amsterdam?</p>
-          </div>
-          <div class="back">
-            <div>
-              <p>880'000 Fahrräder</p>
-            </div>
-          </div>
-        </a>
+        </ng-container>
       </div>
     </div>
   </div>

@@ -14,13 +14,14 @@
 
   <div class="row" style="margin-left:0rem; margin-right:0rem;">
     <div style="display: block" class="canvas-wrapper">
-      <canvas baseChart
-              [datasets]="radarChartData"
-              [labels]="radarChartLabels"
-              [options]="radarChartOptions"
-              [legend]="radarChartLegend"
-              [chartType]="radarChartType">
-      </canvas>
+      <div id="chart">
+        <apx-chart
+          [series]="chartOptions.series"
+          [chart]="chartOptions.chart"
+          [xaxis]="chartOptions.xaxis"
+          [title]="chartOptions.title"
+        ></apx-chart>
+      </div>
     </div>
   </div>
 

@@ -1,30 +1,10 @@
 .temperature-block {
   height: auto;
   padding-top: 5rem;
-  padding-bottom: 5rem;
   background-color: rgba(77, 131, 132, 1);
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
-}
-
-.temperature-block .canvas-wrapper {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-
-.temperature-block canvas{
-  width:100% !important;
-  letter-spacing: .07rem !important;
-}
-
-.temperature-block .temperature-data p{
-  letter-spacing: .07rem;
-  margin-bottom: 0rem;
-}
-
-.temperature-block .temperature-data {
-  padding-left: 5.5rem;
-  padding-right: 5rem;
+  overflow: hidden;
 }
 
 .temperature-block .pdp-temperature-butler-block {
@@ -37,19 +17,44 @@
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
+}
 
-  .temperature-block .canvas-wrapper {
-    padding-left: 2rem;
-    padding-right: 2.5rem;
+.chart-container {
+  width: calc(100% + 32px);
+  margin-left: -22px;
+}
+
+.left {
+  float: left;
+  margin-left: 56px;
+  margin-bottom: 27px;
+}
+
+.right {
+  float: right;
+  margin-right: 42px;
+  margin-bottom: 27px;
+}
+
+.bg-months {
+  background-color: rgba(235,235, 235, .15);
+  height: 94px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+@media only screen and (max-width: 992px)  {
+  .bg-months {
+    height: 101px;
   }
+}
 
-  .temperature-block canvas{
-    width:100% !important;
-  }
-
-  .temperature-block .temperature-data {
-    margin-bottom: 2.5rem;
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
+@media only screen and (min-width: 1200px) and (max-width: 1344px)  {
+  .bg-months {
+    height: 101px;
   }
 }

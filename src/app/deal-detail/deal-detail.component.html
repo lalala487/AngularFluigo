@@ -1,245 +1,275 @@
-<sidebar-js [sidebarjsConfig]="{position: 'left', backdropOpacity: 0}">
-  <div *ngIf="accummulations.hasFlightAccommodation" class="sidebarjs-center-container"
-    style="display: flex; align-items: center; flex-wrap: wrap; height: 100%; letter-spacing: .07rem; background-color: rgba(77, 131, 132, 1); background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);">
-    <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
-      <div class="content-block price-title">
-        <p class="user-quantity">Preis für {{ accummulations.adults }} Erwachsene<ng-container *ngIf="accummulations.adults == 1">r</ng-container><br />und {{ accummulations.children }} Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container></p>
-        <hr class="total-hr" />
-      </div>
+<ng-sidebar-container style="height: 100vh;">
 
-      <div class="content-block" *ngIf="accummulations.flightAccommodationPrice">
-        <p class="price-label bottom-margin-xs">Flug & Hotel</p>
-        <p class="price-amount bottom-margin-xs">{{ accummulations.flightAccommodationPrice.currency }} {{ accummulations.flightAccommodationPrice }}</p>
-        <p class="date-label bottom-margin-xs">Abflug</p>
-        <p class="date-data bottom-margin-xs">{{ accummulations.startDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</p>
-        <p class="date-label bottom-margin-xs">Hinflug</p>
-        <p class="date-data bottom-margin-xs">{{ accummulations.endDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</p>
-        <p class="edit-label bottom-margin-l" (click)="goToStep(4)">Anpassen</p>
-      </div>
+  <ng-sidebar autoFocus=false position='left' showBackdrop=true closeOnClickOutside=true animate=true #sidebar>
 
-      <div class="content-block" *ngIf="accummulations.activities.values">
-        <div *ngFor="let pack of accummulations.activities | keyvalue">
-          <p class="price-label bottom-margin-xs" *ngIf="pack.value.activity">{{ pack.value.activity?.name[locale] }}</p>
-          <p class="price-amount bottom-margin-xs" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }} {{ pack.value.offer?.price }}</p>
-          <p class="date-label bottom-margin-xs">Datum</p>
-          <p class="date-data bottom-margin-xs">{{ pack.value.offer?.date.toDate() | date:'E d MMM' : '': localeSimple}}</p>
-          <p class="edit-label bottom-margin-l" (click)="goToStep(5)">Anpassen</p>
+
+    <div *ngIf="accummulations.hasFlightAccommodation" class="sidebarjs-center-container"
+      style="display: flex; align-items: center; flex-wrap: wrap; height: 100%; letter-spacing: .07rem; background-color: rgba(77, 131, 132, 1); background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);">
+      <div class="container-content" style="width:100%; float: left; clear: both;">
+        <div class="content-block price-title">
+          <p class="user-quantity">Preis für {{ accummulations.adults }} Erwachsene<ng-container
+              *ngIf="accummulations.adults == 1">r</ng-container><br />und {{ accummulations.children }} Kind
+            <ng-container *ngIf="accummulations.children !== 1">er</ng-container>
+          </p>
+          <hr class="total-hr" />
         </div>
-      </div>
 
-      <!-- The block below is only displayed when the customer has chosen for a transportation
+        <div class="content-block" *ngIf="accummulations.flightAccommodationPrice">
+          <p class="price-label bottom-margin-xs">Flug & Hotel</p>
+          <p class="price-amount bottom-margin-xs">{{ accummulations.flightAccommodationPrice.currency }}
+            {{ accummulations.flightAccommodationPrice }}</p>
+          <p class="date-label bottom-margin-xs">Abflug</p>
+          <p class="date-data bottom-margin-xs">
+            {{ accummulations.startDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</p>
+          <p class="date-label bottom-margin-xs">Hinflug</p>
+          <p class="date-data bottom-margin-xs">
+            {{ accummulations.endDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</p>
+          <p class="edit-label bottom-margin-l" (click)="goToStep(4)">Anpassen</p>
+        </div>
+
+        <div class="content-block" *ngIf="accummulations.activities.values">
+          <div *ngFor="let pack of accummulations.activities | keyvalue">
+            <p class="price-label bottom-margin-xs" *ngIf="pack.value.activity">{{ pack.value.activity?.name[locale] }}
+            </p>
+            <p class="price-amount bottom-margin-xs" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }}
+              {{ pack.value.offer?.price }}</p>
+            <p class="date-label bottom-margin-xs">Datum</p>
+            <p class="date-data bottom-margin-xs">
+              {{ pack.value.offer?.date.toDate() | date:'E d MMM' : '': localeSimple}}</p>
+            <p class="edit-label bottom-margin-l" (click)="goToStep(5)">Anpassen</p>
+          </div>
+        </div>
+
+        <!-- The block below is only displayed when the customer has chosen for a transportation
         Otherwise, this block is not being displayed. -->
-      <div class="content-block"
-        *ngIf="accummulations.transportationPrice.amount > 0 && accummulations.hasTransportation">
-        <p class="price-label bottom-margin-xs">Transport</p>
-        <p class="price-amount bottom-margin-xs">{{ accummulations.transportationPrice.currency }} {{ accummulations.transportationPrice }}</p>
-        <p class="edit-label bottom-margin-l" (click)="goToStep(8)">Anpassen</p>
-      </div>
+        <div class="content-block"
+          *ngIf="accummulations.transportationPrice.amount > 0 && accummulations.hasTransportation">
+          <p class="price-label bottom-margin-xs">Transport</p>
+          <p class="price-amount bottom-margin-xs">{{ accummulations.transportationPrice.currency }}
+            {{ accummulations.transportationPrice }}</p>
+          <p class="edit-label bottom-margin-l" (click)="goToStep(8)">Anpassen</p>
+        </div>
 
-      <!-- The block below is only displayed when the customer has chosen for an insurance.
+        <!-- The block below is only displayed when the customer has chosen for an insurance.
         Otherwise, this block is not being displayed. -->
-      <div class="content-block" *ngIf="accummulations.insurancePrice.amount > 0 && accummulations.hasInsurance">
-        <p class="price-label bottom-margin-xs">Versicherung</p>
-        <p class="price-amount bottom-margin-xs">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</p>
-        <p class="edit-label bottom-margin-l" (click)="goToStep(9)">Anpassen</p>
-      </div>
+        <div class="content-block" *ngIf="accummulations.insurancePrice.amount > 0 && accummulations.hasInsurance">
+          <p class="price-label bottom-margin-xs">Versicherung</p>
+          <p class="price-amount bottom-margin-xs">{{ accummulations.insurancePrice.currency }}
+            {{ accummulations.insurancePrice }}</p>
+          <p class="edit-label bottom-margin-l" (click)="goToStep(9)">Anpassen</p>
+        </div>
 
-      <!-- The block below is only displayed when the component in the deal detail view is active and filled in. -->
-      <div class="content-block" *ngIf="accummulations.bookingFee.amount > 0">
-        <p class="price-label">Buchungsgebühr</p>
-        <p class="price-amount">{{ accummulations.bookingFee.currency }} {{ accummulations.bookingFee }}</p>
-      </div>
+        <!-- The block below is only displayed when the component in the deal detail view is active and filled in. -->
+        <div class="content-block" *ngIf="accummulations.bookingFee.amount > 0">
+          <p class="price-label">Buchungsgebühr</p>
+          <p class="price-amount">{{ accummulations.bookingFee.currency }} {{ accummulations.bookingFee }}</p>
+        </div>
 
-      <div class="content-block price-total">
-        <hr class="total-hr" />
-        <p class="price-label">Gesamtbetrag</p>
-        <p class="price-amount">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
-      </div>
+        <div class="content-block price-total">
+          <hr class="total-hr" />
+          <p class="price-label">Gesamtbetrag</p>
+          <p class="price-amount">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}
+          </p>
+        </div>
 
-      <div class="content-block sidebarjs-close-button">
-        <button sidebarjsClose class="btn btn-small btn-primary" type="next" i18n="close sidebar">Schliessen</button>
+        <div class="content-block sidebarjs-close-button">
+          <button class="btn btn-small btn-primary" type="next" i18n="close sidebar"
+            (click)="sidebar.close()">Schliessen</button>
+        </div>
       </div>
     </div>
-  </div>
-</sidebar-js>
 
-<ngx-smart-modal #loginModal identifier="loginModal" [closable]="false" customClass="nsm-centered" [dismissable]="false"
-  [escapable]="false">
-  <div class="modal-header"></div>
-  <div class="modal-body">
-    <app-auth (emailSentChanged)="emailSentChanged($event)" (isLoggedInChange)="isLoggedInChange($event)"
-      *ngIf="!emailSent"></app-auth>
-    <app-email-sent *ngIf="emailSent"></app-email-sent>
-  </div>
-  <div class="modal-footer"></div>
-</ngx-smart-modal>
 
-<div class="row nav-container">
-  <div class="col-xl-3"></div>
-  <div class="col-xl-9 nav-col">
-    <div class="row">
-      <div class="col-xs-4" *ngIf="currentStep < 12">
-        <div class="btn-back-container">
-          <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp"
-            i18n="sidebar next">Zurück</button>
-        </div>
+
+  </ng-sidebar>
+
+  <div ng-sidebar-content>
+
+    <ngx-smart-modal #loginModal identifier="loginModal" [closable]="false" customClass="nsm-centered"
+      [dismissable]="false" [escapable]="false">
+      <div class="modal-header"></div>
+      <div class="modal-body">
+        <app-auth (emailSentChanged)="emailSentChanged($event)" (isLoggedInChange)="isLoggedInChange($event)"
+          *ngIf="!emailSent"></app-auth>
+        <app-email-sent *ngIf="emailSent"></app-email-sent>
       </div>
-      <div class="col-xs-4">
-        <div class="price-container-small">
-          <div class="price-info">
-            <p class="price-label">Gesamtbetraag</p>
-            <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
+      <div class="modal-footer"></div>
+    </ngx-smart-modal>
+
+    <div class="nav-container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-9 nav-col">
+        <div class="row">
+          <div class="col-xs-4" *ngIf="currentStep < 12">
+            <div class="btn-back-container">
+              <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp"
+                i18n="sidebar next">Zurück</button>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <div class="price-container-small">
+              <div class="price-info">
+                <p class="price-label">Gesamtbetraag</p>
+                <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
             This changes throughout the checkout process because the customer can change all the time certain options.
             The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
-            <p class="price-amount">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}
-            </p>
-            <button [attr.disabled]="!accummulations.event ? true : null" sidebarjsOpen class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
+                <p class="price-amount">{{ accummulations.totalPriceAmount.currency }}
+                  {{ accummulations.totalPriceAmount }}
+                </p>
+                <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()"
+                  class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-4" *ngIf="currentStep < 11">
+            <div class="btn-next-container">
+              <button (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp"
+                i18n="sidebar next">Weiter</button>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-xs-4" *ngIf="currentStep < 11">
-        <div class="btn-next-container">
-          <button (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp"
-            i18n="sidebar next">Weiter</button>
-        </div>
-      </div>
     </div>
-  </div>
-</div>
 
-<div [style.background-image]="imageUrl" class="row pdp-container">
-  <nav class="col-xl-3 gradient-20 pdp-column-left-bar">
-    <div class="row logo">
-      <div class="col-xl-12">
-        <div class="logo-container">
-          <a href="/">
-            <img src="assets/img/logo.svg" width="110" alt="Flugio Logo">
-          </a>
-        </div>
-        <div class="center-container">
-          <div class="steps">
-            <div class="price-container">
-              <div class="price-info">
-                <p class="price-label" i18n="sidebar total">Gesamtbetrag</p>
-                <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
+    <div [style.background-image]="imageUrl" class="pdp-container">
+      <nav class="col-xl-3 gradient-20 pdp-column-left-bar">
+        <div class="row logo">
+          <div class="col-xl-12">
+            <div class="logo-container">
+              <a href="/">
+                <img src="assets/img/logo.svg" width="110" alt="Flugio Logo">
+              </a>
+            </div>
+            <div class="center-container">
+              <div class="steps">
+                <div class="price-container">
+                  <div class="price-info">
+                    <p class="price-label" i18n="sidebar total">Gesamtbetrag</p>
+                    <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
                 This changes throughout the checkout process because the customer can change all the time certain options.
                 The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
-                <p class="price-amount">{{ accummulations.totalPriceAmount.currency }}
-                  {{ accummulations.totalPriceAmount }}</p>
-                  <button [attr.disabled]="!accummulations.event ? true : null" sidebarjsOpen class="btn btn-small btn-primary" type="next"
-                  i18n="sidebar details">Details</button>
-              </div>
-            </div>
-            <div class="timeline-container">
-              <div class="from-to-date">
-                <div *ngIf="accummulations.startDate" class="from-date">
-                  <!-- Below is the day number (example: "20") that the customer flies (based on his/her selection) -->
-                  <p class="day">{{ accummulations.startDate.toDate() | date:'d': '': localeSimple}}</p>
-                  <!-- Below is the day number (example: "June") that the customer flies (based on his/her selection) -->
-                  <p class="month">{{ accummulations?.startDate.toDate() | date:'MMM yyyy': '': localeSimple}}</p>
-                  <!-- Below is the day name (example: "Wed.") that the customer flies (based on his/her selection).
-                  The day name is always shorted to 3 letters followed by a point (".") -->
-                  <p class="weekday">{{ accummulations?.startDate.toDate() | date:'E hh:mm': '': localeSimple}}</p>
-                </div>
-                <div class="arrow-wrapper">
-                  <div class="arrow-nights">
-                    <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
-                    <ng-template #tipAccommodation>{{ accummulations?.numberOfNights}}
-                      Nächte<br />{{(accommodation$ | async)?.name[locale]}}<br />Check-in:
-                      {{ accummulations?.startDate.toDate() | date:'MMM d, y': '': localeSimple }}<br />Check-out:
-                      {{ accummulations?.endDate.toDate() | date:'MMM d, y': '': localeSimple }}</ng-template>
-                    <!-- Below is the amount of people that will be staying at the accommodation -->
-                    <ng-template #tipPeople>{{ accummulations.adults }} Erwachsene<ng-container *ngIf="accummulations.adults == 1">r</ng-container><br />{{ accummulations.children }}
-                      Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container></ng-template>
-                    <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
-                    <p class="nights">{{ accummulations?.numberOfNights}} <img src="assets/icon/icon-moon.svg"
-                        height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
-                    <!-- Below is the amount of people that will be staying at the accommodation -->
-                    <p class="persons">{{ accummulations?.adults + accummulations?.children }} <img
-                        src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top"
-                        [ngbTooltip]="tipPeople"></p>
+                    <p class="price-amount">{{ accummulations.totalPriceAmount.currency }}
+                      {{ accummulations.totalPriceAmount }}</p>
+                    <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()"
+                      class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
                   </div>
                 </div>
-                <div class="to-date" *ngIf="accummulations.endDate">
-                  <!-- Below is the day number (example: "20") that the customer flies back (based on his/her selection) -->
-                  <p class="day">{{ accummulations?.endDate.toDate() | date:'d': '' : localeSimple}}</p>
-                  <!-- Below is the day number (example: "June") that the customer flies back (based on his/her selection) -->
-                  <p class="month">{{ accummulations?.endDate.toDate() | date:'MMM yyyy': '' : localeSimple}}</p>
-                  <!-- Below is the day name (example: "Wed.") that the customer flies back (based on his/her selection).
+                <div class="timeline-container">
+                  <div class="from-to-date">
+                    <div *ngIf="accummulations.startDate" class="from-date">
+                      <!-- Below is the day number (example: "20") that the customer flies (based on his/her selection) -->
+                      <p class="day">{{ accummulations.startDate.toDate() | date:'d': '': localeSimple}}</p>
+                      <!-- Below is the day number (example: "June") that the customer flies (based on his/her selection) -->
+                      <p class="month">{{ accummulations?.startDate.toDate() | date:'MMM yyyy': '': localeSimple}}</p>
+                      <!-- Below is the day name (example: "Wed.") that the customer flies (based on his/her selection).
                   The day name is always shorted to 3 letters followed by a point (".") -->
-                  <p class="weekday">{{ accummulations?.endDate.toDate() | date:'E hh:mm':'': localeSimple}}</p>
+                      <p class="weekday">{{ accummulations?.startDate.toDate() | date:'E hh:mm': '': localeSimple}}</p>
+                    </div>
+                    <div class="arrow-wrapper">
+                      <div class="arrow-nights">
+                        <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
+                        <ng-template #tipAccommodation>{{ accummulations?.numberOfNights}}
+                          Nächte<br />{{(accommodation$ | async)?.name[locale]}}<br />Check-in:
+                          {{ accummulations?.startDate.toDate() | date:'MMM d, y': '': localeSimple }}<br />Check-out:
+                          {{ accummulations?.endDate.toDate() | date:'MMM d, y': '': localeSimple }}</ng-template>
+                        <!-- Below is the amount of people that will be staying at the accommodation -->
+                        <ng-template #tipPeople>{{ accummulations.adults }} Erwachsene<ng-container
+                            *ngIf="accummulations.adults == 1">r</ng-container><br />{{ accummulations.children }}
+                          Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container>
+                        </ng-template>
+                        <!-- Below is the amount of nights that the customer is going to stay at the accommodation -->
+                        <p class="nights">{{ accummulations?.numberOfNights}} <img src="assets/icon/icon-moon.svg"
+                            height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
+                        <!-- Below is the amount of people that will be staying at the accommodation -->
+                        <p class="persons">{{ accummulations?.adults + accummulations?.children }} <img
+                            src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top"
+                            [ngbTooltip]="tipPeople"></p>
+                      </div>
+                    </div>
+                    <div class="to-date" *ngIf="accummulations.endDate">
+                      <!-- Below is the day number (example: "20") that the customer flies back (based on his/her selection) -->
+                      <p class="day">{{ accummulations?.endDate.toDate() | date:'d': '' : localeSimple}}</p>
+                      <!-- Below is the day number (example: "June") that the customer flies back (based on his/her selection) -->
+                      <p class="month">{{ accummulations?.endDate.toDate() | date:'MMM yyyy': '' : localeSimple}}</p>
+                      <!-- Below is the day name (example: "Wed.") that the customer flies back (based on his/her selection).
+                  The day name is always shorted to 3 letters followed by a point (".") -->
+                      <p class="weekday">{{ accummulations?.endDate.toDate() | date:'E hh:mm':'': localeSimple}}</p>
+                    </div>
+                  </div>
                 </div>
+
+                <app-step-progress [currentStep]="currentStep" (currentStepChange)="goToStep($event)">
+                </app-step-progress>
+
               </div>
             </div>
+          </div>
+        </div>
+      </nav>
+      <section class="col-xl-9 pdp-column-right-bar" id="top">
+        <div class="container">
+          <div class="row pdp-row-right-bar-container">
 
-            <app-step-progress [currentStep]="currentStep" (currentStepChange)="goToStep($event)"></app-step-progress>
+            <app-city *ngIf="currentStep == 0" [city]="city" [imageUrl]="imageUrl" style="width:100%;"></app-city>
+
+            <app-accommodation *ngIf="currentStep == 1" [accommodation]="accommodation$ | async" style="width:100%;">
+            </app-accommodation>
+
+            <app-user-quantity *ngIf="currentStep == 2 && accommodation$" style="width:100%;"
+              [(childrenNumber)]="accummulations.children" [(adultNumber)]="accummulations.adults"
+              [accommodation]="accommodation$ | async"></app-user-quantity>
+
+            <app-ages-children *ngIf="currentStep == 3" style="width:100%;" [accummulations]="accummulations"
+              [childrenNumber]="accummulations.children" [(childrenBirthdays)]="accummulations.childrenBirthdays">
+            </app-ages-children>
+
+            <app-calendar *ngIf="currentStep == 4" style="width:100%;" [deal]="deal" [accummulations]="accummulations">
+            </app-calendar>
+
+            <app-activities *ngIf="currentStep == 5" style="width:100%;" [deal]="deal"
+              [startDate]="accummulations.startDate" [endDate]="accummulations.endDate" [city]="city"
+              [currentActivities]="accummulations.activities" (selectedActivityChange)="selectedActivityChange($event)">
+            </app-activities>
+
+            <app-activity-detail *ngIf="currentStep == 6" style="width:100%;" [activity]="accummulations.activity"
+              [adults]="accummulations.adults" [children]="accummulations.children"
+              [startDate]="accummulations.startDate" [endDate]="accummulations.endDate"
+              (moveToDateSelectionEvent)="moveToDateSelectionEvent($event)">
+            </app-activity-detail>
+
+            <app-activity-date *ngIf="currentStep == 7" style="width:100%;" [activity]="accummulations.activity"
+              [selectedOffer]="accummulations.activityOffer" [adults]="accummulations.adults"
+              [children]="accummulations.children" [startDate]="accummulations.startDate"
+              [endDate]="accummulations.endDate" (selectedActivityOfferChange)="selectedActivityOfferChange($event)">
+            </app-activity-date>
+
+            <app-transportation *ngIf="currentStep == 8" style="width:100%;" [deal]="deal"
+              [hasTransportation]="accummulations['hasTransportation']"
+              [transportationPrice]="accummulations['transportationPrice']"
+              (hasTransportationChange)="hasTransportationChange($event)"
+              (transportationPriceChange)="transportationPriceChange($event)"></app-transportation>
+
+            <app-insurance *ngIf="currentStep == 9" style="width:100%;"
+              [totalPrice]="accummulations['totalPriceAmount']" [hasInsurance]="accummulations['hasInsurance']"
+              [insurancePrice]="accummulations['insurancePrice']" (hasInsuranceChange)="hasInsuranceChange($event)"
+              (insurancePriceChange)="insurancePriceChange($event)">
+            </app-insurance>
+
+            <app-user-data *ngIf="currentStep == 10" style="width:100%;" [(user)]="accummulations['contact']"
+              (userContactChange)="userContactChange($event)"></app-user-data>
+
+            <app-payment-form *ngIf="currentStep == 11" style="width:100%;"
+              [amount]="accummulations['totalPriceAmount']" (stripeResult)="stripeResult($event)"
+              (errorStripe)="errorStripe($event)"></app-payment-form>
+
+            <app-success *ngIf="currentStep == 12" style="width:100%;" [accummulations]="accummulations"
+              [event]="accummulations['event']" [payment]="accummulations['payment']"></app-success>
 
           </div>
         </div>
-      </div>
+      </section>
     </div>
-  </nav>
-  <section class="col-xl-9 pdp-column-right-bar" id="top">
-    <div class="container">
-      <div class="row pdp-row-right-bar-container">
 
-        <app-city *ngIf="currentStep == 0" [city]="city" [imageUrl]="imageUrl" style="width:100%;"></app-city>
+  </div>
 
-        <app-accommodation *ngIf="currentStep == 1" [accommodation]="accommodation$ | async" style="width:100%;">
-        </app-accommodation>
-
-        <app-user-quantity *ngIf="currentStep == 2 && accommodation$" style="width:100%;" [(childrenNumber)]="accummulations.children"
-          [(adultNumber)]="accummulations.adults" [accommodation]="accommodation$ | async"></app-user-quantity>
-
-        <app-ages-children *ngIf="currentStep == 3" style="width:100%;" [accummulations]="accummulations"
-          [childrenNumber]="accummulations.children" [(childrenBirthdays)]="accummulations.childrenBirthdays">
-        </app-ages-children>
-
-        <app-calendar *ngIf="currentStep == 4" style="width:100%;" [deal]="deal" [accummulations]="accummulations">
-        </app-calendar>
-
-        <app-activities *ngIf="currentStep == 5" style="width:100%;" [deal]="deal"
-          [startDate]="accummulations.startDate" [endDate]="accummulations.endDate"
-          [city]="city"
-          [currentActivities]="accummulations.activities"
-          (selectedActivityChange)="selectedActivityChange($event)"></app-activities>
-
-        <app-activity-detail *ngIf="currentStep == 6" style="width:100%;" [activity]="accummulations.activity"
-          [adults]="accummulations.adults" [children]="accummulations.children" [startDate]="accummulations.startDate"
-          [endDate]="accummulations.endDate" (moveToDateSelectionEvent)="moveToDateSelectionEvent($event)">
-        </app-activity-detail>
-
-        <app-activity-date *ngIf="currentStep == 7" style="width:100%;"
-          [activity]="accummulations.activity"
-          [selectedOffer]="accummulations.activityOffer"
-          [adults]="accummulations.adults"
-          [children]="accummulations.children"
-          [startDate]="accummulations.startDate"
-          [endDate]="accummulations.endDate"
-          (selectedActivityOfferChange)="selectedActivityOfferChange($event)">
-        </app-activity-date>
-
-        <app-transportation *ngIf="currentStep == 8" style="width:100%;" [deal]="deal"
-          [hasTransportation]="accummulations['hasTransportation']"
-          [transportationPrice]="accummulations['transportationPrice']"
-          (hasTransportationChange)="hasTransportationChange($event)"
-          (transportationPriceChange)="transportationPriceChange($event)"></app-transportation>
-
-        <app-insurance *ngIf="currentStep == 9" style="width:100%;" [totalPrice]="accummulations['totalPriceAmount']"
-          [hasInsurance]="accummulations['hasInsurance']" [insurancePrice]="accummulations['insurancePrice']"
-          (hasInsuranceChange)="hasInsuranceChange($event)" (insurancePriceChange)="insurancePriceChange($event)">
-        </app-insurance>
-
-        <app-user-data *ngIf="currentStep == 10" style="width:100%;" [(user)]="accummulations['contact']"
-          (userContactChange)="userContactChange($event)"></app-user-data>
-
-        <app-payment-form *ngIf="currentStep == 11" style="width:100%;" [amount]="accummulations['totalPriceAmount']"
-          (stripeResult)="stripeResult($event)" (errorStripe)="errorStripe($event)"></app-payment-form>
-
-        <app-success *ngIf="currentStep == 12" style="width:100%;" [accummulations]="accummulations"
-          [event]="accummulations['event']" [payment]="accummulations['payment']"></app-success>
-
-      </div>
-    </div>
-  </section>
-</div>
+</ng-sidebar-container>

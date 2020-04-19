@@ -28,7 +28,6 @@ import { ReviewComponent } from './review/review.component';
 import { InterestComponent } from './interest/interest.component';
 import { AccommodationComponent } from './accommodation/accommodation.component';
 import { RatingComponent } from './rating/rating.component';
-import { SidebarJSModule } from 'ng-sidebarjs';
 import { UserQuantityComponent } from './user-quantity/user-quantity.component';
 import { NumberPickerComponent } from './number-picker/number-picker.component';
 import { AgesChildrenComponent } from './ages-children/ages-children.component';
@@ -65,7 +64,7 @@ import { AccountOrderDocumentListComponent } from './account-order-document-list
 import { AccountOrderDocumentListItemComponent } from './account-order-document-list-item/account-order-document-list-item.component';
 import { AccountOrderDocumentsComponent } from './account-order-documents/account-order-documents.component';
 import { TemperatureComponent } from './temperature/temperature.component';
-import { ChartsModule } from 'ng2-charts';
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { OfflineComponent } from './offline/offline.component';
 import { LanguageComponent } from './language/language.component';
 import { TravelGuideComponent } from './travel-guide/travel-guide.component';
@@ -82,6 +81,8 @@ import { TravelGuideCultureComponent } from './travel-guide-culture/travel-guide
 import { TravelGuideCtaComponent } from './travel-guide-cta/travel-guide-cta.component';
 import { FeaturedComponent } from './featured/featured.component';
 import { NoActivitiesComponent } from './no-activities/no-activities.component';
+import { SidebarModule } from 'ng-sidebar';
+
 
 registerLocaleData(localeDe);
 
@@ -152,7 +153,7 @@ registerLocaleData(localeDe);
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ChartsModule,
+    NgApexchartsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireStorageModule,
@@ -163,7 +164,7 @@ registerLocaleData(localeDe);
     ToastrModule.forRoot(),
     NgxStripeModule.forRoot(environment.stripeKey),
     FormsModule,
-    SidebarJSModule.forRoot(),
+    SidebarModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory

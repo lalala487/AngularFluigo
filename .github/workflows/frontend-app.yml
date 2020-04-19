@@ -27,6 +27,8 @@ jobs:
         run: ng lint
       - name: Test with Node.js ${{ matrix.node-version }}
         run: npm run test_headless
+      - name: E2E test with Node.js ${{ matrix.node-version }}
+        run: npm run e2e -- --configuration=ci
       - name: deploy to prod on master with Node.js ${{ matrix.node-version }}
         run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }} --except functions
         if: github.ref == 'refs/heads/master'

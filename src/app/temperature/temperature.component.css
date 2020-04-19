@@ -38,7 +38,7 @@
 
 .bg-months {
   background-color: rgba(235,235, 235, .15);
-  height: 94px;
+  height: 81px;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -49,12 +49,12 @@
 
 @media only screen and (max-width: 992px)  {
   .bg-months {
-    height: 101px;
+    height: 88px;
   }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1344px)  {
   .bg-months {
-    height: 101px;
+    height: 88px;
   }
 }

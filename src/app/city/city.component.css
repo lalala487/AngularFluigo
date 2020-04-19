@@ -274,7 +274,7 @@ hr {
   height: 300px;
   min-height: 300px;
   perspective: 1000px;
-  margin: 1rem;
+  margin: 0rem 1.5rem 0rem 1.5rem;
   position: relative;
   background-color: inherit;
   border: none;
@@ -283,6 +283,10 @@ hr {
 @media screen and (max-width: 800px) {
   .card {
     width: calc(50% - 2rem);
+    margin-bottom: 2.5rem;
+  }
+  .card:last-of-type {
+    margin-bottom: 0rem;
   }
 }
 
@@ -312,7 +316,7 @@ hr {
 
 .front {
   background-size: cover;
-  padding: 2rem;
+  padding: 2rem 2.5rem 2rem 2.5rem;
   font-size: 1.4rem;
   color: rgba(235, 235, 235, 1);
   overflow: hidden;

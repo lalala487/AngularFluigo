@@ -82,6 +82,9 @@ export class TemperatureComponent implements OnChanges {
         }
       },
       xaxis: {
+        crosshairs: {
+          show: false,
+        },
         axisBorder: {
           show: false,
         },
@@ -96,9 +99,6 @@ export class TemperatureComponent implements OnChanges {
         }
       },
       yaxis: {
-        crosshairs: {
-          show: false,
-        },
         axisBorder: {
           show: false,
         },

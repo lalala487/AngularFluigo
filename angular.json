@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/flugio-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -30,6 +31,12 @@
           "configurations": {
             "de": {
               "aot": true,
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "outputPath": "dist/flugio-frontend/"
             },
             "production": {
@@ -53,6 +60,10 @@
                   "type": "initial",
                   "maximumWarning": "5mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
@@ -89,7 +100,9 @@
               "src/styles.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/apexcharts/dist/apexcharts.min.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

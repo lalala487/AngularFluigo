@@ -5,7 +5,6 @@ import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { ImageService } from '../services/image.service';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { Money, Currencies } from 'ts-money';
-
 import { switchMap } from 'rxjs/operators';
 import { Accummulation } from '../models/fields/accummulation';
 import { City } from '../models/city';
@@ -31,6 +30,7 @@ import { ActivityPack } from '../models/activity-pack';
   styleUrls: ['./deal-detail.component.css']
 })
 export class DealDetailComponent implements OnInit {
+
   @Input() deal: Deal;
   city: City;
   accommodation$: Observable<Accommodation>;

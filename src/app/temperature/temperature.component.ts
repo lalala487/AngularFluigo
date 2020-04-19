@@ -1,6 +1,34 @@
-import { Component, OnInit, Input, SimpleChanges, SimpleChange, OnChanges } from '@angular/core';
+import { Component, Input, SimpleChanges, SimpleChange, OnChanges, ViewChild } from '@angular/core';
 import { Temperature } from '../models/temperature';
-import { ChartDataSets } from 'chart.js';
+
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexXAxis,
+  ApexYAxis,
+  ApexDataLabels,
+  ApexTitleSubtitle,
+  ApexStroke,
+  ApexFill,
+  ApexMarkers,
+  ApexTooltip,
+  ApexGrid
+} from 'ng-apexcharts';
+
+export interface ChartOptions {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis | ApexYAxis[];
+  dataLabels: ApexDataLabels;
+  fill: ApexFill;
+  grid: ApexGrid;
+  tooltip: ApexTooltip;
+  markers: ApexMarkers;
+  stroke: ApexStroke;
+  title: ApexTitleSubtitle;
+}
 
 @Component({
   selector: 'app-temperature',
@@ -10,70 +38,80 @@ import { ChartDataSets } from 'chart.js';
 export class TemperatureComponent implements OnChanges {
   @Input() temperature: Array<Temperature>;
 
-  constructor() { }
-  public lineChartOptions = {
-    scaleShowVerticalLines: false,
-    tooltips: {
-      displayColors: false,
-      backgroundColor: 'rgba(235, 235, 235, 1)',
-      bodyFontStyle: 'normal',
-      bodyFontColor: 'rgba(19, 78, 94, 1)',
-      bodyFontFamily: '\'Roboto\', \'Helvetica Neue\', \'Helvetica\', \'Arial\', sans-serif',
-      bodyFontSize: 16,
-      xPadding: 14,
-      yPadding: 14,
-      callbacks: {
-        label: function (tooltipItem, data) {
-          return tooltipItem.yLabel + ' Grad';
+  @ViewChild('chart') chart: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
+
+  constructor() {
+    this.chartOptions = {
+      series: [
+      ],
+      chart: {
+        height: 450,
+        type: 'area',
+        zoom: {
+          enabled: false
         },
-        title: function (tooltipItem, data) {
-          return;
+        toolbar: {
+          show: false
+        },
+      },
+      markers: {
+        size: 0,
+        colors: ['rgba(235,235,235,1)'],
+        strokeWidth: 0,
+      },
+      fill: {
+        colors: ['rgba(235,235,235,.15)'],
+        type: 'solid'
+      },
+      grid: {
+        show: false,
+      },
+      dataLabels: {
+        enabled: false
+      },
+      stroke: {
+        curve: 'smooth',
+        colors: ['rgba(235,235,235,.75)'],
+        width: 3
+      },
+      tooltip: {
+        enabled: true,
+        marker: {
+          show: false,
+        }
+      },
+      xaxis: {
+        axisBorder: {
+          show: false,
+        },
+        axisTicks: {
+          show: false,
+        },
+        labels: {
+          show: false,
+        },
+        tooltip: {
+          enabled: false,
+        }
+      },
+      yaxis: {
+        crosshairs: {
+          show: false,
+        },
+        axisBorder: {
+          show: false,
+        },
+        axisTicks: {
+          show: false,
+        },
+        labels: {
+          show: false,
         }
       }
-    },
-    scales: {
-      xAxes: [{
-        gridLines: {
-          display: false,
-          drawBorder: false
-        },
-        ticks: {
-          display: false,
-          fontSize: 14,
-          fontColor: 'rgba(235, 235, 235, 0.5)'
-        }
-      }],
-      yAxes: [{
-        gridLines: {
-          display: false,
-          drawBorder: false,
-        },
-        ticks: {
-          display: false,
-          stepSize: 10,
-          suggestedMin: 0,
-          fontSize: 14,
-          fontColor: 'rgba(235, 235, 235, 0.5)'
-        }
-      }]
-    },
-    responsive: true,
-  };
-  public lineChartLabels = ['Januar', '', '', '', '', '', '', '', '', '', '', 'Dezember'];
-  public lineChartType = 'line';
-  public lineChartData: ChartDataSets[] = [
-    {
-      data: [],
-      label: 'Temperature',
-      borderColor: 'rgba(235, 235, 235, .75)',
-      backgroundColor: 'rgba(235, 235, 235, .2)',
-      pointBorderColor: 'rgba(235, 235, 235, 1)',
-      pointBackgroundColor: 'rgba(235, 235, 235, 1)',
-      pointBorderWidth: 0,
-      pointHoverBorderColor: 'rgba(235, 235, 235, 1)',
-      pointHoverRadius: 2
-    }
-  ];
+    };
+  }
+
   public lineChartLegend = false;
 
   ngOnChanges(changes: SimpleChanges) {
@@ -89,10 +127,15 @@ export class TemperatureComponent implements OnChanges {
       const months = this.temperature.map(temp => temp.month);
       const temperatures = this.temperature.map(temp => temp.temperature);
 
-      this.lineChartLabels = months;
-      this.lineChartData[0].data = temperatures;
+      this.chartOptions.xaxis.categories = months;
+
+      this.chartOptions.series = [
+        {
+          name: 'Temperature',
+          data: temperatures
+        }
+      ];
 
     }
   }
-
 }

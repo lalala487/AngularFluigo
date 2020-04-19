@@ -4,7 +4,9 @@ import { Source, StripeService, SourceResult } from 'ngx-stripe';
 import { Charge } from './payment-models';
 import { PaymentService } from '../services/payment.service';
 import { paymentErrorMessages, defaultErrorMessage } from './payment-messages';
-import { SidebarJSService } from 'ng-sidebarjs';
+// import { SidebarJSService } from 'ng-sidebarjs';
+
+import { Sidebar } from 'ng-sidebar';
 
 @Component({
   selector: 'app-payment-form',
@@ -38,7 +40,7 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
     private paymentService: PaymentService,
     private cd: ChangeDetectorRef,
     private stripeService: StripeService,
-    private sidebarjsService: SidebarJSService
+    private sidebarjsService: Sidebar
   ) { }
 
   ngAfterViewInit(): void {

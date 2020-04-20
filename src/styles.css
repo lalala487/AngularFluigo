@@ -1309,7 +1309,7 @@ a:hover {
 
 .pdp-calendar-block {
 	width: 100%;
-	margin-top: 3rem;
+	margin-top: 2.5rem;
 	margin-bottom: 5rem;
 }
 @media only screen and (min-width: 1500px) {
@@ -1352,29 +1352,6 @@ a:hover {
 	margin-bottom: 2rem;
 	font-size: 1rem;
 }
-.pdp-calendar-block .filters select {
-	padding-left: 3rem;
-	padding-right: 1rem;
-}
-.pdp-calendar-block .filters .nights {
-	background-image: url(assets/icon/icon-moon.svg);
-	background-size: 15px;
-	background-repeat: no-repeat;
-	background-position: top .7rem left 1.15rem;
-}
-.pdp-calendar-block .filters .airport {
-	background-image: url(assets/icon/icon-flight.svg);
-	background-size: 15px;
-	background-repeat: no-repeat;
-	background-position: top .7rem left 1.15rem;
-}
-.pdp-calendar-block .filters .form-group {
-	margin-bottom: 0rem;
-}
-.pdp-calendar-block .filters .col-xl-4 {
-	padding-left: 0px;
-	padding-right: 0px;
-}
 @media only screen and (min-width: 1200px) {
 	.pdp-calendar-block {
 		width: 100%;
@@ -1385,15 +1362,6 @@ a:hover {
 		margin-top: 1rem;
 		margin-bottom: 1.35rem;
 	}
-	.pdp-calendar-block .filters .airport, .pdp-calendar-block .filters .nights {
-		padding-right: 1rem;
-	}
-	.pdp-calendar-block .filters .nights .pdp-calendar-block .filters button {
-		padding-left: 1rem;
-	}
-}
-.pdp-calendar-block .filters {
-	margin-bottom: 1rem;
 }
 .calendar-wrapper {
 	width: 100%;
@@ -1414,9 +1382,6 @@ a:hover {
 	}
 	.pdp-calendar-block .label-calendar {
 		margin-bottom: 3rem;
-	}
-	.pdp-calendar-block .filters {
-		margin-bottom: 2rem;
 	}
 	.pdp-calendar-block .next-back-buttons {
 		margin-bottom: 1.3rem;
@@ -1445,11 +1410,6 @@ a:hover {
 }
 .cal-month-view .cal-day-badge {
 	display: none;
-}
-@media only screen and (max-width: 1199.98px) {
-	.pdp-calendar-block .filters select {
-		margin-bottom: 2rem;
-	}
 }
 .cal-month-view {
   background-color: inherit;
@@ -1903,7 +1863,6 @@ a:hover {
 .cal-open-day-events {
 	display: none;
 }
-
 .toggle-split {
 	z-index: 1;
 	display: block;
@@ -1918,198 +1877,82 @@ a:hover {
 	position: absolute;
 	height: auto;
 }
-
 /**********************************************************************/
-
 /*****************************   Select   *****************************/
-
 /**********************************************************************/
-
-[include*="form-input-select()"] {
-	display: block;
-	padding: 0;
-	position: relative;
-	/* Set options to normal weight */
-	/* ------------------------------------  */
-	/* START OF UGLY BROWSER-SPECIFIC HACKS */
-	/* ----------------------------------  */
-	/* FIREFOX won't let us hide the native select arrow, so we have to make it wider than needed and clip it via overflow on the parent container.
-     The percentage width is a fallback since FF 4+ supports calc() so we can just add a fixed amount of extra width to push the native arrow out of view. We're applying this hack across all FF versions because all the previous hacks were too fragile and complex.
-     You might want to consider not using this hack and using the native select arrow in FF. Note this makes the menus wider than the select button because they display at the specified width and aren't clipped. Targeting hack via http://browserhacks.com/#hack-758bff81c5c32351b02e10480b5ed48e */
-	/* Show only the native arrow */
+select {
+	background-color: rgba(235, 235, 235, 0.15);
+	padding: 0rem 1.5rem 0rem 1.5rem;
+	border: none;
 	color: rgba(235, 235, 235, 1);
-	display: block;
-	border-radius: 0;
-	box-shadow: none;
-	font-size: 1rem;
-	letter-spacing: .07rem;
 	width: 100%;
-}
-[include*="form-input-select()"]::before, [include*="form-input-select()"]::after {
-	content: '';
-	display: block;
-	position: absolute;
-	pointer-events: none;
-	z-index: 2;
-}
-[include*="form-input-select()"] select {
+	border-radius: 5rem;
+	height: 2.5rem;
+	background-image: url(assets/icon/down.svg);
+	background-size: 15px;
+	background-repeat: no-repeat;
+	background-position: top 1rem right 1.15rem;
+	-o-appearance: none;
+	-ms-appearance: none;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	background: none;
-	box-sizing: border-box;
-	width: 100%;
-	margin: 0;
-	border: 1px solid transparent;
-	font-size: 1rem;
+	padding-left: 3rem;
 	letter-spacing: .07rem;
-	outline: none;
-	/* Focus style */
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
 }
-[include*="form-input-select()"] select:focus {
-	background-color: transparent;
-	outline: none;
+select:hover {
+	background-color: rgba(235, 235, 235, 0.45);
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
 }
-[include*="form-input-select()"] option {
-	font-weight: normal;
+.pdp-calendar-block .filters .nights {
+	background-image: url(assets/icon/icon-moon.svg);
+	background-size: 15px;
+	background-repeat: no-repeat;
+	background-position: top .7rem left 1.15rem;
 }
-[include*="form-input-select()"] x:-o-prefocus, [include*="form-input-select()"]::after {
-	display: none;
+.pdp-calendar-block .filters .airport {
+	background-image: url(assets/icon/icon-flight.svg);
+	background-size: 15px;
+	background-repeat: no-repeat;
+	background-position: top .7rem left 1.15rem;
 }
-@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-	[include*="form-input-select()"] select::-ms-expand {
-		display: none;
-	}
-	[include*="form-input-select()"] select:focus::-ms-value {
-		background: transparent;
-		color: #000;
-	}
+.pdp-calendar-block .filters {
+	margin-bottom: 2.5rem;
 }
-@-moz-document url-prefix() {
-	[include*="form-input-select()"] {
-		overflow: hidden;
-	}
-	[include*="form-input-select()"] select {
-		width: 120%;
-		width: calc(100% + 3em);
-		/* Firefox focus has odd artifacts around the text, this kills that. See https://developer.mozilla.org/en-US/docs/Web/CSS/:-moz-focusring */
-	}
-	@supports (-moz-appearance: none) {
-		[include*="form-input-select()"] select {
-			width: 100%;
-		}
-	}
-	[include*="form-input-select()"] select:-moz-focusring {
-		color: transparent;
-		text-shadow: none;
-	}
-}
-@supports (-moz-appearance: none) {
-	[include*="form-input-select()"] {
-		width: 100%;
-	}
-}
-[include*="form-input-select()"]::before, [include*="form-input-select()"]::after {
-	content: '';
-	display: block;
-	position: absolute;
-	pointer-events: none;
-	border: 1px solid transparent;
-	width: 0;
-	height: 0;
-	right: 1.75rem;
-}
-[include*="form-input-select()"]::before {
-	bottom: 75%;
-	border-width: 0 6.5px 8px 6.5px;
-	border-bottom-color: rgba(235, 235, 235, .5);
-	-moz-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-[include*="form-input-select()"]::after {
-	border-width: 8px 6.5px 0 6.5px;
-	border-top-color: rgba(235, 235, 235, .5);
-	top: 31%;
-	-moz-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-@media (min-width: 1200px) {
-	[include*="form-input-select()"]::before {
-		bottom: 55%;
-	}
-	[include*="form-input-select()"]::after {
-		top: 55%;
-	}
-}
-@-moz-document url-prefix() {
-	[include*="form-input-select()"] {
-		border-right: .12rem solid rgba(235, 235, 235, .5);
-	}
-	[include*="form-input-select()"]:hover {
-		border-right: .12rem solid rgba(235, 235, 235, 1);
-	}
-}
-[include*="form-input-select()"]:hover select {
-	box-shadow: none;
-	border-bottom-color: rgba(235, 235, 235, 1);
-}
-[include*="form-input-select()"]:hover select:focus {
-	outline-color: transparent;
-}
-[include*="form-input-select()"]:hover::before {
-	border-bottom-color: rgba(235, 235, 235, 1);
-	-moz-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-[include*="form-input-select()"]:hover::after {
-	border-top-color: rgba(235, 235, 235, 1);
-	-moz-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-[include*="form-input-select()"] select {
-	border-bottom: .12rem solid rgba(235, 235, 235, .5);
-	border-radius: 0;
-	font-weight: 400;
-	color: inherit;
-	padding: 8px 15px 10px 15px;
-	line-height: normal;
-	-moz-transition: all 0.3s ease-in-out;
-	-webkit-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	transition: all 0.3s ease-in-out;
-}
-[include*="form-input-select()"] select:focus {
-	box-shadow: none;
-}
-[include*="form-input-select()"] select[disabled], [include*="form-input-select()"] select:disabled {
-	opacity: 0.4;
-	cursor: not-allowed;
-}
-[include*="form-input-select()"] select:invalid {
-	color: rgba(235, 235, 235, .5);
+.pdp-calendar-block .filters .col-xl-4 {
+	padding-left: 0rem;
+	padding-right: 0rem;
 }
 
-
-/**********************************************************************/
-
+@media only screen and (min-width: 1200px) {
+	.pdp-calendar-block .filters .col-xl-4 {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+	.pdp-calendar-block .filters .col-xl-4:first-of-type {
+		padding-left: 0rem;
+		padding-right: 2rem;
+	}
+	.pdp-calendar-block .filters .col-xl-4:last-of-type {
+		padding-right: 0rem;
+		padding-left: 2rem;
+	}
+	.pdp-calendar-block .filters {
+		margin-bottom: 0rem;
+	}
+}
+/**********************************************************************/	
 /*************************   Timer Homepage   *************************/
-
 /**********************************************************************/
-
-
 .number-weeks,
 .number-days,
 .number-hours,
@@ -2119,7 +1962,6 @@ a:hover {
   font-size: 1.2rem;
   width: 100%;
 }
-
 .label-weeks,
 .label-days,
 .label-hours,
@@ -2129,7 +1971,6 @@ a:hover {
   font-size: .7rem;
   width: 100%;
 }
-
 .countdown-seconds {
   position: relative;
   margin: auto;

@@ -1,11 +1,13 @@
 .background {
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .deal-card-container {
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .title h2{

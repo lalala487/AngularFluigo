@@ -14,5 +14,6 @@ export interface City {
     review: Review;
     interests: any[];
     activities: DocumentReference[];
+    questions: DocumentReference[];
     temperature: Temperature[];
 }

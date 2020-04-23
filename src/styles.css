@@ -1905,7 +1905,12 @@ select {
 	-ms-transition: all .75s ease-in-out;
 	transition: all .75s ease-in-out;
 }
-select:hover {
+/* For IE <= 11 */
+select::-ms-expand {
+	display: none;
+ }
+select:hover,
+select:focus {
 	background-color: rgba(235, 235, 235, 0.45);
 	-moz-transition: all .75s ease-in-out;
 	-webkit-transition: all .75s ease-in-out;

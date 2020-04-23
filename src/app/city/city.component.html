@@ -23,14 +23,14 @@
   <div class="row" style="margin-left:0rem; margin-right:0rem;">
     <div class="col-xl-12 pdp-city-fc-block gradient">
       <div class="content">
-        <ng-container *ngFor="let activity of activityList; let i = index">
+        <ng-container *ngFor="let question of questionList | async">
         <a class="card">
-          <div class="front" [style.background-image]="(activity | async)?.imageUrl | async">
-            <p>{{ (activity | async)?.name[locale] }}</p>
+          <div class="front" [style.background-image]="question.imageUrl | async">
+            <p>{{ question.name[locale] }}</p>
           </div>
           <div class="back">
             <div>
-              <p>{{ (activity | async)?.description[locale] }}</p>
+              <p>{{ question.description[locale] }}</p>
             </div>
           </div>
         </a>

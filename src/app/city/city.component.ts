@@ -6,8 +6,9 @@ import { Observable } from 'rxjs';
 import { Interest } from '../models/interest';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Activity } from '../models/activity';
-import { switchMap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ImageService } from '../services/image.service';
+import { Question } from '../models/question';
 
 @Component({
   selector: 'app-city',
@@ -18,9 +19,11 @@ export class CityComponent implements OnChanges {
   @Input() city: City;
   @Input() imageUrl: SafeStyle;
 
-  activityList: Array<Observable<Activity>> = [];
+  maxNumberOfQuestions = 2;
 
+  activityList: Array<Observable<Activity>> = [];
   interestList: Array<Observable<Interest>> = [];
+  questionList: Observable<Question[]>;
 
   locale = environment.locale;
 
@@ -43,10 +46,13 @@ export class CityComponent implements OnChanges {
         return;
       }
 
-      const list = this.city.interests.map(interest => {
+      this.interestList = this.city.interests.map(interest => {
         return this.db.doc<Interest>(interest.path).valueChanges();
-        });
-      this.interestList = list;
+      });
+
+      this.questionList = this.db.collection<Question>(
+        'question', ref => ref.limit(this.maxNumberOfQuestions)
+      ).valueChanges();
 
       this.activityList = this.city.activities.map(activity => {
         return this.db.doc<Activity>(activity.path).valueChanges().pipe(map(act => {

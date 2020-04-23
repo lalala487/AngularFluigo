@@ -23,7 +23,7 @@ export class CityComponent implements OnChanges {
 
   activityList: Array<Observable<Activity>> = [];
   interestList: Array<Observable<Interest>> = [];
-  questionList: Observable<Question[]>;
+  questionList: Array<Observable<Question>> = [];
 
   locale = environment.locale;
 
@@ -50,9 +50,12 @@ export class CityComponent implements OnChanges {
         return this.db.doc<Interest>(interest.path).valueChanges();
       });
 
-      this.questionList = this.db.collection<Question>(
-        'question', ref => ref.limit(this.maxNumberOfQuestions)
-      ).valueChanges();
+      this.questionList = this.city.questions.slice(0, this.maxNumberOfQuestions).map(question => {
+        return this.db.doc<Question>(question.path).valueChanges().pipe(map( act => {
+          act.imageUrl = this.imageService.getImageDownloadSanitizedStyle$(act.image.main);
+          return act;
+        }));
+      });
 
       this.activityList = this.city.activities.map(activity => {
         return this.db.doc<Activity>(activity.path).valueChanges().pipe(map(act => {

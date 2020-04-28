@@ -1,7 +1,4 @@
 .image-row-one {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     float: left;
 }
@@ -13,65 +10,82 @@
     margin-top: 2.5rem;
 }
 
+.luggage hr {
+    width: 10rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
 .luggage-product {
-    height: 35rem;
-    width: 19.2rem;
+    height: 20rem;
+    width: 11rem;
     float: left;
-    opacity: .5;
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    opacity: .75;
     background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fcms%2Fcms_00002.png?alt=media&token=2004ee0a-01f1-462d-ba4b-20119edb94be');
 }
 
-.length {
+.luggage-length {
     float: left;
     margin-left: 2.5rem;
     padding-left: 1.5rem;
-    border-left-color: rgba(235,235,235,.5);
-    border-left-width: .15rem;
+    border-left-color: rgba(235,235,235,.25);
+    border-left-width: .2rem;
     border-left-style: solid;
-    height: 25rem;
+    height: 20rem;
 }
 
-.width {
+.luggage-width {
     float: left;
-    width: 6.5rem;
+    width: 4rem;
     padding-top: 1.5rem;
-    border-top-color: rgba(235,235,235,.5);
-    border-top-width: .15rem;
+    border-top-color: rgba(235,235,235,.25);
+    border-top-width: .2rem;
     border-top-style: solid;
-    margin-left:2rem;
+    margin-left: 1rem;
 }
 
-.depth {
-    width: 6rem;
+.luggage-depth {
+    width: 4rem;
     padding-top: 1.5rem;
     float: left;
-    margin-left: 2.5rem;
-    border-top-color: rgba(235,235,235,.5);
-    border-top-width: .15rem;
+    margin-left: 1rem;
+    border-top-color: rgba(235,235,235,.25);
+    border-top-width: .2rem;
     border-top-style: solid;
 }
 
-.luggage-overview-gradient {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media only screen and (min-width: 576px) {
+	.luggage-product {
+        height: 28rem;
+        width: 15.5rem;
+    }
+
+    .luggage-width {
+        width: 6rem;
+        margin-left: 1.25rem;
+    }
+    
+    .luggage-depth {
+        width: 5.5rem;
+        margin-left: 1.5rem;
+    }
 }
 
-.luggage-overview .content-block {
+.luggage .content-block {
     min-height: 100vh;
 }
 
 .luggage-wrapper {
     align-items: center;
     justify-content: center;
+}
+
+.bg-luggage {
+    background-image: url('https://images.unsplash.com/photo-1558438542-983bb555e8da?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80');
+}
+
+.luggage-airline-logo {
+    height: 2rem;
+    max-width: 100%;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Flogo-swiss.svg?alt=media&token=05735c38-93cc-40c6-b871-d2c8aac3e2c9');
 }

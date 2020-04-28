@@ -7,7 +7,7 @@
 
 
 /**********************************************************************/
-/******************************   Main   ******************************/
+/******************************   HTML   ******************************/
 /**********************************************************************/
 
 body {
@@ -19,22 +19,90 @@ body {
 	font-weight: 400;
 	color: rgba(235, 235, 235, 1);
 }
+
 input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active, textarea:-webkit-autofill, textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus, textarea:-webkit-autofill:active, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus, select:-webkit-autofill:active {
 	transition: background-color 9999s ease-in-out 0s;
 	-webkit-text-fill-color: rgba(235, 235, 235, 1) !important;
 }
+
 :focus {
 	outline: none;
 }
+
 select:focus {
 	outline: none;
 }
+
 hr {
 	display: block;
 	height: .12rem;
 	border: 0;
 	border-top: .12rem solid rgba(235, 235, 235, .5);
 	padding: 0;
+}
+
+select {
+	background-color: rgba(235, 235, 235, 0.15);
+	padding: 0rem 1.5rem 0rem 1.5rem;
+	border: none;
+	color: rgba(235, 235, 235, 1);
+	width: 100%;
+	border-radius: 5rem;
+	height: 2.5rem;
+	background-image: url(assets/icon/down.svg);
+	background-size: 15px;
+	background-repeat: no-repeat;
+	background-position: top 1rem right 1.15rem;
+	-o-appearance: none;
+	-ms-appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding-left: 3rem;
+	letter-spacing: .07rem;
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
+}
+
+select::-ms-expand {
+	display: none;
+}
+
+select:hover,
+select:focus {
+	background-color: rgba(235, 235, 235, 0.45);
+	-moz-transition: all .75s ease-in-out;
+	-webkit-transition: all .75s ease-in-out;
+	-o-transition: all .75s ease-in-out;
+	-ms-transition: all .75s ease-in-out;
+	transition: all .75s ease-in-out;
+}
+
+/**********************************************************************/
+/******************************   Font   ******************************/
+/**********************************************************************/
+
+h2 {
+	font-size: 1.4rem;
+	font-weight: 400;
+}
+h4 {
+	font-size: 1.4rem;
+	font-weight: 400;
+}
+a {
+	color: rgba(235, 235, 235, 1);
+}
+a:hover {
+	text-decoration: none;
+	color: rgba(235, 235, 235, 1);
+}
+
+.font-small {
+	font-size: .7rem;
 }
 
 /**********************************************************************/
@@ -51,12 +119,104 @@ hr {
     justify-content: center;
 }
 
+.text-center {
+	text-align: center;
+}
+
 .scroll {
 	overflow: scroll;
 }
 
 .vh100min {
 	min-height: 100vh;
+}
+
+.opa-5 {
+	opacity: .5;
+}
+
+.bg-cover {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-contain {
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/**********************************************************************/
+/***********************   Paddings & Margins   ***********************/
+/**********************************************************************/
+
+.std-pd-1 {
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
+}
+
+@media only screen and (min-width: 576px) {
+	.std-pd-1 {
+		padding-left: 7.5rem;
+		padding-right: 7.5rem;
+	}
+}
+
+.pd-bt-0 {
+	margin-bottom: 0rem;
+}
+
+.pd-bt-25 {
+	margin-bottom: 2.5rem;
+}
+
+/**********************************************************************/
+/***************************   Gradients   ****************************/
+/**********************************************************************/
+
+.gradient {
+	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
+}
+
+.gradient-reverse {
+	background-image: linear-gradient(to top left, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
+}
+
+.gradient-bottom {
+	background-image: linear-gradient(to top, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
+}
+
+.gradient-top {
+	background-image: linear-gradient(to bottom, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
+}
+
+.gradient-full {
+	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(77, 131, 132, 1) 100%);
+}
+
+.gradient-20 {
+	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .5) 0%, rgba(77, 131, 132, .5) 100%);
+}
+
+.overlay-gradient-75 {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%);
+}
+
+.overlay-gradient-95 {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, rgba(19,78,94,.95) 0%, rgba(77,131,132,.95) 100%);
 }
 
 /**********************************************************************/
@@ -575,7 +735,6 @@ button.toast-close-button {
 	background-repeat: no-repeat;
 	box-shadow: none;
 	border-width: 0rem !important;
-	/* color:#fff; */
 	opacity: 1;
 }
 #toast-container>div.toast-custom {
@@ -587,8 +746,6 @@ button.toast-close-button {
 }
 #toast-container>:hover {
 	box-shadow: none;
-	/* opacity:1;
-    cursor:pointer; */
 }
 #toast-container.toast-bottom-center>div, #toast-container.toast-top-center>div {
 	width: 300px;
@@ -663,9 +820,7 @@ button.toast-close-button {
 	}
 }
 /**********************************************************************/
-
 /*************************   Container Page   *************************/
-
 /**********************************************************************/
 
 .bs-tooltip-top .arrow::before, .bs-tooltip-auto[x-placement^="top"] .arrow::before {
@@ -858,60 +1013,9 @@ button.toast-close-button {
 		padding-bottom: 1.2rem;
 	}
 }
-@media only screen and (min-width: 1200px) {
-	.sidebarjs-center-container .price-label {}
-	.sidebarjs-center-container .price-amount {}
-}
-/**********************************************************************/
-
-/**************   Paddings, Margins, Heights & Widths   ***************/
 
 /**********************************************************************/
-
-h2 {
-	font-size: 1.4rem;
-	font-weight: 400;
-}
-h4 {
-	font-size: 1.4rem;
-	font-weight: 400;
-}
-a {
-	color: rgba(235, 235, 235, 1);
-}
-a:hover {
-	text-decoration: none;
-	color: rgba(235, 235, 235, 1);
-}
-
-/**********************************************************************/
-
-/***************************   Gradients   ****************************/
-
-/**********************************************************************/
-
-.gradient {
-	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
-}
-.gradient-reverse {
-	background-image: linear-gradient(to top left, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
-}
-.gradient-bottom {
-	background-image: linear-gradient(to top, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
-}
-.gradient-top {
-	background-image: linear-gradient(to bottom, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);
-}
-.gradient-full {
-	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(77, 131, 132, 1) 100%);
-}
-.gradient-20 {
-	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .5) 0%, rgba(77, 131, 132, .5) 100%);
-}
-/**********************************************************************/
-
 /*****************************   Logo   *******************************/
-
 /**********************************************************************/
 
 @media only screen and (min-width: 1200px) {
@@ -971,9 +1075,7 @@ a:hover {
 	}
 }
 /**********************************************************************/
-
 /************************   Left Bar Container   **********************/
-
 /**********************************************************************/
 
 @media only screen and (min-width: 1200px) {
@@ -990,9 +1092,7 @@ a:hover {
 	}
 }
 /**********************************************************************/
-
 /**************************   Steps Small   ***************************/
-
 /**********************************************************************/
 
 .pdp-column-left-bar .steps {
@@ -1058,9 +1158,7 @@ a:hover {
 	font-size: .7rem;
 }
 /**********************************************************************/
-
 /****************************   Steps Big   ***************************/
-
 /**********************************************************************/
 
 @media only screen and (min-width: 1200px) {
@@ -1197,9 +1295,7 @@ a:hover {
 	}
 }
 /**********************************************************************/
-
 /**************************   Product Page   **************************/
-
 /**********************************************************************/
 
 .pdp-container {
@@ -1248,9 +1344,7 @@ a:hover {
 	}
 }
 /**********************************************************************/
-
-/****************************   PDP   ***************************/
-
+/*******************************   PDP   ******************************/
 /**********************************************************************/
 
 .pdp-block-one {
@@ -1908,44 +2002,7 @@ a:hover {
 /**********************************************************************/
 /*****************************   Select   *****************************/
 /**********************************************************************/
-select {
-	background-color: rgba(235, 235, 235, 0.15);
-	padding: 0rem 1.5rem 0rem 1.5rem;
-	border: none;
-	color: rgba(235, 235, 235, 1);
-	width: 100%;
-	border-radius: 5rem;
-	height: 2.5rem;
-	background-image: url(assets/icon/down.svg);
-	background-size: 15px;
-	background-repeat: no-repeat;
-	background-position: top 1rem right 1.15rem;
-	-o-appearance: none;
-	-ms-appearance: none;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-	padding-left: 3rem;
-	letter-spacing: .07rem;
-	-moz-transition: all .75s ease-in-out;
-	-webkit-transition: all .75s ease-in-out;
-	-o-transition: all .75s ease-in-out;
-	-ms-transition: all .75s ease-in-out;
-	transition: all .75s ease-in-out;
-}
-/* For IE <= 11 */
-select::-ms-expand {
-	display: none;
- }
-select:hover,
-select:focus {
-	background-color: rgba(235, 235, 235, 0.45);
-	-moz-transition: all .75s ease-in-out;
-	-webkit-transition: all .75s ease-in-out;
-	-o-transition: all .75s ease-in-out;
-	-ms-transition: all .75s ease-in-out;
-	transition: all .75s ease-in-out;
-}
+
 .pdp-calendar-block .filters .nights {
 	background-image: url(assets/icon/icon-moon.svg);
 	background-size: 15px;

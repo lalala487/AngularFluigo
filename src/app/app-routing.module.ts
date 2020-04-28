@@ -11,6 +11,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { OfflineComponent } from './offline/offline.component';
+import { LuggageComponent } from './luggage/luggage.component';
 import { TravelGuideListComponent } from './travel-guide-list/travel-guide-list.component';
 import { TravelGuideComponent } from './travel-guide/travel-guide.component';
 import { OfflineGuardService } from './services/offline-guard.service';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'terms-conditions', component: TermsConditionsComponent, canActivate: [OfflineGuardService]  },
   { path: 'team', component: TeamComponent, canActivate: [OfflineGuardService]  },
   { path: 'offline', component: OfflineComponent, canActivate: [OfflineGuardService]  },
+  { path: 'luggage', component: LuggageComponent, canActivate: [OfflineGuardService]  },
   { path: 'travel-guide', component: TravelGuideListComponent, canActivate: [OfflineGuardService]  },
   { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];

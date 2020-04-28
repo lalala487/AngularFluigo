@@ -1,0 +1,77 @@
+.image-row-one {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    float: left;
+}
+
+.image-row-two {
+    width: 100%;
+    float: left;
+    clear: both;
+    margin-top: 2.5rem;
+}
+
+.luggage-product {
+    height: 35rem;
+    width: 19.2rem;
+    float: left;
+    opacity: .5;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fcms%2Fcms_00002.png?alt=media&token=2004ee0a-01f1-462d-ba4b-20119edb94be');
+}
+
+.length {
+    float: left;
+    margin-left: 2.5rem;
+    padding-left: 1.5rem;
+    border-left-color: rgba(235,235,235,.5);
+    border-left-width: .15rem;
+    border-left-style: solid;
+    height: 25rem;
+}
+
+.width {
+    float: left;
+    width: 6.5rem;
+    padding-top: 1.5rem;
+    border-top-color: rgba(235,235,235,.5);
+    border-top-width: .15rem;
+    border-top-style: solid;
+    margin-left:2rem;
+}
+
+.depth {
+    width: 6rem;
+    padding-top: 1.5rem;
+    float: left;
+    margin-left: 2.5rem;
+    border-top-color: rgba(235,235,235,.5);
+    border-top-width: .15rem;
+    border-top-style: solid;
+}
+
+.luggage-overview-gradient {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right, rgba(19,78,94,.75) 0%, rgba(77,131,132,.75) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.luggage-overview .content-block {
+    min-height: 100vh;
+}
+
+.luggage-wrapper {
+    align-items: center;
+    justify-content: center;
+}

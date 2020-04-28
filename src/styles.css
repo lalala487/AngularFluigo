@@ -1,5 +1,15 @@
+/**********************************************************************/
+/*****************************   Imports   ****************************/
+/**********************************************************************/
+
 @import '~bootstrap/dist/css/bootstrap.css';
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+
+/**********************************************************************/
+/******************************   Main   ******************************/
+/**********************************************************************/
+
 body {
 	font-family: 'Roboto', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -34,6 +44,24 @@ hr {
 .relative {
 	position: relative;
 }
+
+.center {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll {
+	overflow: scroll;
+}
+
+.vh100min {
+	min-height: 100vh;
+}
+
+/**********************************************************************/
+/*****************************   Toggle   *****************************/
+/**********************************************************************/
 
 .toggle-radius-left {
 	border-bottom-left-radius: 1rem;

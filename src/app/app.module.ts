@@ -82,6 +82,7 @@ import { TravelGuideCtaComponent } from './travel-guide-cta/travel-guide-cta.com
 import { FeaturedComponent } from './featured/featured.component';
 import { NoActivitiesComponent } from './no-activities/no-activities.component';
 import { SidebarModule } from 'ng-sidebar';
+import { LuggageComponent } from './luggage/luggage.component';
 
 
 registerLocaleData(localeDe);
@@ -149,6 +150,7 @@ registerLocaleData(localeDe);
     TravelGuideCtaComponent,
     FeaturedComponent,
     NoActivitiesComponent,
+    LuggageComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ export class LogoutComponent implements OnInit {
   constructor(private afAuth: AngularFireAuth, private router: Router) { }
 
   ngOnInit() {
-    this.afAuth.auth.signOut();
+    this.afAuth.signOut();
 
     this.router.navigate(['/']);
   }

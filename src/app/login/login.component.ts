@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
 
   async confirmSignIn(url: string) {
     try {
-      if (this.angularFireAuth.auth.isSignInWithEmailLink(url)) {
+      if (this.angularFireAuth.isSignInWithEmailLink(url)) {
         let email = window.localStorage.getItem('emailForSignIn');
 
         // If missing email, prompt user for it
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         }
 
         // Signin user and remove the email localStorage
-        const result = await this.angularFireAuth.auth.signInWithEmailLink(email, url);
+        const result = await this.angularFireAuth.signInWithEmailLink(email, url);
         window.localStorage.removeItem('emailForSignIn');
 
         // Adds or updates user

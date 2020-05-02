@@ -2,19 +2,23 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, from } from 'rxjs';
 import { User } from 'firebase';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  user: User;
+  user: Observable<User | null>;
+
   constructor(
     private afAuth: AngularFireAuth,
   ) {
-    this.user = this.afAuth.auth.currentUser;
+    this.user = this.afAuth.user;
   }
 
   getUserIdToken(): Observable<string> {
-    return from(this.afAuth.auth.currentUser.getIdToken());
+    return this.user.pipe(switchMap(user => {
+      return user.getIdToken();
+    }));
   }
 }

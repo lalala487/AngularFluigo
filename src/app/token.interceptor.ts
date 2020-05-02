@@ -21,9 +21,11 @@ export class TokenInterceptor implements HttpInterceptor {
         this.auth = this.inj.get(AuthService);
 
         // don't inject bearer token if not authenticated
-        if (!this.auth.user) {
-            return next.handle(request);
-        }
+        this.auth.user.subscribe(user => {
+            if (!user) {
+                return next.handle(request);
+            }
+        });
 
         return this.auth.getUserIdToken().pipe(
             switchMap(token => {

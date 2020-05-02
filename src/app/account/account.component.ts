@@ -74,7 +74,7 @@ export class AccountComponent implements OnInit {
           }
 
           const url = this.router.url;
-          if (this.afAuth.auth.isSignInWithEmailLink(url)) {
+          if (this.afAuth.isSignInWithEmailLink(url)) {
             this.confirmSignIn(url);
           }
         });
@@ -93,41 +93,45 @@ export class AccountComponent implements OnInit {
       oldEmail, url
     );
 
-    this.afAuth.auth.currentUser.reauthenticateWithCredential(credential).then((userCred) => {
-      const newEmail = window.localStorage.getItem('userNewEmail');
-      if (newEmail) {
-        this.updateEmail(newEmail, oldEmail);
-      }
+    this.afAuth.currentUser.then(user => {
+      user.reauthenticateWithCredential(credential).then(userCred => {
+        const newEmail = window.localStorage.getItem('userNewEmail');
+        if (newEmail) {
+          this.updateEmail(newEmail, oldEmail);
+        }
 
-      const isDeletion = window.localStorage.getItem('isDeletion');
-      if (isDeletion) {
-        this.deleteUser();
-      }
+        const isDeletion = window.localStorage.getItem('isDeletion');
+        if (isDeletion) {
+          this.deleteUser();
+        }
+      });
     });
   }
 
   private updateEmail(newEmail: string, oldEmail: string) {
-    this.afAuth.auth.currentUser.updateEmail(newEmail).then(() => {
-      this.sendGridService.updateSendGridContact(newEmail, oldEmail).subscribe(data => {
-      });
-      this.userContact.email = newEmail;
-      const userRef = this.db.doc(`users/${this.userContact.uid}`);
-      userRef.set({
-        contact: {
-          email: newEmail
-        }
-      }, { merge: true });
-      this.stripeCustomerService.updateStripeContact(newEmail).subscribe(data => {
-      });
-      const redirectUrl = window.localStorage.getItem('redirectUrl');
-      this.router.navigate([redirectUrl]);
-      this.toastr.success('E-Mail verändert in ' + newEmail);
+    this.afAuth.currentUser.then(user => {
+      user.updateEmail(newEmail).then(() => {
+        this.sendGridService.updateSendGridContact(newEmail, oldEmail).subscribe(data => {
+        });
+        this.userContact.email = newEmail;
+        const userRef = this.db.doc(`users/${this.userContact.uid}`);
+        userRef.set({
+          contact: {
+            email: newEmail
+          }
+        }, { merge: true });
+        this.stripeCustomerService.updateStripeContact(newEmail).subscribe(data => {
+        });
+        const redirectUrl = window.localStorage.getItem('redirectUrl');
+        this.router.navigate([redirectUrl]);
+        this.toastr.success('E-Mail verändert in ' + newEmail);
 
-      window.localStorage.removeItem('redirectUrl');
-      window.localStorage.removeItem('userNewEmail');
-      window.localStorage.removeItem('userOldEmail');
-    }).catch(err => {
-      this.emailChangedError = true;
+        window.localStorage.removeItem('redirectUrl');
+        window.localStorage.removeItem('userNewEmail');
+        window.localStorage.removeItem('userOldEmail');
+      }).catch(err => {
+        this.emailChangedError = true;
+      });
     });
   }
 
@@ -174,22 +178,24 @@ export class AccountComponent implements OnInit {
   }
 
   private deleteUser() {
-    this.afAuth.auth.currentUser.delete().then(() => {
-      this.toastr.success('Benutzer erfolgreich entfernt');
-      this.router.navigate(['/']);
-    }).catch(err => {
-      console.log('err', err);
-      this.toastr.error('Das Löschen des Benutzers erfordert eine kürzlich erfolgte Anmeldung. Melden Sie sich daher erneut über den Link in der E-Mail an, die wir Ihnen gesendet haben.');
+    this.afAuth.currentUser.then(user => {
+      user.delete().then(() => {
+        this.toastr.success('Benutzer erfolgreich entfernt');
+        this.router.navigate(['/']);
+      }).catch(err => {
+        console.log('err', err);
+        this.toastr.error('Das Löschen des Benutzers erfordert eine kürzlich erfolgte Anmeldung. Melden Sie sich daher erneut über den Link in der E-Mail an, die wir Ihnen gesendet haben.');
 
-      window.localStorage.setItem('isDeletion', '1');
-      window.localStorage.setItem('userOldEmail', this.email);
-      this.sendEmailLink(environment.reAuthSettingForData);
+        window.localStorage.setItem('isDeletion', '1');
+        window.localStorage.setItem('userOldEmail', this.email);
+        this.sendEmailLink(environment.reAuthSettingForData);
+      });
     });
   }
 
   async sendEmailLink(settings) {
     try {
-      await this.afAuth.auth.sendSignInLinkToEmail(
+      await this.afAuth.sendSignInLinkToEmail(
         this.email,
         settings
       );

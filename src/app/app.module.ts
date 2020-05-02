@@ -57,7 +57,6 @@ import { AccountComponent } from './account/account.component';
 import { AccountDataComponent } from './account-data/account-data.component';
 import { AccountAssistantComponent } from './account-assistant/account-assistant.component';
 import { AccountProfileComponent } from './account-profile/account-profile.component';
-import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AccountOrdersComponent } from './account-orders/account-orders.component';
 import { OrderListItemComponent } from './order-list-item/order-list-item.component';
 import { AccountOrderDocumentListComponent } from './account-order-document-list/account-order-document-list.component';
@@ -176,7 +175,6 @@ registerLocaleData(localeDe);
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: FirestoreSettingsToken, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })

@@ -46,7 +46,7 @@ export class AuthComponent implements OnInit {
 
   async sendEmailLink() {
     try {
-      await this.angularFireAuth.auth.sendSignInLinkToEmail(
+      await this.angularFireAuth.sendSignInLinkToEmail(
         this.email,
         environment.passwordlessAuthSettings
       );

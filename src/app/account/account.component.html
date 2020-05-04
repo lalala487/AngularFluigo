@@ -1,6 +1,5 @@
 <ng-sidebar-container style="height: 100vh;">
 
-
   <ng-sidebar #sidebar>
     <div class="sidebarjs-center-container"
       style="display: flex; align-items: center; flex-wrap: wrap; height: 100%; background-color: rgba(77, 131, 132, 1); background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);">
@@ -11,33 +10,27 @@
           </a>
           <hr class="price-hr" />
         </div>
-
         <div class="content-block menu-option">
           <p class="link" i18n="account sidebar settings" (click)="changeTo('profile')">Profil</p>
           <hr class="price-hr" />
         </div>
-
         <div class="content-block menu-option">
           <p class="link" i18n="account sidebar orders" (click)="changeTo('orders')">Bestellungen</p>
           <hr class="price-hr" />
         </div>
-
         <div class="content-block menu-option">
           <p class="link" i18n="account sidebar data" (click)="changeTo('data')">Daten</p>
           <hr class="price-hr" />
         </div>
-
         <div class="content-block menu-option">
           <p class="link" i18n="account sidebar assistant" (click)="changeTo('assistant')">Assistent</p>
           <hr class="price-hr" />
         </div>
-
         <div class="content-block menu-option">
           <a href="/logout">
             <p i18n="account sidebar home">Logout</p>
           </a>
         </div>
-
         <div class="content-block sidebarjs-close-button">
           <button (click)="sidebar.close()" class="btn btn-small btn-primary" type="next"
             i18n="close sidebar">Schliessen</button>
@@ -49,26 +42,24 @@
   <div ng-sidebar-content>
     <div class="account-bg-container">
 
-      <header class="row account-header-row" style="margin-right: 0px !important; margin-left: 0px !important;">
-        <div class="col-lg-12">
-          <div class="row logo">
-            <div class="col-xs-3 left-col">
-              <img (click)="sidebar.open()" src="assets/icon/icon-menu-small.svg" class="icon-menu-small" height="35"
-                alt="Icon Menu Small">
-              <p (click)="sidebar.open()" class="label-menu-small">Menu</p>
-            </div>
-            <div class="col-xs-6 mid-col logo-container">
-              <a href="/"><img src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
-            </div>
-            <div class="col-xs-3 right-col">
-              <div class="account-container">
-                <p class="label-account"><a href="/account">Konto</a></p>
-                <a href="/account"><img src="assets/icon/icon-finger-print.svg" class="icon-account" height="35"
-                    alt="Icon Finger Print"></a>
-              </div>
-            </div>
-          </div>
+      <header class="mr-tp-bt-25 std-pd-2">
+
+        <div class="left-col">
+          <img class="fl-l" (click)="sidebar.open()" src="assets/icon/icon-menu-small.svg" height="35"
+            alt="Icon Menu Small">
+          <p class="fl-l" (click)="sidebar.open()">Menu</p>
         </div>
+
+        <div class="mid-col">
+          <a href="/"><img class="center-image" src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
+        </div>
+
+        <div class="right-col">
+            <p class="fl-r"><a href="/account">Konto</a></p>
+            <a class="fl-r" href="/account"><img src="assets/icon/icon-finger-print.svg" height="35"
+                alt="Icon Finger Print"></a>
+        </div>
+
       </header>
 
       <div class="account-content-row">

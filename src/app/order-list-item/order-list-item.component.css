@@ -39,7 +39,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   padding-top: 1.75rem;
-  color: rgba(235, 235, 235, 1);
+  color: var(--color-one);
   z-index: 2;
   position: relative;
   margin-bottom: 4rem;
@@ -49,7 +49,7 @@
   padding-left: 1rem;
   padding-right: 1rem;
   padding-bottom: 2rem;
-  color: rgba(235, 235, 235, 1);
+  color: var(--color-one);
   z-index: 2;
   position: relative;
 }
@@ -99,7 +99,7 @@
 }
 
 .order-card .service {
-  color: rgba(235, 235, 235, 1);
+  color: var(--color-one);
   letter-spacing: .07rem;
 }
 

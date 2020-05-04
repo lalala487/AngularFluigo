@@ -43,7 +43,7 @@
   height: 2.5rem;
   width: 2.5rem;
   background: rgba(85, 144, 151, 1);
-  color: rgba(235, 235, 235, 1);
+  color: var(--color-one);
   -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
@@ -61,7 +61,7 @@
 .number-picker-wrapper .btn-round-sm:hover {
   background-color: rgba(86, 138, 144, 1);
   cursor: pointer;
-  color: rgba(235, 235, 235, 1);
+  color: var(--color-one);
 }
 
 .number-picker-wrapper .btn-round-sm:not(:disabled):not(.disabled):active:focus, .number-picker-wrapper .btn-round-sm:not(:disabled):not(.disabled).active:focus, .show > .number-picker-wrapper .btn-round-sm.dropdown-toggle:focus {

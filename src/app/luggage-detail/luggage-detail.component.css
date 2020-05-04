@@ -1,0 +1,86 @@
+.luggage-detail .image-row-one {
+    width: 100%;
+    float: left;
+}
+
+.luggage-detail .image-row-two {
+    width: 100%;
+    float: left;
+    clear: both;
+    margin-top: 2.5rem;
+}
+
+.luggage-detail .luggage hr {
+    width: 10rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
+
+.luggage-detail .luggage-product {
+    height: 20rem;
+    width: 11rem;
+    float: left;
+    opacity: .75;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fcms%2Fcms_00002.png?alt=media&token=2004ee0a-01f1-462d-ba4b-20119edb94be');
+}
+
+.luggage-detail .luggage-length {
+    float: left;
+    margin-left: 2.5rem;
+    padding-left: 1.5rem;
+    border-left-color: rgba(235,235,235,.25);
+    border-left-width: .2rem;
+    border-left-style: solid;
+    height: 20rem;
+}
+
+.luggage-detail .luggage-width {
+    float: left;
+    width: 4rem;
+    padding-top: 1.5rem;
+    border-top-color: rgba(235,235,235,.25);
+    border-top-width: .2rem;
+    border-top-style: solid;
+    margin-left: 1rem;
+}
+
+.luggage-detail .luggage-depth {
+    width: 4rem;
+    padding-top: 1.5rem;
+    float: left;
+    margin-left: 1rem;
+    border-top-color: rgba(235,235,235,.25);
+    border-top-width: .2rem;
+    border-top-style: solid;
+}
+
+@media only screen and (min-width: 576px) {
+	.luggage-detail .luggage-product {
+        height: 28rem;
+        width: 15.5rem;
+    }
+
+    .luggage-detail .luggage-width {
+        width: 6rem;
+        margin-left: 1.25rem;
+    }
+    
+    .luggage-detail .luggage-depth {
+        width: 5.5rem;
+        margin-left: 1.5rem;
+    }
+}
+
+.luggage-detail .content-block {
+    min-height: 100vh;
+}
+
+.luggage-detail .luggage-wrapper {
+    align-items: center;
+    justify-content: center;
+}
+
+.luggage-detail .luggage-airline-logo {
+    height: 3rem;
+    max-width: 100%;
+}

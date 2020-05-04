@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Deal } from '../models/deal';
 import { Accummulation } from '../models/fields/accummulation';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -7,7 +7,7 @@ import { Observable, Subject, combineLatest, of } from 'rxjs';
 import { CalendarEvent } from 'angular-calendar';
 import { Travel } from '../models/travel';
 import { FlightOffer } from '../models/flight-offer';
-import { switchMap, flatMap, map, scan, filter } from 'rxjs/operators';
+import { switchMap, map, scan } from 'rxjs/operators';
 import { Offer } from '../models/offer';
 import { Flight } from '../models/flight';
 import * as moment from 'moment';
@@ -26,6 +26,8 @@ import { environment } from 'src/environments/environment';
 export class CalendarComponent implements OnInit {
   @Input() deal: Deal;
   @Input() accummulations: Accummulation;
+
+  @Output() flightChosen: EventEmitter<boolean> = new EventEmitter();
 
   identifier = {};
 
@@ -93,7 +95,7 @@ export class CalendarComponent implements OnInit {
     const combined$ = combineLatest([flightOffers$, roomOffers$]);
 
     this.events$ = combined$.pipe(
-      scan((events: Array<any>, current) => {
+      scan((events: Array<any>) => {
         this.allOffers.way.map(wayOffer => {
           this.allOffers.return.map(returnOffer => {
 
@@ -240,7 +242,6 @@ export class CalendarComponent implements OnInit {
   }
 
   dayClicked({
-    date,
     events
   }: {
     date: Date;
@@ -271,6 +272,8 @@ export class CalendarComponent implements OnInit {
     this.accummulations.endDate = event.meta.returnDate;
     this.accummulations.numberOfNights = event.meta.numberOfNights;
     this.accummulations.hasFlightAccommodation = true;
+
+    this.flightChosen.emit(true);
   }
 
   selectedAirportChange(airport) {

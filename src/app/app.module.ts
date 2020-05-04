@@ -82,6 +82,7 @@ import { FeaturedComponent } from './featured/featured.component';
 import { NoActivitiesComponent } from './no-activities/no-activities.component';
 import { SidebarModule } from 'ng-sidebar';
 import { LuggageComponent } from './luggage/luggage.component';
+import { LuggageDetailComponent } from './luggage-detail/luggage-detail.component';
 
 
 registerLocaleData(localeDe);
@@ -150,6 +151,7 @@ registerLocaleData(localeDe);
     FeaturedComponent,
     NoActivitiesComponent,
     LuggageComponent,
+    LuggageDetailComponent,
   ],
   imports: [
     BrowserModule,

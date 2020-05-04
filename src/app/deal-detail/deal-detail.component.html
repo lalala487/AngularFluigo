@@ -7,10 +7,7 @@
       style="display: flex; align-items: center; flex-wrap: wrap; height: 100%; letter-spacing: .07rem; background-color: rgba(77, 131, 132, 1); background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);">
       <div class="container-content" style="width:100%; float: left; clear: both;">
         <div class="content-block price-title">
-          <p class="user-quantity">Preis für {{ accummulations.adults }} Erwachsene<ng-container
-              *ngIf="accummulations.adults == 1">r</ng-container><br />und {{ accummulations.children }} Kind
-            <ng-container *ngIf="accummulations.children !== 1">er</ng-container>
-          </p>
+          <p class="user-quantity">Preis für {{ accummulations.adults }} Erwachsene<ng-container *ngIf="accummulations.adults == 1">r</ng-container><br />und {{ accummulations.children }} Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container></p>
           <hr class="total-hr" />
         </div>
 
@@ -40,6 +37,16 @@
           </div>
         </div>
 
+        <!-- The block below is only displayed when the customer has chosen for a luggage
+        Otherwise, this block is not being displayed. -->
+        <div class="content-block" *ngIf="accummulations.luggage > 0">
+          <p class="price-label bottom-margin-xs">Zusätzliches Gepäck</p>
+          <p class="price-amount bottom-margin-xs">{{ accummulations.luggagePrice.currency }}
+            {{ accummulations.luggagePrice }}</p>
+          <p class="full-label bottom-margin-xs">{{ accummulations.luggage }} Gepäckstück<ng-container *ngIf="accummulations.luggage > 1">e</ng-container></p>
+          <p class="edit-label bottom-margin-l" (click)="goToStep(8)">Anpassen</p>
+        </div>
+
         <!-- The block below is only displayed when the customer has chosen for a transportation
         Otherwise, this block is not being displayed. -->
         <div class="content-block"
@@ -47,7 +54,7 @@
           <p class="price-label bottom-margin-xs">Transport</p>
           <p class="price-amount bottom-margin-xs">{{ accummulations.transportationPrice.currency }}
             {{ accummulations.transportationPrice }}</p>
-          <p class="edit-label bottom-margin-l" (click)="goToStep(8)">Anpassen</p>
+          <p class="edit-label bottom-margin-l" (click)="goToStep(9)">Anpassen</p>
         </div>
 
         <!-- The block below is only displayed when the customer has chosen for an insurance.
@@ -56,7 +63,7 @@
           <p class="price-label bottom-margin-xs">Versicherung</p>
           <p class="price-amount bottom-margin-xs">{{ accummulations.insurancePrice.currency }}
             {{ accummulations.insurancePrice }}</p>
-          <p class="edit-label bottom-margin-l" (click)="goToStep(9)">Anpassen</p>
+          <p class="edit-label bottom-margin-l" (click)="goToStep(10)">Anpassen</p>
         </div>
 
         <!-- The block below is only displayed when the component in the deal detail view is active and filled in. -->
@@ -85,15 +92,17 @@
 
   <div ng-sidebar-content>
 
-    <ngx-smart-modal #loginModal identifier="loginModal" [closable]="false" customClass="nsm-centered"
+    <ngx-smart-modal #authModal identifier="authModal" class="auth-modal" [closable]="false" customClass="nsm-centered"
       [dismissable]="false" [escapable]="false">
-      <div class="modal-header"></div>
-      <div class="modal-body">
+      <div class="gradient-full br-rd-all pd-25 text-center">
         <app-auth (emailSentChanged)="emailSentChanged($event)" (isLoggedInChange)="isLoggedInChange($event)"
           *ngIf="!emailSent"></app-auth>
         <app-email-sent *ngIf="emailSent"></app-email-sent>
       </div>
-      <div class="modal-footer"></div>
+    </ngx-smart-modal>
+
+    <ngx-smart-modal #luggageModal identifier="luggageModal" class="luggage-modal" [closable]="false">
+      <app-luggage-detail *ngIf="currentStep == 8" [accummulations]="accummulations"></app-luggage-detail>
     </ngx-smart-modal>
 
     <div class="nav-container">
@@ -223,7 +232,8 @@
               [childrenNumber]="accummulations.children" [(childrenBirthdays)]="accummulations.childrenBirthdays">
             </app-ages-children>
 
-            <app-calendar *ngIf="currentStep == 4" style="width:100%;" [deal]="deal" [accummulations]="accummulations">
+            <app-calendar *ngIf="currentStep == 4" style="width:100%;" [deal]="deal" [accummulations]="accummulations"
+            (flightChosen)="flightChosen($event)">
             </app-calendar>
 
             <app-activities *ngIf="currentStep == 5" style="width:100%;" [deal]="deal"
@@ -243,26 +253,31 @@
               [endDate]="accummulations.endDate" (selectedActivityOfferChange)="selectedActivityOfferChange($event)">
             </app-activity-date>
 
-            <app-transportation *ngIf="currentStep == 8" style="width:100%;" [deal]="deal"
+            <app-luggage *ngIf="currentStep == 8" style="width: 100%;"
+              [luggage]="accummulations['luggage']"
+              (luggageChange)="luggageChange($event)"
+            ></app-luggage>
+
+            <app-transportation *ngIf="currentStep == 9" style="width:100%;" [deal]="deal"
               [hasTransportation]="accummulations['hasTransportation']"
               [transportationPrice]="accummulations['transportationPrice']"
               (hasTransportationChange)="hasTransportationChange($event)"
               (transportationPriceChange)="transportationPriceChange($event)"></app-transportation>
 
-            <app-insurance *ngIf="currentStep == 9" style="width:100%;"
+            <app-insurance *ngIf="currentStep == 10" style="width:100%;"
               [totalPrice]="accummulations['totalPriceAmount']" [hasInsurance]="accummulations['hasInsurance']"
               [insurancePrice]="accummulations['insurancePrice']" (hasInsuranceChange)="hasInsuranceChange($event)"
               (insurancePriceChange)="insurancePriceChange($event)">
             </app-insurance>
 
-            <app-user-data *ngIf="currentStep == 10" style="width:100%;" [(user)]="accummulations['contact']"
+            <app-user-data *ngIf="currentStep == 11" style="width:100%;" [(user)]="accummulations['contact']"
               (userContactChange)="userContactChange($event)"></app-user-data>
 
-            <app-payment-form *ngIf="currentStep == 11" style="width:100%;"
+            <app-payment-form *ngIf="currentStep == 12" style="width:100%;"
               [amount]="accummulations['totalPriceAmount']" (stripeResult)="stripeResult($event)"
               (errorStripe)="errorStripe($event)"></app-payment-form>
 
-            <app-success *ngIf="currentStep == 12" style="width:100%;" [accummulations]="accummulations"
+            <app-success *ngIf="currentStep == 13" style="width:100%;" [accummulations]="accummulations"
               [event]="accummulations['event']" [payment]="accummulations['payment']"></app-success>
 
           </div>

@@ -1,39 +1,22 @@
-<div class="row account-profile">
-  <div class="col-sm-3">
-  </div>
-  <div class="col-lg-6">
-    <!-- Content Page Start -->
-    <div class="col-lg-12">
-      <div class="col-lg-12" style="padding-left:0px; padding-right:0px;">
-        <div class="butler-container">
-          <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio"></div>
-          <div class="butler-text"><span>Diese Kontaktdaten habe ich von dir</span></div>
-        </div>
-      </div>
-      <div class="col-lg-12" style="padding-left:0px; padding-right:0px;">
-        <form #userUpdateForm="ngForm" class="contact-data-form" autocomplete="disabled">
-          <div class="form-group">
-            <input required="required" name="firstName" autocomplete="disabled" type="text" class="form-control"
-              placeholder="Vorname" [(ngModel)]="userContact.firstName">
-          </div>
-          <div class="form-group">
-            <input required="required" name="lastName" autocomplete="disabled" type="text" class="form-control"
-              placeholder="Nachname" [(ngModel)]="userContact.lastName">
-          </div>
-          <div class="form-group">
-            <input required="required" name="email" autocomplete="disabled" type="email" class="form-control"
-              placeholder="E-Mail" [(ngModel)]="userContact.email">
-          </div>
-          <div class="form-group">
-            <input autocomplete="disabled" name="phoneNumber" type="tel" class="form-control" placeholder="Telefonnummer"
-              [(ngModel)]="userContact.phoneNumber">
-          </div>
-          <button class="btn btn-primary" (click)="updateUser()" type="next" [disabled]="!userUpdateForm.form.valid">Speichern</button>
-        </form>
-      </div>
+<div class="center">
+  <div class="account-content-container std-pd-2">
+
+    <div class="butler-container">
+      <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio"></div>
+      <div class="butler-text"><p>Diese Kontaktdaten habe ich von dir</p></div>
     </div>
-    <!-- Content Page End -->
-  </div>
-  <div class="col-sm-3">
+
+    <form #userUpdateForm="ngForm" class="contact-data-form" autocomplete="disabled">
+      <input class="mr-bt-25" required="required" name="firstName" autocomplete="disabled" type="text"
+        placeholder="Vorname" [(ngModel)]="userContact.firstName">
+      <input class="mr-bt-25" required="required" name="lastName" autocomplete="disabled" type="text"
+        placeholder="Nachname" [(ngModel)]="userContact.lastName">
+      <input class="mr-bt-25" required="required" name="email" autocomplete="disabled" type="email"
+        placeholder="E-Mail" [(ngModel)]="userContact.email">
+      <input class="mr-bt-25" autocomplete="disabled" name="phoneNumber" type="text" placeholder="Telefonnummer"
+        [(ngModel)]="userContact.phoneNumber">
+      <button class="btn btn-full btn-primary mr-bt-25" (click)="updateUser()" type="next" [disabled]="!userUpdateForm.form.valid">Speichern</button>
+    </form>
+
   </div>
 </div>

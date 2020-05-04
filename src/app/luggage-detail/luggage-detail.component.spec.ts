@@ -1,20 +1,20 @@
 // import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-// import { LuggageComponent } from './luggage.component';
+// import { LuggageDetailComponent } from './luggage-detail.component';
 
-// describe('LuggageComponent', () => {
-//   let component: LuggageComponent;
-//   let fixture: ComponentFixture<LuggageComponent>;
+// describe('LuggageDetailComponent', () => {
+//   let component: LuggageDetailComponent;
+//   let fixture: ComponentFixture<LuggageDetailComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ LuggageComponent ]
+//       declarations: [ LuggageDetailComponent ]
 //     })
 //     .compileComponents();
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(LuggageComponent);
+//     fixture = TestBed.createComponent(LuggageDetailComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

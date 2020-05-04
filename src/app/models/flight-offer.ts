@@ -4,6 +4,7 @@ export interface FlightOffer {
     merchant: any;
     flight: any;
     flightClass: any;
+    flightFare: any;
     stock: number;
     currency: any;
 }

@@ -38,4 +38,6 @@ export interface Accummulation {
     payment: DocumentReference;
     city: DocumentReference;
     accommodation: DocumentReference;
+    luggage: number;
+    luggagePrice: Money;
 }

@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.pdp-ages-children-block .form-control {
+.pdp-ages-children-block input {
   background-color: inherit;
   border-radius: 0;
   font-size: 1rem;
@@ -22,11 +22,11 @@
   text-align: center;
 }
 
-.pdp-ages-children-block .form-control:focus {
+.pdp-ages-children-block input:focus {
   border-color: rgba(235,235,235,1);
 }
 
-.pdp-ages-children-block .form-control:valid {
+.pdp-ages-children-block input:valid {
   border-color: rgba(235,235,235,1);
 }
 

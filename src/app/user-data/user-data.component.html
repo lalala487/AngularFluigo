@@ -10,7 +10,7 @@
                 <div class="butler-container">
                   <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
                   </div>
-                  <div class="butler-text"><span>Wie kann ich dich kontaktieren?</span></div>
+                  <div class="butler-text"><p>Wie kann ich dich kontaktieren?</p></div>
                 </div>
               </div>
             </div>
@@ -18,13 +18,13 @@
               <div class="col-lg-6">
                 <div class="form-group">
                   <input required="required" [(ngModel)]="user.firstName" autocomplete="off" name="firstName"
-                    type="text" class="form-control" placeholder="Vorname">
+                    type="text" placeholder="Vorname">
                 </div>
               </div>
               <div class="col-lg-6">
                 <div class="form-group">
                   <input required="required" [(ngModel)]="user.lastName" autocomplete="off" name="lastName" type="text"
-                    class="form-control" placeholder="Nachname">
+                   placeholder="Nachname">
                 </div>
               </div>
             </div>
@@ -32,15 +32,15 @@
               <div class="col-lg-12">
                 <div class="form-group">
                   <input required="required" readonly [(ngModel)]="user.email" autocomplete="off" name="email" type="email"
-                    class="form-control" placeholder="E-Mail">
+                   placeholder="E-Mail">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-12">
                 <div class="form-group">
-                  <input required="required" [(ngModel)]="user.phoneNumber" autocomplete="off" name="phone" type="tel"
-                    class="form-control" placeholder="Telefonnummer">
+                  <input required="required" [(ngModel)]="user.phoneNumber" autocomplete="off" name="phone" type="text"
+                   placeholder="Telefonnummer">
                 </div>
               </div>
             </div>

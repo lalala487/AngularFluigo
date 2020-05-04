@@ -1,12 +1,13 @@
+
 <div class="landing-container">
-  <div class="logo-container">
+  <div class="logo-container mr-bt-25 mr-tp-10">
     <a href="/">
       <img src="assets/img/logo.svg" width="110" alt="Flugio Logo" style="margin: 0 auto; display: block;">
     </a>
   </div>
 
   <div class="title-container">
-    <p>
+    <p class="no-margin">
       Exklusive<span> Städtereisen bis zu </span>69%<span> günstiger</span>
     </p>
   </div>
@@ -17,23 +18,21 @@
       einzigartigen Rabatt für dich. Wohin sollen wir der senden?</p>
   </div>
 
-  <div *ngIf="!showContentLanding" class="col-lg-12">
-    <p class="modal-header-two">Kostenloser Zugang zu Exklusive Angeboten nur mit deiner E-Mail</p>
+  <div *ngIf="!showContentLanding" class="col-lg-12 mr-bt-25">
+    <p class="no-margin opa-5">Kostenloser Zugang zu Exklusive Angeboten nur mit deiner E-Mail</p>
   </div>
 
-  <div class="col-lg-12">
+  <div class="col-lg-12 mr-bt-25">
     <form #loginForm="ngForm">
-      <div class="form-group">
-        <input type="email" name="email" autocomplete="email" class="form-control modal-input-email"
-          placeholder="E-Mail" [(ngModel)]="email" email>
-        <button class="btn btn-primary modal-input-button-email" type="next" (click)="sendEmailLink()"
-          [disabled]="!loginForm.form.valid">Weiter</button>
-      </div>
+      <input type="email" name="email" autocomplete="email" class="mr-bt-10"
+        placeholder="E-Mail" [(ngModel)]="email" email>
+      <button class="btn btn-full btn-primary modal-input-button-email" type="next" (click)="sendEmailLink()"
+        [disabled]="!loginForm.form.valid">Weiter</button>
     </form>
   </div>
 
   <div class="col-lg-12">
-      <p class="modal-legal-text-lp">Mit dem Klick auf "Weiter" stimmst du unseren <a href="/agb">AGB</a>, Einsatz von <a
+      <p class="modal-legal-text-lp opa-5">Mit dem Klick auf "Weiter" stimmst du unseren <a href="/agb">AGB</a>, Einsatz von <a
         href="/agb">Cookies</a> und <a href="/data-protection">Datenschutzbestimmungen</a> zu</p>
   </div>
 </div>

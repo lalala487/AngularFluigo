@@ -9,7 +9,7 @@
               <div class="butler-container">
                 <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
                 </div>
-                <div class="butler-text"><span>Wie alt sind die Kinder?</span></div>
+                <div class="butler-text"><p>Wie alt sind die Kinder?</p></div>
               </div>
             </div>
           </div>
@@ -21,12 +21,12 @@
               <div class="form-group">
                 <input maxlength="2" (keyup)="moveFocus($event, monthInput)"
                   [(ngModel)]="accummulations['birthday' + i].day" name="day-{{i}}" required autocomplete="off"
-                  inputmode="numeric" min="0" max="31" class="form-control birthdate-day" placeholder="TT">
+                  inputmode="numeric" min="0" max="31" class="birthdate-day" placeholder="TT">
                 <input maxlength="2" #monthInput (keyup)="moveFocus($event, yearInput)"
                   [(ngModel)]="accummulations['birthday' + i].month" name="month-{{i}}" required autocomplete="off"
-                  inputmode="numeric" min="0" max="12" class="form-control birthdate-month" placeholder="MM">
+                  inputmode="numeric" min="0" max="12" class="birthdate-month" placeholder="MM">
                 <input maxlength="4" #yearInput [(ngModel)]="accummulations['birthday' + i].year" name="year-{{i}}"
-                  required autocomplete="off" inputmode="numeric" min="0" max="2019" class="form-control birthdate-year"
+                  required autocomplete="off" inputmode="numeric" min="0" max="2019" class="birthdate-year"
                   placeholder="JJJJ">
               </div>
             </div>

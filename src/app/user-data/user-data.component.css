@@ -43,7 +43,8 @@
   margin-bottom: 0rem;
 }
 
-.pdp-user-data-block .form-control:disabled, .form-control[readonly] {
+.pdp-user-data-block input:disabled,
+input[readonly] {
     background-color: inherit;
     cursor: not-allowed;
 }

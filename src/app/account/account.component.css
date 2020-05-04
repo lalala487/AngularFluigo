@@ -1,9 +1,6 @@
-
 .account-bg-container {
   background: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%), rgba(77, 131, 132, 1);
   background-attachment: fixed;
-  margin-left: -15px;
-  margin-right: -15px;
   min-height: 100vh;
   height:100vh;
   max-height:100vh;
@@ -13,14 +10,7 @@
 
 /* ============== Header ============== */
 
-.account-header-row .logo img {
-  display: block;
-  margin: 0 auto;
-}
-
-.account-header-row {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
+header {
   flex: 0 1 auto;
 }
 
@@ -29,62 +19,39 @@
   overflow-y: scroll;
 }
 
-.account-header-row .logo-container {
-  margin-top: 0rem;
-}
-
-.account-header-row .logo .left-col,
-.account-header-row .logo .mid-col,
-.account-header-row .logo .right-col {
+header .left-col,
+header .mid-col,
+header .right-col {
   width: calc(100%/3);
+  display: inline-block;
 }
 
-.account-header-row .logo .right-col {
-  padding-right: 2rem;
+header .left-col img {
+  margin-top: 5px;
+  margin-left: -4px;
 }
 
-.account-header-row .logo .left-col {
-  padding-left: 2rem;
-}
-
-.account-header-row .logo .right-col .icon-account,
-.account-header-row .logo .right-col .label-account {
-  float: right;
-}
-
-.account-header-row .logo .left-col .icon-menu-small,
-.account-header-row .logo .left-col .label-menu-small {
-  float: left;
-}
-
-.account-header-row .logo .right-col .label-account {
-  margin-left: .5rem;
-  margin-top: .3rem;
-  letter-spacing: .07rem;
-  font-size: 1rem;
+header .left-col p {
+  margin-top: 10px;
   margin-bottom: 0rem;
+  margin-left: 10px;
 }
 
-.account-header-row .logo .left-col .label-menu-small {
-  margin-left: .5rem;
-  margin-top: .3rem;
-  letter-spacing: .07rem;
-  font-size: 1rem;
+header .right-col a {
+  margin-top: 5px;
+}
+
+header .right-col p {
+  margin-top: 10px;
   margin-bottom: 0rem;
+  margin-right: -1px;
+  margin-left: 10px;
 }
 
 @media (max-width: 575.98px) {
-  .account-header-row .logo .right-col .label-account {
+  header p {
     display: none;
   }
-
-  .account-header-row .logo .left-col .label-menu-small {
-    display: none;
-  }
-}
-
-.account-header-row .logo .right-col .icon-account {
-  margin-top: -.1rem;
 }
 
 /* ============== Sidebar ============== */

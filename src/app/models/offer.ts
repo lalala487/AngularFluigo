@@ -10,6 +10,9 @@ export interface Offer {
     prices: any;
     flightDepartureHour: any;
     flightArrivalHour: any;
+    flight: any;
+    flightFare: any;
+    flightOfferId: string;
 
     price: Money;
 }

@@ -318,7 +318,7 @@ hr {
   background-size: cover;
   padding: 2rem 2.5rem 2rem 2.5rem;
   font-size: 1.4rem;
-  color: rgba(235, 235, 235, 1);
+  color: var(--color-one);
   overflow: hidden;
 }
 

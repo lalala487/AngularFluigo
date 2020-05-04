@@ -10,10 +10,11 @@
                 <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
                 </div>
                 <!-- The part of "2 Erwachsene und 1 Kind" is dynamic, based on the selection made in the step "user-quantity".  -->
-                <div class="butler-text"><span>
+                <div class="butler-text">
+                  <p>
                   Großartig! Wann möchtest du {{ activity?.name[locale] }} besuchen? Der Preis ist für
                   {{ adults }} Erwachsene<ng-container *ngIf="children > 0"> und {{ children }} Kind</ng-container>.
-                  </span>
+                  </p>
                 </div>
               </div>
             </div>

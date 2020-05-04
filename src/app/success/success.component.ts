@@ -46,6 +46,7 @@ export class SuccessComponent implements OnInit {
         city: this.accummulations.city,
         accommodation: this.accummulations.accommodation,
         activityOffers: [],
+        luggage: this.accummulations.luggage
       } as Order;
 
 

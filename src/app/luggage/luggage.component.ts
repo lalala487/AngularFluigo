@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-luggage',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./luggage.component.css']
 })
 export class LuggageComponent implements OnInit {
+  @Input() luggage: number;
 
-  constructor() { }
+  @Output() luggageChange: EventEmitter<number> = new EventEmitter();
+
+  constructor(
+    public ngxSmartModalService: NgxSmartModalService
+  ) { }
 
   ngOnInit(): void {
+    this.luggageChange.emit(this.luggage);
   }
 
+  onLuggageChange(value) {
+    this.luggage = value;
+
+    this.luggageChange.emit(this.luggage);
+  }
 }

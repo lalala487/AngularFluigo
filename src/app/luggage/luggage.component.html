@@ -1,27 +1,30 @@
-<div class="container-fluid scroll">
-    <div class="row luggage">
-        <div class="col-lg-6 vh100min bg-luggage bg-cover">
-            <div class="overlay-gradient-95 center">
-                <div class="luggage-wrapper">
-                    <div class="image-row-one center">
-                        <div class="luggage-product bg-contain"></div>
-                        <div class="luggage-length center">90 cm</div>
-                    </div>
-                    <div class="image-row-two">
-                        <div class="luggage-width center">60 cm</div>
-                        <div class="luggage-depth center">40 cm</div>
-                    </div>
+<div class="pdp-luggage-block col-xl-12">
+  <div class="center-wrap">
+    <div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-lg-8">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="butler-container">
+                <div class="butler-image">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
                 </div>
+                <div class="butler-text">
+                  <p>1 Stück Handgepäck pro Person ist inbegriffen. Zusätzliches aufgegebenes Gepäck kannst du für CHF 35 pro Stück bestellen.</p>
+                  <button (click)="ngxSmartModalService.getModal('luggageModal').open()" class="btn btn-small btn-primary mr-tp-10">Gepäckinformationen</button>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="col-lg-6 std-pd-1 vh100min gradient-full center order-first order-lg-2">
-            <div class="text-center">
-                <div class="luggage-airline-logo bg-contain pd-bt-25"></div>
-                <p class="pd-bt-25">Dein Angebot einhält ein Flug mit SWISS in Economy Light.</p>
-                <p class="pd-bt-25">Ein Koffer mit den maximalen Abmessungen von 90 x 60 x 40 cm und ein Gewicht von maximal 23 kg, akzeptiert SWISS als Handgepäck.</p>
-                <p class="pd-bt-25">Kostenloses aufgegebenes Gepäck ist nicht inbegriffen.</p>
-                <button class="btn btn-full btn-primary">Zurück</button>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <app-number-picker [currentNumber]="luggage" [minNumber]="0" [maxNumber]="10" (numberChange)="onLuggageChange($event)"></app-number-picker>
             </div>
+          </div>
         </div>
+        <div class="col-sm-2"></div>
+      </div>
     </div>
+  </div>
 </div>

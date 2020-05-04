@@ -19,7 +19,6 @@ import { Charge } from '../payment-form/payment-models';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { PaymentService } from '../services/payment.service';
 import { Activity } from '../models/activity';
-import { Offer } from '../models/offer';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivityPack } from '../models/activity-pack';
 
@@ -41,6 +40,8 @@ export class DealDetailComponent implements OnInit {
   locale = environment.locale;
   localeSimple = environment.localeSimple;
 
+  PRICEPERLUGGAGE = 35;
+
   accummulations: Accummulation = {
     'hasFlightAccommodation': false,
     'hasTransportation': true,
@@ -61,6 +62,8 @@ export class DealDetailComponent implements OnInit {
     'birthday5': { 'day': '', 'month': '', 'year': '' } as Birthday,
     'contact': {} as UserContact,
     'activities': new Map(),
+    'luggage': 0,
+    'luggagePrice': new Money(0, Currencies.CHF),
   } as Accummulation;
 
   currentStep = 0;
@@ -88,7 +91,7 @@ export class DealDetailComponent implements OnInit {
 
     selectedDeal$.subscribe((deals: Deal[]) => {
       if (deals.length === 0) {
-        this.toastr.error('No deal found for the slug supplied', 'Ehm...');
+        this.toastr.error('Bitte nochmal versuchen', 'Ehm...');
 
         this.router.navigate(['/']);
       }
@@ -195,7 +198,7 @@ export class DealDetailComponent implements OnInit {
       } else {
         this.currentStep = this.currentStep + 1;
       }
-    } else if (this.currentStep === 10) {
+    } else if (this.currentStep === 11) {
       // contact step (must be filled in order to proceed)
       if (!this.stepValidatorService.validateUserContact(this.accummulations.contact)) {
         this.toastr.error('Alles richtig ausgefüllt?', 'Ehm...', {
@@ -243,6 +246,15 @@ export class DealDetailComponent implements OnInit {
 
   hasTransportationChange(hasTransportation: boolean) {
     this.accummulations.hasTransportation = hasTransportation;
+    this.calculatePrice();
+  }
+
+  luggageChange(luggage: number) {
+    this.accummulations.luggage = luggage;
+    this.calculatePrice();
+  }
+
+  flightChosen(hasFlight: boolean) {
     this.calculatePrice();
   }
 
@@ -304,6 +316,10 @@ export class DealDetailComponent implements OnInit {
       price = price.add(this.accummulations['insurancePrice']);
     }
 
+    const luggagePrice = new Money((this.accummulations['luggage']) * this.PRICEPERLUGGAGE * 100, Currencies.CHF);
+    this.accummulations.luggagePrice = luggagePrice;
+    price = price.add(luggagePrice);
+
     this.accummulations.activities.forEach((value: ActivityPack, key: string) => {
       price = price.add(value.offer.price);
     });
@@ -315,9 +331,9 @@ export class DealDetailComponent implements OnInit {
 
   isLoggedInChange(isLoggedIn: boolean): void {
     if (isLoggedIn) {
-      this.ngxSmartModalService.close('loginModal');
+      this.ngxSmartModalService.close('authModal');
     } else {
-      this.ngxSmartModalService.open('loginModal');
+      this.ngxSmartModalService.open('authModal');
     }
   }
 

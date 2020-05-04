@@ -19,6 +19,7 @@ export interface Order {
     departureFlightOffer: OrderFlightOffer;
     returnFlightOffer: OrderFlightOffer;
   };
+  luggage: number;
 }
 
 export interface OrderTimestamps {

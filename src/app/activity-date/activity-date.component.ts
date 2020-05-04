@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Activity } from '../models/activity';
-import * as moment from 'moment';
+import moment from 'moment/moment';
 import { Offer } from '../models/offer';
 import { map } from 'rxjs/operators';
 import { AngularFirestore } from '@angular/fire/firestore';

@@ -1,7 +1,7 @@
 import { Offer } from './offer';
 import { Money } from 'ts-money';
 
-import * as moment from 'moment';
+import moment from 'moment/moment';
 
 export interface Travel {
     id: string;

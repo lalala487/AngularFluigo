@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as moment from 'moment';
+import moment from 'moment/moment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Deal } from '../models/deal';

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import { firestore } from 'firebase';
-import * as moment from 'moment';
+import moment from 'moment/moment';
 
 @Component({
   selector: 'app-auth',

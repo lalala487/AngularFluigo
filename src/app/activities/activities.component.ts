@@ -6,7 +6,7 @@ import { Activity } from '../models/activity';
 import { map, switchMap } from 'rxjs/operators';
 import { ActivityOffer } from '../models/activity-offer';
 import { Offer } from '../models/offer';
-import * as moment from 'moment';
+import moment from 'moment/moment';
 import { City } from '../models/city';
 import { ActivityPack } from '../models/activity-pack';
 

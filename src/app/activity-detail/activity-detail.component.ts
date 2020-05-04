@@ -10,7 +10,7 @@ import { Offer } from '../models/offer';
 import { Language } from '../models/language';
 import { Money, Currencies } from 'ts-money';
 import { Observable } from 'rxjs';
-import * as moment from 'moment';
+import moment from 'moment/moment';
 import { Segment } from '../models/segment';
 
 @Component({

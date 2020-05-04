@@ -10,7 +10,7 @@ import { FlightOffer } from '../models/flight-offer';
 import { switchMap, map, scan } from 'rxjs/operators';
 import { Offer } from '../models/offer';
 import { Flight } from '../models/flight';
-import * as moment from 'moment';
+import moment from 'moment/moment';
 import { Money, Currencies } from 'ts-money';
 import { AccommodationOffer } from '../models/accommodation-offer';
 import { Segment } from '../models/segment';

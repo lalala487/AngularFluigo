@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Birthday } from '../models/birthday';
-import * as moment from 'moment';
+import moment from 'moment/moment';
 import { UserContact } from '../models/user-contact';
 
 @Injectable({

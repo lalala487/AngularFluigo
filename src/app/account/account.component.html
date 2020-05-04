@@ -1,12 +1,12 @@
 <ng-sidebar-container style="height: 100vh;">
 
   <ng-sidebar #sidebar>
-    <div class="sidebarjs-center-container"
+    <div class="sidebarjs-center-container nav-left"
       style="display: flex; align-items: center; flex-wrap: wrap; height: 100%; background-color: rgba(77, 131, 132, 1); background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%);">
       <div class="sidebarjs-center-container-content" style="width:100%; float: left; clear: both;">
         <div class="content-block menu-option">
           <a href="/">
-            <p i18n="account sidebar home">Home</p>
+            <p class="link" i18n="account sidebar home">Home</p>
           </a>
           <hr class="price-hr" />
         </div>
@@ -40,9 +40,9 @@
   </ng-sidebar>
 
   <div ng-sidebar-content>
-    <div class="account-bg-container">
+    <div class="account-container gradient">
 
-      <header class="mr-tp-bt-25 std-pd-2">
+      <div class="pd-25 nav-top">
 
         <div class="left-col">
           <img class="fl-l" (click)="sidebar.open()" src="assets/icon/icon-menu-small.svg" height="35"
@@ -51,7 +51,7 @@
         </div>
 
         <div class="mid-col">
-          <a href="/"><img class="center-image" src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
+          <a href="/"><img class="center-hori" src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
         </div>
 
         <div class="right-col">
@@ -60,19 +60,14 @@
                 alt="Icon Finger Print"></a>
         </div>
 
-      </header>
+      </div>
 
-      <div class="account-content-row">
-        <app-account-profile *ngIf="currentPage === 'profile' && userContact" [userContact]="userContact"
-          (userContactChange)="userContactChange($event)"></app-account-profile>
-        <app-account-orders *ngIf="currentPage === 'orders'" (orderDocumentSelected)=orderDocumentSelected($event)>
-        </app-account-orders>
-        <app-account-data *ngIf="currentPage === 'data' && userContact" (deleteUserChange)="deleteUserChange($event)">
-        </app-account-data>
-        <app-account-assistant *ngIf="currentPage === 'assistant'">
-        </app-account-assistant>
-        <app-account-order-documents *ngIf="selectedOrder && currentPage === 'documents'"
-          (goBackToMainEmitter)="goBackToMainEmitter(event)" [order]="selectedOrder"></app-account-order-documents>
+      <div>
+        <app-account-profile *ngIf="currentPage === 'profile' && userContact" [userContact]="userContact" (userContactChange)="userContactChange($event)"></app-account-profile>
+        <app-account-orders *ngIf="currentPage === 'orders'" (orderDocumentSelected)=orderDocumentSelected($event)></app-account-orders>
+        <app-account-data *ngIf="currentPage === 'data' && userContact" (deleteUserChange)="deleteUserChange($event)"></app-account-data>
+        <app-account-assistant *ngIf="currentPage === 'assistant'"></app-account-assistant>
+        <app-account-order-documents *ngIf="selectedOrder && currentPage === 'documents'" (goBackToMainEmitter)="goBackToMainEmitter(event)" [order]="selectedOrder"></app-account-order-documents>
       </div>
 
     </div>

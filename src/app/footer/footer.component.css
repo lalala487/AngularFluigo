@@ -26,20 +26,6 @@
   margin: 0 auto;
 }
 
-.footer-row ul p {
-  margin-bottom: 0rem;
-  font-size: .9rem;
-  letter-spacing: .07rem;
-}
-
-.footer-row ul li {
-  margin-bottom: .5rem;
-}
-
-.footer-row ul li:last-child {
-  margin-bottom: 0rem;
-}
-
 .footer-row h4 {
   margin-bottom: 3rem;
 }

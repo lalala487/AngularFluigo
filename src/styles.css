@@ -97,17 +97,30 @@ select:focus {
 /******************************   Font   ******************************/
 /**********************************************************************/
 
+h1 {
+	font-size: 1.8rem;
+	font-weight: 400;
+}
+
 h2 {
 	font-size: 1.4rem;
 	font-weight: 400;
 }
+
+h3 {
+	font-size: 1rem;
+	font-weight: 400;
+}
+
 h4 {
 	font-size: 1.4rem;
 	font-weight: 400;
 }
+
 a {
 	color: var(--color-one);
 }
+
 a:hover {
 	text-decoration: none;
 	color: var(--color-one);
@@ -172,9 +185,13 @@ a:hover {
     transition: all 0.3s ease-in-out;
 }
 
-.center-image {
+.center-hori {
 	display: block;
     margin: 0 auto;
+}
+
+.width-fit {
+	width: fit-content;
 }
 
 .fl-l {
@@ -183,6 +200,30 @@ a:hover {
 
 .fl-r {
 	float: right;
+}
+
+.link {
+	cursor: pointer;
+}
+
+.flex {
+	display: flex;
+}
+
+.flex-wrap {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+/**********************************************************************/
+/******************************   Grid   ******************************/
+/**********************************************************************/
+
+.grid-3 {
+	width: 25%;
+	max-width: 25%;
+	display: inline-block;
+	vertical-align: top;
 }
 
 /**********************************************************************/
@@ -195,6 +236,14 @@ a:hover {
 
 .mr-25 {
 	margin-bottom: 2.5rem;
+}
+
+.mr-rg-10 {
+	margin-right: 1rem;
+}
+
+.mr-bt-5 {
+	margin-bottom: .5rem;
 }
 
 .mr-bt-10 {
@@ -231,6 +280,20 @@ a:hover {
 	padding-right: 2.5rem;
 }
 
+.std-pd-3 {
+	padding: 7.5rem 2.5rem 7.5rem 2.5rem;
+}
+
+@media only screen and (min-width: 576px) {
+	.std-pd-3 {
+		padding: 12.5rem 2.5rem 12.5rem 2.5rem;
+	}
+}
+
+.std-pd-4 {
+	padding: 5rem 2.5rem 5rem 2.5rem;
+}
+
 .pd-25 {
 	padding: 2.5rem;
 }
@@ -252,6 +315,11 @@ a:hover {
 }
 
 .pd-tp-25 {
+	padding-top: 2.5rem;
+}
+
+.pd-tp-bt-25 {
+	padding-bottom: 2.5rem;
 	padding-top: 2.5rem;
 }
 
@@ -443,20 +511,6 @@ a:hover {
 }
 
 /**********************************************************************/
-/*****************************   Rating   *****************************/
-/**********************************************************************/
-
-.pdp-activity-detail-block .rating-block {
-	height: 20rem;
-}
-
-.pdp-accommodation-block .rating-block {
-	height: 20rem;
-	margin-left: -15px;
-	margin-right: -15px;
-}
-
-/**********************************************************************/
 /******************************   Modal   *****************************/
 /**********************************************************************/
 
@@ -518,10 +572,130 @@ a:hover {
 /*****************************   Account   ****************************/
 /**********************************************************************/
 
-.account-content-container {
+.account-container-content {
 	width: 100%;
 	max-width: 720px;
 }
+
+.account-container {
+	background: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(19, 78, 94, 0) 100%), rgba(77, 131, 132, 1);
+	background-attachment: fixed;
+	min-height: 100vh;
+	max-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+/**********************************************************************/
+/*************************   Left Navigation   ************************/
+/**********************************************************************/
+
+.nav-left {
+  text-align: center;
+}
+
+/**********************************************************************/
+/*************************   Top Navigation   *************************/
+/**********************************************************************/
+
+.nav-top .left-col,
+.nav-top .mid-col,
+.nav-top .right-col {
+  width: calc(100%/3);
+  display: inline-block;
+}
+
+.nav-top .left-col img {
+  margin-top: 5px;
+  margin-left: -4px;
+}
+
+.nav-top .left-col p {
+  margin-top: 10px;
+  margin-bottom: 0rem;
+  margin-left: 10px;
+}
+
+.nav-top .right-col a {
+  margin-top: 5px;
+}
+
+.nav-top .right-col p {
+  margin-top: 10px;
+  margin-bottom: 0rem;
+  margin-right: -1px;
+  margin-left: 10px;
+}
+
+@media (max-width: 575.98px) {
+  .nav-top p {
+    display: none;
+  }
+}
+
+/**********************************************************************/
+/******************************   Home   ******************************/
+/**********************************************************************/
+
+home .hero h1,
+home .hero h3{
+	font-weight: 500;
+}
+
+home .hero span{
+	opacity: .5;
+	font-weight: 400;
+}
+
+.deal-container>div {
+	flex: 0 100%;
+}
+  
+@media (min-width: 768px) {
+	.deal-container>div {
+	flex: 0 50%;
+	}
+}
+
+/**********************************************************************/
+/*****************************   Footer   *****************************/
+/**********************************************************************/
+
+footer ul {
+	list-style: none;
+	margin-bottom: 0rem;
+	-webkit-padding-start: 0rem;
+}
+
+@media only screen and (max-width : 767.98px) {
+	footer .col-two,
+	footer .col-three,
+	footer .col-four {
+		display: none;
+	}
+
+	footer .grid-3 {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**********************************************************************/
 /****************************   CMS Title   ***************************/
@@ -752,6 +926,21 @@ button.toast-close-button {
 		width: 25em;
 	}
 }
+
+/**********************************************************************/
+/*****************************   Rating   *****************************/
+/**********************************************************************/
+
+.pdp-activity-detail-block .rating-block {
+	height: 20rem;
+}
+
+.pdp-accommodation-block .rating-block {
+	height: 20rem;
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
 /**********************************************************************/
 /*************************   Container Page   *************************/
 /**********************************************************************/

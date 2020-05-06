@@ -183,6 +183,7 @@ a:hover {
 
 .scroll {
 	overflow: scroll;
+	max-height: 100%;
 }
 
 .height-125 {
@@ -236,6 +237,10 @@ a:hover {
 
 .width-fit {
 	width: fit-content;
+}
+
+.width-full {
+	width: 100%;
 }
 
 .fl-l {
@@ -306,6 +311,13 @@ a:hover {
 	width: 100%;
 	max-width: 100%;
 	display: inline-block;
+}
+
+.grid-canvas {
+	min-height: 100vh;
+	min-width: 100vw;
+	max-height: 100vh;
+	max-width: 100vw;
 }
 
 /**********************************************************************/
@@ -386,7 +398,7 @@ a:hover {
 	padding-right: 2.5rem;
 }
 
-@media only screen and (min-width: 576px) {
+@media only screen and (min-width: 1200px) {
 	.std-pd-1 {
 		padding-left: 7.5rem;
 		padding-right: 7.5rem;
@@ -410,6 +422,18 @@ a:hover {
 
 .std-pd-4 {
 	padding: 5rem 2.5rem 5rem 2.5rem;
+}
+
+.std-pd-5 {
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
+}
+
+@media only screen and (min-width: 1200px) {
+	.std-pd-5 {
+		padding-left: 5rem;
+		padding-right: 5rem;
+	}
 }
 
 .std-mr-1 {
@@ -491,11 +515,15 @@ a:hover {
 }
 
 .gradient-full {
-	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(77, 131, 132, 1) 100%);
+	background: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(77, 131, 132, 0) 100%), rgba(77, 131, 132, 1) 100%;
 }
 
 .gradient-20 {
 	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .5) 0%, rgba(77, 131, 132, .5) 100%);
+}
+
+.gradient-95 {
+	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .95) 0%, rgba(77, 131, 132, .95) 100%);
 }
 
 .overlay-gradient-75 {
@@ -724,16 +752,20 @@ a:hover {
 }
 
 /**********************************************************************/
-/*************************   Left Navigation   ************************/
+/***************************   Navigation   ***************************/
 /**********************************************************************/
 
-.nav-left {
-  text-align: center;
+/***   Navigation - Acount   ***/
+
+.nav-account {
 }
 
-/**********************************************************************/
-/*************************   Top Navigation   *************************/
-/**********************************************************************/
+/***   Navigation - Deal   ***/
+
+.nav-deal {
+}
+
+/***   Navigation - Top   ***/
 
 .nav-top .left-col,
 .nav-top .mid-col,
@@ -863,7 +895,27 @@ footer ul {
 	}
 }
   
-  
+/**********************************************************************/
+/******************************   Deal   ******************************/
+/**********************************************************************/
+
+.left-bar, 
+.right-bar {
+	width: 100%;
+}
+
+@media (min-width: 1200px) {
+	.left-bar {
+		width: 25%;
+	}
+
+	.right-bar {
+		width: 75%;
+	}
+}
+
+
+
 
 
 
@@ -1624,58 +1676,6 @@ button.toast-close-button {
 /**************************   Product Page   **************************/
 /**********************************************************************/
 
-.pdp-container {
-	height: 100vh;
-	background-size: cover;
-	display: flex;
-    flex-wrap: wrap;
-}
-
-@media only screen and (max-width: 1199.98px) {
-	.pdp-container {
-		height: auto;
-		min-height: 100vh;
-		background-image: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(77, 131, 132, 1) 100%) !important;
-		background-attachment: fixed;
-	}
-
-	.pdp-container::before {
-		background-image: none !important;
-	}
-}
-
-.pdp-container::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	background-image: linear-gradient(to bottom right, rgba(19, 78, 94, .95) 0%, rgba(77, 131, 132, .95) 100%);
-}
-
-.pdp-column-left-bar {
-	height: 100%;
-}
-
-@media only screen and (max-width: 1199.98px) {
-	.pdp-column-left-bar {
-		height: 5rem;
-	}
-}
-
-.pdp-column-right-bar {}
-@media only screen and (min-width: 1200px) {
-	.pdp-row-right-bar-container {
-		margin-left: 5rem;
-		margin-right: 5rem;
-	}
-
-	.pdp-column-right-bar {
-		overflow-y: scroll;
-		height: 100vh;
-	}
-}
 
 /**********************************************************************/
 /*******************************   PDP   ******************************/

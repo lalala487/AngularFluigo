@@ -327,15 +327,15 @@ a:hover {
   	justify-content: space-between;
 }
 
-.pr-1 {
+.prio-1 {
 	order: 0;
 }
   
-.pr-2 {
+.prio-2 {
 	order: 1;
 }
   
-.pr-3 {
+.prio-3 {
 	order: 2;
 }
 
@@ -357,6 +357,14 @@ a:hover {
 
 .mr-lf-10 {
 	margin-left: 1rem;
+}
+
+.mr-tp-2-rev {
+	margin-top: -.25rem;
+}
+
+.mr-tp-1-rev {
+	margin-top: -.1rem;
 }
 
 .mr-tp-5 {
@@ -792,7 +800,30 @@ a:hover {
 
 /***   Navigation - Deal - Bottom   ***/
 
-.nav-3 {}
+.nav-3 {
+	position: fixed;
+	bottom: 0;
+	z-index: 2;
+	background-size: contain;
+	background-repeat: repeat-x;
+	background-image: linear-gradient(to top, rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, .3) 25%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, 0) 100%);
+}
+
+@media only screen and (min-width: 1200px) {
+	.nav-3 .right-bar .prio-2 {
+		display: none;
+	}
+
+	.nav-3 {
+		background-image: none;
+	}
+}
+
+@media only screen and (max-width: 1199.98px) {
+	.nav-3 .left-bar {
+		display: none;
+	}
+}
 
 /***   Navigation - General - Top   ***/
 
@@ -1229,44 +1260,6 @@ button.toast-close-button {
 	opacity: 1;
 }
 
-.nav-container {
-	padding-bottom: .95rem;
-	padding-top: 5rem;
-	position: fixed;
-	bottom: 0;
-	z-index: 3;
-	width: 100%;
-	background-size: contain;
-	background-repeat: repeat-x;
-	background-image: linear-gradient(to top, rgba(0, 0, 0, .4) 0%, rgba(0, 0, 0, .3) 25%, rgba(0, 0, 0, .2) 50%, rgba(0, 0, 0, .1) 75%, rgba(0, 0, 0, 0) 100%);
-	pointer-events: none;
-	display: flex;
-    flex-wrap: wrap;
-}
-.nav-container button {
-	pointer-events: auto !important;
-}
-.nav-col {
-	padding-left: 2.5rem;
-	padding-right: 2.5rem;
-}
-@media only screen and (min-width: 1200px) {
-	.nav-col {
-		padding-left: 5rem;
-		padding-right: 5rem;
-	}
-	.nav-container {
-		padding-bottom: 2.5rem;
-	}
-}
-@media only screen and (min-width: 576px) {
-	.nav-container {
-		background-image: none;
-	}
-}
-.nav-container .col-xs-4 {
-	width: 33.333333%;
-}
 /**********************************************************************/
 /****************************   Sidebar   *****************************/
 /**********************************************************************/

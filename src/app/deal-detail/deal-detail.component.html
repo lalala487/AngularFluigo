@@ -12,55 +12,55 @@
 
         <div *ngIf="accummulations.flightAccommodationPrice">
           <div class="grid-flex">
-            <span class="pr-1">Flug & Hotel</span>
-            <span class="pr-2">{{ accummulations.flightAccommodationPrice.currency }} {{ accummulations.flightAccommodationPrice }}</span>
+            <span class="prio-1">Flug & Hotel</span>
+            <span class="prio-2">{{ accummulations.flightAccommodationPrice.currency }} {{ accummulations.flightAccommodationPrice }}</span>
           </div>
           <div class="grid-flex">
-            <span class="pr-1 opa-5">Abflug</span>
-            <span class="pr-2 opa-5">{{ accummulations.startDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</span>
+            <span class="prio-1 opa-5">Abflug</span>
+            <span class="prio-2 opa-5">{{ accummulations.startDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</span>
           </div>
           <div class="grid-flex">
-            <span class="pr-1 opa-5">Hinflug</span>
-            <span class="pr-2 opa-5">{{ accummulations.endDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</span>
+            <span class="prio-1 opa-5">Hinflug</span>
+            <span class="prio-2 opa-5">{{ accummulations.endDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</span>
           </div>
           <div>
-            <span class="opa-5 underline" (click)="goToStep(4)">Anpassen</span>
+            <span class="opa-5 underline link" (click)="goToStep(4)">Anpassen</span>
           </div>
         </div>
 
         <div class="mr-tp-10" *ngIf="accummulations.activities.values">
           <div *ngFor="let pack of accummulations.activities | keyvalue">
             <div class="grid-flex">
-              <span class="pr-1" *ngIf="pack.value.activity">{{ pack.value.activity?.name[locale] }}</span>
-              <span class="pr-2" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }} {{ pack.value.offer?.price }}</span>
+              <span class="prio-1" *ngIf="pack.value.activity">{{ pack.value.activity?.name[locale] }}</span>
+              <span class="prio-2" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }} {{ pack.value.offer?.price }}</span>
             </div>
             <div class="grid-flex">
-              <span class="pr-1 opa-5">Datum</span>
-              <span class="pr-2 opa-5">{{ pack.value.offer?.date.toDate() | date:'E d MMM' : '': localeSimple}}</span>
+              <span class="prio-1 opa-5">Datum</span>
+              <span class="prio-2 opa-5">{{ pack.value.offer?.date.toDate() | date:'E d MMM' : '': localeSimple}}</span>
             </div>
             <div>
-              <span class="opa-5 no-margin underline" (click)="goToStep(5)">Anpassen</span>
+              <span class="opa-5 no-margin underline link" (click)="goToStep(5)">Anpassen</span>
             </div>
           </div>
         </div>
 
         <div class="mr-tp-10" *ngIf="accummulations.luggage > 0">
           <div class="grid-flex">
-            <span class="pr-1">Zusätzliches Gepäck</span>
-            <span class="pr-2">{{ accummulations.luggagePrice.currency }} {{ accummulations.luggagePrice }}</span>
+            <span class="prio-1">Zusätzliches Gepäck</span>
+            <span class="prio-2">{{ accummulations.luggagePrice.currency }} {{ accummulations.luggagePrice }}</span>
           </div>
           <div class="grid-flex">
-            <span class="pr-1 opa-5">{{ accummulations.luggage }} Gepäckstück<ng-container *ngIf="accummulations.luggage > 1">e</ng-container></span>
+            <span class="prio-1 opa-5">{{ accummulations.luggage }} Gepäckstück<ng-container *ngIf="accummulations.luggage > 1">e</ng-container></span>
           </div>
           <div>
-            <span class="opa-5 no-margin underline" (click)="goToStep(8)">Anpassen</span>
+            <span class="opa-5 no-margin underline link" (click)="goToStep(8)">Anpassen</span>
           </div>
         </div>
 
         <div class="mr-tp-10" *ngIf="accummulations.transportationPrice.amount > 0 && accummulations.hasTransportation">
           <div class="grid-flex">
-            <span class="pr-1">Transport</span>
-            <span class="pr-2">{{ accummulations.transportationPrice.currency }} {{ accummulations.transportationPrice }}</span>
+            <span class="prio-1">Transport</span>
+            <span class="prio-2">{{ accummulations.transportationPrice.currency }} {{ accummulations.transportationPrice }}</span>
           </div>
           <div>
             <span class="opa-5 no-margin underline" (click)="goToStep(9)">Anpassen</span>
@@ -69,24 +69,24 @@
 
         <div class="mr-tp-10" *ngIf="accummulations.insurancePrice.amount > 0 && accummulations.hasInsurance">
           <div class="grid-flex">
-            <span class="pr-1">Versicherung</span>
-            <span class="pr-2">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</span>
+            <span class="prio-1">Versicherung</span>
+            <span class="prio-2">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</span>
           </div>
           <div>
-            <span class="opa-5 no-margin underline" (click)="goToStep(10)">Anpassen</span>
+            <span class="opa-5 no-margin underline link" (click)="goToStep(10)">Anpassen</span>
           </div>
         </div>
 
         <div class="mr-tp-10 grid-flex" *ngIf="accummulations.bookingFee.amount > 0">
-          <span class="pr-1">Buchungsgebühr</span>
-          <span class="pr-2">{{ accummulations.bookingFee.currency }} {{ accummulations.bookingFee }}</span>
+          <span class="prio-1">Buchungsgebühr</span>
+          <span class="prio-2">{{ accummulations.bookingFee.currency }} {{ accummulations.bookingFee }}</span>
         </div>
 
         <hr/>
 
         <div class="grid-flex">
-          <span class="pr-1">Gesamtbetrag</span>
-          <span class="pr-2">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}
+          <span class="prio-1">Gesamtbetrag</span>
+          <span class="prio-2">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}
           </span>
         </div>
 
@@ -115,37 +115,21 @@
       <app-luggage-detail *ngIf="currentStep == 8" [accummulations]="accummulations"></app-luggage-detail>
     </ngx-smart-modal>
 
-    <div class="nav-container">
-      <div class="col-xl-3"></div>
-      <div class="col-xl-9 nav-col">
-        <div class="row">
-          <div class="col-xs-4" *ngIf="currentStep < 12">
-            <div class="btn-back-container">
-              <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp"
-                i18n="sidebar next">Zurück</button>
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="price-container-small">
-              <div class="price-info">
-                <p class="price-label">Gesamtbetraag</p>
-                <!-- Below is the amount of money that the customer needs to pay based on the selection of choices (flight, accommodation, activities, insurance, etc.)
-            This changes throughout the checkout process because the customer can change all the time certain options.
-            The amount at the beginning in a stripe ("-"). Once the customer selected a a flight, the amount will update. -->
-                <p class="price-amount">{{ accummulations.totalPriceAmount.currency }}
-                  {{ accummulations.totalPriceAmount }}
-                </p>
-                <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()"
-                  class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
-              </div>
-            </div>
-          </div>
-          <div class="col-xs-4" *ngIf="currentStep < 11">
-            <div class="btn-next-container">
-              <button (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp"
-                i18n="sidebar next">Weiter</button>
-            </div>
-          </div>
+    <div class="nav-3 width-full grid-flex">
+      <div class="left-bar prio-1"></div>
+      <div class="right-bar prio-2 grid-flex pd-25">
+        <div class="prio-1" *ngIf="currentStep < 12">
+          <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp" i18n="sidebar next">Zurück</button>
+        </div>
+        <div class="prio-2 text-center">
+          <p class="no-margin ft-xs">Gesamtbetrag</p>
+          <p class="no-margin mr-tp-2-rev ft-xs mr-bt-1">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
+          <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()"
+            class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
+        </div>
+        <div class="prio-3" *ngIf="currentStep < 11">
+          <button (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp"
+            i18n="sidebar next">Weiter</button>
         </div>
       </div>
     </div>

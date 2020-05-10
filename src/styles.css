@@ -152,6 +152,15 @@ a:hover {
 }
 
 /**********************************************************************/
+/******************************   Lines   *****************************/
+/**********************************************************************/
+
+.line-x {
+	height: .12rem;
+	background-color: var(--color-two);
+}
+
+/**********************************************************************/
 /*****************************   General   ****************************/
 /**********************************************************************/
 
@@ -265,10 +274,15 @@ a:hover {
 	flex: auto;
 }
 
-.flex-end {
-	-ms-flex-align: end;
-    -webkit-align-items: flex-end;
-	-webkit-box-align: end;
+.flex-top {
+	align-items: flex-start;
+}
+
+.flex-center {
+	align-items: center;
+}
+
+.flex-bottom {
 	align-items: flex-end;
 }
 
@@ -305,13 +319,6 @@ a:hover {
 .grid-3 {
 	width: 25%;
 	max-width: 25%;
-	display: inline-block;
-}
-
-.grid-12 {
-	width: 100%;
-	max-width: 100%;
-	display: inline-block;
 }
 
 .grid-canvas {
@@ -337,6 +344,12 @@ a:hover {
   
 .prio-3 {
 	order: 2;
+}
+
+@media only screen and (max-width: 1199.98px) {
+	.x-mobile {
+		display: none;
+	}
 }
 
 /**********************************************************************/
@@ -423,6 +436,16 @@ a:hover {
 	margin-bottom: 10rem;
 }
 
+.mr-tp-bt-5 {
+	margin-bottom: .5rem;
+	margin-top: .5rem;
+}
+
+.mr-tp-bt-10 {
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+
 .mr-tp-bt-25 {
 	margin-bottom: 2.5rem;
 	margin-top: 2.5rem;
@@ -468,6 +491,16 @@ a:hover {
 	.std-pd-5 {
 		padding-left: 5rem;
 		padding-right: 5rem;
+	}
+}
+
+.std-pd-6 {
+	padding: 1rem;
+}
+
+@media only screen and (min-width: 1200px) {
+	.std-pd-6 {
+		padding: 2.5rem;
 	}
 }
 
@@ -644,7 +677,7 @@ a:hover {
 	border-right: 0rem;
 	border-left: 0rem;
 	border-style: solid;
-	border-color: rgba(235, 235, 235, 0.5);
+	border-color: var(--color-two);
 	border-bottom-width: .12rem;
 	padding: 0.5rem 1rem;
 	-webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -862,6 +895,115 @@ a:hover {
   }
 }
 
+/***   Navigation - Deal - Leftbar   ***/
+
+.nav-5 .number {
+	border-radius: 100%;
+	border: .12rem solid var(--color-two);
+	color: var(--color-two);
+}
+
+.nav-5 .period {
+	min-width: 25%;
+}
+
+.nav-5 .label {
+	margin-bottom: 0rem;
+	margin-top: 3px;
+	color: var(--color-two);
+}
+
+.nav-5 .line {
+	background-color: var(--color-two);
+}
+
+.nav-5 .active,
+.nav-5 .current {
+	border-color: var(--color-one);
+	color: var(--color-one);
+}
+
+.nav-5 .steps .line.active {
+	background-color: var(--color-one);
+}
+
+@media only screen and (max-width: 1199.98px) {
+	
+	.nav-5 .logo {
+		display: none;
+	}
+
+	.nav-5 .logo-mobile {
+		width: 2rem;
+		float: left;
+	}
+	
+	.nav-5 .line {
+		margin-top: 15px;
+		width: 1.25rem;
+		height: .12rem;
+	}
+	
+	.nav-5 .steps {
+		float: right;
+	}
+	
+	.nav-5 .step {
+		float: left;
+	}
+	
+	.nav-5 .logo {
+		float: left;
+	}
+	
+	.nav-5 .number {
+		width: 2rem;
+		height: 2rem;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.nav-5 {
+		min-height: 100vh;
+		display: flex;
+    	align-items: center;
+    	justify-content: center;
+	}
+
+	.nav-5 .steps {
+		display: flex;
+    	align-items: center;
+    	justify-content: center;
+	}
+
+	.nav-5 .step,
+	.nav-5 .line {
+		clear: both;
+	}
+
+	.nav-5 .number {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.nav-5 .line {
+		width: .12rem;
+		height: 1.25rem;
+		margin-left: 15px;
+	}
+
+	.nav-5 .logo {
+		display: block;
+    	margin-left: auto;
+		margin-right: auto;
+		width: 7.5rem;
+	}
+
+	.nav-5 .logo-mobile {
+		display: none;
+	}
+}
+
 /**********************************************************************/
 /******************************   Home   ******************************/
 /**********************************************************************/
@@ -973,6 +1115,102 @@ footer ul {
 		width: 75%;
 	}
 }
+
+/**********************************************************************/
+/**************************   Deal Summary   **************************/
+/**********************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @media only screen and (min-width: 1200px) {
+	.pdp-column-left-bar .logo img {
+		display: block;
+		margin: 0 auto;
+	}
+}
+@media only screen and (max-width: 1199.98px) {
+	.pdp-column-left-bar .logo-container {
+		float: left;
+		margin-top: 1.75rem;
+		margin-left: 1rem;
+	}
+	.pdp-column-left-bar .timeline-container {
+		display: none;
+	}
+	.pdp-column-left-bar .price-container {
+		display: none;
+	}
+	.pdp-column-left-bar .logo img {
+		width: 80px;
+	}
+}
+.header-row .logo img {
+	display: block;
+	margin: 0 auto;
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+	.pdp-column-left-bar .logo {
+		max-width: 540px;
+		margin: 0 auto;
+	}
+	.pdp-column-left-bar .logo .col-xl-12 {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.pdp-column-left-bar .logo {
+		max-width: 720px;
+		margin: 0 auto;
+	}
+	.pdp-column-left-bar .logo .col-xl-12 {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	.pdp-column-left-bar .logo {
+		max-width: 960px;
+		margin: 0 auto;
+	}
+	.pdp-column-left-bar .logo .col-xl-12 {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.pdp-column-left-bar .logo-container {
+		height: 10vh;
+		padding-top: 2.5rem;
+	}
+	.pdp-column-left-bar .center-container {
+		height: 90vh;
+		display: flex;
+		align-items: center;
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+} */
+
+
+
+
+
+
+
+
 
 
 
@@ -1289,83 +1527,6 @@ button.toast-close-button {
 }
 
 /**********************************************************************/
-/*****************************   Logo   *******************************/
-/**********************************************************************/
-
-@media only screen and (min-width: 1200px) {
-	.pdp-column-left-bar .logo img {
-		display: block;
-		margin: 0 auto;
-	}
-}
-@media only screen and (max-width: 1199.98px) {
-	.pdp-column-left-bar .logo-container {
-		float: left;
-		margin-top: 1.75rem;
-		margin-left: 1rem;
-	}
-	.pdp-column-left-bar .timeline-container {
-		display: none;
-	}
-	.pdp-column-left-bar .price-container {
-		display: none;
-	}
-	.pdp-column-left-bar .logo img {
-		width: 80px;
-	}
-}
-.header-row .logo img {
-	display: block;
-	margin: 0 auto;
-}
-@media (min-width: 576px) and (max-width: 767.98px) {
-	.pdp-column-left-bar .logo {
-		max-width: 540px;
-		margin: 0 auto;
-	}
-	.pdp-column-left-bar .logo .col-xl-12 {
-		padding-left: 0px;
-		padding-right: 0px;
-	}
-}
-@media (min-width: 768px) and (max-width: 991.98px) {
-	.pdp-column-left-bar .logo {
-		max-width: 720px;
-		margin: 0 auto;
-	}
-	.pdp-column-left-bar .logo .col-xl-12 {
-		padding-left: 0px;
-		padding-right: 0px;
-	}
-}
-@media (min-width: 992px) and (max-width: 1199.98px) {
-	.pdp-column-left-bar .logo {
-		max-width: 960px;
-		margin: 0 auto;
-	}
-	.pdp-column-left-bar .logo .col-xl-12 {
-		padding-left: 0px;
-		padding-right: 0px;
-	}
-}
-/**********************************************************************/
-/************************   Left Bar Container   **********************/
-/**********************************************************************/
-
-@media only screen and (min-width: 1200px) {
-	.pdp-column-left-bar .logo-container {
-		height: 10vh;
-		padding-top: 2.5rem;
-	}
-	.pdp-column-left-bar .center-container {
-		height: 90vh;
-		display: flex;
-		align-items: center;
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
-	}
-}
-/**********************************************************************/
 /**************************   Steps Small   ***************************/
 /**********************************************************************/
 
@@ -1400,19 +1561,6 @@ button.toast-close-button {
 	border-top-color: var(--color-two);
 	margin-top: .7rem;
 	float: left;
-}
-.pdp-column-left-bar .steps .active {
-	border-color: rgba(235, 235, 235, 1) !important;
-	color: rgba(235, 235, 235, 1) !important;
-}
-.pdp-column-left-bar .steps span.current {
-	border-color: rgba(235, 235, 235, 1) !important;
-	color: rgba(235, 235, 235, 1) !important;
-	background-color: rgba(235, 235, 235, .15) !important;
-}
-.pdp-column-left-bar .steps p.current {
-	border-color: rgba(235, 235, 235, 1) !important;
-	color: rgba(235, 235, 235, 1) !important;
 }
 .pdp-column-left-bar .steps .step-one, .pdp-column-left-bar .steps .step-two, .pdp-column-left-bar .steps .step-three, .pdp-column-left-bar .steps .step-four, .pdp-column-left-bar .steps .step-five {
 	float: left;
@@ -1578,11 +1726,6 @@ button.toast-close-button {
 		font-size: .8rem;
 	}
 }
-
-/**********************************************************************/
-/**************************   Product Page   **************************/
-/**********************************************************************/
-
 
 /**********************************************************************/
 /*******************************   PDP   ******************************/

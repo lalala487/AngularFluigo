@@ -140,63 +140,73 @@
 
         <div class="gradient-20 left-bar nav-5 fl-l std-pd-6">
 
-          <div class="width-full">
+          <div id="summary" class="width-full">
 
-            <div class="logo-mobile">
-              <a href="/">
-                <img src="assets/img/logo-mobile.svg" alt="Flugio Logo Mobile">
-              </a>
-            </div>
+            <div>
 
-            <div class="logo mr-bt-25">
-              <a href="/">
-                <img src="assets/img/logo.svg" alt="Flugio Logo">
-              </a>
-            </div>
-
-            <div class="text-center mr-bt-25 x-mobile">
-              <p class="ft-xs mr-bt-2" i18n="sidebar total">Gesamtbetrag</p>
-              <p class="ft-l mr-bt-5">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
-              <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()" class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
-            </div>
-
-            <div class="grid-flex mr-bt-25 x-mobile text-center">
-
-              <div *ngIf="accummulations.startDate">
-                <p class="no-margin ft-l">{{ accummulations.startDate.toDate() | date:'d': '': localeSimple}}</p>
-                <p class="no-margin ft-xs">{{ accummulations?.startDate.toDate() | date:'MMM yyyy': '': localeSimple}}</p>
-                <p class="no-margin ft-xs">{{ accummulations?.startDate.toDate() | date:'E hh:mm': '': localeSimple}}</p>
+              <div class="logo-mobile">
+                <a href="/">
+                  <img src="assets/img/logo-mobile.svg" alt="Flugio Logo Mobile">
+                </a>
               </div>
 
-              <div class="period">
-                <ng-template #tipAccommodation>{{ accummulations?.numberOfNights}}
-                  Nächte<br />{{(accommodation$ | async)?.name[locale]}}<br />Check-in:
-                  {{ accummulations?.startDate.toDate() | date:'MMM d, y': '': localeSimple }}<br />Check-out:
-                  {{ accummulations?.endDate.toDate() | date:'MMM d, y': '': localeSimple }}</ng-template>
-
-                <ng-template #tipPeople>{{ accummulations.adults }} Erwachsene<ng-container
-                    *ngIf="accummulations.adults == 1">r</ng-container><br />{{ accummulations.children }}
-                  Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container>
-                </ng-template>
-
-                <p class="ft-xs no-margin">{{ accummulations?.numberOfNights}} <img src="assets/icon/icon-moon.svg" height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
-                <div class="line-x mr-tp-bt-5"></div>
-                <p class="ft-xs">{{ accummulations?.adults + accummulations?.children }} <img
-                    src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top"
-                    [ngbTooltip]="tipPeople"></p>
-              </div>
-
-              <div *ngIf="accummulations.endDate">
-                <p class="no-margin ft-l">{{ accummulations?.endDate.toDate() | date:'d': '' : localeSimple}}</p>
-                <p class="no-margin ft-xs">{{ accummulations?.endDate.toDate() | date:'MMM yyyy': '' : localeSimple}}</p>
-                <p class="no-margin ft-xs">{{ accummulations?.endDate.toDate() | date:'E hh:mm':'': localeSimple}}</p>
+              <div class="logo mr-bt-25">
+                <a href="/">
+                  <img src="assets/img/logo.svg" alt="Flugio Logo">
+                </a>
               </div>
 
             </div>
 
-            <div class="steps">
-              <app-step-progress [currentStep]="currentStep" (currentStepChange)="goToStep($event)"></app-step-progress>
+            <div>
+
+              <div class="text-center mr-bt-25 x-mobile">
+                <p class="ft-xs mr-bt-2" i18n="sidebar total">Gesamtbetrag</p>
+                <p class="ft-l mr-bt-5">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
+                <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()" class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
+              </div>
+
+              <div class="grid-flex mr-bt-25 x-mobile text-center">
+
+                <div *ngIf="accummulations.startDate">
+                  <p class="no-margin ft-l">{{ accummulations.startDate.toDate() | date:'d': '': localeSimple}}</p>
+                  <p class="no-margin ft-xs">{{ accummulations?.startDate.toDate() | date:'MMM yyyy': '': localeSimple}}</p>
+                  <p class="no-margin ft-xs">{{ accummulations?.startDate.toDate() | date:'E hh:mm': '': localeSimple}}</p>
+                </div>
+
+                <div class="period">
+                  <ng-template #tipAccommodation>{{ accummulations?.numberOfNights}}
+                    Nächte<br />{{(accommodation$ | async)?.name[locale]}}<br />Check-in:
+                    {{ accummulations?.startDate.toDate() | date:'MMM d, y': '': localeSimple }}<br />Check-out:
+                    {{ accummulations?.endDate.toDate() | date:'MMM d, y': '': localeSimple }}</ng-template>
+
+                  <ng-template #tipPeople>{{ accummulations.adults }} Erwachsene<ng-container
+                      *ngIf="accummulations.adults == 1">r</ng-container><br />{{ accummulations.children }}
+                    Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container>
+                  </ng-template>
+
+                  <p class="ft-xs no-margin">{{ accummulations?.numberOfNights}} <img src="assets/icon/icon-moon.svg" height="15" alt="Icon Moon" placement="top" [ngbTooltip]="tipAccommodation"></p>
+                  <div class="line-x mr-tp-bt-5"></div>
+                  <p class="ft-xs">{{ accummulations?.adults + accummulations?.children }} <img
+                      src="assets/icon/icon-person.svg" height="15" alt="Icon Person" placement="top"
+                      [ngbTooltip]="tipPeople"></p>
+                </div>
+
+                <div *ngIf="accummulations.endDate">
+                  <p class="no-margin ft-l">{{ accummulations?.endDate.toDate() | date:'d': '' : localeSimple}}</p>
+                  <p class="no-margin ft-xs">{{ accummulations?.endDate.toDate() | date:'MMM yyyy': '' : localeSimple}}</p>
+                  <p class="no-margin ft-xs">{{ accummulations?.endDate.toDate() | date:'E hh:mm':'': localeSimple}}</p>
+                </div>
+
+              </div>
+
+              <div class="steps">
+                <app-step-progress [currentStep]="currentStep" (currentStepChange)="goToStep($event)"></app-step-progress>
+              </div>
+
             </div>
+
+            <div id="dummy"></div>
 
           </div>
 

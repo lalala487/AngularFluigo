@@ -245,6 +245,13 @@ a:hover {
 	width: fit-content;
 }
 
+.height-fit {
+	height: 100%;
+    height: -webkit-fill-available;
+    height: -moz-available;
+    height: stretch;
+}
+
 .width-full {
 	width: 100%;
 }
@@ -268,6 +275,10 @@ a:hover {
 .flex-wrap {
 	display: flex;
 	flex-wrap: wrap;
+}
+
+.flex-x {
+	flex-direction: column;
 }
 
 .flex-auto {
@@ -929,6 +940,10 @@ a:hover {
 
 @media only screen and (max-width: 1199.98px) {
 	
+	#dummy {
+		display: none;
+	}
+	
 	.nav-5 .logo {
 		display: none;
 	}
@@ -963,6 +978,18 @@ a:hover {
 }
 
 @media only screen and (min-width: 1200px) {
+	
+	#summary {
+		flex-direction: column;
+		height: 100%;
+		height: -webkit-fill-available;
+		height: -moz-available;
+		height: stretch;
+		display: flex;
+  		flex-grow: 1;
+  		justify-content: space-between;
+	}
+
 	.nav-5 {
 		min-height: 100vh;
 		display: flex;

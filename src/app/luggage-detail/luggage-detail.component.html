@@ -1,27 +1,27 @@
-<div class="container-fluid">
-    <div class="row luggage-detail">
-        <div class="col-lg-6 vh100min bg-luggage bg-cover" [style.background-image]="imageUrl">
-            <div class="overlay-gradient-95 center">
-                <div class="luggage-wrapper" *ngIf="flightFare">
-                    <div class="image-row-one center">
-                        <div class="luggage-product bg-contain"></div>
-                        <div *ngIf="(flightFare | async)?.baggage.cabin.bagOne.active" class="luggage-length center">{{ (flightFare | async)?.baggage.cabin.bagOne.dimensions.length }} cm</div>
-                    </div>
-                    <div class="image-row-two">
-                        <div *ngIf="(flightFare | async)?.baggage.cabin.bagOne.active" class="luggage-width center">{{ (flightFare | async)?.baggage.cabin.bagOne.dimensions.width }} cm</div>
-                        <div *ngIf="(flightFare | async)?.baggage.cabin.bagOne.active" class="luggage-depth center">{{ (flightFare | async)?.baggage.cabin.bagOne.dimensions.depth }} cm</div>
-                    </div>
+<div class="step-ld flex-wrap luggage-detail">
+    <div class="flex-half vh-100-m bg-luggage bg-cover" [style.background-image]="imageUrl">
+
+        <div class="center hp-100 gradient-95">
+            <div class="luggage-wrapper" *ngIf="flightFare">
+                <div class="fl-l mr-bt-25 center">
+                    <div class="product fl-l opa-75 bg-contain"></div>
+                    <div class="length fl-l center" *ngIf="(flightFare | async)?.baggage.cabin.bagOne.active">{{ (flightFare | async)?.baggage.cabin.bagOne.dimensions.length }} cm</div>
+                </div>
+                <div class="fl-l clear">
+                    <div class="fl-l mr-lf-10 width center" *ngIf="(flightFare | async)?.baggage.cabin.bagOne.active">{{ (flightFare | async)?.baggage.cabin.bagOne.dimensions.width }} cm</div>
+                    <div class="fl-l mr-lf-10 depth center" *ngIf="(flightFare | async)?.baggage.cabin.bagOne.active">{{ (flightFare | async)?.baggage.cabin.bagOne.dimensions.depth }} cm</div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 std-pd-1 vh100min gradient-full center order-first order-lg-2">
-            <div class="text-center" *ngIf="flightFare">
-                <div class="luggage-airline-logo bg-contain mr-bt-25" [style.background-image]="logoUrl"></div>
-                <p class="mr-bt-25">Dein Angebot einhält ein Flug mit {{ airlineName }} in {{ (flightFare | async)?.description[locale] }}.</p>
-                <p class="mr-bt-25">{{ (flightFare | async)?.baggage.cabin.description[locale] }}</p>               
-                <p class="mr-bt-25">{{ (flightFare | async)?.baggage.checked.description[locale] }}</p>
-                <button (click)="ngxSmartModalService.getModal('luggageModal').close()" class="btn btn-full btn-primary">Zurück</button>
-            </div>
+
+    </div>
+    <div class="flex-half std-pd-1 vh-100-m gradient-full center prio-1 prio-2-d">
+        <div class="text-center" *ngIf="flightFare">
+            <div class="logo bg-contain mr-bt-25" [style.background-image]="logoUrl"></div>
+            <p class="mr-bt-25">Dein Angebot einhält ein Flug mit {{ airlineName }} in {{ (flightFare | async)?.description[locale] }}.</p>
+            <p class="mr-bt-25">{{ (flightFare | async)?.baggage.cabin.description[locale] }}</p>               
+            <p class="mr-bt-25">{{ (flightFare | async)?.baggage.checked.description[locale] }}</p>
+            <button (click)="ngxSmartModalService.getModal('luggageModal').close()" class="btn btn-full btn-primary">Zurück</button>
         </div>
     </div>
 </div>

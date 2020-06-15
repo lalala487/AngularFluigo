@@ -1,5 +1,5 @@
-<div class="restaurant">
-    <p class="title">{{ restaurant?.name[locale] }}</p>
-    <p class="description">{{ restaurant?.description[locale] }}</p>
+<div class="text-center">
+    <p class="no-margin opa-50">{{ restaurant?.description[locale] }}</p>
+    <p class="mr-bt-5">{{ restaurant?.name[locale] }}</p>
     <app-heart-list [rating]="restaurant.rating.rating" [showNumber]="false"></app-heart-list>
 </div>

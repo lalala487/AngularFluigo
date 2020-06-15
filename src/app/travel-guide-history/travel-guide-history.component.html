@@ -1,12 +1,12 @@
-<div class="row travel-guide-overview">
-  <div class="col-lg-4 image-col" [style.background-image]="imageUrl">
-    <div class="travel-guide-overview-gradient">
+<div class="flex-wrap">
+  <div class="flex-third bg-cover" [style.background-image]="imageUrl">
+    <div class="overlay-double-gradient-center hp-100">
     </div>
   </div>
-  <div class="col-lg-8 content-col">
+  <div class="flex-twothird">
     <div class="gradient-full">
-      <div class="content-block">
-        <p>{{ history?.text[locale] }}</p>
+      <div class="std-pd-hor-2 std-pd-ver-2 text-center">
+        <p class="no-margin">{{ history?.text[locale] }}</p>
       </div>
     </div>
   </div>

@@ -7,19 +7,19 @@
 
             <div class="flex-auto services">
               <h2 class="mr-bt-10 ft-xl">{{ deal.name.de_CH }}</h2>
-              <img class="opa-5" *ngIf="deal.availableServices.hasFlight" src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon">
-              <span class="opa-5 bold" *ngIf="deal.availableServices.hasFlight && deal.availableServices.hasAccommodation">+</span>
-              <img class="opa-5" *ngIf="deal.availableServices.hasAccommodation" src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon">
-              <span class="opa-5 bold" *ngIf="deal.availableServices.hasActivity && (deal.availableServices.hasFlight || deal.availableServices.hasAccommodation)">+</span>
-              <img class="opa-5" *ngIf="deal.availableServices.hasActivity" src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon">
-              <span class="opa-5 bold" *ngIf="deal.availableServices.hasTransportation && (deal.availableServices.hasFlight || deal.availableServices.hasAccommodation || deal.availableServices.hasActivity)">+</span>
-              <img class="opa-5" *ngIf="deal.availableServices.hasTransportation" src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon">
+              <img class="opa-50" *ngIf="deal.availableServices.hasFlight" src="assets/icon/icon-flight.svg" width="17" alt="Flight Icon">
+              <span class="opa-50 bold" *ngIf="deal.availableServices.hasFlight && deal.availableServices.hasAccommodation">+</span>
+              <img class="opa-50" *ngIf="deal.availableServices.hasAccommodation" src="assets/icon/icon-accommodation.svg" width="20" alt="Accommodation Icon">
+              <span class="opa-50 bold" *ngIf="deal.availableServices.hasActivity && (deal.availableServices.hasFlight || deal.availableServices.hasAccommodation)">+</span>
+              <img class="opa-50" *ngIf="deal.availableServices.hasActivity" src="assets/icon/icon-activity.svg" width="18" alt="Activity Icon">
+              <span class="opa-50 bold" *ngIf="deal.availableServices.hasTransportation && (deal.availableServices.hasFlight || deal.availableServices.hasAccommodation || deal.availableServices.hasActivity)">+</span>
+              <img class="opa-50" *ngIf="deal.availableServices.hasTransportation" src="assets/icon/icon-transportation.svg" width="16" alt="Transportation Icon">
             </div>
 
             <div class="sticker center" *ngIf="deal.marketing.discount > 0">
               <div>
                 <p class="ft-m no-margin discount">{{ deal.marketing.discount }}%</p>
-                <p class="no-margin ft-xs opa-5" i18n="deal discount">Rabatt</p>
+                <p class="no-margin ft-xs opa-50" i18n="deal discount">Rabatt</p>
               </div>
             </div>
 

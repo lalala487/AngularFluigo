@@ -90,7 +90,7 @@ export class TravelGuideComponent implements OnInit, OnChanges {
 
     if (image) {
       this.imageService.getImageDownloadUrl$(image).subscribe(url => {
-        this.imageUrl = this.imageService.sanitizeImage(url, 'linear-gradient(to bottom right, rgba(19, 78, 94, .5) 0%, rgba(77, 131, 132, .5) 100%), ');
+        this.imageUrl = this.imageService.sanitizeImage(url);
       });
     }
   }

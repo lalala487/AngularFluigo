@@ -1,30 +1,21 @@
-<div class="pdp-luggage-block col-xl-12">
-  <div class="center-wrap">
-    <div>
-      <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-lg-8">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="butler-container">
-                <div class="butler-image">
-                  <img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-                </div>
-                <div class="butler-text">
-                  <p>1 Stück Handgepäck pro Person ist inbegriffen. Zusätzliches aufgegebenes Gepäck kannst du für CHF 35 pro Stück bestellen.</p>
-                  <button (click)="ngxSmartModalService.getModal('luggageModal').open()" class="btn btn-small btn-primary mr-tp-10">Gepäckinformationen</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <app-number-picker [currentNumber]="luggage" [minNumber]="0" [maxNumber]="10" (numberChange)="onLuggageChange($event)"></app-number-picker>
-            </div>
-          </div>
+<div class="step-mobile-center center std-pd-hor-2">
+
+  <div class="wp-100">
+
+    <div class="butler mr-bt-25">
+      <div class="wp-100">
+        <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+        <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+          <p class="no-margin">1 Stück Handgepäck pro Person ist inbegriffen. Zusätzliches aufgegebenes Gepäck kannst du für CHF 35 pro Stück bestellen.</p>
+          <button class="btn btn-small btn-primary mr-tp-25" (click)="ngxSmartModalService.getModal('luggageModal').open()">Gepäckinformationen</button>
         </div>
-        <div class="col-sm-2"></div>
       </div>
     </div>
+
+    <div>
+      <app-number-picker [currentNumber]="luggage" [minNumber]="0" [maxNumber]="10" (numberChange)="onLuggageChange($event)"></app-number-picker>
+    </div>
+
   </div>
+
 </div>

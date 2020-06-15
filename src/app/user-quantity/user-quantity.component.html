@@ -1,34 +1,29 @@
-<div class="pdp-user-quantity-block col-xl-12" *ngIf="accommodation">
-  <div class="center-wrap">
-    <div>
-      <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-lg-8">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="butler-container">
-                <div class="butler-image">
-                  <img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-                </div>
-                <div class="butler-text"><p>Wer kommt mit auf die Reise?</p></div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 adults">
-              <p class="number-picker-label">Erwachsene <span>18+</span></p>
-              <app-number-picker [minNumber]="1" [maxNumber]="(room$ | async)?.beds.maximumSingleBeds" [(currentNumber)]="adultNumber"
-                (numberChange)="onAdultChange($event)"></app-number-picker>
-            </div>
-            <div class="col-lg-6 children">
-              <p class="number-picker-label">Kinder <span>0-17</span></p>
-              <app-number-picker [minNumber]="0" [maxNumber]="(room$ | async)?.beds.maximumTodlerBeds" [(currentNumber)]="childrenNumber"
-                (numberChange)="onChildrenChange($event)"></app-number-picker>
-            </div>
-          </div>
+<div class="step-mobile-center center std-pd-hor-2" *ngIf="accommodation">
+
+  <div class="wp-100">
+
+    <div class="butler mr-bt-25">
+      <div class="wp-100">
+        <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+        <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+          <p class="no-margin">Wer kommt mit auf die Reise?</p>
         </div>
-        <div class="col-sm-2"></div>
       </div>
     </div>
+
+    <div class="flex-wrap wp-100">
+      <div class="flex-half pd-rg-10-d mr-bt-10-m">
+        <p class="text-center number-picker-label">Erwachsene <span>18+</span></p>
+        <app-number-picker [minNumber]="1" [maxNumber]="(room$ | async)?.beds.maximumSingleBeds" [(currentNumber)]="adultNumber"
+          (numberChange)="onAdultChange($event)"></app-number-picker>
+      </div>
+      <div class="flex-half pd-lf-10-d">
+        <p class="text-center number-picker-label">Kinder <span>0-17</span></p>
+        <app-number-picker [minNumber]="0" [maxNumber]="(room$ | async)?.beds.maximumTodlerBeds" [(currentNumber)]="childrenNumber"
+          (numberChange)="onChildrenChange($event)"></app-number-picker>
+      </div>
+    </div>
+
   </div>
+
 </div>

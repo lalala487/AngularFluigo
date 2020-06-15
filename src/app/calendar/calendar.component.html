@@ -1,73 +1,67 @@
-<div class="pdp-calendar-block col-xl-12">
-  <div class="center-wrap">
-    <div class="col-xl-12">
-      <div class="row filters">
-        <div class="col-xl-4" *ngIf="currentAirport">
+<div class="step-ca std-pd-hor-3 std-pd-ver-4 step-mobile-normal">
+  <div>
+    <div>
+
+      <div class="flex-wrap mr-bt-10">
+        <div class="flex-third pd-rg-10-d" *ngIf="currentAirport">
           <app-airport-list [selectedAirport]="currentAirport" (selectedAirportChange)="selectedAirportChange($event)" [dbAirports]="deal.departureAirports"></app-airport-list>
         </div>
-        <div class="col-xl-4" *ngIf="numberOfNights">
+        <div class="flex-third pd-lf-10-d pd-rg-10-d" *ngIf="numberOfNights">
           <app-nights [numberOfNights]="numberOfNights" [listOfNights]="deal.numberOfNights" (selectedNightChange)="selectedNightChange($event)"></app-nights>
         </div>
-        <div class="col-xl-4" *ngIf="currentAirport" >
+        <div class="flex-third pd-lf-10-d" *ngIf="currentAirport" >
           <button (click)="bestPrice()" class="btn btn-full btn-secondary" type="next">Bester Preis</button>
         </div>
       </div>
-      <div class="row">
-        <div class="calendar-wrapper">
-            <div class="row next-back-buttons" *ngIf="currentAirport">
-              <div class="col-xs-4 col-button-back">
-                <button
-                  class="btn-round-sm btn-back"
-                  mwlCalendarPreviousView
-                  [view]="view"
-                  [(viewDate)]="viewDate">
-                  <img src="assets/icon/back.svg" height="10" alt="Icon Back">
-                  </button>
+
+      <div>
+        <div>
+
+            <div class="grid-flex mr-bt-10" *ngIf="currentAirport">
+
+              <div>
+                <button class="center fl-l btn-round-sm btn-back" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"> <img src="assets/icon/back.svg" height="10" alt="Icon Back"></button>
               </div>
 
-              <div class="col-xs-4 col-month-title">
-                <p class="calendar-month-title">{{ viewDate | calendarDate:(view + 'ViewTitle'): locale }}</p>
+              <div class="center">
+                <p class="no-margin">{{ viewDate | calendarDate:(view + 'ViewTitle'): locale }}</p>
               </div>
 
-              <div class="col-xs-4 col-button-next">
-                <button
-                  class="btn-round-sm btn-next"
-                  mwlCalendarNextView
-                  [view]="view"
-                  [(viewDate)]="viewDate">
-                  <img src="assets/icon/next.svg" height="10" alt="Icon Next">
-                  </button>
+              <div>
+                <button class="center fl-r btn-round-sm btn-next" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"><img src="assets/icon/next.svg" height="10" alt="Icon Next"></button>
               </div>
+
             </div>
-          <ng-template #customCellTemplate let-day="day" let-locale="locale">
-            <div class="cal-cell-top">
-              <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
-              <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
-            </div>
-            <small *ngIf="day.events.length > 0">
-              {{ day.events[0].title }}
-            </small>
-          </ng-template>
 
-          <ng-template #loading>
-            <div class="text-center spinner-container">
-              <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Laden...</span>
+            <ng-template #customCellTemplate let-day="day" let-locale="locale">
+              <div class="cal-cell-top">
+                <span class="cal-day-badge" *ngIf="day.badgeTotal > 0">{{ day.badgeTotal }}</span>
+                <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
               </div>
-            </div>
-          </ng-template>
+              <small *ngIf="day.events.length > 0">
+                {{ day.events[0].title }}
+              </small>
+            </ng-template>
 
-          <div *ngIf="events$ | async; else loading; let events">
-            <mwl-calendar-month-view
-              [viewDate]="viewDate"
-              [events]="events"
-              [refresh]="refresh"
-              [activeDayIsOpen]="activeDayIsOpen"
-              (dayClicked)="dayClicked($event.day)"
-              [locale]="locale"
-              [cellTemplate]="customCellTemplate">
-            </mwl-calendar-month-view>
-          </div>
+            <ng-template #loading>
+              <div class="text-center spinner-container">
+                <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+                  <span class="sr-only">Laden...</span>
+                </div>
+              </div>
+            </ng-template>
+
+            <div *ngIf="events$ | async; else loading; let events">
+              <mwl-calendar-month-view
+                [viewDate]="viewDate"
+                [events]="events"
+                [refresh]="refresh"
+                [activeDayIsOpen]="activeDayIsOpen"
+                (dayClicked)="dayClicked($event.day)"
+                [locale]="locale"
+                [cellTemplate]="customCellTemplate">
+              </mwl-calendar-month-view>
+            </div>
 
         </div>
       </div>

@@ -1,73 +1,69 @@
-<div class="pdp-activity-detail-block col-xl-12">
-    <div class="col-xl-12 pdp-activity-detail-block-title" [style.background-image]="imageUrl">
-      <div class="pdp-activity-detail-block-gradient">
-        <div class="text-block">
-          <h2>{{ activity?.name[locale] }}</h2>
-          <hr/>
-          <p>{{ activity?.description[locale] }}</p>
-        </div>
-      </div>
-    </div>
+<div class="std-pd-hor-3 std-pd-ver-4 step-mobile-normal">
 
-    <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-6 pdp-icons-block gradient">
-        <div class="text-block">
-          <p i18n="perfect for">ab {{ price.currency }} {{ price.toDecimal() }} für<br>
-            {{ adults }} Erwachsene<ng-container *ngIf="adults == 1">r</ng-container>
-            <ng-container *ngIf="children > 0">
-              und {{ children }} Kind<ng-container *ngIf="children !== 1">er</ng-container>
-            </ng-container>
-          </p>
-          <button class="btn btn-small btn-primary" type="next" (click)="moveToDateSelection()">Datum wählen</button>
-        </div>
-      </div>
-      <div class="col-xl-6" style="padding-left:0; padding-right:0;">
-        <app-rating [rating]="activity?.rating"></app-rating>
+  <div class="bg-cover" [style.background-image]="imageUrl">
+    <div class="overlay-double-gradient-center std-pd-hor-2 std-pd-ver-2">
+      <div class="text-center">
+        <h2 class="ft-xxl">{{ activity?.name[locale] }}</h2>
+        <hr class="w-25-rem"/>
+        <p class="no-margin">{{ activity?.description[locale] }}</p>
       </div>
     </div>
+  </div>
 
-    <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-12 pdp-activity-detail-description-block" [style.background-image]="imageUrl">
-        <div class="pdp-activity-detail-description-block-gradient">
-          <div class="text-block">
-            <p>{{ activity?.overview[locale] }}</p>
-          </div>
-        </div>
+  <div class="flex-wrap">
+    <div class="cms-1 flex-half std-pd-ver-2 std-pd-hor-1 gradient-full center text-center">
+      <div>
+        <p class="no-margin mr-bt-25">Für {{ adults }} Erwachsene<ng-container *ngIf="adults == 1">r</ng-container>
+          <ng-container *ngIf="children > 0">
+            und {{ children }} Kind<ng-container *ngIf="children !== 1">er</ng-container>
+          </ng-container>
+        </p>
+        <p class="ft-l mr-bt-25" i18n="perfect for">{{ price.currency }} {{ price.toDecimal() }}</p>
+        <button class="btn btn-small btn-primary" type="next" (click)="moveToDateSelection()">Datum wählen</button>
       </div>
     </div>
+    <div class="flex-half std-pd-ver-1 std-pd-hor-1 gradient-full center text-center">
+      <app-rating [rating]="activity?.rating"></app-rating>
+    </div>
+  </div>
 
-    <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-12 pdp-activity-detail-languages-block gradient">
-        <div>
-          <div *ngIf="languageList" class="text-block">
-            <p class="label">Lass dich von einem der Audioguides führen</p>
-            <app-language [language]="language" *ngFor="let language of languageList"></app-language>
-          </div>
-        </div>
+  <div class="bg-cover" [style.background-image]="imageUrl">
+    <div class="overlay-double-gradient-center">
+      <div class="std-pd-hor-2 std-pd-ver-2 text-center">
+        <p class="no-margin">{{ activity?.overview[locale] }}</p>
       </div>
     </div>
+  </div>
 
-    <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-6 pdp-review-block gradient">
-        <app-review [review]="activity?.review" style="width:100%;"></app-review>
-      </div>
-      <div class="col-xl-6 pdp-icons-block gradient">
-        <div class="text-block">
-            <p class="label-activity-duration" i18n="activity duration">Für diese Aktivität benötigst du ungefähr</p>
-            <p class="activity-duration">{{ activity?.duration }}</p>
-            <p i18n="activity minutes">Minuten</p>
-        </div>
-      </div>
-    </div>
 
-    <div class="row" style="margin-left:0rem; margin-right:0rem;">
-      <div class="col-xl-12 pdp-activity-detail-butler-block gradient">
-        <div class="butler-container">
-          <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-          </div>
-          <div class="butler-text"><p>{{ activity?.advice[locale] }}</p></div>
-        </div>
+  <div class="std-pd-ver-2 std-pd-hor-2 gradient-full">
+    <div class="text-center" *ngIf="languageList">
+      <p class="mr-bt-25">Lass dich von einem der Audioguides führen</p>
+      <app-language [language]="language" *ngFor="let language of languageList"></app-language>
+    </div>
+  </div>
+
+
+  <div class="flex-wrap">
+    <div class="cms-1 flex-half std-pd-ver-1 std-pd-hor-1 gradient-full center text-center">
+      <app-review [review]="activity?.review"></app-review>
+    </div>
+    <div class="flex-half std-pd-ver-1 std-pd-hor-1 gradient-full center text-center">
+      <div>
+        <p class="mr-bt-25" i18n="activity duration">Für diese Aktivität benötigst du ungefähr</p>
+        <p class="mr-bt-25 ft-l">{{ activity?.duration }}</p>
+        <p class="no-margin" i18n="activity minutes">Minuten</p>
       </div>
     </div>
+  </div>
+
+  <div class="butler gradient-full std-pd-ver-1 br-rd-top overflow-hidden std-pd-hor-1">
+    <div class="wp-100">
+      <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+        <p class="no-margin">{{ activity?.advice[locale] }}</p>
+      </div>
+    </div>
+  </div>
 
 </div>

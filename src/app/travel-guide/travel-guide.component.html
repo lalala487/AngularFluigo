@@ -1,119 +1,99 @@
-<header class="row travel-guide-title gradient">
-  <div class="travel-guide-gradient" [style.background-image]="imageUrl">
-    <div>
-      <div class="col-xl-12 logo">
+<div class="tg">
+
+  <div class="bg-cover" [style.background-image]="imageUrl">
+    <div class="overlay-double-gradient-center">
+      <div class="pd-tp-25 text-center">
         <a href="/">
           <img src="assets/img/logo.svg" width="110" alt="Flugio Logo">
         </a>
       </div>
-      <div class="col-xl-12 text-block">
-        <h2>{{ travelGuide?.name[locale]}}</h2>
-        <hr />
-        <p>{{ travelGuide?.description[locale]}}</p>
-      </div>
-    </div>
-  </div>
-</header>
-
-<div class="row travel-guide-icons gradient-full">
-  <div class="col-lg-4">
-    <div class="icon">
-      <img src="assets/icon/icon-route.svg" height="50" width="50" alt="Icon Cocktail">
-    </div>
-    <div class="text">
-      <p class="description">{{ travelGuide?.highlights.highlightOne[locale]}}</p>
-    </div>
-  </div>
-  <div class="col-lg-4">
-    <div class="icon">
-      <img src="assets/icon/icon-activities.svg" height="50" width="50" alt="Icon Cocktail">
-    </div>
-    <div class="text">
-      <p class="description">{{ travelGuide?.highlights.highlightTwo[locale]}}</p>
-    </div>
-  </div>
-  <div class="col-lg-4">
-    <div class="icon">
-      <img src="assets/icon/icon-cocktail.svg" height="50" width="50" alt="Icon Cocktail">
-    </div>
-    <div class="text">
-      <p class="description">{{ travelGuide?.highlights.highlightThree[locale]}}</p>
-    </div>
-  </div>
-</div>
-
-<app-travel-guide-history [history]="travelGuide?.history"></app-travel-guide-history>
-
-<app-travel-guide-culture [culture]="travelGuide?.culture"></app-travel-guide-culture>
-
-<app-travel-guide-cta></app-travel-guide-cta>
-
-<div class="row">
-  <div class="col-xl-12 cms-butler-block gradient">
-    <div class="butler-container">
-      <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-      </div>
-      <div class="butler-text"><p>Eine Reise nach {{ travelGuide?.name[locale]}} könnte zum Beispiel so aussehen...</p></div>
-    </div>
-  </div>
-</div>
-
-<div class="row travel-guide-agenda">
-  <div class="col-lg-12">
-    <app-guide-day-schedule day="Tag 1" [guideScheduleDay]="travelGuide?.schedule.dayOne"></app-guide-day-schedule>
-    <app-guide-day-schedule day="Tag 2" [guideScheduleDay]="travelGuide?.schedule.dayTwo"></app-guide-day-schedule>
-    <app-guide-day-schedule day="Tag 3" [guideScheduleDay]="travelGuide?.schedule.dayThree"></app-guide-day-schedule>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xl-12 cms-butler-block gradient">
-    <div class="butler-container">
-      <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-      </div>
-      <div class="butler-text"><p>Und zum Abschluss des Tages ein erstklassiges Abendessen! Ich empfehle...</p></div>
-    </div>
-  </div>
-</div>
-
-<div class="row travel-guide-restaurants gradient-full">
-  <div class="col-lg-4 image-col"
-    style="background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Ffood_two.jpg?alt=media&token=1751a067-b5c5-48fd-810a-7cdc7afd2ab1');">
-    <div class="travel-guide-restaurants-gradient">
-    </div>
-  </div>
-  <div class="col-lg-8 content-col">
-    <div>
-      <app-restaurant [restaurant]="restaurant" *ngFor="let restaurant of travelGuide?.restaurants"></app-restaurant>
-    </div>
-  </div>
-</div>
-
-<app-travel-guide-cta></app-travel-guide-cta>
-
-<div class="row">
-  <div class="col-xl-12 cms-butler-block gradient">
-    <div class="butler-container">
-      <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-      </div>
-      <div class="butler-text"><p>Darf ich dir noch ein paar andere Grossartige Orte vorschlagen?</p></div>
-    </div>
-  </div>
-</div>
-
-<div class="row travel-guide-cities">
-  <div *ngFor="let guide of guides$ | async; index as i;" class="col-md-3 image-col"
-    [style.background-image]="guide?.imageUrl | async">
-    <a href="travel-guide/{{ guide.slug }}">
-      <div class="travel-guide-cities-gradient">
-        <div>
-          <p class="number">0{{ i + 1}}</p>
-          <hr />
-          <p class="title">{{ guide?.name[locale ]}}</p>
+      <div class="std-pd-hor-2 std-pd-ver-2">
+        <div class="text-center">
+          <h2 class="ft-xxl">{{ travelGuide?.name[locale]}}</h2>
+          <hr class="w-25-rem"/>
+          <p class="no-margin">{{ travelGuide?.description[locale]}}</p>
         </div>
       </div>
-    </a>
+    </div>
   </div>
-</div>
 
-<app-footer></app-footer>
+  <div class="flex-wrap gradient-full">
+    <div class="flex-third center std-pd-hor-1 std-pd-ver-2">
+      <img class="mr-rg-25 inline fl-l opa-50" src="assets/icon/icon-route.svg" height="50" width="50" alt="Icon Cocktail">
+      <p class="no-margin">{{ travelGuide?.highlights.highlightOne[locale]}}</p>
+    </div>
+    <div class="flex-third center std-pd-hor-1 std-pd-ver-2">
+      <img class="mr-rg-25 inline fl-l opa-50" src="assets/icon/icon-activities.svg" height="50" width="50" alt="Icon Cocktail">
+      <p class="no-margin">{{ travelGuide?.highlights.highlightTwo[locale]}}</p>
+    </div>
+    <div class="flex-third center std-pd-hor-1 std-pd-ver-2">
+      <img class="mr-rg-25 inline fl-l opa-50" src="assets/icon/icon-cocktail.svg" height="50" width="50" alt="Icon Cocktail">
+      <p class="no-margin">{{ travelGuide?.highlights.highlightThree[locale]}}</p>
+    </div>
+  </div>
+
+  <app-travel-guide-history [history]="travelGuide?.history"></app-travel-guide-history>
+
+  <app-travel-guide-culture [culture]="travelGuide?.culture"></app-travel-guide-culture>
+
+  <app-travel-guide-cta></app-travel-guide-cta>
+
+  <div class="butler gradient-full std-pd-ver-1 overflow-hidden std-pd-hor-1">
+    <div class="wp-100">
+      <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+        <p class="no-margin">Eine Reise nach {{ travelGuide?.name[locale]}} könnte zum Beispiel so aussehen...</p>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <app-guide-day-schedule class="hoi" day="Tag 1" [guideScheduleDay]="travelGuide?.schedule.dayOne"></app-guide-day-schedule>
+    <app-guide-day-schedule class="hoi" day="Tag 2" [guideScheduleDay]="travelGuide?.schedule.dayTwo"></app-guide-day-schedule>
+    <app-guide-day-schedule class="hoi" day="Tag 3" [guideScheduleDay]="travelGuide?.schedule.dayThree"></app-guide-day-schedule>
+  </div>
+
+  <div class="butler clear gradient-full std-pd-ver-1 overflow-hidden std-pd-hor-1">
+    <div class="wp-100">
+      <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+        <p class="no-margin">Und zum Abschluss des Tages ein erstklassiges Abendessen! Ich empfehle...</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-cover" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fcms%2Fcms_00004.jpg?alt=media&token=3b2fcd86-145d-43d3-b61b-32a6e7dcbefe');">
+    <div class="overlay-double-gradient-center grid-flex flex-wrap std-pd-hor-1 std-pd-ver-3">
+      <div class="mr-tp-25 mr-bt-25 flex-half center" *ngFor="let restaurant of travelGuide?.restaurants">
+          <app-restaurant [restaurant]="restaurant"></app-restaurant>
+      </div>
+    </div>
+  </div>
+
+  <app-travel-guide-cta></app-travel-guide-cta>
+
+  <div class="butler gradient-full std-pd-ver-1 overflow-hidden std-pd-hor-1">
+    <div class="wp-100">
+      <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+        <p class="no-margin">Darf ich dir noch ein paar andere Grossartige Orte vorschlagen?</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-wrap">
+    <div class="flex-quart bg-cover" *ngFor="let guide of guides$ | async; index as i;" [style.background-image]="guide?.imageUrl | async">
+      <a href="travel-guide/{{ guide.slug }}">
+        <div class="text-center std-pd-ver-2 overlay-double-gradient-center">
+          <div>
+            <p class="ft-l">{{ guide?.name[locale ]}}</p>
+            <hr class="w-25-rem"/>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+
+</div>

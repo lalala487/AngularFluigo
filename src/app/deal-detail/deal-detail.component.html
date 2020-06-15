@@ -1,8 +1,8 @@
-<ng-sidebar-container class="vh100min">
+<ng-sidebar-container class="vh-100-m">
 
   <ng-sidebar autoFocus=false position='left' showBackdrop=true closeOnClickOutside=true animate=true #sidebar>
-    <div class="nav-2 std-pd-2 gradient-full center vh100min width-full ft-xs" *ngIf="accummulations.hasFlightAccommodation">
-      <div class="width-full">
+    <div class="nav-2 std-pd-2 gradient-full center vh-100-m wp-100 ft-xs" *ngIf="accummulations.hasFlightAccommodation">
+      <div class="wp-100">
         
         <div class="text-center">
           <p>Preis für {{ accummulations.adults }} Erwachsene<ng-container *ngIf="accummulations.adults == 1">r</ng-container><br />und {{ accummulations.children }} Kind<ng-container *ngIf="accummulations.children !== 1">er</ng-container></p>
@@ -16,15 +16,15 @@
             <span class="prio-2">{{ accummulations.flightAccommodationPrice.currency }} {{ accummulations.flightAccommodationPrice }}</span>
           </div>
           <div class="grid-flex">
-            <span class="prio-1 opa-5">Abflug</span>
-            <span class="prio-2 opa-5">{{ accummulations.startDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</span>
+            <span class="prio-1 opa-50">Abflug</span>
+            <span class="prio-2 opa-50">{{ accummulations.startDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</span>
           </div>
           <div class="grid-flex">
-            <span class="prio-1 opa-5">Hinflug</span>
-            <span class="prio-2 opa-5">{{ accummulations.endDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</span>
+            <span class="prio-1 opa-50">Hinflug</span>
+            <span class="prio-2 opa-50">{{ accummulations.endDate.toDate() | date:'E d MMM hh:mm': '': localeSimple}}</span>
           </div>
           <div>
-            <span class="opa-5 underline link" (click)="goToStep(4)">Anpassen</span>
+            <span class="opa-50 underline link" (click)="goToStep(4)">Anpassen</span>
           </div>
         </div>
 
@@ -35,11 +35,11 @@
               <span class="prio-2" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }} {{ pack.value.offer?.price }}</span>
             </div>
             <div class="grid-flex">
-              <span class="prio-1 opa-5">Datum</span>
-              <span class="prio-2 opa-5">{{ pack.value.offer?.date.toDate() | date:'E d MMM' : '': localeSimple}}</span>
+              <span class="prio-1 opa-50">Datum</span>
+              <span class="prio-2 opa-50">{{ pack.value.offer?.date.toDate() | date:'E d MMM' : '': localeSimple}}</span>
             </div>
             <div>
-              <span class="opa-5 no-margin underline link" (click)="goToStep(5)">Anpassen</span>
+              <span class="opa-50 no-margin underline link" (click)="goToStep(5)">Anpassen</span>
             </div>
           </div>
         </div>
@@ -50,10 +50,10 @@
             <span class="prio-2">{{ accummulations.luggagePrice.currency }} {{ accummulations.luggagePrice }}</span>
           </div>
           <div class="grid-flex">
-            <span class="prio-1 opa-5">{{ accummulations.luggage }} Gepäckstück<ng-container *ngIf="accummulations.luggage > 1">e</ng-container></span>
+            <span class="prio-1 opa-50">{{ accummulations.luggage }} Gepäckstück<ng-container *ngIf="accummulations.luggage > 1">e</ng-container></span>
           </div>
           <div>
-            <span class="opa-5 no-margin underline link" (click)="goToStep(8)">Anpassen</span>
+            <span class="opa-50 no-margin underline link" (click)="goToStep(8)">Anpassen</span>
           </div>
         </div>
 
@@ -63,7 +63,7 @@
             <span class="prio-2">{{ accummulations.transportationPrice.currency }} {{ accummulations.transportationPrice }}</span>
           </div>
           <div>
-            <span class="opa-5 no-margin underline" (click)="goToStep(9)">Anpassen</span>
+            <span class="opa-50 no-margin underline" (click)="goToStep(9)">Anpassen</span>
           </div>
         </div>
 
@@ -73,7 +73,7 @@
             <span class="prio-2">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</span>
           </div>
           <div>
-            <span class="opa-5 no-margin underline link" (click)="goToStep(10)">Anpassen</span>
+            <span class="opa-50 no-margin underline link" (click)="goToStep(10)">Anpassen</span>
           </div>
         </div>
 
@@ -115,20 +115,20 @@
       <app-luggage-detail *ngIf="currentStep == 8" [accummulations]="accummulations"></app-luggage-detail>
     </ngx-smart-modal>
 
-    <div class="nav-3 width-full grid-flex">
+    <div class="nav-3 pointer-none z-99 wp-100 grid-flex">
       <div class="left-bar prio-1"></div>
-      <div class="right-bar prio-2 grid-flex std-pd-6">
-        <div class="prio-1" *ngIf="currentStep < 12">
+      <div class="right-bar prio-2 grid-flex std-pd-hor-1 std-pd-ver-6">
+        <div class="prio-1 pointer-all" *ngIf="currentStep < 12">
           <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp" i18n="sidebar next">Zurück</button>
         </div>
-        <div class="prio-2 text-center">
+        <div class="prio-2 pointer-all text-center">
           <p class="no-margin ft-xs">Gesamtbetrag</p>
           <p class="no-margin mr-tp-2-rev ft-xs mr-bt-1">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
           <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()"
             class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
         </div>
-        <div class="prio-3" *ngIf="currentStep < 11">
-          <button (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp"
+        <div class="pulse pointer-all br-rd-round prio-3" *ngIf="currentStep < 11">
+          <button autofocus (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp"
             i18n="sidebar next">Weiter</button>
         </div>
       </div>
@@ -138,9 +138,9 @@
 
       <div class="gradient-95 grid-canvas">
 
-        <div class="gradient-20 left-bar nav-5 fl-l std-pd-6">
+        <div class="gradient-full-m z-99 fix-tp-m gradient-20 left-bar nav-5 fl-l std-pd-6">
 
-          <div id="summary" class="width-full">
+          <div id="summary" class="wp-100">
 
             <div>
 
@@ -212,7 +212,7 @@
 
         </div>
 
-        <div class="std-pd-5 right-bar scroll fl-l">
+        <div class="right-bar scroll fl-l">
           <div>
             <div>
 

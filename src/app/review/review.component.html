@@ -1,9 +1,9 @@
 <div *ngIf="review">
-    <div class="text-block">
-      <p>"{{ review?.review[locale] }}"</p>
-      <div class="avatar-block">
-        <img *ngIf="imageUrl" [src]="imageUrl" width="75" height="75" alt="Review Avatar" class="avatar">
-        <p class="avatar-name">{{ review?.name[locale] }}</p>
+    <div>
+      <p class="mr-bt-25">"{{ review?.review[locale] }}"</p>
+      <div>
+        <img class="mr-bt-5" *ngIf="imageUrl" [src]="imageUrl" width="75" height="75" alt="Review Avatar">
+        <p class="ft-xs no-margin">{{ review?.name[locale] }}</p>
       </div>
     </div>
   </div>

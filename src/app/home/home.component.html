@@ -18,14 +18,14 @@
       </div>
 
       <div class="std-pd-3 text-center hero">
-        <h1 class="mr-bt-10" i18n="home header title">{{ (deals | async)?.length }} Exklusive<span> Städtereisen bis zu </span>{{ maxDiscount }}%<span> günstiger</span></h1>
+        <h1 class="mr-bt-25" i18n="home header title">{{ (deals | async)?.length }} Exklusive<span> Städtereisen bis zu </span>{{ maxDiscount }}%<span> günstiger</span></h1>
         <h3 class="no-margin" i18n="home header subtitle"><span>Inklusive </span>Flug<span>, </span>Hotel<span> und</span> Aktivitäten</h3>
       </div>
 
     </div>
 
-    <div class="flex-wrap deal-container">
-      <div *ngFor="let deal of deals | async">
+    <div class="flex-wrap">
+      <div class="flex-half" *ngFor="let deal of deals | async">
         <app-deal-card [deal]="deal"></app-deal-card>
       </div>
     </div>

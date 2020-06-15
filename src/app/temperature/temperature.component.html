@@ -1,28 +1,34 @@
-<div class="temperature-block gradient" *ngIf="temperature?.length > 0">
-  
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-temperature-butler-block">
-      <div class="butler-container">
-        <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio"></div>
-        <div class="butler-text"><p>Holland mit seiner langen Küstenlinie entlang der Nordsee, hat ein typisch gemäßigtes Meeresklima. Und dieser Einfluss des Meeres sorgt dafür, dass es im Winter nicht allzu kalt ist, im Sommer nicht allzu warm, und dass die Luft stets mit ausreichender Feuchtigkeit für einen Regenschauer angereichert ist.</p></div>
+<div class="cms-2 temperature-block gradient-full" *ngIf="temperature?.length > 0">
+
+  <div class="butler std-pd-ver-1 std-pd-hor-1">
+    <div class="wp-100">
+      <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+        <p class="no-margin">Holland mit seiner langen Küstenlinie entlang der Nordsee, hat ein typisch gemäßigtes Meeresklima. Und dieser Einfluss des Meeres sorgt dafür, dass es im Winter nicht allzu kalt ist, im Sommer nicht allzu warm, und dass die Luft stets mit ausreichender Feuchtigkeit für einen Regenschauer angereichert ist.</p>
       </div>
     </div>
   </div>
 
-      <div class="chart-container" id="chart">
-        <apx-chart
-          [series]="chartOptions.series"
-          [chart]="chartOptions.chart"
-          [xaxis]="chartOptions.xaxis"
-          [yaxis]="chartOptions.yaxis"
-          [dataLabels]="chartOptions.dataLabels"
-          [grid]="chartOptions.grid"
-          [tooltip]="chartOptions.tooltip"
-          [fill]="chartOptions.fill"
-          [markers]="chartOptions.markers"
-          [stroke]="chartOptions.stroke"
-          [title]="chartOptions.title"
-        ></apx-chart>
-        <div class="bg-months"></div>
-        <p class="left">Januar</p><p class="right">Dezember</p>
-      </div>
+  <div class="chart-container" id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [yaxis]="chartOptions.yaxis"
+      [dataLabels]="chartOptions.dataLabels"
+      [grid]="chartOptions.grid"
+      [tooltip]="chartOptions.tooltip"
+      [fill]="chartOptions.fill"
+      [markers]="chartOptions.markers"
+      [stroke]="chartOptions.stroke"
+      [title]="chartOptions.title"
+    ></apx-chart>
+
+    <div class="bg-months br-rd-bottom">
+      <p class="left fl-l no-margin">Januar</p>
+      <p class="right fl-r no-margin">Dezember</p>
+    </div>
+    
+  </div>
+
+</div>

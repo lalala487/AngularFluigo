@@ -1,68 +1,41 @@
-<div class="pdp-payment-block col-xl-12">
-  <div class="center-wrap">
-    <div>
-      <div class="row payment-form">
-        <div class="col-sm-2"></div>
-        <div class="col-lg-8">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="butler-container">
-                <div class="butler-image">
-                  <img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-                </div>
-                  <div class="butler-text">
-                    <span>Das Abenteuer kann nach deiner Kreditkartenzahlung beginnen!</span>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-12">
-              <fieldset>
-                <form #paymentForm="ngForm" (ngSubmit)="formHandler()" class="checkout">
+<div class="step-mobile-center center std-pd-hor-2">
 
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="form-group">
-                        <div id="card-element" class="field" #cardElement></div>
-                      </div>
-                    </div>
-                  </div>
+  <div class="wp-100">
 
-                  <div class="row">
-                    <div class="col-xs-6" style="width:50%; padding-left:15px; padding-right:15px;">
-                      <div class="form-group">
-                        <div id="card-expiry-element" class="field"></div>
-                      </div>
-                    </div>
-                    <div class="col-xs-6" style="width:50%; padding-left:15px; padding-right:15px;">
-                      <div class="form-group">
-                        <div id="card-cvc-element" class="field"></div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div id="card-errors" class="help is-danger" role="alert" *ngIf="formError">{{ formError }}</div>
-
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <button type="submit" class="button is-info btn btn-primary btn-full payment-btn"
-                        [disabled]="!cardNumberComplete || !cardExpiryComplete || !cardCvcComplete || loading"
-                        [class.is-loading]="loading">
-                        Bezahlen
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </fieldset>
-            </div>
-            <div class="col-lg-12">
-              <p class="pay-secure"><span>Sicher bezahlen </span><img src="assets/icon/tooltip.svg" height="15" alt="Icon Tooltip" placement="top" ngbTooltip="Stripe ist ein «PCI Service Provider Level 1», das ist der höchste Grad an Sicherheit bei der Zahlungsabwicklung. Du kannst sicher sein, dass deine Daten sicher und geschützt sind."></p>
-            </div>
-          </div>
+    <div class="butler mr-bt-25">
+      <div class="wp-100">
+        <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+        <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+          <p class="no-margin">Das Abenteuer kann nach deiner Kreditkartenzahlung beginnen!</p>
         </div>
-        <div class="col-sm-2"></div>
       </div>
     </div>
+
+    <form #paymentForm="ngForm" (ngSubmit)="formHandler()" class="checkout">
+
+      <div class="flex-wrap mr-bt-25">
+        <div class="flex-half pd-rg-10-d mr-bt-25-m">
+          <div id="card-expiry-element" class="field"></div>
+        </div>
+        <div class="flex-half pd-lf-10-d">
+          <div id="card-cvc-element" class="field"></div>
+        </div>
+      </div>
+
+      <div id="card-element" class="mr-bt-25 field" #cardElement></div>
+
+      <div id="card-errors" class="help is-danger" role="alert" *ngIf="formError">{{ formError }}</div>
+
+      <button type="submit" class="button is-info btn btn-primary btn-full payment-btn"
+        [disabled]="!cardNumberComplete || !cardExpiryComplete || !cardCvcComplete || loading"
+        [class.is-loading]="loading">
+        Bezahlen
+      </button>
+
+      <p class="pay-secure"><span>Sicher bezahlen </span><img src="assets/icon/tooltip.svg" height="15" alt="Icon Tooltip" placement="top" ngbTooltip="Stripe ist ein «PCI Service Provider Level 1», das ist der höchste Grad an Sicherheit bei der Zahlungsabwicklung. Du kannst sicher sein, dass deine Daten sicher und geschützt sind."></p>
+
+    </form>
+
   </div>
+
 </div>

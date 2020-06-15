@@ -1,36 +1,35 @@
-<div class="activity-row">
-  <div class="col-xl-12 activity-col" [style.background-image]="imageUrl">
-    <div class="activity-card">
-      <div class="row first-row">
-        <div class="col-md-6">
-          <div class="activity-card-title">
-            <h2>{{ activityItem?.name[locale] }}</h2>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <!-- This div with the class "service", is only displayed when the service "Skip the line" is active on the activity. -->
-          <div class="service" *ngIf="hasSkipLine">
-            <img src="assets/icon/icon-no-waiting.svg" width="20" alt="No Waiting Icon" class="icon">
-            <p>Ohne Anstehen</p>
-          </div>
-        </div>
-      </div>
-      <div class="row second-row">
-        <div class="col-md-6">
-          <div class="activity-card-description">
-            <p>{{ activityItem?.description[locale] }}</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="activity-card-button" *ngIf="activityItem?.selected == false">
-            <button class="btn btn-full btn-primary" (click)="clickActivity(true)" type="next">Hinzufügen</button>
-          </div>
+<div [style.background-image]="imageUrl" class="ac br-rd-all mr-bt-25 overflow-hidden bg-img">
+  <div class="overlay-double-gradient pd-25">
 
-          <div class="activity-card-button" *ngIf="activityItem?.selected == true">
-            <button class="btn btn-full btn-secondary" (click)="clickActivity(false)" type="next">Entfernen</button>
-          </div>
+    <div class="flex-wrap flex mr-bt-125">
+
+      <div class="flex-half mr-bt-10-m">
+        <h2 class="no-margin">{{ activityItem?.name[locale] }}</h2>
+      </div>
+      
+      <!-- This div with the class "service", is only displayed when the service "Skip the line" is active on the activity. -->
+      <div class="flex-half services" *ngIf="hasSkipLine">
+        <img class="mr-rg-5" src="assets/icon/icon-no-waiting.svg" width="20" alt="No Waiting Icon">
+        <p class="no-margin inline">Ohne Anstehen</p>
+      </div>
+      
+    </div>
+
+    <div class="flex-wrap flex-bottom flex mr-tp-125">
+      
+      <div class="flex-3quart mr-bt-10-m">
+        <p class="no-margin">{{ activityItem?.description[locale] }}</p>
+      </div>
+      
+      <div class="flex-quart">
+        <div *ngIf="activityItem?.selected == false">
+          <button class="btn btn-full btn-primary" (click)="clickActivity(true)" type="next">Reservieren</button>
+        </div>
+        <div *ngIf="activityItem?.selected == true">
+          <button class="btn btn-full btn-secondary" (click)="clickActivity(false)" type="next">Entfernen</button>
         </div>
       </div>
+
     </div>
   </div>
 </div>

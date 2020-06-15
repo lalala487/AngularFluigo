@@ -1,32 +1,33 @@
-<div class="chat-container">
+<div class="cb hp-100 gradient-full std-pd-hor-3 scroll">
 
-<div class="chat-message-row">
-  <div class="chat-message-container" #scrollMe [scrollTop]="scrollMe.scrollHeight">
-    <div>
-      <div class="chat-message james">
-        <div class="avatar"></div>
-        <div class="message" style="margin-bottom:1rem;">Mein Name ist James und ich bin ein echter Roboter! Ich würde gerne jede Frage beantworten, die du hast. Bitte habe Geduld, da ich nicht immer die Antwort habe.</div>
-        <div class="message">Also, wie kann ich dir helfen? 👌🏼</div>
-      </div>
-      <div class="chat-message {{ message.author}}" *ngFor="let message of messages">
-        <div class="avatar"></div>
-        <div class="message">{{ message.message }}</div>
-      </div>
+  <div class="user-bar gradient-20 std-pd-ver-6 std-pd-hor-3">
+    <div class="back fl-l mr-rg-10 pulse br-rd-round">
+      <button (click)="goBack()" type="back" class="btn-round-sm btn-next"><img alt="Icon Back" height="10" src="assets/icon/back.svg"></button>
+    </div>
+    <div class="fl-r bg-contain avatar"></div>
+    <div class="fl-r mr-rg-10 text-right">
+      <p class="no-margin ft-xs">James</p>
+      <p class="title no-margin ft-xs opa-50">Concierge</p>
     </div>
   </div>
-</div>
 
-<div class="chat-input-row">
-  <div class="chat-input-container">
-    <form>
-      <div class="chat-input-input">
-        <input autocomplete="off" name="message" required="required" type="text" [(ngModel)]="currentText" placeholder="Nachricht"/>
-      </div>
-      <div class="chat-input-button">
+  <div class="scroll hp-100" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+    <div class="mr-tp-10 mr-bt-10 fl-l clear bot">
+      <div class="text br-rd-all mr-bt-10 std-pd-all-1">Mein Name ist James und ich bin ein echter Roboter! Ich würde gerne jede Frage beantworten, die du hast. Bitte habe Geduld, da ich nicht immer die Antwort habe.</div>
+      <div class="text br-rd-all std-pd-all-1">Also, wie kann ich dir helfen? 👌🏼</div>
+    </div>
+    <div class="mr-bt-10 fl-r clear {{ message.author}}" *ngFor="let message of messages">
+      <div class="text br-rd-all std-pd-all-1">{{ message.message }}</div>
+    </div>
+  </div>
+
+  <div class="msg-bar gradient-20 std-pd-ver-4 std-pd-hor-3">
+    <form class="grid-flex">
+      <input class="mr-rg-10" autocomplete="off" name="message" required="required" type="text" [(ngModel)]="currentText" placeholder="Nachricht"/>
+      <div>
         <button type="submit" class="btn-round-sm btn-next" value="Talk" (click)="talk()"><img _ngcontent-c10="" alt="Icon Next" height="10" src="assets/icon/next.svg"></button>
       </div>
     </form>
   </div>
-</div>
 
 </div>

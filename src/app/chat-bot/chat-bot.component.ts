@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatbotService } from '../services/chatbot.service';
+import { Router } from '@angular/router';
 
 interface Message {
   author: Author;
@@ -21,10 +22,15 @@ export class ChatBotComponent implements OnInit {
   currentText: string;
 
   constructor(
-    private chatBotService: ChatbotService
+    private chatBotService: ChatbotService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
+  }
+
+  goBack() {
+    this.router.navigate(['/']);
   }
 
   talk() {

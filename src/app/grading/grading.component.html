@@ -1,20 +1,18 @@
-<div class="grading-block gradient" *ngIf="grading">
+<div class="gradient" *ngIf="grading">
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-grading-butler-block">
-      <div class="butler-container">
-        <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio"></div>
-        <div class="butler-text">
-          <!-- The "9.4" is the average of all the grades given -->
-          <span>Ich bewerte das Hotel mit einer...<br><br><div style="font-size:1.4rem;">9.4</div></span>
-        </div>
+  <div class="butler gradient-full std-pd-ver-1 br-rd-top overflow-hidden std-pd-hor-1">
+    <div class="wp-100">
+      <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+        <p>Ich bewerte das Hotel mit einer...</p>
+        <p class="no-margin">9.4</p>
       </div>
     </div>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div style="display: block" class="canvas-wrapper">
-      <div id="chart">
+  <div>
+    <div>
+      <div>
         <apx-chart
           [series]="chartOptions.series"
           [chart]="chartOptions.chart"

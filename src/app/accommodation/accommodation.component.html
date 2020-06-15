@@ -1,100 +1,84 @@
-<div class="pdp-accommodation-block col-xl-12">
+<div class="std-pd-hor-3 std-pd-ver-4 step-mobile-normal">
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-accommodation-butler-block gradient" style="border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
-      <div class="butler-container">
-        <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-        </div>
-        <div class="butler-text"><p>Während deiner Reise verbleibst du im ...</p></div>
+  <div class="butler gradient-full std-pd-ver-1 std-pd-hor-1 br-rd-top overflow-hidden">
+    <div class="wp-100">
+      <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+        <p class="no-margin">Während deiner Reise verbleibst du im ...</p>
       </div>
     </div>
   </div>
 
-  <div class="col-xl-12 pdp-accommodation-block-title" [style.background-image]="imageUrl">
-    <div class="pdp-accommodation-block-gradient">
-      <div class="text-block">
-        <h2>{{ accommodation?.name[locale] }}</h2>
+  <div class="bg-cover" [style.background-image]="imageUrl">
+    <div class="overlay-double-gradient-center std-pd-hor-2 std-pd-ver-2">
+      <div class="text-center">
+        <h2 class="ft-xxl">{{ accommodation?.name[locale] }}</h2>
+        <hr class="w-25-rem"/>
+        <p class="no-margin">{{ accommodation?.description[locale]}}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gradient-full std-pd-hor-2 std-pd-ver-3">
+    <div class="grid-flex std-pd-hor-2 text-center mr-bt-50">
+      <div>
+        <p class="no-margin ft-xs opa-50">Stil</p>
         <hr/>
-        <p>{{ accommodation?.description[locale]}}</p>
+        <p class="no-margin">{{ accommodation?.property.style[locale]}}</p>
       </div>
+      <div>
+        <p class="no-margin ft-xs opa-50">Zimmer</p>
+        <hr/>
+        <p class="no-margin">{{ accommodation?.property.rooms}}</p>
+      </div>
+      <div>
+        <p class="no-margin ft-xs opa-50">Setting</p>
+        <hr/>
+        <p class="no-margin">{{ accommodation?.property.setting[locale]}}</p>
+      </div>
+    </div>
+    <div class="text-center">
+      <p>{{ accommodation?.property.about[locale]}}</p>
     </div>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-accommodation-block-property gradient">
-      <div class="text-block">
-        <div>
-          <div class="property-wrapper">
-            <div class="property-data">
-              <p class="label">Stil</p>
-              <hr/>
-              <p class="data">{{ accommodation?.property.style[locale]}}</p>
-            </div>
-          </div>
-          <div class="property-wrapper">
-            <div class="property-data">
-              <p class="label">Zimmer</p>
-              <hr/>
-              <p class="data">{{ accommodation?.property.rooms}}</p>
-            </div>
-          </div>
-          <div class="property-wrapper">
-            <div class="property-data">
-              <p class="label">Setting</p>
-              <hr/>
-              <p class="data">{{ accommodation?.property.setting[locale]}}</p>
-            </div>
-          </div>
-        </div>
-        <div class="property-about">
-          <p>{{ accommodation?.property.about[locale]}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div *ngIf="interestList" class="col-xl-6 pdp-icons-block gradient">
-      <div class="text-block">
-        <p i18n="perfect for">Perfekt für</p>
+  <div class="flex-wrap">
+    <div class="cms-1 flex-half std-pd-ver-1 std-pd-hor-1 gradient-full center text-center">
+      <div>
+        <p i18n="perfect for">Beliebt für</p>
         <app-interest [interest]="interest" *ngFor="let interest of interestList"></app-interest>
       </div>
     </div>
-    <div class="col-xl-6 pdp-review-block gradient">
-      <app-review [review]="accommodation?.review" style="width:100%;"></app-review>
+    <div class="flex-half std-pd-ver-1 std-pd-hor-1 gradient-full center text-center">
+      <app-review [review]="accommodation?.review"></app-review>
     </div>
   </div>
 
-  <div class="col-xl-12 pdp-accommodation-description-block" [style.background-image]="imageUrl">
-    <div class="pdp-accommodation-description-block-gradient">
-      <div class="text-block">
-        <p>{{ accommodation?.overview[locale] }} </p>
+  <div class="bg-cover" [style.background-image]="imageUrl">
+    <div class="overlay-double-gradient-center">
+      <div class="std-pd-hor-2 std-pd-ver-2 text-center">
+        <p class="no-margin">{{ accommodation?.overview[locale] }}</p>
       </div>
     </div>
   </div>
 
-  <div class="col-xl-12">
+  <div class="gradient-full center std-pd-ver-2 std-pd-hor-1">
     <app-rating [rating]="accommodation?.rating"></app-rating>
   </div>
 
-  <div class="col-xl-12" style="padding-right:0px; padding-left:0px">
+  <!-- <div>
     <app-carousel [carouselImages]="accommodation?.image"></app-carousel>
-  </div>
+  </div> -->
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-accommodation-butler-block gradient" style="border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;">
-      <div class="butler-container">
-        <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-        </div>
-        <div class="butler-text"><p>{{ accommodation?.advice[locale] }}</p></div>
+  <div class="butler gradient-full std-pd-ver-1 std-pd-hor-1 br-rd-bottom overflow-hidden">
+    <div class="wp-100">
+      <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+        <p class="no-margin">{{ accommodation?.advice[locale] }}</p>
       </div>
     </div>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12" style="padding-left:0rem; padding-right:0rem;">
-      <app-grading [grading]="accommodation?.grading"></app-grading>
-    </div>
-  </div>
+  <app-grading [grading]="accommodation?.grading"></app-grading>
 
 </div>

@@ -1,92 +1,80 @@
-<div class="pdp-city-block col-xl-12">
+<div class="std-pd-hor-3 std-pd-ver-4 step-mobile-normal">
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-city-butler-block gradient">
-      <div class="butler-container">
-        <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+  <div class="butler gradient-full std-pd-ver-1 br-rd-top overflow-hidden std-pd-hor-1">
+    <div class="wp-100">
+      <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+      <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+        <p class="no-margin">Großartig! Du reist nach ...</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-cover" [style.background-image]="imageUrl">
+    <div class="overlay-double-gradient-center std-pd-hor-2 std-pd-ver-2">
+      <div class="text-center">
+        <h2 class="ft-xxl">{{ city?.name[locale] }}</h2>
+        <hr class="w-25-rem"/>
+        <p class="no-margin">{{ city?.description[locale] }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="fc bg-cover gradient">
+    <div class="content center text-center">
+      <ng-container *ngFor="let question of questionList">
+      <a class="card">
+        <div class="front center bg-cover br-rd-all ft-m std-pd-hor-1" [style.background-image]="(question | async)?.imageUrl | async">
+          <p>{{ (question | async)?.name[locale] }}</p>
         </div>
-        <div class="butler-text"><p>Großartig! Du reist nach ...</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-xl-12 pdp-city-block-title" [style.background-image]="imageUrl">
-    <div class="pdp-city-block-gradient">
-      <div class="text-block">
-        <h2>{{ city?.name[locale] }}</h2>
-        <hr/>
-        <p>{{ city?.description[locale] }}</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-city-fc-block gradient">
-      <div class="content">
-        <ng-container *ngFor="let question of questionList">
-        <a class="card">
-          <div class="front" [style.background-image]="(question | async)?.imageUrl | async">
-            <p>{{ (question | async)?.name[locale] }}</p>
+        <div class="back center bg-cover br-rd-all">
+          <div>
+            <p>{{ (question | async)?.description[locale] }}</p>
           </div>
-          <div class="back">
-            <div>
-              <p>{{ (question | async)?.description[locale] }}</p>
-            </div>
-          </div>
-        </a>
-        </ng-container>
-      </div>
+        </div>
+      </a>
+      </ng-container>
     </div>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-6 pdp-icons-block gradient">
-      <div class="text-block">
+  <div class="flex-wrap">
+    <div class="cms-1 flex-half std-pd-ver-1 std-pd-hor-1 gradient-full center text-center">
+      <div>
         <p i18n="perfect for">Beliebt für</p>
         <app-interest [interest]="interest" *ngFor="let interest of interestList"></app-interest>
       </div>
     </div>
-    <div class="col-xl-6 pdp-review-block gradient">
-      <app-review [review]="city?.review" style="width:100%;"></app-review>
+    <div class="flex-half std-pd-ver-1 std-pd-hor-1 gradient-full center text-center">
+      <app-review [review]="city?.review"></app-review>
     </div>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-city-description-block" [style.background-image]="imageUrl">
-      <div class="pdp-city-description-block-gradient">
-        <div class="text-block">
-          <p>{{ city?.name.de_CH }} ist berühmt für seine gezelligheid, ein niederländisches Lebensgefühl, das man nicht erklären und nur verstehen kann, wenn man es erlebt. Gezelligheid ist eine Stimmung, in der die Zeit stillzustehen scheint und die Sorgen verschwinden – zumindest bis zum nächsten Morgen. Sie lässt sich am besten in einem traditionellen bruin café erleben. Hier, wo Generationen von Rauchern die Wände bräunlich verfärbt haben, tropft gezelligheid quasi aus dem Zapfhahn. Auch nach dem Abendessen, wenn man bei Kerzenschein noch etwas die Zeit verquatscht, kann es gezellig werden.</p>
+  <div class="bg-cover" [style.background-image]="imageUrl">
+    <div class="overlay-double-gradient-center">
+      <div class="std-pd-hor-2 std-pd-ver-2 text-center">
+        <p class="no-margin">{{ city?.name.de_CH }} ist berühmt für seine gezelligheid, ein niederländisches Lebensgefühl, das man nicht erklären und nur verstehen kann, wenn man es erlebt. Gezelligheid ist eine Stimmung, in der die Zeit stillzustehen scheint und die Sorgen verschwinden – zumindest bis zum nächsten Morgen. Sie lässt sich am besten in einem traditionellen bruin café erleben. Hier, wo Generationen von Rauchern die Wände bräunlich verfärbt haben, tropft gezelligheid quasi aus dem Zapfhahn. Auch nach dem Abendessen, wenn man bei Kerzenschein noch etwas die Zeit verquatscht, kann es gezellig werden.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gradient-full">
+    <div class="std-pd-hor-2 std-pd-ver-2 text-center">
+      <p class="no-margin">{{ city?.secrets[locale] }}</p>
+    </div>
+  </div>
+
+  <div class="flex-wrap">
+    <ng-container *ngFor="let activity of activityList; let i = index">
+      <div class="flex-half bg-cover" [style.background-image]="(activity | async)?.imageUrl | async">
+        <div class="overlay-double-gradient-center std-pd-all-1">
+          <h2 class="no-margin mr-bt-100">{{ (activity | async)?.name[locale] }}</h2>
+          <p class="no-margin">{{ (activity | async)?.description[locale] }}</p>
         </div>
       </div>
-    </div>
+    </ng-container>
   </div>
 
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12 pdp-city-activities-block gradient">
-      <div>
-        <div class="text-block">
-          <p>{{ city?.secrets[locale] }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-  <ng-container *ngFor="let activity of activityList; let i = index">
-    <div class="col-lg-6 pdp-city-activities-detail-block-title" [style.background-image]="(activity | async)?.imageUrl | async">
-      <div class="pdp-city-activities-detail-block-gradient">
-        <h2>{{ (activity | async)?.name[locale] }}</h2>
-        <p>{{ (activity | async)?.description[locale] }}</p>
-      </div>
-    </div>
-  </ng-container>
-  </div>
-
-
-  <div class="row" style="margin-left:0rem; margin-right:0rem;">
-    <div class="col-xl-12" style="padding-left:0rem; padding-right:0rem;">
-      <app-temperature [temperature]="city?.temperature"></app-temperature>
-    </div>
+  <div class="br-rd-bottom overflow-hidden">
+    <app-temperature [temperature]="city?.temperature"></app-temperature>
   </div>
 
 </div>

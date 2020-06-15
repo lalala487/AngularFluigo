@@ -1,6 +1,6 @@
 <ng-sidebar-container class="vh-100-m">
 
-  <ng-sidebar autoFocus=false position='left' showBackdrop=true closeOnClickOutside=true animate=true #sidebar>
+  <ng-sidebar autoFocus=false position='left' showBackdrop=true closeOnClickOutside=true animate=true #sidebar [(opened)]="_opened">
     <div class="nav-2 std-pd-2 gradient-full center vh-100-m wp-100 ft-xs" *ngIf="accummulations.hasFlightAccommodation">
       <div class="wp-100">
         
@@ -118,7 +118,7 @@
     <div class="nav-3 pointer-none z-99 wp-100 grid-flex">
       <div class="left-bar prio-1"></div>
       <div class="right-bar prio-2 grid-flex std-pd-hor-1 std-pd-ver-6">
-        <div class="prio-1 pointer-all" *ngIf="currentStep < 12">
+        <div class="prio-1 pointer-all" *ngIf="currentStep < 13">
           <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp" i18n="sidebar next">Zurück</button>
         </div>
         <div class="prio-2 pointer-all text-center">
@@ -127,7 +127,7 @@
           <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()"
             class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
         </div>
-        <div class="pulse pointer-all br-rd-round prio-3" *ngIf="currentStep < 11">
+        <div class="pulse pointer-all br-rd-round prio-3" *ngIf="currentStep < 13">
           <button autofocus (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp"
             i18n="sidebar next">Weiter</button>
         </div>

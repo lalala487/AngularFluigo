@@ -68,6 +68,8 @@ export class DealDetailComponent implements OnInit {
 
   currentStep = 0;
 
+  _opened = false;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -152,6 +154,8 @@ export class DealDetailComponent implements OnInit {
     if (step < this.currentStep) {
       this.scrollToTopOfTheSection();
       this.currentStep = step;
+
+      this._opened = this.currentStep === 12 ? true : false;
     }
   }
 
@@ -206,10 +210,12 @@ export class DealDetailComponent implements OnInit {
         });
       } else {
         this.currentStep = this.currentStep + 1;
+        this._opened = this.currentStep === 12 ? true : false;
       }
       return;
     } else {
       this.currentStep = this.currentStep + 1;
+      this._opened = this.currentStep === 12 ? true : false;
     }
   }
 
@@ -237,6 +243,8 @@ export class DealDetailComponent implements OnInit {
       this.currentStep = this.currentStep - 3;
     } else {
       this.currentStep = this.currentStep - 1;
+
+      this._opened = this.currentStep === 12 ? true : false;
     }
   }
 

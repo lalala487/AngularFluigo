@@ -10,7 +10,7 @@
           <app-nights [numberOfNights]="numberOfNights" [listOfNights]="deal.numberOfNights" (selectedNightChange)="selectedNightChange($event)"></app-nights>
         </div>
         <div class="flex-third pd-lf-10-d" *ngIf="currentAirport" >
-          <button (click)="bestPrice()" class="btn btn-full btn-secondary" type="next">Bester Preis</button>
+          <button (click)="bestPrice()" class="btn btn-full btn-secondary shadow" type="next">Bester Preis</button>
         </div>
       </div>
 
@@ -20,7 +20,7 @@
             <div class="grid-flex mr-bt-10" *ngIf="currentAirport">
 
               <div>
-                <button class="center fl-l btn-round-sm btn-back" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"> <img src="assets/icon/back.svg" height="10" alt="Icon Back"></button>
+                <button class="center fl-l btn-round-sm btn-back shadow" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"> <img src="assets/icon/back.svg" height="10" alt="Icon Back"></button>
               </div>
 
               <div class="center">
@@ -28,7 +28,7 @@
               </div>
 
               <div>
-                <button class="center fl-r btn-round-sm btn-next" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"><img src="assets/icon/next.svg" height="10" alt="Icon Next"></button>
+                <button class="center fl-r btn-round-sm btn-next shadow" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"><img src="assets/icon/next.svg" height="10" alt="Icon Next"></button>
               </div>
 
             </div>

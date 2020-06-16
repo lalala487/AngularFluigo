@@ -23,10 +23,10 @@
       
       <div class="flex-quart">
         <div *ngIf="activityItem?.selected == false">
-          <button class="btn btn-full btn-primary" (click)="clickActivity(true)" type="next">Reservieren</button>
+          <button class="btn btn-full btn-primary shadow" (click)="clickActivity(true)" type="next">Reservieren</button>
         </div>
         <div *ngIf="activityItem?.selected == true">
-          <button class="btn btn-full btn-secondary" (click)="clickActivity(false)" type="next">Entfernen</button>
+          <button class="btn btn-full btn-secondary shadow" (click)="clickActivity(false)" type="next">Entfernen</button>
         </div>
       </div>
 

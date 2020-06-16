@@ -1,4 +1,4 @@
-<div class="step-mobile-center center std-pd-hor-2">
+<div class="pf step-mobile-center center std-pd-hor-2">
 
   <div class="wp-100">
 
@@ -26,13 +26,16 @@
 
       <div id="card-errors" class="help is-danger" role="alert" *ngIf="formError">{{ formError }}</div>
 
-      <button type="submit" class="button is-info btn btn-primary btn-full payment-btn"
+      <button type="submit" class="mr-bt-25 button is-info btn btn-primary btn-full shadow payment-btn"
         [disabled]="!cardNumberComplete || !cardExpiryComplete || !cardCvcComplete || loading"
         [class.is-loading]="loading">
         Bezahlen
       </button>
 
-      <p class="pay-secure"><span>Sicher bezahlen </span><img src="assets/icon/tooltip.svg" height="15" alt="Icon Tooltip" placement="top" ngbTooltip="Stripe ist ein «PCI Service Provider Level 1», das ist der höchste Grad an Sicherheit bei der Zahlungsabwicklung. Du kannst sicher sein, dass deine Daten sicher und geschützt sind."></p>
+      <div class="text-center">
+        <p class="inline opa-50 mr-rg-5 no-margin">Sicher bezahlen</p>
+        <img class="tt opa-50" src="assets/icon/tooltip.svg" height="15" alt="Icon Tooltip" placement="top" ngbTooltip="Stripe ist ein «PCI Service Provider Level 1», das ist der höchste Grad an Sicherheit bei der Zahlungsabwicklung. Du kannst sicher sein, dass deine Daten sicher und geschützt sind.">
+      </div>
 
     </form>
 

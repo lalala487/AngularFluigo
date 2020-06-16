@@ -91,7 +91,7 @@
         </div>
 
         <div class="text-center mr-tp-25">
-          <button class="btn btn-small btn-primary" type="next" i18n="close sidebar"
+          <button class="btn btn-small btn-primary shadow" type="next" i18n="close sidebar"
             (click)="sidebar.close()">Schliessen</button>
         </div>
 
@@ -119,16 +119,16 @@
       <div class="left-bar prio-1"></div>
       <div class="right-bar prio-2 grid-flex std-pd-hor-1 std-pd-ver-6">
         <div class="prio-1 pointer-all" *ngIf="currentStep < 13">
-          <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp" i18n="sidebar next">Zurück</button>
+          <button (click)="moveToPreviousStep()" type="button" name="button-back" class="btn-round-pdp shadow" i18n="sidebar next">Zurück</button>
         </div>
         <div class="prio-2 pointer-all text-center">
           <p class="no-margin ft-xs">Gesamtbetrag</p>
           <p class="no-margin mr-tp-2-rev ft-xs mr-bt-1">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
           <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()"
-            class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
+            class="btn btn-small btn-primary shadow" type="next" i18n="sidebar details">Details</button>
         </div>
         <div class="pulse pointer-all br-rd-round prio-3" *ngIf="currentStep < 13">
-          <button autofocus (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp"
+          <button autofocus (click)="moveToNextStep()" type="button" name="button-next" class="btn-round-pdp shadow"
             i18n="sidebar next">Weiter</button>
         </div>
       </div>
@@ -162,19 +162,19 @@
 
               <div class="text-center mr-bt-25 x-mobile">
                 <p class="ft-xs mr-bt-2" i18n="sidebar total">Gesamtbetrag</p>
-                <p class="ft-l mr-bt-5">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
-                <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()" class="btn btn-small btn-primary" type="next" i18n="sidebar details">Details</button>
+                <p class="ft-l mr-bt-7">{{ accummulations.totalPriceAmount.currency }} {{ accummulations.totalPriceAmount }}</p>
+                <button [attr.disabled]="!accummulations.event ? true : null" (click)="sidebar.open()" class="btn btn-small btn-primary shadow" type="next" i18n="sidebar details">Details</button>
               </div>
 
               <div class="grid-flex mr-bt-25 x-mobile text-center">
 
                 <div *ngIf="accummulations.startDate">
-                  <p class="no-margin ft-l">{{ accummulations.startDate.toDate() | date:'d': '': localeSimple}}</p>
+                  <p class="mr-bt-2 ft-l">{{ accummulations.startDate.toDate() | date:'d': '': localeSimple}}</p>
                   <p class="no-margin ft-xs">{{ accummulations?.startDate.toDate() | date:'MMM yyyy': '': localeSimple}}</p>
                   <p class="no-margin ft-xs">{{ accummulations?.startDate.toDate() | date:'E hh:mm': '': localeSimple}}</p>
                 </div>
 
-                <div class="period">
+                <div class="mr-tp-2 period">
                   <ng-template #tipAccommodation>{{ accummulations?.numberOfNights}}
                     Nächte<br />{{(accommodation$ | async)?.name[locale]}}<br />Check-in:
                     {{ accummulations?.startDate.toDate() | date:'MMM d, y': '': localeSimple }}<br />Check-out:
@@ -193,7 +193,7 @@
                 </div>
 
                 <div *ngIf="accummulations.endDate">
-                  <p class="no-margin ft-l">{{ accummulations?.endDate.toDate() | date:'d': '' : localeSimple}}</p>
+                  <p class="mr-bt-2 ft-l">{{ accummulations?.endDate.toDate() | date:'d': '' : localeSimple}}</p>
                   <p class="no-margin ft-xs">{{ accummulations?.endDate.toDate() | date:'MMM yyyy': '' : localeSimple}}</p>
                   <p class="no-margin ft-xs">{{ accummulations?.endDate.toDate() | date:'E hh:mm':'': localeSimple}}</p>
                 </div>

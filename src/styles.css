@@ -247,6 +247,12 @@ a:hover {
 	position: absolute;
 }
 
+.shadow {
+	-webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+	-moz-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
 .overflow-hidden {
 	overflow: hidden;
 }
@@ -610,8 +616,16 @@ a:hover {
 	margin-top: -.1rem;
 }
 
+.mr-tp-2 {
+	margin-top: .25rem;
+}
+
 .mr-tp-5 {
 	margin-top: .5rem;
+}
+
+.mr-tp-7 {
+	margin-top: .75rem;
 }
 
 .mr-tp-10 {
@@ -648,6 +662,10 @@ a:hover {
 
 .mr-bt-5 {
 	margin-bottom: .5rem;
+}
+
+.mr-bt-7 {
+	margin-bottom: .75rem;
 }
 
 .mr-bt-10 {
@@ -1929,6 +1947,24 @@ footer ul {
 	margin-top: 1px;
 }
 
+/***   The payment form   ***/
+
+.pf .tt{
+	margin-top: -3px;
+}
+
+/***   The success step   ***/
+
+.su .ct {
+	width: 10rem;
+	height: 10rem;
+	background: rgba(19, 78, 94, 1);
+}
+
+.su .tt{
+	margin-top: -3px;
+}
+
 /**********************************************************************/
 /*************************   Buttons & Pills   ************************/
 /**********************************************************************/
@@ -1967,9 +2003,6 @@ footer ul {
 	width: 2.5rem;
 	background: rgba(85, 144, 151, 1);
 	color: var(--color-one);
-	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
 	cursor:pointer;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -2002,9 +2035,6 @@ footer ul {
 	line-height: 1;
 	padding-left: 1rem;
 	padding-right: 1rem;
-	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
 }
 
 .btn-round-pdp {
@@ -2016,9 +2046,6 @@ footer ul {
 	letter-spacing: .07rem;
 	background: rgba(85, 144, 151, 1);
 	color: var(--color-one);
-	-webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-	-moz-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
-	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.10), 0 1px 5px 0 rgba(0, 0, 0, 0.08), 0 3px 1px -2px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -2588,72 +2615,6 @@ button.toast-close-button {
 		max-width: calc((100% / 12)*3) !important;
 	}
 }
-
-/**********************************************************************/
-/****************************   Success   *****************************/
-/**********************************************************************/
-
-.pdp-success-block {
-	width: 100%;
-}
-
-.pdp-success-block .center-wrap {
-	width: 100%;
-}
-
-.pdp-success-block .label-success {
-	text-align: center;
-	margin-bottom: 3rem;
-	font-size: 1rem;
-}
-
-@media only screen and (min-width: 1200px) {
-	.pdp-success-block {
-		width: 100%;
-		display: flex;
-		align-items: center;
-		height: 100vh;
-	}
-}
-
-@media only screen and (max-width: 767.98px) {
-	.pdp-success-block {
-		margin-top: -2.5rem;
-	}
-	.pdp-success-block .first-row {
-		margin-bottom: 2.5rem !important;
-	}
-}
-
-.pdp-success-block .success-icon {
-	border-radius: 50%;
-	width: 10rem;
-	height: 10rem;
-	background: rgba(19, 78, 94, 1);
-	color: var(--color-one);
-	margin: 0 auto;
-	text-align: center;
-	letter-spacing: .05rem;
-}
-
-.pdp-success-block .success-icon img {
-	margin-top: 3.4rem;
-}
-
-.pdp-success-block .first-row {
-	margin-bottom: 5rem;
-}
-
-.pdp-success-block .label-success {
-	line-height: 1.8rem;
-}
-
-.pdp-success-block .label-success img {
-	margin-left: .5rem;
-	margin-top: -.15rem;
-}
-
-
 
 /**********************************************************************/	
 /*************************   Timer Homepage   *************************/

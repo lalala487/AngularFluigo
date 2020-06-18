@@ -4,35 +4,35 @@
     <div class="sidebarjs-center-container nav-1 gradient-full center vh-100-m text-center">
       <div class="wp-100">
         
-        <div class="content-block menu-option">
+        <div>
           <a href="/">
-            <p class="link" i18n="account sidebar home">Home</p>
+            <p i18n="account sidebar home">Home</p>
           </a>
-          <hr class="price-hr" />
+          <hr class="w-25-rem"/>
         </div>
-        <div class="content-block menu-option">
-          <p class="link" i18n="account sidebar settings" (click)="changeTo('profile')">Profil</p>
-          <hr class="price-hr" />
+        <div>
+          <p i18n="account sidebar settings" (click)="changeTo('profile')">Profil</p>
+          <hr class="w-25-rem"/>
         </div>
-        <div class="content-block menu-option">
-          <p class="link" i18n="account sidebar orders" (click)="changeTo('orders')">Bestellungen</p>
-          <hr class="price-hr" />
+        <div>
+          <p i18n="account sidebar orders" (click)="changeTo('orders')">Bestellungen</p>
+          <hr class="w-25-rem"/>
         </div>
-        <div class="content-block menu-option">
-          <p class="link" i18n="account sidebar data" (click)="changeTo('data')">Daten</p>
-          <hr class="price-hr" />
+        <div>
+          <p i18n="account sidebar data" (click)="changeTo('data')">Daten</p>
+          <hr class="w-25-rem"/>
         </div>
-        <div class="content-block menu-option">
-          <p class="link" i18n="account sidebar assistant" (click)="changeTo('assistant')">Assistent</p>
-          <hr class="price-hr" />
+        <div>
+          <a i18n="account sidebar assistant" href="/customer-service">Assistent</a>
+          <hr class="w-25-rem"/>
         </div>
-        <div class="content-block menu-option">
+        <div class="mr-bt-50">
           <a href="/logout">
             <p i18n="account sidebar home">Logout</p>
           </a>
         </div>
-        <div class="content-block sidebarjs-close-button">
-          <button (click)="sidebar.close()" class="btn btn-small btn-primary" type="next"
+        <div class="sidebarjs-close-button">
+          <button (click)="sidebar.close()" class="btn btn-small btn-primary shadow" type="next"
             i18n="close sidebar">Schliessen</button>
         </div>
       </div>
@@ -40,23 +40,23 @@
   </ng-sidebar>
 
   <div ng-sidebar-content>
-    <div class="account-container gradient">
+    <div class="grid-canvas gradient-full scroll">
 
       <div class="pd-25 nav-4">
 
-        <div class="left-col">
-          <img class="fl-l" (click)="sidebar.open()" src="assets/icon/icon-menu-small.svg" height="35"
+        <div class="inline wp-third">
+          <img class="px-tp-5 inline fl-l" (click)="sidebar.open()" src="assets/icon/icon-menu-small.svg" height="35"
             alt="Icon Menu Small">
-          <p class="fl-l" (click)="sidebar.open()">Menu</p>
+          <p class="px-tp-10 mr-lf-10 inline fl-l" (click)="sidebar.open()">Menu</p>
         </div>
 
-        <div class="mid-col">
-          <a href="/"><img class="center-hori" src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
+        <div class="inline wp-third">
+          <a href="/"><img class="px-tp-5 center-hori" src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
         </div>
 
-        <div class="right-col">
-            <p class="fl-r"><a href="/account">Konto</a></p>
-            <a class="fl-r" href="/account"><img src="assets/icon/icon-finger-print.svg" height="35"
+        <div class="inline wp-third">
+            <p class="px-tp-10 mr-lf-10 inline fl-r"><a href="/account">Konto</a></p>
+            <a class="px-tp-5 inline fl-r" href="/account"><img src="assets/icon/icon-finger-print.svg" height="35"
                 alt="Icon Finger Print"></a>
         </div>
 

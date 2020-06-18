@@ -6,7 +6,6 @@
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 @import "~ngx-smart-modal/ngx-smart-modal";
 
-
 /**********************************************************************/
 /******************************   HTML   ******************************/
 /**********************************************************************/
@@ -48,14 +47,10 @@ select:focus {
 }
 
 hr {
-	border-top: .12rem solid var(--color-two);
-}
-
-hr {
 	display: block;
 	height: .12rem;
 	border: 0;
-	border-top: .12rem solid rgba(235,235,235,.5);
+	border-top: .12rem solid var(--color-two);
 	padding: 0;
   }
 
@@ -317,8 +312,8 @@ a:hover {
     margin: 0 auto;
 }
 
-.z-99 {
-	z-index: 99;
+.z-9 {
+	z-index: 9;
 }
 
 .fl-l {
@@ -382,6 +377,10 @@ a:hover {
 
 .align-tp {
 	vertical-align: top;
+}
+
+.align-md {
+	vertical-align: middle;
 }
 
 .align-bt {
@@ -571,6 +570,14 @@ a:hover {
 /**********************************************************************/
 /***********************   Paddings & Margins   ***********************/
 /**********************************************************************/
+
+.px-tp-5 {
+	margin-top: 5px;
+}
+
+.px-tp-10 {
+	margin-top: 10px;
+}
 
 .no-margin {
 	margin: 0;
@@ -1172,7 +1179,8 @@ a:hover {
 
 /***   Navigation - Deal - Left   ***/
 
-.nav-2 {}
+.nav-2 {
+}
 
 /***   Navigation - Deal - Bottom   ***/
 
@@ -1203,39 +1211,14 @@ a:hover {
 
 /***   Navigation - General - Top   ***/
 
-.nav-4 .left-col,
-.nav-4 .mid-col,
-.nav-4 .right-col {
-  width: calc(100%/3);
-  display: inline-block;
+.nav-4 .wp-third {
+	height: 2.5rem;
 }
 
-.nav-4 .left-col img {
-  margin-top: 5px;
-  margin-left: -4px;
-}
-
-.nav-4 .left-col p {
-  margin-top: 10px;
-  margin-bottom: 0rem;
-  margin-left: 10px;
-}
-
-.nav-4 .right-col a {
-  margin-top: 5px;
-}
-
-.nav-4 .right-col p {
-  margin-top: 10px;
-  margin-bottom: 0rem;
-  margin-right: -1px;
-  margin-left: 10px;
-}
-
-@media (max-width: 575.98px) {
-  .nav-4 p {
-    display: none;
-  }
+@media only screen and (max-width: 1199.98px) {
+	.nav-4 p {
+		display: none;
+	}
 }
 
 /***   Navigation - Deal - Leftbar   ***/
@@ -2605,7 +2588,7 @@ button.toast-close-button {
 
 .ng-sidebar__backdrop {
     background: rgb(0,0,0);
-    opacity: 0.5 !important;
+    opacity: 0 !important;
 	z-index: 4 !important;
 }
 

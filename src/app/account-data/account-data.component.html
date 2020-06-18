@@ -1,14 +1,18 @@
 <div class="center">
   <div class="account-container-content std-pd-2">
 
-    <div class="butler-container">
-      <div class="butler-image"><img src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio"></div>
-      <div class="butler-text"><p>Möchtest du dein Konto entfernen? Dann schreibe deine E-Mail unten im Feld ein und drücke auf "Entfernen"</p></div>
+    <div class="butler mr-bt-25">
+      <div class="wp-100">
+        <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+        <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+          <p class="no-margin">Möchtest du dein Konto entfernen? Dann schreibe deine E-Mail unten im Feld ein und drücke auf "Entfernen"</p>
+        </div>
+      </div>
     </div>
 
     <form #userDeleteForm="ngForm" class="contact-data-form">
       <input class="mr-bt-25" autocomplete="off" name="email" required="required" type="text" [(ngModel)]="email" placeholder="E-Mail">
-      <button class="btn btn-full btn-primary" type="next" (click)="deleteUser()" [disabled]="!userDeleteForm.form.valid">Entfernen</button>
+      <button class="btn btn-full btn-primary shadow" type="next" (click)="deleteUser()" [disabled]="!userDeleteForm.form.valid">Entfernen</button>
     </form>
 
   </div>

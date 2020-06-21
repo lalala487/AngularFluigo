@@ -44,7 +44,7 @@ export class PaymentFormComponent implements AfterViewInit, OnDestroy {
     const style = {
       base: {
         lineHeight: '24px',
-        fontFamily: '"Roboto", "Helvetica Neue", "Helvetica", sans-serif',
+        fontFamily: '"Helvetica Neue", "Helvetica", sans-serif',
         fontSmoothing: 'antialiased',
         fontSize: '16px',
         letterSpacing: '1.12px',

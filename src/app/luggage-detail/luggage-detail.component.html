@@ -21,7 +21,7 @@
             <p class="mr-bt-25">Dein Angebot einhält ein Flug mit {{ airlineName }} in {{ (flightFare | async)?.description[locale] }}.</p>
             <p class="mr-bt-25">{{ (flightFare | async)?.baggage.cabin.description[locale] }}</p>               
             <p class="mr-bt-25">{{ (flightFare | async)?.baggage.checked.description[locale] }}</p>
-            <button (click)="ngxSmartModalService.getModal('luggageModal').close()" class="btn btn-full btn-primary">Zurück</button>
+            <button (click)="ngxSmartModalService.getModal('luggageModal').close()" class="btn btn-full btn-primary shadow">Zurück</button>
         </div>
     </div>
 </div>

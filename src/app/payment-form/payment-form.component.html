@@ -7,6 +7,7 @@
         <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
         <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
           <p class="no-margin">Das Abenteuer kann nach deiner Kreditkartenzahlung beginnen!</p>
+          <p class="mr-tp-10 no-margin" id="card-errors" role="alert" *ngIf="formError">Übrigens... {{ formError }}</p>
         </div>
       </div>
     </div>
@@ -23,8 +24,6 @@
       </div>
 
       <div id="card-element" class="mr-bt-25 field" #cardElement></div>
-
-      <div id="card-errors" class="help is-danger" role="alert" *ngIf="formError">{{ formError }}</div>
 
       <button type="submit" class="mr-bt-25 button is-info btn btn-primary btn-full shadow payment-btn"
         [disabled]="!cardNumberComplete || !cardExpiryComplete || !cardCvcComplete || loading"

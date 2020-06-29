@@ -103,7 +103,7 @@ input:-moz-placeholder,
 input::-moz-placeholder,
 input:-ms-input-placeholder,
 input::placeholder {
-	color: var(--color-two);
+	color: var(--color-two) !important;
 }
 
 input:focus,
@@ -275,7 +275,7 @@ a:hover {
 }
 
 .scroll {
-	overflow: scroll;
+	overflow: auto;
 	max-height: 100%;
 }
 

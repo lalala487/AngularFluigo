@@ -17,14 +17,35 @@
 
         <div class="inline wp-third">
             <p class="px-tp-10 mr-lf-10 inline fl-r"><a href="/account">Konto</a></p>
-            <a class="px-tp-5 inline fl-r" href="/account"><img src="assets/icon/icon-finger-print.svg" height="35"
-                alt="Icon Finger Print"></a>
+            <a class="px-tp-5 inline fl-r" href="/account"><img src="assets/icon/icon-user.svg" height="35"
+                alt="Icon User"></a>
         </div>
       </div>
 
-      <div class="std-pd-3 text-center hero">
-        <h1 class="mr-bt-25" i18n="home header title">{{ (deals | async)?.length }} Exklusive<span> Städtereisen bis zu </span>{{ maxDiscount }}%<span> günstiger</span></h1>
+      <div class="mr-tp-75 text-center hero std-pd-hor-4">
+        <h1 class="mr-bt-10" i18n="home header title">{{ (deals | async)?.length }} Exklusive<span> Städtereisen bis zu </span>{{ maxDiscount }}%<span> günstiger</span></h1>
         <h3 class="no-margin" i18n="home header subtitle"><span>Inklusive </span>Flug<span>, </span>Hotel<span> und</span> Aktivitäten</h3>
+      </div>
+
+      <div class="advantages flex-wrap pd-tp-75 pd-bt-25 std-pd-hor-4">
+        <div class="flex-half pd-bt-25">
+          <div>
+            <img class="opa-50 inline" src="assets/icon/icon-diamond.svg" height=48 width="48" alt="Icon Diamond">
+            <div class="content inline">
+              <p class="ft-xs no-margin bold">Profitier</p>
+              <p class="ft-xs opa-50 no-margin">Einzigartige Preise durch Stapelrabatte</p>
+            </div>
+          </div>
+        </div>
+        <div class="flex-half pd-bt-25">
+          <div>
+            <img class="opa-50 inline" src="assets/icon/icon-finger-print.svg" height=48 width="48" alt="Icon Finger Print">
+            <div class="content inline">
+              <p class="ft-xs no-margin bold">Individuell</p>
+              <p class="ft-xs opa-50 no-margin">Stell deine Reise zusammen wie LEGO</p>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>

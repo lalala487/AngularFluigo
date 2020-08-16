@@ -520,10 +520,10 @@ a:hover {
 	max-width: 100%;
 }
   
-@media (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
 	.wp-third-res {
-		width: calc(100% / 3);
-		max-width: calc(100% / 3);
+		width: calc(100% / 3) !important;
+		max-width: calc(100% / 3) !important;
 	}
 }
 
@@ -939,6 +939,22 @@ a:hover {
 
 .pd-bt-25 {
 	padding-bottom: 2.5rem;
+}
+
+.pd-tp-50 {
+	padding-top: 5rem;
+}
+
+.pd-bt-50 {
+	padding-bottom: 5rem;
+}
+
+.pd-tp-75 {
+	padding-top: 7.5rem;
+}
+
+.pd-bt-75 {
+	padding-bottom: 7.5rem;
 }
 
 .pd-tp-25 {
@@ -1367,7 +1383,21 @@ home .hero span{
 /******************************   USP   *******************************/
 /**********************************************************************/
 
+.advantages img {
+	position: absolute;
+}
 
+.advantages .content {
+	margin-left: 4rem;
+}
+
+@media (min-width: 768px) {
+	.advantages .flex-half {
+		display: flex;
+    	align-items: center;
+    	justify-content: center;
+	}
+}
 
 /**********************************************************************/
 /****************************   Deal Card   ***************************/

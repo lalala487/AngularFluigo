@@ -957,6 +957,14 @@ a:hover {
 	padding-bottom: 7.5rem;
 }
 
+.pd-tp-100 {
+	padding-top: 10rem;
+}
+
+.pd-bt-100 {
+	padding-bottom: 10rem;
+}
+
 .pd-tp-25 {
 	padding-top: 2.5rem;
 }
@@ -1383,6 +1391,10 @@ home .hero span{
 /******************************   USP   *******************************/
 /**********************************************************************/
 
+.usp {
+	background-color: rgba(19, 78, 94, 1)
+}
+
 .advantages img {
 	position: absolute;
 }
@@ -1391,11 +1403,29 @@ home .hero span{
 	margin-left: 4rem;
 }
 
-@media (min-width: 768px) {
-	.advantages .flex-half {
-		display: flex;
-    	align-items: center;
-    	justify-content: center;
+.adv {
+	flex: 0 100%;
+}
+
+@media (max-width: 767.98px) {
+	.adv-1,
+	.adv-3 {
+		display: none;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+	.adv {
+		flex: 0 calc(100% / 2);
+	}
+	.adv-1 {
+		display: none;
+	}
+}
+
+@media (min-width: 1200px) {
+	.adv {
+		flex: 0 calc(100% / 3);
 	}
 }
 

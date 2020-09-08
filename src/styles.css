@@ -98,11 +98,16 @@ select:focus {
 /*****************************   Input   *****************************/
 /*********************************************************************/
 
-input::-webkit-input-placeholder,
-input:-moz-placeholder,
-input::-moz-placeholder,
-input:-ms-input-placeholder,
-input::placeholder {
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+	color: var(--color-two) !important;
+}
+::-moz-placeholder { /* Firefox 19+ */
+	color: var(--color-two) !important;
+}
+:-ms-input-placeholder { /* IE 10+ */
+	color: var(--color-two) !important;
+}
+:-moz-placeholder { /* Firefox 18- */
 	color: var(--color-two) !important;
 }
 
@@ -2015,6 +2020,17 @@ footer ul {
 
 .su .tt{
 	margin-top: -3px;
+}
+
+/***   The luggage detail step   ***/
+
+
+.step-ad .option-offer {
+	margin-bottom: 1rem;
+}
+
+.step-ad .option-offer:last-of-type {
+	margin-bottom: 0rem;
 }
 
 /**********************************************************************/

@@ -461,9 +461,19 @@ a:hover {
 	width: 5rem;
 }
 
+.wp-half {
+	width: calc(100% / 2);
+	max-width: calc(100% / 2);
+}
+
 .wp-third {
 	width: calc(100% / 3);
 	max-width: calc(100% / 3);
+}
+
+.wp-fourth {
+	width: calc(100% / 4);
+	max-width: calc(100% / 4);
 }
 
 .wp-twothird {

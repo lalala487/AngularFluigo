@@ -1,5 +1,14 @@
 <div class="rf">
 
+    <ngx-smart-modal #authModal identifier="authModal" class="auth-modal" [closable]="false" customClass="nsm-centered"
+    [dismissable]="false" [escapable]="false">
+      <div class="gradient-full br-rd-all pd-25 text-center">
+        <app-auth (emailSentChanged)="emailSentChanged($event)" (isLoggedInChange)="isLoggedInChange($event)"
+          *ngIf="!emailSent"></app-auth>
+        <app-email-sent *ngIf="emailSent"></app-email-sent>
+      </div>
+    </ngx-smart-modal>
+
     <div class="bg-cover">
         <div class="overlay-double-gradient-center">
           <div class="pd-25 pd-bt-0 nav-4">

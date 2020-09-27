@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { NgbPaginationNumber } from '@ng-bootstrap/ng-bootstrap';
 
 @Injectable({
   providedIn: 'root'

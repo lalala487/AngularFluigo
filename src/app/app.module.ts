@@ -9,7 +9,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HomeComponent } from './home/home.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { DealCardComponent } from './deal-card/deal-card.component';
@@ -84,6 +83,7 @@ import { SidebarModule } from 'ng-sidebar';
 import { LuggageComponent } from './luggage/luggage.component';
 import { LuggageDetailComponent } from './luggage-detail/luggage-detail.component';
 import { UspComponent } from './usp/usp.component';
+import { ReferComponent } from './refer/refer.component';
 
 
 registerLocaleData(localeDe);
@@ -154,6 +154,7 @@ registerLocaleData(localeDe);
     LuggageComponent,
     LuggageDetailComponent,
     UspComponent,
+    ReferComponent,
   ],
   imports: [
     BrowserModule,
@@ -163,7 +164,7 @@ registerLocaleData(localeDe);
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    NgbModule,
+    NgModule,
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),

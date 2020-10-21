@@ -47,9 +47,9 @@ select:focus {
 
 hr {
 	display: block;
-	height: .12rem;
+	height: .15rem;
 	border: 0;
-	border-top: .12rem solid var(--color-two);
+	border-top: .15rem solid var(--color-two);
 	padding: 0;
   }
 
@@ -134,7 +134,7 @@ input {
 	border-left: 0rem;
 	border-style: solid;
 	border-color: var(--color-two);
-	border-bottom-width: .12rem;
+	border-bottom-width: .15rem;
 	padding: 0.5rem 1rem;
 	width: 100%;
 	-moz-transition: all 0.3s ease-in-out;
@@ -223,7 +223,7 @@ a:hover {
 /**********************************************************************/
 
 .line-x {
-	height: .12rem;
+	height: .15rem;
 	background-color: var(--color-two);
 }
 
@@ -1108,6 +1108,10 @@ a:hover {
 	background-image: linear-gradient(to bottom right, rgba(19,78,94,.5) 0%, rgba(77,131,132,.5) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,.3) 60%,rgba(0,0,0,0) 100%);
 }
 
+.overlay-double-gradient-center-95 {
+	background-image: linear-gradient(to bottom right, rgba(19,78,94,.5) 0%, rgba(77,131,132,.5) 100%), linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,.3) 60%,rgba(0,0,0,0) 100%);
+}
+
 @media only screen and (max-width: 1199.98px) {
 	.gradient-full-m {
 		background: linear-gradient(to bottom right, rgba(19, 78, 94, 1) 0%, rgba(77, 131, 132, 1) 100%);
@@ -1124,7 +1128,7 @@ a:hover {
 	border-left: 0rem;
 	border-style: solid;
 	border-color: var(--color-two);
-	border-bottom-width: .12rem;
+	border-bottom-width: .15rem;
 	padding: 0.5rem 1rem;
 	-webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 	transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -1266,7 +1270,7 @@ a:hover {
 
 .nav-5 .number {
 	border-radius: 100%;
-	border: .12rem solid var(--color-two);
+	border: .15rem solid var(--color-two);
 	color: var(--color-two);
 }
 
@@ -1312,7 +1316,7 @@ a:hover {
 	.nav-5 .line {
 		margin-top: 15px;
 		width: 1.25rem;
-		height: .12rem;
+		height: .15rem;
 	}
 	
 	.nav-5 .steps {
@@ -1370,7 +1374,7 @@ a:hover {
 	}
 
 	.nav-5 .line {
-		width: .12rem;
+		width: .15rem;
 		height: 1.25rem;
 		margin-left: 15px;
 	}

@@ -26,7 +26,7 @@
     <form #loginForm="ngForm">
       <input type="email" name="email" autocomplete="email" class="mr-bt-10"
         placeholder="E-Mail" [(ngModel)]="email" email>
-      <button class="btn btn-full btn-primary modal-input-button-email" type="next" (click)="sendEmailLink()"
+      <button class="btn btn-full btn-primary modal-input-button-email shadow" type="next" (click)="sendEmailLink()"
         [disabled]="!loginForm.form.valid">Weiter</button>
     </form>
   </div>

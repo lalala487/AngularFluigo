@@ -4,6 +4,7 @@
 
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 @import "~ngx-smart-modal/ngx-smart-modal";
+@import '~bootstrap/dist/css/bootstrap.css';
 
 /**********************************************************************/
 /******************************   HTML   ******************************/
@@ -1023,6 +1024,10 @@ a:hover {
 /***   Paddings - Desktop Only   ***/
 
 @media only screen and (min-width: 768px) {
+	.mr-lf-10-d {
+		margin-left: 1rem;
+	}
+	
 	.pd-lf-10-d {
 		padding-left: 1rem;
 	}

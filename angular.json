@@ -15,7 +15,8 @@
           "options": {
             "aot": true,
             "allowedCommonJsDependencies": [
-              "@firebase/auth"
+              "@firebase/auth",
+              "@angular/fire/firestore"
             ],
             "outputPath": "dist/flugio-frontend",
             "index": "src/index.html",

@@ -14,10 +14,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "allowedCommonJsDependencies": [
-              "@firebase/auth",
-              "@angular/fire/firestore"
-            ],
             "outputPath": "dist/flugio-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",

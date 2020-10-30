@@ -9,6 +9,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { DealCardComponent } from './deal-card/deal-card.component';
@@ -164,7 +165,7 @@ registerLocaleData(localeDe);
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireAuthModule,
-    NgModule,
+    NgbModule,
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),

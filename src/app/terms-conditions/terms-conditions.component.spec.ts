@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TermsConditionsComponent } from './terms-conditions.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -7,7 +7,7 @@ describe('TermsConditionsComponent', () => {
   let component: TermsConditionsComponent;
   let fixture: ComponentFixture<TermsConditionsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ TermsConditionsComponent, FooterComponent ]
     })

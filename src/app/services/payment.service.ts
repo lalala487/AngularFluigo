@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { StripeService, SourceResult } from 'ngx-stripe';
+import { StripeService } from 'ngx-stripe';
 import { environment } from 'src/environments/environment';
 import { from } from 'rxjs';
 import { Money } from 'ts-money';

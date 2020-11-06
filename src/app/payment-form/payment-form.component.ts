@@ -1,10 +1,11 @@
 import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Money } from 'ts-money';
-import { Source, StripeService, SourceResult } from 'ngx-stripe';
+import { StripeService } from 'ngx-stripe';
 import { Charge } from './payment-models';
 import { PaymentService } from '../services/payment.service';
 import { paymentErrorMessages, defaultErrorMessage } from './payment-messages';
 import { Sidebar } from 'ng-sidebar';
+import { Source, SourceResult } from '../interfaces/stripe-payment/sources';
 
 @Component({
   selector: 'app-payment-form',

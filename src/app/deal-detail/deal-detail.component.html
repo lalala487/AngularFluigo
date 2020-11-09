@@ -10,7 +10,7 @@
 
         <hr/>
 
-        <div *ngIf="accummulations.flightAccommodationPrice">
+        <div class="mr-bt-10" *ngIf="accummulations.flightAccommodationPrice">
           <div class="grid-flex">
             <span class="prio-1">Flug & Hotel</span>
             <span class="prio-2">{{ accummulations.flightAccommodationPrice.currency }} {{ accummulations.flightAccommodationPrice }}</span>
@@ -28,8 +28,9 @@
           </div>
         </div>
 
-        <div class="mr-tp-10" *ngIf="accummulations.activities.values">
-          <div *ngFor="let pack of accummulations.activities | keyvalue">
+        <div *ngIf="accummulations.activities.values">
+
+          <div class="mr-bt-10" *ngFor="let pack of accummulations.activities | keyvalue">
             <div class="grid-flex">
               <span class="prio-1" *ngIf="pack.value.activity">{{ pack.value.activity?.name[locale] }}</span>
               <span class="prio-2" *ngIf="pack.value.offer">{{ pack.value.offer?.price.currency }} {{ pack.value.offer?.price }}</span>
@@ -42,9 +43,10 @@
               <span class="opa-50 no-margin underline link" (click)="goToStep(5)">Anpassen</span>
             </div>
           </div>
+
         </div>
 
-        <div class="mr-tp-10" *ngIf="accummulations.luggage > 0">
+        <div class="mr-bt-10" *ngIf="accummulations.luggage > 0">
           <div class="grid-flex">
             <span class="prio-1">Zusätzliches Gepäck</span>
             <span class="prio-2">{{ accummulations.luggagePrice.currency }} {{ accummulations.luggagePrice }}</span>
@@ -57,7 +59,7 @@
           </div>
         </div>
 
-        <div class="mr-tp-10" *ngIf="accummulations.transportationPrice.amount > 0 && accummulations.hasTransportation">
+        <div class="mr-bt-10" *ngIf="accummulations.transportationPrice.amount > 0 && accummulations.hasTransportation">
           <div class="grid-flex">
             <span class="prio-1">Transport</span>
             <span class="prio-2">{{ accummulations.transportationPrice.currency }} {{ accummulations.transportationPrice }}</span>
@@ -67,7 +69,7 @@
           </div>
         </div>
 
-        <div class="mr-tp-10" *ngIf="accummulations.insurancePrice.amount > 0 && accummulations.hasInsurance">
+        <div class="mr-bt-10" *ngIf="accummulations.insurancePrice.amount > 0 && accummulations.hasInsurance">
           <div class="grid-flex">
             <span class="prio-1">Versicherung</span>
             <span class="prio-2">{{ accummulations.insurancePrice.currency }} {{ accummulations.insurancePrice }}</span>
@@ -77,7 +79,7 @@
           </div>
         </div>
 
-        <div class="mr-tp-10 grid-flex" *ngIf="accummulations.bookingFee.amount > 0">
+        <div class="mr-bt-10 grid-flex" *ngIf="accummulations.bookingFee.amount > 0">
           <span class="prio-1">Buchungsgebühr</span>
           <span class="prio-2">{{ accummulations.bookingFee.currency }} {{ accummulations.bookingFee }}</span>
         </div>

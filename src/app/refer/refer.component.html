@@ -1,50 +1,67 @@
 <div class="rf">
 
-    <div class="bg-cover">
-        <div class="overlay-double-gradient-center-95">
-          <div class="pd-25 pd-bt-0 nav-4">
-            <div class="inline wp-fourth">
-            </div>
-    
-            <div class="inline wp-half">
-              <a href="/"><img class="px-tp-5 center-hori" src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
-            </div>
-    
-            <div class="inline wp-fourth">
-                <p class="px-tp-10 mr-lf-10 inline fl-r"><a href="/account">Konto</a></p>
-                <a class="px-tp-5 inline fl-r" href="/account"><img class="opa-50" src="assets/icon/icon-user.svg" height="35"
-                    alt="Icon User"></a>
-            </div>
+  <div class="bg-cover" style="background-image: url('https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fcms%2Fcms_00005.jpg?alt=media&token=146d988a-532f-43ae-b4aa-b8ab0fec2791');">
+      <div class="overlay-double-gradient-center">
+        <div class="pd-25 pd-bt-0 nav-4">
+          <div class="inline wp-fourth">
           </div>
-          <div class="std-pd-hor-2 std-pd-ver-2">
-            <div class="text-center">
-              <h2 class="ft-xxl">Kostenlos reisen. Unbegrenzt.</h2>
-              <hr class="w-25-rem"/>
-              <p class="no-margin">Jeder geworbene Freund gibt sowohl dir als auch deinem Freund 20 CHF Guthaben.</p>
-            </div>
+  
+          <div class="inline wp-half">
+            <a href="/"><img class="px-mr-tp-5 center-hori" src="assets/img/logo.svg" width="110" alt="Flugio Logo"></a>
+          </div>
+  
+          <div class="inline wp-fourth">
+              <p class="px-mr-tp-10 mr-lf-10 inline fl-r" *ngIf="afAuth.user | async as user"><a href="/account">Konto</a></p>
+              <a class="px-mr-tp-5 inline fl-r" href="/account" *ngIf="afAuth.user | async as user"><img class="opa-50" src="assets/icon/icon-user.svg" height="35"
+                  alt="Icon User"></a>
           </div>
         </div>
+        <div class="std-pd-hor-2 std-pd-ver-2">
+          <div class="text-center">
+            <h2 class="ft-xxl">Kostenlos reisen. Unbegrenzt.</h2>
+            <hr class="w-25-rem"/>
+            <p class="no-margin">Jeder geworbene Freund gibt sowohl dir als auch deinem Freund 20 CHF Guthaben.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="butler gradient-full std-pd-ver-2 overflow-hidden std-pd-hor-2">
+      <div class="wp-100">
+        <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
+        <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
+          <p class="no-margin">Gebe Freunden 20 CHF auf ihre erste Buchung. Sobald sie gebucht haben, erhältst du ebenfalls 20 CHF Rabatt! Es gibt keine Begrenzung für die Anzahl der Freunde, die du einladen kannst...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-wrap text-center">
+
+      <div class="tg-1 flex-half bg-cover std-h-1">
+        <a href="/travel-guide/amsterdam">
+          <div class="gradient-95 center hp-100">
+            <div>
+              <h2 class="ft-xxl">Whatsapp</h2>
+              <hr class="w-25-rem"/>
+              <a href="/" class="btn btn-full btn-primary shadow mr-tp-2" type="next">Einladen mit Whatsapp</a>
+            </div>
+          </div>
+        </a>
       </div>
 
-      <div class="flex-wrap">
-        <div class="flex-third bg-cover">
-          <div class="overlay-double-gradient-center hp-100">
-          </div>
-        </div>
-        <div class="flex-twothird">
-          <div class="gradient-full">
-            <div class="std-pd-hor-2 std-pd-ver-2 center text-center">
-              <div class="wp-100">
-                <img class="center-hori" height="75" width="75" src="https://firebasestorage.googleapis.com/v0/b/project-flugio.appspot.com/o/assets%2Fstatic%2Favatar-bastiaan-harmsen%402x.png?alt=media&token=ef64102f-7528-47f0-852d-d9c00f370431" alt="Butler Flugio">
-                <div class="text text-center br-rd-all std-pd-ver-1 std-pd-hor-1">
-                  <p class="mr-bt-10">Gebe Freunden 20 CHF auf ihre erste Buchung. Sobald sie gebucht haben, erhältst du ebenfalls 20 CHF Rabatt!</p>
-                  <p class="no-margin">Es gibt keine Begrenzung für die Anzahl der Freunde, die du einladen kannst...</p>
-              </div>
-            </div>
+      <div class="tg-1 flex-half bg-cover std-h-1">
+        <a href="/travel-guide/amsterdam">
+          <div class="gradient-95 center hp-100">
+            <div>
+              <h2 class="ft-xxl">Facebook</h2>
+              <hr class="w-25-rem"/>
+              <a href="/" class="btn btn-full btn-primary shadow mr-tp-2" type="next">Einladen mit Facebook</a>
             </div>
           </div>
-        </div>
+        </a>
       </div>
+
+    </div>
 
 </div>
 

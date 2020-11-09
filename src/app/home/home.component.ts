@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private db: AngularFirestore,
-    public afAuth: AngularFireAuth) {
-  }
+    public afAuth: AngularFireAuth
+  ) { }
 
   ngOnInit() {
     this.isOffline = window.localStorage.getItem('isOffline');

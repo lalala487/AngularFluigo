@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { switchMap, map } from 'rxjs/operators';
 import { TravelGuide } from '../models/travel-guide';
@@ -29,6 +30,7 @@ export class TravelGuideComponent implements OnInit, OnChanges {
     private db: AngularFirestore,
     private imageService: ImageService,
     private toastr: ToastrService,
+    public afAuth: AngularFireAuth
   ) { }
 
   ngOnInit() {

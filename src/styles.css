@@ -1309,6 +1309,7 @@ a:hover {
 .nav-5 .current {
 	border-color: var(--color-one);
 	color: var(--color-one);
+	cursor: pointer;
 }
 
 .nav-5 .steps .line.active {
@@ -2082,7 +2083,6 @@ footer ul {
 	padding-right: 2.5rem;
 	padding-top: 0rem;
 	padding-bottom: 0rem;
-	line-height: 26px;
 }
 
 .btn-full {
@@ -2093,6 +2093,7 @@ footer ul {
 	color: var(--color-one);
 	border: none;
 	background-color: rgba(85, 144, 151, 1);
+	line-height: 38px;
 }
 
 .btn-round-sm {

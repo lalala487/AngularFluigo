@@ -79,7 +79,7 @@ export class GradingComponent implements OnChanges {
       return;
     }
 
-    const gradings: Array<Grading> = change.currentValue;
+    const gradings: Object = change.currentValue;
 
     const data = [];
     const names = Object.keys(gradings); // Object.keys(gradings).map(grading => grading.name[this.locale]);

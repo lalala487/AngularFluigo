@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Deal } from '../models/deal';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,11 @@ export class HomeComponent implements OnInit {
       'deal', ref => ref
         .where('endDate', '>', new Date())
         .where('endDate', '<', twoWeeksFromNow)
-    ).valueChanges();
+    ).valueChanges().pipe(
+      map(deals => deals.filter(deal => {
+         return deal.active;
+      }))
+    );
 
     this.deals.subscribe(collection => {
       if (collection.length > 0) {

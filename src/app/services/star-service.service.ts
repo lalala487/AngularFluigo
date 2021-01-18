@@ -7,6 +7,7 @@ export class StarServiceService {
   constructor() { }
 
   getStarInformation(rating: number, maxRating: number): [number, Array<number>, Array<number>] {
+    console.log("start!!!!!");
     const starFillingPercentage: number = this.getStarFillingPercentage(rating);
     let fullStars: Array<number> = [];
     let emptyStars: Array<number> = [];

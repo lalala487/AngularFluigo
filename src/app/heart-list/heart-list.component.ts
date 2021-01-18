@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,SimpleChanges,SimpleChange } from '@angular/core';
 import { StarServiceService } from '../services/star-service.service';
 
 @Component({
@@ -22,5 +22,13 @@ export class HeartListComponent implements OnInit {
       this.rating, this.maxRating
     );
   }
+  ngOnChanges(changes: SimpleChanges) {
+    const rating: SimpleChange = changes.rating;
 
+    if (rating !== undefined) {
+      this.rating = rating.currentValue as number;
+
+      [this.starFillingPercentage, this.fullStars, this.emptyStars] = this.starService.getStarInformation(this.rating, this.maxRating);
+    }
+  }
 }

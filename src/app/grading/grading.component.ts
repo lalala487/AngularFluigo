@@ -33,7 +33,7 @@ export class GradingComponent implements OnChanges {
   locale = environment.locale;
 
   constructor() {
-    this.chartOptions = {
+    /*this.chartOptions = {
       series: [
         {
           name: 'Series 1',
@@ -51,6 +51,25 @@ export class GradingComponent implements OnChanges {
         categories: ['January', 'February', 'March', 'April', 'May', 'June']
       }
     };
+    */
+    this.chartOptions = {
+      series: [
+        {
+          name: 'Series 1',
+          data: [0, 0, 0, 0, 0, 0,0]
+        }
+      ],
+      chart: {
+        height: 350,
+        type: 'radar'
+      },
+      title: {
+        text: 'Basic Radar Chart'
+      },
+      xaxis: {
+        categories: ['amenities', 'cleanliness', 'design', 'location', 'rooms', 'service','value']
+      }
+    };
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -63,13 +82,11 @@ export class GradingComponent implements OnChanges {
     const gradings: Array<Grading> = change.currentValue;
 
     const data = [];
-
-    const names = gradings.map(grading => grading.name[this.locale]);
-    const ratings = gradings.map(grading => grading.rating);
+    const names = Object.keys(gradings); // Object.keys(gradings).map(grading => grading.name[this.locale]);
+    const ratings = Object.values(gradings); // gradings.map(grading => grading.rating);
 
 
     this.chartOptions.xaxis.categories = names;
-
     this.chartOptions.series = [
       {
         name: 'Ratings',

@@ -8,7 +8,7 @@ interface Message {
 }
 
 enum Author {
-  James = 'james',
+  James = 'bot',
   User = 'user',
 }
 

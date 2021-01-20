@@ -457,7 +457,7 @@ export class CalendarComponent implements OnInit {
                 return combineLatest([flightOffers$]);
               });
 
-              return combineLatest(off$);
+              return combineLatest([off$]);
 
             })
           );

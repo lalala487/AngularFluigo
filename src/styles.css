@@ -1986,6 +1986,14 @@ footer ul {
 	padding-bottom: 72px;
 }
 
+.cb .bot {
+	float: left;
+}
+
+.cb .user {
+  	float: right;
+}
+
 .cb .bot .text {
 	background: var(--color-three);
 	width: fit-content;

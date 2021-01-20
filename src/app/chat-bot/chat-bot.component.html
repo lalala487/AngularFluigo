@@ -16,7 +16,7 @@
       <div class="text br-rd-all mr-bt-10 std-pd-all-1">Mein Name ist James und ich bin ein echter Roboter! Ich würde gerne jede Frage beantworten, die du hast. Bitte habe Geduld, da ich nicht immer die Antwort habe.</div>
       <div class="text br-rd-all std-pd-all-1">Also, wie kann ich dir helfen? 👌🏼</div>
     </div>
-    <div class="mr-bt-10 fl-r clear {{ message.author}}" *ngFor="let message of messages">
+    <div class="mr-bt-10 clear {{ message.author}}" *ngFor="let message of messages">
       <div class="text br-rd-all std-pd-all-1">{{ message.message }}</div>
     </div>
   </div>

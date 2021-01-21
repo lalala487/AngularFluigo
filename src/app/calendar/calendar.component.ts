@@ -90,12 +90,18 @@ export class CalendarComponent implements OnInit {
     const dealMerchantId = this.deal.merchant[0].id;
 
     const flightOffers$ = this.getFlightOffers(dealMerchantId);
+    flightOffers$.subscribe(val=>{
+      console.log('flightoffer',val);
+    }
+    )
     const roomOffers$ = this.getRoomOffers(dealMerchantId);
 
     const combined$ = combineLatest([flightOffers$, roomOffers$]);
 
+    
     this.events$ = combined$.pipe(
       scan((events: Array<any>) => {
+        console.log('events', events);
         this.allOffers.way.map(wayOffer => {
           this.allOffers.return.map(returnOffer => {
 
@@ -239,8 +245,10 @@ export class CalendarComponent implements OnInit {
         return filtered;
       }, [])
     );
+
   }
 
+  
   dayClicked({
     events
   }: {
@@ -397,9 +405,9 @@ export class CalendarComponent implements OnInit {
                     return { id, ...data };
                   }))
                 ).pipe(
-                  switchMap(offers => {
+                  map(offers => {
                     const innerOffers$ = [];
-
+                    
                     offers.filter(offer => offer.stock > 0).map(offer => {
                       offer['flight'] = flightFromOffer;
                       offer['flightOfferId'] = flightOfferId;
@@ -446,8 +454,7 @@ export class CalendarComponent implements OnInit {
                         offer['flightDepartureHour'] = moment(flightFromOffer.departure);
                         this.allOffers.way.push(offer);
                       }
-
-                      return offer;
+                      //return offer;
                     });
 
                     return combineLatest(innerOffers$);
@@ -457,7 +464,7 @@ export class CalendarComponent implements OnInit {
                 return combineLatest([flightOffers$]);
               });
 
-              return combineLatest([off$]);
+              return combineLatest(off$);
 
             })
           );

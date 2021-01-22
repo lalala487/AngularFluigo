@@ -56,7 +56,7 @@ export class GradingComponent implements OnChanges {
       series: [
         {
           name: 'Series 1',
-          data: [0, 0, 0, 0, 0, 0,0]
+          data: [0, 0, 0, 0, 0, 0, 0]
         }
       ],
       chart: {
@@ -67,7 +67,7 @@ export class GradingComponent implements OnChanges {
         text: 'Basic Radar Chart'
       },
       xaxis: {
-        categories: ['amenities', 'cleanliness', 'design', 'location', 'rooms', 'service','value']
+        categories: ['amenities', 'cleanliness', 'design', 'location', 'rooms', 'service', 'value']
       }
     };
   }

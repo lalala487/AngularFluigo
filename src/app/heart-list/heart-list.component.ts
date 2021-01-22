@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,SimpleChanges,SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, SimpleChange, OnChanges } from '@angular/core';
 import { StarServiceService } from '../services/star-service.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { StarServiceService } from '../services/star-service.service';
   templateUrl: './heart-list.component.html',
   styleUrls: ['./heart-list.component.css']
 })
-export class HeartListComponent implements OnInit {
+export class HeartListComponent implements OnInit, OnChanges {
   maxRating = 5;
   @Input() rating: number;
   @Input() showNumber = true;
@@ -22,6 +22,7 @@ export class HeartListComponent implements OnInit {
       this.rating, this.maxRating
     );
   }
+
   ngOnChanges(changes: SimpleChanges) {
     const rating: SimpleChange = changes.rating;
 
